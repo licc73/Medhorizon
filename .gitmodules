@@ -1,0 +1,27 @@
+[submodule "Carthage/Checkouts/Alamofire"]
+	path = Carthage/Checkouts/Alamofire
+	url = https://github.com/Alamofire/Alamofire.git
+[submodule "Carthage/Checkouts/Device"]
+	path = Carthage/Checkouts/Device
+	url = https://github.com/Ekhoo/Device.git
+[submodule "Carthage/Checkouts/Dollar.swift"]
+	path = Carthage/Checkouts/Dollar.swift
+	url = https://github.com/chainone/Dollar.swift.git
+[submodule "Carthage/Checkouts/Prelude"]
+	path = Carthage/Checkouts/Prelude
+	url = https://github.com/robrix/Prelude.git
+[submodule "Carthage/Checkouts/Result"]
+	path = Carthage/Checkouts/Result
+	url = https://github.com/antitypical/Result.git
+[submodule "Carthage/Checkouts/ReactiveCocoa"]
+	path = Carthage/Checkouts/ReactiveCocoa
+	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git
+[submodule "Carthage/Checkouts/Runes"]
+	path = Carthage/Checkouts/Runes
+	url = https://github.com/thoughtbot/Runes.git
+[submodule "Carthage/Checkouts/SDWebImage"]
+	path = Carthage/Checkouts/SDWebImage
+	url = https://github.com/rs/SDWebImage.git
+[submodule "Carthage/Checkouts/SVProgressHUD"]
+	path = Carthage/Checkouts/SVProgressHUD
+	url = https://github.com/SVProgressHUD/SVProgressHUD.git

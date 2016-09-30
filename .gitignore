@@ -1,0 +1,7 @@
+xcuserdata/
+project.xcworkspace/
+iOSLMV.xcworkspace
+Pods/
+*.xcscmblueprint
+Carthage/Build/
+upload_dsym_results

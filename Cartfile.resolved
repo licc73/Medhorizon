@@ -1,0 +1,8 @@
+github "Alamofire/Alamofire" "3.5.0"
+github "chainone/Dollar.swift" "90eaf502b74111b3e428e132de7ba56558e06500"
+github "robrix/Prelude" "1.6.0"
+github "antitypical/Result" "2.1.3"
+github "thoughtbot/Runes" "v3.2.1"
+github "rs/SDWebImage" "3.8.2"
+github "SVProgressHUD/SVProgressHUD" "2.0.3"
+github "ReactiveCocoa/ReactiveCocoa" "v4.2.2"
