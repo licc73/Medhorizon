@@ -1,16 +1,12 @@
 //
-//  KTAlamofireRACDownload.swift
-//  Knuth
-//
-//  Created by ChenYong on 11/22/15.
-//  Copyright © 2015 Autodesk. All rights reserved.
+//  AlamofireRACDownload.swift
 //
 
 import Foundation
 import Alamofire
 import ReactiveCocoa
 
-public enum KTRequestProgress {
+public enum RequestProgress {
     case InProgress(bytesRead: Int64, totalBytesRead: Int64, totalBytesExpectedToRead: Int64)
     case FileFinished(NSURL)
     case Finished
@@ -55,8 +51,8 @@ extension Alamofire.Manager {
         headers: [String: String]? = nil,
         fileSize: Int64? = nil,
         destination: Request.DownloadFileDestination)
-        -> SignalProducer<KTRequestProgress, ServiceError> {
-            return SignalProducer<SignalProducer<KTRequestProgress, ServiceError>, ServiceError> {[unowned self] sink, _ in
+        -> SignalProducer<RequestProgress, ServiceError> {
+            return SignalProducer<SignalProducer<RequestProgress, ServiceError>, ServiceError> {[unowned self] sink, _ in
                 var d: NSURL! = nil
                 let f: Request.DownloadFileDestination = {tempURL, response in
                     let dest = destination(tempURL, response)

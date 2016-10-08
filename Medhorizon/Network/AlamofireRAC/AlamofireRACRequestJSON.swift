@@ -1,9 +1,5 @@
 //
-//  KTAlamofireRACRequestJSON.swift
-//  Knuth
-//
-//  Created by ChenYong on 11/17/15.
-//  Copyright © 2015 Autodesk. All rights reserved.
+//  AlamofireRACRequestJSON.swift
 //
 
 import Foundation
@@ -72,18 +68,18 @@ extension Alamofire.Request {
     }
 
 
-    public func rac_progressResponse(preparedSize: Int64? = nil, file: Void -> NSURL?) -> SignalProducer<KTRequestProgress, ServiceError> {
+    public func rac_progressResponse(preparedSize: Int64? = nil, file: Void -> NSURL?) -> SignalProducer<RequestProgress, ServiceError> {
 
         return SignalProducer {sink, _ in
-            self.validate().progress { sink.sendNext(KTRequestProgress.InProgress(bytesRead: $0, totalBytesRead: $1, totalBytesExpectedToRead: totalExpectedBytes($2, prepared: preparedSize)))}
+            self.validate().progress { sink.sendNext(RequestProgress.InProgress(bytesRead: $0, totalBytesRead: $1, totalBytesExpectedToRead: totalExpectedBytes($2, prepared: preparedSize)))}
                 .response { (request, response, data, error) -> Void in
                     if let error = error {
                         sink.sendFailed(processConnectionError(RawResponse(request: request, response: response, data: data), error))
                     } else {
                         if let file = file() {
-                           sink.sendNext(KTRequestProgress.FileFinished(file))
+                           sink.sendNext(RequestProgress.FileFinished(file))
                         } else {
-                            sink.sendNext(KTRequestProgress.Finished)
+                            sink.sendNext(RequestProgress.Finished)
                         }
 
                         sink.sendCompleted()
@@ -125,8 +121,8 @@ extension Alamofire.Manager {
         //
         let encodedURLRequest = encoding.encode(mutableURLRequest, parameters: parameters).0
 
-        if let jsonapi = headers?[KTHttpHeader.ContentType.rawValue] >>- {KTContentType(rawValue: $0)} where jsonapi == KTContentType.JSONAPI {
-            encodedURLRequest.setValue( KTContentType.JSONAPI.rawValue, forHTTPHeaderField: KTHttpHeader.ContentType.rawValue)
+        if let jsonapi = headers?[HttpHeader.ContentType.rawValue] >>- {ContentType(rawValue: $0)} where jsonapi == ContentType.JSONAPI {
+            encodedURLRequest.setValue( ContentType.JSONAPI.rawValue, forHTTPHeaderField: HttpHeader.ContentType.rawValue)
         }
 
         return request(encodedURLRequest)

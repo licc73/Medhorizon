@@ -1,9 +1,5 @@
 //
-//  KTAlamofireRACUpload.swift
-//  Knuth
-//
-//  Created by ChenYong on 11/22/15.
-//  Copyright © 2015 Autodesk. All rights reserved.
+//  AlamofireRACUpload.swift
 //
 
 import Foundation
@@ -69,17 +65,17 @@ extension Alamofire.Manager {
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
         file: NSURL)
-        -> SignalProducer<KTRequestProgress, ServiceError> {
+        -> SignalProducer<RequestProgress, ServiceError> {
 
             return SignalProducer {sink, _ in
                 self.upload(method, URLString, headers: headers, file: file)
                     .validate()
-                    .progress { sink.sendNext(KTRequestProgress.InProgress(bytesRead: $0, totalBytesRead: $1, totalBytesExpectedToRead: $2)) }
+                    .progress { sink.sendNext(RequestProgress.InProgress(bytesRead: $0, totalBytesRead: $1, totalBytesExpectedToRead: $2)) }
                     .response { (request, response, data, error) -> Void in
                         if let error = error {
                             sink.sendFailed(processConnectionError(RawResponse(request: request, response: response, data: data), error))
                         } else {
-                            sink.sendNext(KTRequestProgress.FileFinished(file))
+                            sink.sendNext(RequestProgress.FileFinished(file))
                             sink.sendCompleted()
                         }
                 }
@@ -91,8 +87,8 @@ extension Alamofire.Manager {
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
         multipartFormData: MultipartFormData -> Void)
-        -> SignalProducer<KTRequestProgress, ServiceError> {
-        return rac_encodeMultipartFormDataToRequest(method, URLString, headers: headers, multipartFormData: multipartFormData).flatMap(.Latest, transform: { (request) -> SignalProducer<KTRequestProgress, ServiceError> in
+        -> SignalProducer<RequestProgress, ServiceError> {
+        return rac_encodeMultipartFormDataToRequest(method, URLString, headers: headers, multipartFormData: multipartFormData).flatMap(.Latest, transform: { (request) -> SignalProducer<RequestProgress, ServiceError> in
             return request.rac_progressResponse(nil, file: {nil})
             })
     }

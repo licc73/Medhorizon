@@ -1,14 +1,10 @@
 //
-//  KTHttpHeaders.swift
-//  Knuth
-//
-//  Created by ChenYong on 11/19/15.
-//  Copyright © 2015 Autodesk. All rights reserved.
+//  HttpHeaders.swift
 //
 
 import Foundation
 
-public enum KTHttpHeader: String {
+public enum HttpHeader: String {
     case UserAgent = "User-Agent"
     case ContentType = "Content-Type"
     case ContentLength = "Content-Length"
@@ -21,7 +17,7 @@ public enum KTHttpHeader: String {
 }
 
 
-public enum KTContentType: String {
+public enum ContentType: String {
     case FormEncoded = "application/x-www-form-urlencoded"
     case JSON = "application/json"
     case JSONAPI = "application/vnd.api+json"
