@@ -24,6 +24,8 @@ class TourViewController: UIViewController {
         
         self.navigationController?.navigationBarHidden = true
         
+        self.setHomeButtonText()
+        
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(timerSelector(_:)), userInfo: nil, repeats: true)
     }
 
@@ -33,7 +35,16 @@ class TourViewController: UIViewController {
     }
     
     func timerSelector(timer: NSTimer) {
-        
+        guard currentCount != totalCount else {
+            self.jumpToHome()
+            return
+        }
+        self.currentCount += 1
+        self.setHomeButtonText()
+    }
+    
+    private func setHomeButtonText() {
+        self.btnHome.setTitle(String(format: "跳过%ds", totalCount - currentCount), forState: .Normal)
     }
 
     /*
