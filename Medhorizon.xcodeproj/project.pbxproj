@@ -64,6 +64,17 @@
 		43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390721DA7A45400039C35 /* ReactiveCocoaBindings.swift */; };
 		43D390751DA7A45400039C35 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390731DA7A45400039C35 /* String+Base64.swift */; };
 		43D390791DA7A46500039C35 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D390781DA7A46500039C35 /* Reachability.m */; };
+		EA33BB961DA880F300C0BE04 /* KTAlamofireRACDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8B1DA880F300C0BE04 /* KTAlamofireRACDownload.swift */; };
+		EA33BB971DA880F300C0BE04 /* KTAlamofireRACRequestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8C1DA880F300C0BE04 /* KTAlamofireRACRequestJSON.swift */; };
+		EA33BB981DA880F300C0BE04 /* KTAlamofireRACUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8D1DA880F300C0BE04 /* KTAlamofireRACUpload.swift */; };
+		EA33BB991DA880F300C0BE04 /* KTHttpHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8E1DA880F300C0BE04 /* KTHttpHeaders.swift */; };
+		EA33BB9A1DA880F300C0BE04 /* KTRACHelpFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8F1DA880F300C0BE04 /* KTRACHelpFunctions.swift */; };
+		EA33BB9B1DA880F300C0BE04 /* KTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB911DA880F300C0BE04 /* KTAPI.swift */; };
+		EA33BB9C1DA880F300C0BE04 /* KTDMServiceAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB921DA880F300C0BE04 /* KTDMServiceAPIs.swift */; };
+		EA33BB9D1DA880F300C0BE04 /* KTIssueServiceAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB931DA880F300C0BE04 /* KTIssueServiceAPIs.swift */; };
+		EA33BB9E1DA880F300C0BE04 /* KTJSONAPIQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB941DA880F300C0BE04 /* KTJSONAPIQuery.swift */; };
+		EA33BB9F1DA880F300C0BE04 /* KTOSSServiceAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB951DA880F300C0BE04 /* KTOSSServiceAPIs.swift */; };
+		EA33BBA21DA8819800C0BE04 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BBA11DA8819800C0BE04 /* Error.swift */; };
 		EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */; };
 		EA67D0D21D9E4D0B00468A92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0D11D9E4D0B00468A92 /* ViewController.swift */; };
 		EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D31D9E4D0B00468A92 /* Main.storyboard */; };
@@ -166,6 +177,17 @@
 		43D390731DA7A45400039C35 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		43D390771DA7A46500039C35 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		43D390781DA7A46500039C35 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EA33BB8B1DA880F300C0BE04 /* KTAlamofireRACDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTAlamofireRACDownload.swift; sourceTree = "<group>"; };
+		EA33BB8C1DA880F300C0BE04 /* KTAlamofireRACRequestJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTAlamofireRACRequestJSON.swift; sourceTree = "<group>"; };
+		EA33BB8D1DA880F300C0BE04 /* KTAlamofireRACUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTAlamofireRACUpload.swift; sourceTree = "<group>"; };
+		EA33BB8E1DA880F300C0BE04 /* KTHttpHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTHttpHeaders.swift; sourceTree = "<group>"; };
+		EA33BB8F1DA880F300C0BE04 /* KTRACHelpFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTRACHelpFunctions.swift; sourceTree = "<group>"; };
+		EA33BB911DA880F300C0BE04 /* KTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTAPI.swift; sourceTree = "<group>"; };
+		EA33BB921DA880F300C0BE04 /* KTDMServiceAPIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTDMServiceAPIs.swift; sourceTree = "<group>"; };
+		EA33BB931DA880F300C0BE04 /* KTIssueServiceAPIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTIssueServiceAPIs.swift; sourceTree = "<group>"; };
+		EA33BB941DA880F300C0BE04 /* KTJSONAPIQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTJSONAPIQuery.swift; sourceTree = "<group>"; };
+		EA33BB951DA880F300C0BE04 /* KTOSSServiceAPIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTOSSServiceAPIs.swift; sourceTree = "<group>"; };
+		EA33BBA11DA8819800C0BE04 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EA67D0CC1D9E4D0B00468A92 /* Medhorizon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medhorizon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA67D0D11D9E4D0B00468A92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +411,9 @@
 		43D3906E1DA7A40200039C35 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				EA33BBA01DA8819800C0BE04 /* Error */,
+				EA33BB8A1DA880F300C0BE04 /* AlamofireRAC */,
+				EA33BB901DA880F300C0BE04 /* API */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -435,6 +460,38 @@
 			children = (
 			);
 			path = UIExtension;
+			sourceTree = "<group>";
+		};
+		EA33BB8A1DA880F300C0BE04 /* AlamofireRAC */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BB8B1DA880F300C0BE04 /* KTAlamofireRACDownload.swift */,
+				EA33BB8C1DA880F300C0BE04 /* KTAlamofireRACRequestJSON.swift */,
+				EA33BB8D1DA880F300C0BE04 /* KTAlamofireRACUpload.swift */,
+				EA33BB8E1DA880F300C0BE04 /* KTHttpHeaders.swift */,
+				EA33BB8F1DA880F300C0BE04 /* KTRACHelpFunctions.swift */,
+			);
+			path = AlamofireRAC;
+			sourceTree = "<group>";
+		};
+		EA33BB901DA880F300C0BE04 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BB911DA880F300C0BE04 /* KTAPI.swift */,
+				EA33BB921DA880F300C0BE04 /* KTDMServiceAPIs.swift */,
+				EA33BB931DA880F300C0BE04 /* KTIssueServiceAPIs.swift */,
+				EA33BB941DA880F300C0BE04 /* KTJSONAPIQuery.swift */,
+				EA33BB951DA880F300C0BE04 /* KTOSSServiceAPIs.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EA33BBA01DA8819800C0BE04 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BBA11DA8819800C0BE04 /* Error.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		EA67D0C31D9E4D0B00468A92 = {
@@ -572,9 +629,13 @@
 				43B2C95B1DA7C124004FA849 /* UIScrollView+MJExtension.m in Sources */,
 				43B2C9531DA7C124004FA849 /* MJRefreshBackNormalFooter.m in Sources */,
 				43B2C9851DA7C2AB004FA849 /* IQBarButtonItem.swift in Sources */,
+				EA33BB9E1DA880F300C0BE04 /* KTJSONAPIQuery.swift in Sources */,
+				EA33BB991DA880F300C0BE04 /* KTHttpHeaders.swift in Sources */,
+				EA33BB961DA880F300C0BE04 /* KTAlamofireRACDownload.swift in Sources */,
 				43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */,
 				43B2C9611DA7C139004FA849 /* UIView+Toast.m in Sources */,
 				43B2C9561DA7C124004FA849 /* MJRefreshNormalHeader.m in Sources */,
+				EA33BBA21DA8819800C0BE04 /* Error.swift in Sources */,
 				43B2C97E1DA7C2AB004FA849 /* IQUIViewController+Additions.swift in Sources */,
 				43B2C9521DA7C124004FA849 /* MJRefreshBackGifFooter.m in Sources */,
 				43B2C9871DA7C2AB004FA849 /* IQTitleBarButtonItem.swift in Sources */,
@@ -589,7 +650,10 @@
 				43B2C9861DA7C2AB004FA849 /* IQPreviousNextView.swift in Sources */,
 				43B2C97F1DA7C2AB004FA849 /* IQUIWindow+Hierarchy.swift in Sources */,
 				43B2C9891DA7C2AB004FA849 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				EA33BB9F1DA880F300C0BE04 /* KTOSSServiceAPIs.swift in Sources */,
 				43B2C97B1DA7C2AB004FA849 /* IQUIScrollView+Additions.swift in Sources */,
+				EA33BB9A1DA880F300C0BE04 /* KTRACHelpFunctions.swift in Sources */,
+				EA33BB9D1DA880F300C0BE04 /* KTIssueServiceAPIs.swift in Sources */,
 				43B2C9511DA7C124004FA849 /* MJRefreshAutoStateFooter.m in Sources */,
 				EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */,
 				43B2C95D1DA7C124004FA849 /* UIView+MJExtension.m in Sources */,
@@ -597,11 +661,15 @@
 				43B2C9571DA7C124004FA849 /* MJRefreshStateHeader.m in Sources */,
 				43B2C9541DA7C124004FA849 /* MJRefreshBackStateFooter.m in Sources */,
 				43B2C9841DA7C2AB004FA849 /* IQTextView.swift in Sources */,
+				EA33BB971DA880F300C0BE04 /* KTAlamofireRACRequestJSON.swift in Sources */,
 				43B2C9821DA7C2AB004FA849 /* IQKeyboardManager.swift in Sources */,
+				EA33BB9B1DA880F300C0BE04 /* KTAPI.swift in Sources */,
 				43B2C9591DA7C124004FA849 /* MJRefreshConst.m in Sources */,
+				EA33BB981DA880F300C0BE04 /* KTAlamofireRACUpload.swift in Sources */,
 				43B2C9801DA7C2AB004FA849 /* IQKeyboardManagerConstants.swift in Sources */,
 				43D390791DA7A46500039C35 /* Reachability.m in Sources */,
 				43B2C97C1DA7C2AB004FA849 /* IQUITextFieldView+Additions.swift in Sources */,
+				EA33BB9C1DA880F300C0BE04 /* KTDMServiceAPIs.swift in Sources */,
 				43B2C94D1DA7C124004FA849 /* MJRefreshFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
