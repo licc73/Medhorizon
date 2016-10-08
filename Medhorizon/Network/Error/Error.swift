@@ -2,9 +2,6 @@
 //  Error.swift
 //  ServiceError
 //
-//  Created by ChenYong on 3/15/16.
-//  Copyright © 2016 chainone. All rights reserved.
-//
 
 import Foundation
 import Result

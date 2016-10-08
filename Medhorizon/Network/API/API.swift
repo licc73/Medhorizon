@@ -12,8 +12,7 @@ enum HTTPProtocol: String {
 }
 
 enum ServiceType{
-    case Default
-    
+    case Default    
     static let allValues = [ServiceType.Default]
 }
 
