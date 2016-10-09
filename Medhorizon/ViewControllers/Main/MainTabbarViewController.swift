@@ -10,6 +10,7 @@ import UIKit
 
 class MainTabbarViewController: UITabBarController {
     var titleView: DepartmentDisplayView?
+    var chooseView: DepartmentChooseView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
