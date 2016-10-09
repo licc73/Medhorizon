@@ -15,6 +15,8 @@ class MainTabbarViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
         
+        self.setDisplay()
+        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
@@ -23,6 +25,11 @@ class MainTabbarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func setDisplay() {
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_main_userInfo"), style: .Plain, target: self, action: #selector(enterUserInfo(_:)))
+    }
 
     /*
     // MARK: - Navigation
@@ -34,4 +41,23 @@ class MainTabbarViewController: UITabBarController {
     }
     */
 
+}
+
+extension MainTabbarViewController {
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+}
+
+extension MainTabbarViewController {
+
+    func enterUserInfo(sender: AnyObject) {
+        
+    }
+    
 }

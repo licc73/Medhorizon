@@ -76,6 +76,10 @@
 		EA33BBBE1DA8B07400C0BE04 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BBBD1DA8B07400C0BE04 /* Storyboard.swift */; };
 		EA33BBC31DA8B1ED00C0BE04 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BBC21DA8B1ED00C0BE04 /* TourViewController.swift */; };
 		EA33BBC51DA8B88200C0BE04 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BBC41DA8B88200C0BE04 /* MainTabbarViewController.swift */; };
+		EA33BCCA1DA9E7D200C0BE04 /* DepartmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCC91DA9E7D200C0BE04 /* DepartmentView.swift */; };
+		EA33BCCC1DA9E93000C0BE04 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCCB1DA9E93000C0BE04 /* UIExtension.swift */; };
+		EA33BCD01DAA006200C0BE04 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCCF1DAA006200C0BE04 /* ViewModel.swift */; };
+		EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCD11DAA008600C0BE04 /* BaseViewModel.swift */; };
 		EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */; };
 		EA67D0D21D9E4D0B00468A92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0D11D9E4D0B00468A92 /* ViewController.swift */; };
 		EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D31D9E4D0B00468A92 /* Main.storyboard */; };
@@ -190,6 +194,10 @@
 		EA33BBBD1DA8B07400C0BE04 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		EA33BBC21DA8B1ED00C0BE04 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		EA33BBC41DA8B88200C0BE04 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
+		EA33BCC91DA9E7D200C0BE04 /* DepartmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentView.swift; sourceTree = "<group>"; };
+		EA33BCCB1DA9E93000C0BE04 /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		EA33BCCF1DAA006200C0BE04 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EA33BCD11DAA008600C0BE04 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EA67D0CC1D9E4D0B00468A92 /* Medhorizon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medhorizon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA67D0D11D9E4D0B00468A92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -465,6 +473,7 @@
 		43D3907A1DA7A51000039C35 /* UIExtension */ = {
 			isa = PBXGroup;
 			children = (
+				EA33BCCB1DA9E93000C0BE04 /* UIExtension.swift */,
 			);
 			path = UIExtension;
 			sourceTree = "<group>";
@@ -510,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				EA33BBC41DA8B88200C0BE04 /* MainTabbarViewController.swift */,
+				EA33BCC91DA9E7D200C0BE04 /* DepartmentView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -527,6 +537,23 @@
 				EA33BBC21DA8B1ED00C0BE04 /* TourViewController.swift */,
 			);
 			path = Tour;
+			sourceTree = "<group>";
+		};
+		EA33BCCD1DAA002900C0BE04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BCCE1DAA005700C0BE04 /* Base */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EA33BCCE1DAA005700C0BE04 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BCCF1DAA006200C0BE04 /* ViewModel.swift */,
+				EA33BCD11DAA008600C0BE04 /* BaseViewModel.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		EA67D0C31D9E4D0B00468A92 = {
@@ -553,6 +580,7 @@
 				43D3906E1DA7A40200039C35 /* Network */,
 				43D3906F1DA7A40200039C35 /* Utilities */,
 				43D390701DA7A40200039C35 /* Vendor */,
+				EA33BCCD1DAA002900C0BE04 /* Model */,
 				43D390711DA7A40200039C35 /* ViewControllers */,
 				EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */,
 				EA67D0D11D9E4D0B00468A92 /* ViewController.swift */,
@@ -660,6 +688,7 @@
 				43B2C9501DA7C124004FA849 /* MJRefreshAutoNormalFooter.m in Sources */,
 				43B2C97A1DA7C2AB004FA849 /* IQNSArray+Sort.swift in Sources */,
 				43B2C95A1DA7C124004FA849 /* NSBundle+MJRefresh.m in Sources */,
+				EA33BCD01DAA006200C0BE04 /* ViewModel.swift in Sources */,
 				43B2C95C1DA7C124004FA849 /* UIScrollView+MJRefresh.m in Sources */,
 				43B2C95B1DA7C124004FA849 /* UIScrollView+MJExtension.m in Sources */,
 				43B2C9531DA7C124004FA849 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -667,6 +696,7 @@
 				EA33BB991DA880F300C0BE04 /* HttpHeaders.swift in Sources */,
 				EA33BB961DA880F300C0BE04 /* AlamofireRACDownload.swift in Sources */,
 				43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */,
+				EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */,
 				43B2C9611DA7C139004FA849 /* UIView+Toast.m in Sources */,
 				EA33BBC51DA8B88200C0BE04 /* MainTabbarViewController.swift in Sources */,
 				43B2C9561DA7C124004FA849 /* MJRefreshNormalHeader.m in Sources */,
@@ -674,6 +704,7 @@
 				43B2C97E1DA7C2AB004FA849 /* IQUIViewController+Additions.swift in Sources */,
 				43B2C9521DA7C124004FA849 /* MJRefreshBackGifFooter.m in Sources */,
 				43B2C9871DA7C2AB004FA849 /* IQTitleBarButtonItem.swift in Sources */,
+				EA33BCCA1DA9E7D200C0BE04 /* DepartmentView.swift in Sources */,
 				43B2C9811DA7C2AB004FA849 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */,
 				43B2C9831DA7C2AB004FA849 /* IQKeyboardReturnKeyHandler.swift in Sources */,
@@ -706,6 +737,7 @@
 				43B2C9801DA7C2AB004FA849 /* IQKeyboardManagerConstants.swift in Sources */,
 				43D390791DA7A46500039C35 /* Reachability.m in Sources */,
 				43B2C97C1DA7C2AB004FA849 /* IQUITextFieldView+Additions.swift in Sources */,
+				EA33BCCC1DA9E93000C0BE04 /* UIExtension.swift in Sources */,
 				43B2C94D1DA7C124004FA849 /* MJRefreshFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -831,6 +863,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.changchun.Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -848,6 +881,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.changchun.Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

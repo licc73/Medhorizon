@@ -60,6 +60,17 @@ class TourViewController: UIViewController {
 }
 
 extension TourViewController {
+    
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
+//    
+//    override func prefersStatusBarHidden() -> Bool {
+//        return false
+//    }
+}
+
+extension TourViewController {
     func jumpToHome() {
         self.timer?.invalidate()
         self.performSegueWithIdentifier(StoryboardSegue.Main.Main.rawValue, sender: nil)

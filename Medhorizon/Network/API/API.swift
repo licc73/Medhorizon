@@ -48,7 +48,7 @@ public struct ServiceConfiguration{
             // ------------------ Region: US --------------------
         //
         case (.Default, .Default, .Default):
-            return "developer.api.autodesk.com/issues"
+            return "http://app.medhorizon.com.cn"
             
         }
     }

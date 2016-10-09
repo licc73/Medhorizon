@@ -7,5 +7,22 @@
 //
 
 import Foundation
+import Alamofire
+import ReactiveCocoa
+import Prelude
 
-let defaultAppKey = ""
+let defaultAppKey = "827ccb0eea8a706c4c34a16891f84e7b"
+
+struct DefaultServiceRequests {
+    
+    static let alamofireManager: Alamofire.Manager = {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        return  Manager(configuration: configuration)
+    }()
+    
+    static func rac_requesForNewsList(departmentId: String, pageNum: Int, pageSize: Int) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.NewsList(defaultAppKey, departmentId, pageNum, pageSize))
+            <~ justCast
+    }
+    
+}
