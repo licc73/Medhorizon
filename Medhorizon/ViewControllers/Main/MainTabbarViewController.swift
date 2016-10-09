@@ -9,6 +9,7 @@
 import UIKit
 
 class MainTabbarViewController: UITabBarController {
+    var titleView: DepartmentDisplayView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,9 @@ class MainTabbarViewController: UITabBarController {
     func setDisplay() {
         self.navigationController?.navigationBar.barStyle = .Black
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_main_userInfo"), style: .Plain, target: self, action: #selector(enterUserInfo(_:)))
+
+        self.titleView = DepartmentDisplayView(frame: CGRectMake(0, 0, 100, 44))
+        self.navigationItem.titleView = self.titleView
     }
 
     /*

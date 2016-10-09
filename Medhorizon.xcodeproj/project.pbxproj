@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A761DAA7FD100BD68C5 /* AppInfo.swift */; };
 		43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */; };
 		43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9201DA7C124004FA849 /* MJRefreshBackFooter.m */; };
 		43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9221DA7C124004FA849 /* MJRefreshComponent.m */; };
@@ -117,6 +118,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		43714A761DAA7FD100BD68C5 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		43B2C8F11DA7BF6E004FA849 /* Medhorizon-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Medhorizon-Bridging.h"; sourceTree = "<group>"; };
 		43B2C91D1DA7C124004FA849 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				EA33BBBD1DA8B07400C0BE04 /* Storyboard.swift */,
+				43714A761DAA7FD100BD68C5 /* AppInfo.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				43B2C95D1DA7C124004FA849 /* UIView+MJExtension.m in Sources */,
 				43B2C94E1DA7C124004FA849 /* MJRefreshHeader.m in Sources */,
 				EA33BBBE1DA8B07400C0BE04 /* Storyboard.swift in Sources */,
+				43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */,
 				43B2C9571DA7C124004FA849 /* MJRefreshStateHeader.m in Sources */,
 				EA33BBA61DA8890900C0BE04 /* DefaultServiceAPI.swift in Sources */,
 				43B2C9541DA7C124004FA849 /* MJRefreshBackStateFooter.m in Sources */,
