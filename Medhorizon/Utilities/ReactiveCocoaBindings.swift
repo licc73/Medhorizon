@@ -1,5 +1,6 @@
 import Foundation
 import ReactiveCocoa
+import Result
 
 // So I expect the ReactiveCocoa fellows to figure out a replacement API for the RAC macro.
 // Currently, I don't see one there, so we'll use this solution until an official one exists.
@@ -38,4 +39,13 @@ public func ~> (signal: RACSignal, rac: RAC) -> RACDisposable {
 
 public func RACObserve(target: NSObject!, keyPath: String) -> RACSignal {
     return target.rac_valuesForKeyPath(keyPath, observer: target)
+}
+
+extension NSObject {
+    func rac_WillDeallocSignalProducer() -> SignalProducer<(), NoError> {
+        return self.rac_willDeallocSignal()
+            .toSignalProducer()
+            .flatMapError { _ in SignalProducer<AnyObject?, NoError>.empty}
+            .map {_ in ()}
+    }
 }

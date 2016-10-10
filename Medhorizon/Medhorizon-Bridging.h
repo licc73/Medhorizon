@@ -10,5 +10,6 @@
 #define Medhorizon_Bridging_h
 
 #import "UIView+Toast.h"
+#import "MJRefresh.h"
 
 #endif /* Medhorizon_Bridging_h */

@@ -2,7 +2,7 @@
 //  UIExtension.swift
 //  Medhorizon
 //
-//  Created by ZongBo Zhou on 10/9/16.
+//  Created by lich on 10/9/16.
 //  Copyright © 2016 changchun. All rights reserved.
 //
 

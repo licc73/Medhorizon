@@ -81,6 +81,12 @@
 		EA33BCCC1DA9E93000C0BE04 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCCB1DA9E93000C0BE04 /* UIExtension.swift */; };
 		EA33BCD01DAA006200C0BE04 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCCF1DAA006200C0BE04 /* ViewModel.swift */; };
 		EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCD11DAA008600C0BE04 /* BaseViewModel.swift */; };
+		EA33BCE61DAB20CC00C0BE04 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCE51DAB20CC00C0BE04 /* GlobalData.swift */; };
+		EA33BCE91DAB282900C0BE04 /* CoverFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCE81DAB282900C0BE04 /* CoverFlow.swift */; };
+		EA33BCEC1DAB2A1E00C0BE04 /* CoverFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCEA1DAB2A1E00C0BE04 /* CoverFlowCell.swift */; };
+		EA33BCED1DAB2A1E00C0BE04 /* CoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */; };
+		EA33BCF01DAB3BE200C0BE04 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCEF1DAB3BE200C0BE04 /* NewsViewController.swift */; };
+		EA33BCF21DAB549E00C0BE04 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCF11DAB549E00C0BE04 /* NewsListViewModel.swift */; };
 		EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */; };
 		EA67D0D21D9E4D0B00468A92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0D11D9E4D0B00468A92 /* ViewController.swift */; };
 		EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D31D9E4D0B00468A92 /* Main.storyboard */; };
@@ -200,6 +206,12 @@
 		EA33BCCB1DA9E93000C0BE04 /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		EA33BCCF1DAA006200C0BE04 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		EA33BCD11DAA008600C0BE04 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		EA33BCE51DAB20CC00C0BE04 /* GlobalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
+		EA33BCE81DAB282900C0BE04 /* CoverFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverFlow.swift; sourceTree = "<group>"; };
+		EA33BCEA1DAB2A1E00C0BE04 /* CoverFlowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverFlowCell.swift; sourceTree = "<group>"; };
+		EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverFlowCell.xib; sourceTree = "<group>"; };
+		EA33BCEF1DAB3BE200C0BE04 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		EA33BCF11DAB549E00C0BE04 /* NewsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		EA67D0CC1D9E4D0B00468A92 /* Medhorizon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medhorizon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA67D0D11D9E4D0B00468A92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +469,7 @@
 		43D390711DA7A40200039C35 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EA33BCE71DAB24E300C0BE04 /* Base */,
 				EA33BBC11DA8B0F700C0BE04 /* Tour */,
 				EA33BBBF1DA8B0F700C0BE04 /* Main */,
 				EA33BBC01DA8B0F700C0BE04 /* Login */,
@@ -523,6 +536,7 @@
 			children = (
 				EA33BBC41DA8B88200C0BE04 /* MainTabbarViewController.swift */,
 				EA33BCC91DA9E7D200C0BE04 /* DepartmentView.swift */,
+				EA33BCEE1DAB3BCA00C0BE04 /* News */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -545,6 +559,7 @@
 		EA33BCCD1DAA002900C0BE04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA33BCE51DAB20CC00C0BE04 /* GlobalData.swift */,
 				EA33BCCE1DAA005700C0BE04 /* Base */,
 			);
 			path = Model;
@@ -557,6 +572,25 @@
 				EA33BCD11DAA008600C0BE04 /* BaseViewModel.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		EA33BCE71DAB24E300C0BE04 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BCE81DAB282900C0BE04 /* CoverFlow.swift */,
+				EA33BCEA1DAB2A1E00C0BE04 /* CoverFlowCell.swift */,
+				EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EA33BCEE1DAB3BCA00C0BE04 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BCEF1DAB3BE200C0BE04 /* NewsViewController.swift */,
+				EA33BCF11DAB549E00C0BE04 /* NewsListViewModel.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		EA67D0C31D9E4D0B00468A92 = {
@@ -673,6 +707,7 @@
 				43B2C98A1DA7C2AB004FA849 /* IQKeyboardManager.bundle in Resources */,
 				EA67D0DA1D9E4D0B00468A92 /* LaunchScreen.storyboard in Resources */,
 				EA67D0D71D9E4D0B00468A92 /* Assets.xcassets in Resources */,
+				EA33BCED1DAB2A1E00C0BE04 /* CoverFlowCell.xib in Resources */,
 				43B2C9581DA7C124004FA849 /* MJRefresh.bundle in Resources */,
 				EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */,
 			);
@@ -695,9 +730,11 @@
 				43B2C95C1DA7C124004FA849 /* UIScrollView+MJRefresh.m in Sources */,
 				43B2C95B1DA7C124004FA849 /* UIScrollView+MJExtension.m in Sources */,
 				43B2C9531DA7C124004FA849 /* MJRefreshBackNormalFooter.m in Sources */,
+				EA33BCF21DAB549E00C0BE04 /* NewsListViewModel.swift in Sources */,
 				43B2C9851DA7C2AB004FA849 /* IQBarButtonItem.swift in Sources */,
 				EA33BB991DA880F300C0BE04 /* HttpHeaders.swift in Sources */,
 				EA33BB961DA880F300C0BE04 /* AlamofireRACDownload.swift in Sources */,
+				EA33BCE91DAB282900C0BE04 /* CoverFlow.swift in Sources */,
 				43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */,
 				EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */,
 				43B2C9611DA7C139004FA849 /* UIView+Toast.m in Sources */,
@@ -705,6 +742,8 @@
 				43B2C9561DA7C124004FA849 /* MJRefreshNormalHeader.m in Sources */,
 				EA33BBA21DA8819800C0BE04 /* Error.swift in Sources */,
 				43B2C97E1DA7C2AB004FA849 /* IQUIViewController+Additions.swift in Sources */,
+				EA33BCEC1DAB2A1E00C0BE04 /* CoverFlowCell.swift in Sources */,
+				EA33BCE61DAB20CC00C0BE04 /* GlobalData.swift in Sources */,
 				43B2C9521DA7C124004FA849 /* MJRefreshBackGifFooter.m in Sources */,
 				43B2C9871DA7C2AB004FA849 /* IQTitleBarButtonItem.swift in Sources */,
 				EA33BCCA1DA9E7D200C0BE04 /* DepartmentView.swift in Sources */,
@@ -743,6 +782,7 @@
 				43B2C97C1DA7C2AB004FA849 /* IQUITextFieldView+Additions.swift in Sources */,
 				EA33BCCC1DA9E93000C0BE04 /* UIExtension.swift in Sources */,
 				43B2C94D1DA7C124004FA849 /* MJRefreshFooter.m in Sources */,
+				EA33BCF01DAB3BE200C0BE04 /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

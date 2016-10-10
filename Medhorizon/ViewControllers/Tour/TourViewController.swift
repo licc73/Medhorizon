@@ -2,7 +2,7 @@
 //  TourViewController.swift
 //  Medhorizon
 //
-//  Created by ZongBo Zhou on 10/8/16.
+//  Created by lich on 10/8/16.
 //  Copyright © 2016 changchun. All rights reserved.
 //
 
@@ -25,6 +25,7 @@ class TourViewController: UIViewController {
         self.navigationController?.navigationBarHidden = true
         
         self.setHomeButtonText()
+        self.btnHome.setTitleColor(UIColor.colorWithHex(0x2892cb), forState: .Normal)
         
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(timerSelector(_:)), userInfo: nil, repeats: true)
     }

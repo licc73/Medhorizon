@@ -2,7 +2,7 @@
 //  DepartmentView.swift
 //  Medhorizon
 //
-//  Created by ZongBo Zhou on 10/9/16.
+//  Created by lich on 10/9/16.
 //  Copyright © 2016 changchun. All rights reserved.
 //
 
@@ -53,8 +53,9 @@ class DepartmentDisplayView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func set(icon: UIImage, title: String) {
-        self.imgvIcon.image = icon
+    func setDepartmentType(department: DepartmentType) {
+        let (title, _, selImg) = department.getResource()
+        self.imgvIcon.image = UIImage(named: selImg)
         self.labTitle.text = title
     }
 
