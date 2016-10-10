@@ -9,6 +9,8 @@
 import Foundation
 
 final class ReturnMsg {
+    static let defaultSuccessReturnMsg = ReturnMsg(successFlag: "Y", errorMsg: "")
+    
     let successFlag: String
     let errorMsg: String?
     
@@ -59,4 +61,48 @@ extension Branner: ViewModel {
         return nil
     }
     
+}
+
+final class NewsViewModel {
+    let id: String
+    let title: String
+    let keyWordInfo: String?
+    let picUrl: String?
+    let createdDate: String?
+    let isNeedLogin: Int?
+    let linkUrl: String
+
+    init(id: String,
+         title: String,
+         keyWordInfo: String?,
+         picUrl: String?,
+         createdDate: String?,
+         isNeedLogin: Int?,
+         linkUrl: String) {
+        self.id = id
+        self.title = title
+        self.keyWordInfo = keyWordInfo
+        self.picUrl = picUrl
+        self.createdDate = createdDate
+        self.isNeedLogin = isNeedLogin
+        self.linkUrl = linkUrl
+    }
+}
+
+extension NewsViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> NewsViewModel? {
+        let stringMap = mapToString(dictionary)
+        if let id = stringMap("Id"), linkUrl = stringMap("LinkUrl"), title = stringMap("Title") {
+            return NewsViewModel(id: id,
+                                 title: title,
+                                 keyWordInfo: stringMap("KeyWordInfo"),
+                                 picUrl: stringMap("PicUrl"),
+                                 createdDate: stringMap("CreateDate"),
+                                 isNeedLogin: mapToInt(dictionary)("IsNeedLogin"),
+                                 linkUrl: linkUrl)
+        }
+        return nil
+    }
+
 }

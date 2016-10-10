@@ -38,6 +38,26 @@ extension UIButton {
     
 }
 
+extension UITableView {
+
+    func endRefresh(isHaveMoreData: Bool? = nil) {
+        self.mj_header.endRefreshing()
+        if let isHaveMoreData = isHaveMoreData {
+            if isHaveMoreData {
+                self.mj_footer.endRefreshing()
+                self.mj_footer.resetNoMoreData()
+            }
+            else {
+                self.mj_footer.endRefreshingWithNoMoreData()
+            }
+        }
+        else {
+            self.mj_footer.endRefreshing()
+        }
+    }
+    
+}
+
 extension UIColor {
     
     static func colorWithHex(hex: UInt32, alpha: CGFloat = 1) -> UIColor {

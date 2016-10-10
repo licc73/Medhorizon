@@ -48,7 +48,7 @@ public struct ServiceConfiguration{
             // ------------------ Region: US --------------------
         //
         case (.Default, .Default, .Default):
-            return "http://app.medhorizon.com.cn"
+            return "app.medhorizon.com.cn"
             
         }
     }

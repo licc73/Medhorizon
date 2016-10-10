@@ -17,7 +17,11 @@ class AppInfo {
         return UIScreen.mainScreen().bounds.size.height
     }
     
-    static func showToast(message: String, duration: NSTimeInterval = 2) {
+    static func showToast(message: String?, duration: NSTimeInterval = 2) {
         UIApplication.sharedApplication().keyWindow?.makeToast(message, duration: duration, position: CSToastPositionCenter)
+    }
+
+    static func showDefaultNetworkErrorToast() {
+        self.showToast("没有网络连接，请稍候重试")
     }
 }
