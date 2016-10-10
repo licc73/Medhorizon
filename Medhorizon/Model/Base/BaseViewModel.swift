@@ -8,6 +8,32 @@
 
 import Foundation
 
+final class ReturnMsg {
+    let successFlag: String
+    let errorMsg: String?
+    
+    init(successFlag: String, errorMsg: String?) {
+        self.successFlag = successFlag
+        self.errorMsg = errorMsg
+    }
+    
+    var isSuccess: Bool {
+        return self.successFlag.uppercaseString == "Y"
+    }
+}
+
+extension ReturnMsg: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> ReturnMsg? {
+        let stringMap = mapToString(dictionary)
+        if let flag = stringMap("successFlag") {
+            return ReturnMsg(successFlag: flag, errorMsg: stringMap("errorMsg"))
+        }
+        return nil
+    }
+    
+}
+
 final class Branner {
     let id: String
     let title: String?

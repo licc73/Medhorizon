@@ -10,7 +10,7 @@ import Foundation
 
 enum DefaultServiceAPI: API {
     case Login
-    case NewsList(String, String, Int, Int)
+    case NewsList(String, Int, Int, Int)
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
     static var defaultServiceConfiguration: ServiceConfiguration = ServiceConfiguration(httpProtocol: .HTTP, serviceType: .Default, serviceRegion: .Default, environment: .Default)

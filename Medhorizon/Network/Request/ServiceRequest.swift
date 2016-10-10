@@ -20,9 +20,12 @@ struct DefaultServiceRequests {
         return  Manager(configuration: configuration)
     }()
     
-    static func rac_requesForNewsList(departmentId: String, pageNum: Int, pageSize: Int) -> SignalProducer<[String: AnyObject], ServiceError> {
-        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.NewsList(defaultAppKey, departmentId, pageNum, pageSize))
-            <~ justCast
+    static func rac_requesForNewsList(departmentId: Int, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.NewsList(defaultAppKey, departmentId, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, Int, [String: AnyObject]) in
+                return (departmentId, pageNum, value)
+            })
     }
     
 }
