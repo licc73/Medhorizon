@@ -23,7 +23,7 @@ final class NewsData {
 class NewsListViewModel {
     var data: [Int: NewsData] = [:]
     
-    let departmentId: DepartmentType = GlobalData.shareInstance.departmentId.value
+    var departmentId: DepartmentType = GlobalData.shareInstance.departmentId.value
     
     func getCurData() -> NewsData {
         if let result = data[departmentId.rawValue] {

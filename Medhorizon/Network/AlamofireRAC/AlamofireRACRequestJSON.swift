@@ -61,6 +61,22 @@ extension Alamofire.Request {
                     sink.sendNext((JSON, rawResponse))
                     sink.sendCompleted()
                 case .Failure(let error):
+                    if let data = response.data, s = NSString.init(data: data, encoding: NSUTF8StringEncoding) {
+                        let s1 = s.stringByReplacingOccurrencesOfString("\r", withString: "")
+                        let s2 = s1.stringByReplacingOccurrencesOfString("\n", withString: "")
+                        if let d = s2.dataUsingEncoding(NSUTF8StringEncoding) {
+                            do {
+                                let parserData = try NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions.AllowFragments)
+                                sink.sendNext((parserData, rawResponse))
+                                sink.sendCompleted()
+                                return
+                            }
+                            catch {
+
+                            }
+                        }
+
+                    }
                     sink.sendFailed(processConnectionError(rawResponse, error))
                 }
             })

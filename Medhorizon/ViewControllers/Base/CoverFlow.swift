@@ -20,8 +20,12 @@ class CoverFlowView: UIView {
     let collectionView: UICollectionView
     let pageCtrl: UIPageControl
     let flowLayout: UICollectionViewFlowLayout
-    
+    var iTotalCount: Int = 0
+    var iCurrentPage: Int = 0
+
     weak var delegate: CoverFlowViewDelegate?
+
+    var autoScrollTimer: NSTimer?
     
     override init(frame: CGRect) {
         self.flowLayout = UICollectionViewFlowLayout()
@@ -31,8 +35,10 @@ class CoverFlowView: UIView {
         self.flowLayout.scrollDirection = .Horizontal
         
         self.collectionView = UICollectionView(frame: CGRectMake(0, 0, frame.size.width, frame.size.height), collectionViewLayout: self.flowLayout)
-        self.pageCtrl = UIPageControl(frame: CGRectMake(0, frame.size.height - 50, frame.size.width, 25))
+        self.pageCtrl = UIPageControl(frame: CGRectMake(0, frame.size.height - 40, frame.size.width, 25))
+
         super.init(frame: frame)
+
         self.collectionView.backgroundColor = UIColor.whiteColor()
         self.collectionView.pagingEnabled = true
         self.addSubview(self.collectionView)
@@ -53,6 +59,17 @@ class CoverFlowView: UIView {
     func reloadData() {
         self.collectionView.reloadData()
         self.collectionView.contentOffset = CGPoint(x: 0, y: 0)
+        self.setAutoscrollTimer()
+    }
+
+    func setAutoscrollTimer() {
+        self.autoScrollTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(autoScroll(_:)), userInfo: nil, repeats: false)
+    }
+
+    func autoScroll(timer: NSTimer) {
+        self.iCurrentPage = (self.iCurrentPage + 1) % self.iTotalCount
+        self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.iCurrentPage, inSection: 0), atScrollPosition: .Left, animated: true)
+        self.setAutoscrollTimer()
     }
 }
 
@@ -61,6 +78,8 @@ extension CoverFlowView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.delegate?.numberOfCoversInCoverFlowView(self) ?? 0
         self.pageCtrl.numberOfPages = count
+        self.iTotalCount = count
+
         return count
     }
     
@@ -78,18 +97,10 @@ extension CoverFlowView: UICollectionViewDelegate, UICollectionViewDataSource {
         self.delegate?.coverFlowView(self, didSelect: indexPath.item)
     }
 
-//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-//        let ptOffset = scrollView.contentOffset
-//        self.pageCtrl.currentPage = Int((ptOffset.x + CGRectGetWidth(scrollView.bounds) / 2) / CGRectGetWidth(scrollView.bounds))
-//    }
-//
-//    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        let ptOffset = scrollView.contentOffset
-//        self.pageCtrl.currentPage = Int((ptOffset.x + CGRectGetWidth(scrollView.bounds) / 2) / CGRectGetWidth(scrollView.bounds))
-//    }
-
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let ptOffset = scrollView.contentOffset
-        self.pageCtrl.currentPage = Int((ptOffset.x + CGRectGetWidth(scrollView.bounds) / 2) / CGRectGetWidth(scrollView.bounds))
+        self.iCurrentPage = Int((ptOffset.x + CGRectGetWidth(scrollView.bounds) / 2) / CGRectGetWidth(scrollView.bounds))
+        self.pageCtrl.currentPage = self.iCurrentPage
     }
+
 }

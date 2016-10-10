@@ -23,10 +23,10 @@ class NewsViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
 
-        self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenWidth * 25.0 / 32.0))
+        self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenWidth * 25.0 / 64.0))
         self.coverFlow?.delegate = self
 
-        self.tableView.tableHeaderView = self.coverFlow
+        //self.tableView.tableHeaderView = self.coverFlow
 
         self.newsList = NewsListViewModel()
 
@@ -91,11 +91,13 @@ class NewsViewController: UIViewController {
             .producer
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .on { [unowned self](department) in
+                self.newsList?.departmentId = department
                 self.newsList?.performSwitchDepartmentFetch()
                     .takeUntil(self.rac_WillDeallocSignalProducer())
                     .observeOn(UIScheduler())
                     .on(failed: { (error) in
                         AppInfo.showDefaultNetworkErrorToast()
+                        self.reloadData()
                         },
                         next: {[unowned self] (returnMsg) in
                             if let msg = returnMsg {
@@ -114,7 +116,13 @@ class NewsViewController: UIViewController {
 
     func reloadData() {
         let curData = self.newsList?.getCurData()
-        self.coverFlow?.reloadData()
+        self.tableView.tableHeaderView = nil
+        if curData?.brannerList.count ?? 0 > 0 {
+            self.tableView.tableHeaderView = self.coverFlow
+            self.coverFlow?.reloadData()
+        }
+
+
         self.tableView.reloadData()
         self.tableView.endRefresh(curData?.isHaveMoreData)
     }
