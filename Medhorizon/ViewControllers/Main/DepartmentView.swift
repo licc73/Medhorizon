@@ -29,7 +29,6 @@ enum DepartmentType: Int {
 }
 
 class DepartmentDisplayView: UIView {
-
     let imgvIcon: UIImageView
     let labTitle: UILabel
     let imgvArrow: UIImageView
@@ -118,6 +117,9 @@ class DepartmentChooseView: UIView {
         let imgvHLine = UIImageView(frame: CGRectMake(0, 59.5, AppInfo.screenWidth, 0.5))
         imgvHLine.backgroundColor = UIColor.colorWithHex(0xd8d8d8)
         self.vChoose.addSubview(imgvHLine)
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(hideSelf(_:)))
+        self.addGestureRecognizer(gesture)
     }
 
     private func setButtonDisplay(button: UIButton, department: DepartmentType) {
@@ -180,6 +182,11 @@ class DepartmentChooseView: UIView {
 
     func show(height: CGFloat, type: DepartmentType, prompt: Bool) {
         self.vChoose.frame = CGRectMake(0, height, AppInfo.screenWidth, 60)
+        self.selectType(type)
+    }
+
+    func hideSelf(gesture: UITapGestureRecognizer) {
+        self.dismiss()
     }
 
     required init?(coder aDecoder: NSCoder) {

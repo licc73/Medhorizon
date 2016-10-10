@@ -33,7 +33,19 @@ class MainTabbarViewController: UITabBarController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_main_userInfo"), style: .Plain, target: self, action: #selector(enterUserInfo(_:)))
 
         self.titleView = DepartmentDisplayView(frame: CGRectMake(0, 0, 100, 44))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(titleViewOnClicked(_:)))
+        self.titleView?.addGestureRecognizer(gesture)
+
         self.navigationItem.titleView = self.titleView
+
+        self.chooseView = DepartmentChooseView(frame: CGRectZero)
+        self.chooseView?.delegate = self
+        self.showChooseView(true)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
 
     /*
@@ -45,6 +57,31 @@ class MainTabbarViewController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension MainTabbarViewController {
+
+    func showChooseView(prompt: Bool = false) {
+        if let view = self.chooseView {
+            UIApplication.sharedApplication().keyWindow?.addSubview(view)
+
+            self.chooseView?.show(64, type: .Child, prompt: prompt)
+
+        }
+    }
+
+    func titleViewOnClicked(gesture: UITapGestureRecognizer) {
+        self.showChooseView()
+    }
+
+}
+
+extension MainTabbarViewController: DepartmentChooseViewDelegate {
+
+    func departmentChooseView(view: DepartmentChooseView, choose type: DepartmentType) {
+
+    }
 
 }
 
