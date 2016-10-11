@@ -11,6 +11,8 @@ import Foundation
 enum DefaultServiceAPI: API {
     case Login
     case NewsList(String, Int, Int, Int)
+    case WorldInfoList(String, Int, Int, Int, Int)
+    case MeetingInfoList()
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
     static var defaultServiceConfiguration: ServiceConfiguration = ServiceConfiguration(httpProtocol: .HTTP, serviceType: .Default, serviceRegion: .Default, environment: .Default)
@@ -23,6 +25,9 @@ enum DefaultServiceAPI: API {
         // server start with 1, page num & page size 意义定义反了
         case let .NewsList(appKey, departmentId, pageNum, pageSize):
             return "/newsInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+            
+        case let .WorldInfoList(appKey, departmentId, tid, pageNum, pageSize):
+            return "/worldInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&Tid\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
         }
     }
 }

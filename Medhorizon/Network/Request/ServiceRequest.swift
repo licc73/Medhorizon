@@ -28,4 +28,12 @@ struct DefaultServiceRequests {
             })
     }
     
+    static func rac_requesForWorldInfoList(departmentId: Int, tid: Int, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, Int, Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.WorldInfoList(defaultAppKey, departmentId, tid, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, Int, Int, [String: AnyObject]) in
+                return (departmentId, tid, pageNum, value)
+            })
+    }
+    
 }
