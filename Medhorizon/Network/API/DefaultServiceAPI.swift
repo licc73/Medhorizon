@@ -13,11 +13,18 @@ enum DefaultServiceAPI: API {
     case NewsList(String, Int, Int, Int)
     
     case WorldInfoList(String, Int, Int, Int, Int)
+    case ExpertDetailInfo(String, Int, String, Int, Int, Int)
+    case VideoCoursewareInfo(String, String, String)
     
     case MeetingInfoList(String, Int, Int, Int)
     case MeetingDetailInfo(String, String, Int, Int)
     
     case DocumentInfoList(String, Int, Int, Int)
+
+    case CommentList(String, String, String, Int, Int)
+    case PubComment(String, String, String, String)
+    case ToComment(String, String, String, String)
+    case PriseComment(String, String, String)
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
     static var defaultServiceConfiguration: ServiceConfiguration = ServiceConfiguration(httpProtocol: .HTTP, serviceType: .Default, serviceRegion: .Default, environment: .Default)
@@ -33,7 +40,12 @@ enum DefaultServiceAPI: API {
             
         case let .WorldInfoList(appKey, departmentId, tid, pageNum, pageSize):
             return "/worldInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&Tid\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
-            
+        case let .ExpertDetailInfo(appKey, departmentId, expertId, tid, pageNum, pageSize):
+            return "/getInfoByExpertId?AppSecret=\(appKey)&Nid=\(departmentId)&Id=\(expertId)&Tid\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+        case let .VideoCoursewareInfo(appKey, videoId, userId):
+            return "/getInfoByVideoId?AppSecret=\(appKey)&Id=\(videoId)&UserId=\(userId)"
+
+
         case let .MeetingInfoList(appKey, departmentId, pageNum, pageSize):
             return "/meetingInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
         case let .MeetingDetailInfo(appKey, meetingId, pageNum, pageSize):
@@ -41,6 +53,15 @@ enum DefaultServiceAPI: API {
             
         case let .DocumentInfoList(appKey, departmentId, pageNum, pageSize):
             return "/fileList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+
+        case let .CommentList(appKey, infoId, userId, pageNum, pageSize):
+            return "/getCommentByVideoId?AppSecret=\(appKey)&Id=\(infoId)&UserId\(userId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+        case let .PubComment(appKey, infoId, userId, commentContent):
+            return "/pubComment?AppSecret=\(appKey)&Id=\(infoId)&UserId\(userId)&CommentContent=\(commentContent)"
+        case let .ToComment(appKey, pID, userId, commentContent):
+            return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId\(userId)&CommentContent=\(commentContent)"
+        case let .PriseComment(appKey, pID, userId):
+            return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId\(userId)"
         }
     }
 }

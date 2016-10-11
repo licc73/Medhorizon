@@ -35,6 +35,20 @@ struct DefaultServiceRequests {
                 return (departmentId, tid, pageNum, value)
             })
     }
+
+    static func rac_requesForExpertDetailInfo(departmentId: Int, expertId: String, tid: Int, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, String, Int, Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ExpertDetailInfo(defaultAppKey, departmentId, expertId, tid, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, String, Int, Int, [String: AnyObject]) in
+                return (departmentId, expertId, tid, pageNum, value)
+            })
+    }
+
+    static func rac_requesForVideoCoursewareInfo(videoId: String, userId: String?) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.VideoCoursewareInfo(defaultAppKey, videoId, userId ?? "0"))
+            <~ justCast
+    }
+
     
     static func rac_requesForMeetingList(departmentId: Int, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, Int, [String: AnyObject]), ServiceError> {
         return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.MeetingInfoList(defaultAppKey, departmentId, pageNum, pageSize))
@@ -58,6 +72,29 @@ struct DefaultServiceRequests {
             .map({ (value) -> (Int, Int, [String: AnyObject]) in
                 return (departmentId, pageNum, value)
             })
+    }
+
+    static func rac_requesForCommentList(userId: String?, infoId: String, pageNum: Int, pageSize: Int) -> SignalProducer<(String, Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.CommentList(defaultAppKey, infoId, userId ?? "0", pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (String, Int, [String: AnyObject]) in
+                return (infoId, pageNum, value)
+            })
+    }
+
+    static func rac_requesForPubComment(infoId: String, userId: String, commentContent: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.PubComment(defaultAppKey, infoId, userId, commentContent))
+            <~ justCast
+    }
+
+    static func rac_requesForToComment(pId: String, userId: String, commentContent: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ToComment(defaultAppKey, pId, userId, commentContent))
+            <~ justCast
+    }
+
+    static func rac_requesForPriseComment(pId: String, userId: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.PriseComment(defaultAppKey, pId, userId))
+            <~ justCast
     }
     
 }

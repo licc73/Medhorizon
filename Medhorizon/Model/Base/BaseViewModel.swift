@@ -107,7 +107,7 @@ extension NewsViewModel: ViewModel {
 
 }
 
-final class ExpertViewModel {
+final class ExpertListViewModel {
     let id: String
     let zName: String?
     let jobName: String?
@@ -134,36 +134,204 @@ final class ExpertViewModel {
     
 }
 
-extension ExpertViewModel: ViewModel {
-    
-    static func mapToModel(dictionary: [String: AnyObject]) -> ExpertViewModel? {
+extension ExpertListViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> ExpertListViewModel? {
         let stringMap = mapToString(dictionary)
         if let id = stringMap("Id") {
-            return ExpertViewModel(id: id,
-                                   zName: stringMap("ZName"),
-                                   jobName: stringMap("JobName"),
-                                   keyWordInfo: stringMap("KeyWordInfo"),
-                                   picUrl: stringMap("PicUrl"),
-                                   createdDate: stringMap("CreateDate"),
-                                   isNeedLogin: mapToBool(dictionary)("IsNeedLogin"))
+            return ExpertListViewModel(id: id,
+                                       zName: stringMap("ZName"),
+                                       jobName: stringMap("JobName"),
+                                       keyWordInfo: stringMap("KeyWordInfo"),
+                                       picUrl: stringMap("PicUrl"),
+                                       createdDate: stringMap("CreateDate"),
+                                       isNeedLogin: mapToBool(dictionary)("IsNeedLogin"))
         }
         return nil
     }
     
 }
 
-final class MeetingViewModel {
-//    "Id":"343",
-//    "Title":"儿科世界之窗专家答疑集锦（一）：肺炎、中耳炎专题",
-//    "KeyWordInfo":"第13届儿科世界之窗已于2016年8月6日顺利闭幕以下为我们收纳整理的本次会议问答集锦本周推荐儿童肺炎和中耳炎~",
-//    "PicUrl":"http://app.medhorizon.com.cn/attached/image/20160902/20160902110950_1751.png",
-//    "CreateDate":"2016/9/7 11:57:19",
-//    "IsNeedLogin":"0",
-//    "videoId":"",
-//    "LinkUrl":"http://app.medhorizon.com.cn/NewsDetail/News_tophy_Detail.aspx?id=343",
-//    "FileNum":"0",
-//    "OutLink":""
+final class ExpertDetailViewModel {
+    let expertId: String
+    let zName: String?
+    let jobName: String?
+    let keyWordInfo: String?
+    let picUrl: String?
 
+    init(id: String,
+         zName: String?,
+         jobName: String?,
+         keyWordInfo: String?,
+         picUrl: String?) {
+        self.expertId = id
+        self.zName = zName
+        self.jobName = jobName
+        self.keyWordInfo = keyWordInfo
+        self.picUrl = picUrl
+    }
+
+}
+
+extension ExpertDetailViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> ExpertDetailViewModel? {
+        let stringMap = mapToString(dictionary)
+        if let id = stringMap("ExpertId") {
+            return ExpertDetailViewModel(id: id,
+                                         zName: stringMap("ZName"),
+                                         jobName: stringMap("JobName"),
+                                         keyWordInfo: stringMap("KeyWordInfo"),
+                                         picUrl: stringMap("PicUrl"))
+        }
+        return nil
+    }
+    
+}
+
+
+final class CoursewareInfoViewModel {
+    let id: String
+    let title: String
+    let author: String?
+    let picUrl: String?
+    let readNum: Int?
+    let createdDate: String?
+    let linkUrl: String
+    let sourceUrl: String
+    let isNeedLogin: Bool?
+    let needScore: Int?
+
+    init(id: String,
+         title: String,
+         author: String?,
+         picUrl: String?,
+         readNum: Int?,
+         createdDate: String?,
+         linkUrl: String,
+         sourceUrl: String,
+         isNeedLogin: Bool?,
+         needScore: Int?) {
+        self.id = id
+        self.title = title
+        self.author = author
+        self.picUrl = picUrl
+        self.readNum = readNum
+        self.createdDate = createdDate
+        self.linkUrl = linkUrl
+        self.sourceUrl = sourceUrl
+        self.isNeedLogin = isNeedLogin
+        self.needScore = needScore
+    }
+}
+
+extension CoursewareInfoViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> CoursewareInfoViewModel? {
+        let stringMap = mapToString(dictionary)
+        let intMap = mapToInt(dictionary)
+        if let id = stringMap("Id"),
+        title = stringMap("Title"),
+        linkUrl = stringMap("LinkUrl"),
+        sourceUrl = stringMap("SoureUrl") {
+            return CoursewareInfoViewModel(id: id,
+                                           title: title,
+                                           author: stringMap("Author"),
+                                           picUrl: stringMap("PicUrl"),
+                                           readNum: intMap("ReadNum"),
+                                           createdDate: stringMap("CreateDate"),
+                                           linkUrl: linkUrl,
+                                           sourceUrl: sourceUrl,
+                                           isNeedLogin: mapToBool(dictionary)("IsNeedLogin"),
+                                           needScore: intMap("NeedScore"))
+        }
+        return nil
+    }
+
+    static func mapToMeetingModel(dictionary: [String: AnyObject]) -> CoursewareInfoViewModel? {
+        let stringMap = mapToString(dictionary)
+        let intMap = mapToInt(dictionary)
+        if let id = stringMap("KID"),
+            title = stringMap("Title"),
+            linkUrl = stringMap("LinkUrl"),
+            sourceUrl = stringMap("SoureUrl") {
+            return CoursewareInfoViewModel(id: id,
+                                           title: title,
+                                           author: nil,
+                                           picUrl: stringMap("PicUrl"),
+                                           readNum: intMap("ReadNum"),
+                                           createdDate: stringMap("CreateDate"),
+                                           linkUrl: linkUrl,
+                                           sourceUrl: sourceUrl,
+                                           isNeedLogin: mapToBool(dictionary)("IsNeedLogin"),
+                                           needScore: intMap("NeedScore"))
+        }
+        return nil
+    }
+
+    static func mapToDocumentModel(dictionary: [String: AnyObject]) -> CoursewareInfoViewModel? {
+        let stringMap = mapToString(dictionary)
+        let intMap = mapToInt(dictionary)
+        if let id = stringMap("ID"),
+            title = stringMap("Title"),
+            linkUrl = stringMap("LinkUrl"),
+            sourceUrl = stringMap("SoureUrl") {
+            return CoursewareInfoViewModel(id: id,
+                                           title: title,
+                                           author: nil,
+                                           picUrl: stringMap("PicUrl"),
+                                           readNum: intMap("ReadNum"),
+                                           createdDate: stringMap("CreateDate"),
+                                           linkUrl: linkUrl,
+                                           sourceUrl: sourceUrl,
+                                           isNeedLogin: mapToBool(dictionary)("IsNeedLogin"),
+                                           needScore: intMap("NeedScore"))
+        }
+        return nil
+    }
+
+}
+
+final class VideoDetailInfoViewModel {
+    let videoId: String
+    let unReadNum: Int?
+    let needScore: Int?
+    let title: String
+    let picList: [String]
+
+    init(videoId: String, title: String, unReadNum: Int?, needScore: Int?, picList: [String]) {
+        self.videoId = videoId
+        self.title = title
+        self.unReadNum = unReadNum
+        self.needScore = needScore
+        self.picList = picList
+    }
+}
+
+extension VideoDetailInfoViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> VideoDetailInfoViewModel? {
+        let stringMap = mapToString(dictionary)
+        let intMap = mapToInt(dictionary)
+
+        if let videoId = stringMap("VideoId"), title = stringMap("Title") {
+            var picList: [String] = []
+            if let picJSONList = dictionary["PicList"] as? [[String: AnyObject]] {
+                picList = picJSONList.flatMap { $0["PicUrl"] as? String }
+            }
+            return VideoDetailInfoViewModel(videoId: videoId,
+                                            title: title,
+                                            unReadNum: intMap("UnReadNum"),
+                                            needScore: intMap("NeedScore"),
+                                            picList: picList)
+        }
+        return nil
+    }
+    
+}
+
+
+final class MeetingViewModel {
     let id: String
     let title: String
     let keyWordInfo: String?
@@ -218,6 +386,86 @@ extension MeetingViewModel: ViewModel {
     }
     
 }
+
+final class CommentBaseViewModel {
+    let pId: String
+    let commentName: String?
+    let commentPic: String?
+    let commentDate: String?
+    let commentContent: String?
+    let dNum: Int?
+    let cNum: Int?
+
+    init(pid: String,
+         commentName: String?,
+         commentPic: String?,
+         commentDate: String?,
+         commentContent: String?,
+         dNum: Int?,
+         cNum: Int?) {
+        self.pId = pid
+        self.commentPic = commentPic
+        self.commentName = commentName
+        self.commentDate = commentDate
+        self.commentContent = commentContent
+        self.cNum = cNum
+        self.dNum = dNum
+    }
+}
+
+extension CommentBaseViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> CommentBaseViewModel? {
+        let stringMap = mapToString(dictionary)
+        let intMap = mapToInt(dictionary)
+        if let pId = stringMap("PID") {
+            return CommentBaseViewModel(pid: pId,
+                                        commentName: stringMap("CommentName"),
+                                        commentPic: stringMap("CommentPic"),
+                                        commentDate: stringMap("CommentDate"),
+                                        commentContent: stringMap("CommentContent"),
+                                        dNum: intMap("DNum"),
+                                        cNum: intMap("CNum"))
+        }
+        return nil
+    }
+
+}
+
+final class CommentViewModel {
+
+    let mainComment: CommentBaseViewModel
+    let childComeentList: [CommentBaseViewModel]
+
+    init(main: CommentBaseViewModel, child: [CommentBaseViewModel]) {
+        self.mainComment = main
+        self.childComeentList = child
+    }
+}
+
+extension CommentViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> CommentViewModel? {
+        if let mainComment = CommentBaseViewModel.mapToModel(dictionary) {
+            var childList: [CommentBaseViewModel] = []
+            if let childJSON = dictionary["ChildList"] as? [[String: AnyObject]] {
+                childList = childJSON.flatMap {CommentBaseViewModel.mapToModel($0)}
+            }
+            return CommentViewModel(main: mainComment, child: childList)
+        }
+        return nil
+    }
+
+}
+//"ID":"240",
+//"Title":"儿童腹型过敏性紫癜研究进展",
+//"KeyWordInfo":"过敏性紫癜是儿童时期最常见的一种以小血管炎为主要病变的血管炎性疾病。",
+//"PicUrl":"http://app.medhorizon.com.cn/attached/image/20160929/20160929105517_8357.jpg",
+//"NeedScore":"0",
+//"CreateDate":"2016/9/29 10:55:19",
+//"IsNeedLogin":"0",
+//"SourceUrl":"http://app.medhorizon.com.cn/upload/儿童腹型过敏性紫癜研究进展.pdf",
+//"LinkUrl":"http://app.medhorizon.com.cn/NewsDetail/News_tophykj_Detail.aspx?id=240"
 
 //"KID":"9",
 //"Title":"儿童此类读物",
