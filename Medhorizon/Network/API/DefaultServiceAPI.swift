@@ -12,7 +12,7 @@ enum DefaultServiceAPI: API {
     case Login
     case NewsList(String, Int, Int, Int)
     case WorldInfoList(String, Int, Int, Int, Int)
-    case MeetingInfoList()
+    case MeetingInfoList(String, Int, Int, Int)
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
     static var defaultServiceConfiguration: ServiceConfiguration = ServiceConfiguration(httpProtocol: .HTTP, serviceType: .Default, serviceRegion: .Default, environment: .Default)
@@ -28,6 +28,9 @@ enum DefaultServiceAPI: API {
             
         case let .WorldInfoList(appKey, departmentId, tid, pageNum, pageSize):
             return "/worldInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&Tid\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+            
+        case let .MeetingInfoList(appKey, departmentId, pageNum, pageSize):
+            return "/meetingInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
         }
     }
 }

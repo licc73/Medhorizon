@@ -36,4 +36,12 @@ struct DefaultServiceRequests {
             })
     }
     
+    static func rac_requesForMeetingList(departmentId: Int, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.MeetingInfoList(defaultAppKey, departmentId, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, Int, [String: AnyObject]) in
+                return (departmentId, pageNum, value)
+            })
+    }
+    
 }
