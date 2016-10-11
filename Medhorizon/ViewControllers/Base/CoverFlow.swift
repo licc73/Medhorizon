@@ -63,6 +63,10 @@ class CoverFlowView: UIView {
     }
 
     func setAutoscrollTimer() {
+        if let _ = self.autoScrollTimer {
+            self.autoScrollTimer?.invalidate()
+            self.autoScrollTimer = nil
+        }
         self.autoScrollTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(autoScroll(_:)), userInfo: nil, repeats: false)
     }
 
