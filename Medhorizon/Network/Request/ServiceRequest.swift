@@ -44,4 +44,20 @@ struct DefaultServiceRequests {
             })
     }
     
+    static func rac_requesForMeetingDetailInfo(meetingId: String, pageNum: Int, pageSize: Int) -> SignalProducer<(String, Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.MeetingDetailInfo(defaultAppKey, meetingId, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (String, Int, [String: AnyObject]) in
+                return (meetingId, pageNum, value)
+            })
+    }
+    
+    static func rac_requesForDocumentList(departmentId: Int, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.DocumentInfoList(defaultAppKey, departmentId, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, Int, [String: AnyObject]) in
+                return (departmentId, pageNum, value)
+            })
+    }
+    
 }
