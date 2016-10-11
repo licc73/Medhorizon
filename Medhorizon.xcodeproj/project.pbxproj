@@ -88,6 +88,8 @@
 		EA33BCED1DAB2A1E00C0BE04 /* CoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */; };
 		EA33BCF01DAB3BE200C0BE04 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCEF1DAB3BE200C0BE04 /* NewsViewController.swift */; };
 		EA33BCF21DAB549E00C0BE04 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCF11DAB549E00C0BE04 /* NewsListViewModel.swift */; };
+		EA33BCF41DAC750700C0BE04 /* WebDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */; };
+		EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCF51DAC782600C0BE04 /* LoginManager.swift */; };
 		EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */; };
 		EA67D0D21D9E4D0B00468A92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0D11D9E4D0B00468A92 /* ViewController.swift */; };
 		EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D31D9E4D0B00468A92 /* Main.storyboard */; };
@@ -214,6 +216,8 @@
 		EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverFlowCell.xib; sourceTree = "<group>"; };
 		EA33BCEF1DAB3BE200C0BE04 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		EA33BCF11DAB549E00C0BE04 /* NewsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
+		EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebDetailViewController.swift; sourceTree = "<group>"; };
+		EA33BCF51DAC782600C0BE04 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		EA67D0CC1D9E4D0B00468A92 /* Medhorizon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medhorizon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA67D0D11D9E4D0B00468A92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -546,6 +550,7 @@
 		EA33BBC01DA8B0F700C0BE04 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				EA33BCF51DAC782600C0BE04 /* LoginManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 				EA33BCE81DAB282900C0BE04 /* CoverFlow.swift */,
 				EA33BCEA1DAB2A1E00C0BE04 /* CoverFlowCell.swift */,
 				EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */,
+				EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 				EA33BCCA1DA9E7D200C0BE04 /* DepartmentView.swift in Sources */,
 				43B2C9811DA7C2AB004FA849 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */,
+				EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */,
 				43B2C9831DA7C2AB004FA849 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */,
 				43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */,
@@ -786,6 +793,7 @@
 				43B2C97C1DA7C2AB004FA849 /* IQUITextFieldView+Additions.swift in Sources */,
 				EA33BCCC1DA9E93000C0BE04 /* UIExtension.swift in Sources */,
 				43B2C94D1DA7C124004FA849 /* MJRefreshFooter.m in Sources */,
+				EA33BCF41DAC750700C0BE04 /* WebDetailViewController.swift in Sources */,
 				EA33BCF01DAB3BE200C0BE04 /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

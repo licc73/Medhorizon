@@ -69,7 +69,7 @@ final class NewsViewModel {
     let keyWordInfo: String?
     let picUrl: String?
     let createdDate: String?
-    let isNeedLogin: Int?
+    let isNeedLogin: Bool?
     let linkUrl: String
 
     init(id: String,
@@ -77,7 +77,7 @@ final class NewsViewModel {
          keyWordInfo: String?,
          picUrl: String?,
          createdDate: String?,
-         isNeedLogin: Int?,
+         isNeedLogin: Bool?,
          linkUrl: String) {
         self.id = id
         self.title = title
@@ -99,7 +99,7 @@ extension NewsViewModel: ViewModel {
                                  keyWordInfo: stringMap("KeyWordInfo"),
                                  picUrl: stringMap("PicUrl"),
                                  createdDate: stringMap("CreateDate"),
-                                 isNeedLogin: mapToInt(dictionary)("IsNeedLogin"),
+                                 isNeedLogin: mapToBool(dictionary)("IsNeedLogin"),
                                  linkUrl: linkUrl)
         }
         return nil

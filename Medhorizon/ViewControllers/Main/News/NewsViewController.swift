@@ -127,15 +127,26 @@ class NewsViewController: UIViewController {
         self.tableView.endRefresh(curData?.isHaveMoreData)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let id = segue.identifier where id == StoryboardSegue.Main.ShowNewsDetail.rawValue {
+            if let detail = segue.destinationViewController as? WebDetailViewController {
+                detail.title = "资讯站"
+                if let data = sender as? NewsViewModel {
+                    detail.newsData = data
+                }
+                else if let data = sender as? Branner {
+                    detail.brannerData = data
+                }
+            }
+        }
     }
-    */
+ 
 
 }
 
@@ -162,16 +173,43 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        defer {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+        
+        if let curData = self.newsList?.getCurData() {
+            guard indexPath.row < curData.newsList.count else {
+                return
+            }
+            
+            let news = curData.newsList[indexPath.row]
+            
+            if LoginManager.shareInstance.isLogin {
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: news)
+            }
+            else {
+                guard let isNeedLogin = news.isNeedLogin where !isNeedLogin else {
+                    LoginManager.loginOrEnterUserInfo()
+                    return
+                }
+                
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: news)
+            }
+        }
     }
 }
 
 extension NewsViewController: CoverFlowViewDelegate {
 
-    func coverFlowView(view: CoverFlowView, didSelect index:Int) {
-
+    func coverFlowView(view: CoverFlowView, didSelect index: Int) {
+        if let curData = self.newsList?.getCurData() {
+            guard index >= 0 && index < curData.brannerList.count else {
+                return
+            }
+            
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: curData.brannerList[index])
+        }
+        
     }
 
     func numberOfCoversInCoverFlowView(view: CoverFlowView) -> Int {

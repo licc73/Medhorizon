@@ -44,6 +44,9 @@ func mapToBool(dictionary: [String: AnyObject]) -> String -> Bool? {
         else if let value = value as? NSNumber {
             return value.boolValue
         }
+        else if let value = value as? String {
+            return value != "0"
+        }
         return nil
     }
 }

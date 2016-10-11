@@ -74,6 +74,8 @@ class DepartmentChooseView: UIView {
     let otherButton: UIButton
 
     weak var delegate: DepartmentChooseViewDelegate?
+    
+    let vPrompt: UIView
 
     override init(frame: CGRect) {
         self.vChoose = UIView(frame: CGRectMake(0, 0, AppInfo.screenWidth, 60))
@@ -82,8 +84,10 @@ class DepartmentChooseView: UIView {
         self.dermatologyButton = UIButton(type: .Custom)
         self.otherButton = UIButton(type: .Custom)
 
+        self.vPrompt = UIView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenHeight))
+        
         super.init(frame: UIScreen.mainScreen().bounds)
-
+        self.addSubview(self.vPrompt)
         self.addSubview(self.vChoose)
 
         let buttonWidth = AppInfo.screenWidth / 4.0
@@ -121,6 +125,17 @@ class DepartmentChooseView: UIView {
 
         let gesture = UITapGestureRecognizer(target: self, action: #selector(hideSelf(_:)))
         self.addGestureRecognizer(gesture)
+        
+        self.vPrompt.backgroundColor = UIColor.colorWithHex(0, alpha: 0.5)
+        let imgvPrompt = UIImageView(frame: CGRectMake(AppInfo.screenWidth / 2 - 27 / 2, 20, 27, 27))
+        imgvPrompt.image = UIImage(named: "arrow")
+        let label = UILabel(frame: CGRectMake(0, 50, AppInfo.screenWidth, 27))
+        label.text = "请选择科室"
+        label.textAlignment = .Center
+        label.textColor = UIColor.whiteColor()
+        label.font = UIFont.systemFontOfSize(18)        
+        self.vPrompt.addSubview(imgvPrompt)
+        self.vPrompt.addSubview(label)
     }
 
     private func setButtonDisplay(button: UIButton, department: DepartmentType) {
@@ -178,11 +193,13 @@ class DepartmentChooseView: UIView {
     }
 
     func dismiss() {
+        self.vPrompt.removeFromSuperview()
         self.removeFromSuperview()
     }
 
     func show(height: CGFloat, type: DepartmentType, prompt: Bool) {
         self.vChoose.frame = CGRectMake(0, height, AppInfo.screenWidth, 60)
+        self.vPrompt.frame = CGRectMake(0, height + 60, AppInfo.screenWidth, AppInfo.screenHeight)
         self.selectType(type)
     }
 
