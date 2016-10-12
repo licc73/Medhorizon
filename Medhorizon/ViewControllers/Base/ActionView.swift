@@ -15,12 +15,24 @@ enum ActionType {
     case Download
 }
 
+protocol ActionViewDelegate: class {
+    func actionViewShouldBeginAddComment(view view: ActionView) -> Bool
+    func actionView(view view: ActionView, willSendComment: String) -> Bool
+    func actionView(view view: ActionView, actionType: ActionType)
+}
+
 class ActionView: UIView {
+    let offset: CGFloat = 15
+    let actionWidth: CGFloat = 30
+    let actionGapSpace: CGFloat = 2
+    
     let txtComment: UITextField
     let btnComment: UIButton
     let btnFav: UIButton
     let btnDownload: UIButton
     let btnShare: UIButton
+    
+    var delegate: ActionViewDelegate?
     
     override init(frame: CGRect) {
         self.txtComment = UITextField(frame: CGRectZero)
@@ -28,12 +40,23 @@ class ActionView: UIView {
         self.btnFav = UIButton(type: .Custom)
         self.btnDownload = UIButton(type: .Custom)
         self.btnShare = UIButton(type: .Custom)
-        super.init(frame: frame)
+        super.init(frame: CGRectMake(0, 0, AppInfo.screenWidth, 44))
+        
+        self.txtComment.borderStyle = .RoundedRect
+        self.txtComment.delegate = self
+        self.txtComment.returnKeyType = UIReturnKeyType.Send
+        self.txtComment.enablesReturnKeyAutomatically = true
+        
+        self.addSubview(self.txtComment)
         
         self.setButton(self.btnComment, image: "")
         self.setButton(self.btnFav, image: "")
         self.setButton(self.btnDownload, image: "")
         self.setButton(self.btnShare, image: "")
+        
+        let imgvHLine = UIImageView(frame: CGRectMake(0, 0, AppInfo.screenWidth, 0.5))
+        imgvHLine.backgroundColor = UIColor.lightGrayColor()
+        self.addSubview(imgvHLine)
     }
     
     private func setButton(button: UIButton, image: String) {
@@ -45,6 +68,37 @@ class ActionView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setFav(isFav: Bool) {
+        if isFav {
+            self.btnFav.setImage(UIImage(named: ""), forState: .Normal)
+        }
+        else {
+            self.btnFav.setImage(UIImage(named: ""), forState: .Normal)
+        }
+    }
+    
+    func config(types: [ActionType]) {
+        self.txtComment.frame = CGRectMake(offset, 7, AppInfo.screenWidth - CGFloat(types.count) * (actionWidth + actionGapSpace) - offset * 2, 30)
+        var iCurType: CGFloat = 0
+        for type in types {
+            switch type {
+            case .Share:
+                self.btnShare.hidden = false
+                self.btnShare.frame = CGRectMake(offset + CGRectGetWidth(self.txtComment.frame) + actionGapSpace + (actionGapSpace + actionWidth) * iCurType, 7, actionWidth, actionWidth)
+            case .Fav:
+                self.btnFav.hidden = false
+                self.btnFav.frame = CGRectMake(offset + CGRectGetWidth(self.txtComment.frame) + actionGapSpace + (actionGapSpace + actionWidth) * iCurType, 7, actionWidth, actionWidth)
+            case .Comment:
+                self.btnComment.hidden = false
+                self.btnComment.frame = CGRectMake(offset + CGRectGetWidth(self.txtComment.frame) + actionGapSpace + (actionGapSpace + actionWidth) * iCurType, 7, actionWidth, actionWidth)
+            case .Download:
+                self.btnDownload.hidden = false
+                self.btnDownload.frame = CGRectMake(offset + CGRectGetWidth(self.txtComment.frame) + actionGapSpace + (actionGapSpace + actionWidth) * iCurType, 7, actionWidth, actionWidth)
+            }
+            iCurType += 1
+        }
     }
     
     func actionOnClicked(button: UIButton) {
@@ -59,4 +113,27 @@ class ActionView: UIView {
     }
     */
 
+}
+
+extension ActionView: UITextFieldDelegate {
+
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return self.delegate?.actionViewShouldBeginAddComment(view: self) ?? false
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if let commentText = textField.text {
+            if !commentText.isEmpty {
+                if let result = self.delegate?.actionView(view: self, willSendComment: commentText) {
+                    if result {
+                        textField.text = nil
+                    }
+                    return result
+                }
+                
+            }
+        }
+        return false
+    }
+    
 }
