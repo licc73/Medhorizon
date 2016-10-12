@@ -25,7 +25,7 @@ protocol ActionViewDelegate: class {
 class ActionView: UIView {
     let offset: CGFloat = 15
     let actionWidth: CGFloat = 30
-    let actionGapSpace: CGFloat = 2
+    let actionGapSpace: CGFloat = 4
     
     let txtComment: UITextField
     let btnComment: UIButton
@@ -47,13 +47,15 @@ class ActionView: UIView {
         self.txtComment.delegate = self
         self.txtComment.returnKeyType = UIReturnKeyType.Send
         self.txtComment.enablesReturnKeyAutomatically = true
+        self.txtComment.placeholder = "写评论"
+        self.txtComment.font = UIFont.systemFontOfSize(16)
         
         self.addSubview(self.txtComment)
         
-        self.setButton(self.btnComment, image: "")
-        self.setButton(self.btnFav, image: "")
-        self.setButton(self.btnDownload, image: "")
-        self.setButton(self.btnShare, image: "")
+        self.setButton(self.btnComment, image: "comment")
+        self.setButton(self.btnFav, image: "star")
+        self.setButton(self.btnDownload, image: "comment")
+        self.setButton(self.btnShare, image: "share")
         
         let imgvHLine = UIImageView(frame: CGRectMake(0, 0, AppInfo.screenWidth, 0.5))
         imgvHLine.backgroundColor = UIColor.lightGrayColor()
@@ -76,7 +78,7 @@ class ActionView: UIView {
             self.btnFav.setImage(UIImage(named: ""), forState: .Normal)
         }
         else {
-            self.btnFav.setImage(UIImage(named: ""), forState: .Normal)
+            self.btnFav.setImage(UIImage(named: "star"), forState: .Normal)
         }
     }
     

@@ -36,7 +36,7 @@ extension ReturnMsg: ViewModel {
     
 }
 
-final class Branner {
+final class BrannerViewModel {
     let id: String
     let title: String?
     let linkUrl: String
@@ -51,12 +51,12 @@ final class Branner {
     
 }
 
-extension Branner: ViewModel {
+extension BrannerViewModel: ViewModel {
 
-    static func mapToModel(dictionary: [String: AnyObject]) -> Branner? {
+    static func mapToModel(dictionary: [String: AnyObject]) -> BrannerViewModel? {
         let stringMap = mapToString(dictionary)
         if let id = stringMap("BrannerId"), linkUrl = stringMap("BrannerLinkUrl") {
-            return Branner(id: id, title: stringMap("BrannerTitle"), linkUrl: linkUrl, picUrl: stringMap("BrannerPicUrl"))
+            return BrannerViewModel(id: id, title: stringMap("BrannerTitle"), linkUrl: linkUrl, picUrl: stringMap("BrannerPicUrl"))
         }
         return nil
     }

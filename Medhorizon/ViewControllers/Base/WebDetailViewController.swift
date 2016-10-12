@@ -11,9 +11,19 @@ import UIKit
 class WebDetailViewController: UIViewController {
     
     @IBOutlet weak var webView: UIWebView!
+
+    @IBOutlet weak var vTool: UIView!
+    @IBOutlet weak var btnDownload: UIButton!
+    @IBOutlet weak var toolHeight: NSLayoutConstraint!
+
+    var showDownloadToolBar: Bool = false
+    var showActionToolBar: Bool = true
+    var actions: [ActionType] = [.Comment, .Fav, .Share, .Download]
+    var vAction: ActionView?
     
     var newsData: NewsViewModel?
-    var brannerData: Branner?
+    var brannerData: BrannerViewModel?
+    var document: CoursewareInfoViewModel?
     
     
     var sTitle: String?
@@ -27,6 +37,25 @@ class WebDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.extractData()
+        self.setToolBar()
+    }
+
+    func setToolBar() {
+        if showActionToolBar {
+            self.btnDownload.hidden = true
+            self.vTool.backgroundColor = UIColor.colorWithHex(0xf5f6f7)
+            self.vAction = ActionView(frame: CGRectZero)
+            self.vAction?.config(actions)
+            self.vAction?.delegate = self
+            self.vTool.addSubview(self.vAction!)
+        }
+        else if showDownloadToolBar {
+
+        }
+        else {
+            self.vTool.hidden = true
+            self.toolHeight.constant = 0
+        }
     }
     
     func extractData() {
@@ -41,6 +70,12 @@ class WebDetailViewController: UIViewController {
             sContent = sTitle
             sLink = brannerData.linkUrl
             sPic = brannerData.picUrl
+        }
+        else if let doc = document {
+            sTitle = doc.title
+            sContent = doc.keyWordInfo
+            sLink = doc.linkUrl
+            sPic = doc.picUrl
         }
         
         self.loadWebRequest()
@@ -100,5 +135,24 @@ extension WebDetailViewController {
         else {
             self.navigationController?.popViewControllerAnimated(true)
         }
+    }
+
+    @IBAction func downloadSource(sender: AnyObject) {
+
+    }
+}
+
+extension WebDetailViewController: ActionViewDelegate {
+
+    func actionViewShouldBeginAddComment(view view: ActionView) -> Bool {
+        return true
+    }
+
+    func actionView(view view: ActionView, willSendComment: String) -> Bool {
+        return true
+    }
+
+    func actionView(view view: ActionView, didSelectAction type: ActionType) {
+
     }
 }

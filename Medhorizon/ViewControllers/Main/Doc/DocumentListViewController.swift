@@ -123,8 +123,10 @@ class DocumentListViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if let id = segue.identifier where id == StoryboardSegue.Main.ShowDocumentInfo.rawValue {
-            if let detail = segue.destinationViewController as? WebDetailViewController {
-                
+            if let detail = segue.destinationViewController as? WebDetailViewController, doc = sender as? CoursewareInfoViewModel {
+                detail.document = doc
+                detail.title = "文献指南"
+                detail.showDownloadToolBar = true
             }
         }
     }

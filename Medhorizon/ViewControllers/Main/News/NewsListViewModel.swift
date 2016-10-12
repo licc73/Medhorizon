@@ -15,7 +15,7 @@ let pageSize = 20
 final class NewsData {
     var curPage = initOffset
     
-    var brannerList: [Branner] = []
+    var brannerList: [BrannerViewModel] = []
     var newsList: [NewsViewModel] = []
     var isHaveMoreData = true
 }
@@ -49,7 +49,7 @@ extension NewsListViewModel {
                         curData.curPage = page
 
                         if let branner = serviceData["BrannerList"] as? [[String: AnyObject]] {
-                            curData.brannerList = branner.flatMap {Branner.mapToModel($0)}
+                            curData.brannerList = branner.flatMap {BrannerViewModel.mapToModel($0)}
                         }
 
                         if let newsList = serviceData["newsList"] as? [[String: AnyObject]] {

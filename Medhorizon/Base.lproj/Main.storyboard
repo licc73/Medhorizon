@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="230-zr-2Ha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="230-zr-2Ha">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -244,7 +244,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="we7-Iy-gMK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-Up-KcJ">
@@ -253,7 +253,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="ath-op-RJ0"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLa-5H-7IP">
@@ -331,6 +331,7 @@
                     <tabBarItem key="tabBarItem" title="文献指南站" image="tabbar_doc" id="0G4-J1-5Ax"/>
                     <connections>
                         <outlet property="tableView" destination="Iem-ZV-c8r" id="bX7-87-Vac"/>
+                        <segue destination="hvg-hN-OJw" kind="show" identifier="ShowDocumentInfo" id="Kak-a5-cYT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="de1-Xz-IEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,20 +463,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xko-2Z-3u6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="hvg-hN-OJw" id="RZi-Ov-gaO"/>
                                 </connections>
                             </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeG-TQ-fd8">
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvp-c5-Oow">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="离线下载" image="download_detail"/>
+                                        <connections>
+                                            <action selector="downloadSource:" destination="hvg-hN-OJw" eventType="touchUpInside" id="lTZ-YZ-vFj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1803921568627451" green="0.58039215686274503" blue="0.79607843137254897" alpha="0.81000000000000005" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JFn-Oe-kfu"/>
+                                    <constraint firstAttribute="trailing" secondItem="kvp-c5-Oow" secondAttribute="trailing" id="JOZ-gf-fbD"/>
+                                    <constraint firstAttribute="bottom" secondItem="kvp-c5-Oow" secondAttribute="bottom" id="T0u-3F-Zbf"/>
+                                    <constraint firstItem="kvp-c5-Oow" firstAttribute="top" secondItem="FeG-TQ-fd8" secondAttribute="top" id="nLe-bL-rS6"/>
+                                    <constraint firstItem="kvp-c5-Oow" firstAttribute="leading" secondItem="FeG-TQ-fd8" secondAttribute="leading" id="vUN-x3-0wA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FeG-TQ-fd8" firstAttribute="leading" secondItem="Uco-ew-jXb" secondAttribute="leadingMargin" constant="-20" id="0cX-1p-cej"/>
                             <constraint firstItem="Xko-2Z-3u6" firstAttribute="top" secondItem="iCd-5S-dWP" secondAttribute="bottom" constant="-64" id="6Qg-vq-Yvr"/>
+                            <constraint firstItem="V6C-FH-J4H" firstAttribute="top" secondItem="FeG-TQ-fd8" secondAttribute="bottom" id="LUl-Pd-fRG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xko-2Z-3u6" secondAttribute="trailing" constant="-20" id="Rso-Nr-uJc"/>
                             <constraint firstItem="V6C-FH-J4H" firstAttribute="top" secondItem="Xko-2Z-3u6" secondAttribute="bottom" id="npE-8M-GdD"/>
+                            <constraint firstItem="FeG-TQ-fd8" firstAttribute="top" secondItem="Xko-2Z-3u6" secondAttribute="bottom" id="pvU-Xg-JKb"/>
                             <constraint firstItem="Xko-2Z-3u6" firstAttribute="leading" secondItem="Uco-ew-jXb" secondAttribute="leadingMargin" constant="-20" id="qQJ-mh-8rg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FeG-TQ-fd8" secondAttribute="trailing" constant="-20" id="yXP-Rk-MCg"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="npE-8M-GdD"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="详情" id="JvH-FG-VXL">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="jVY-vG-PjL">
@@ -485,6 +517,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnDownload" destination="kvp-c5-Oow" id="Y5k-tA-r1C"/>
+                        <outlet property="toolHeight" destination="JFn-Oe-kfu" id="I2F-fd-rru"/>
+                        <outlet property="vTool" destination="FeG-TQ-fd8" id="Y02-kn-7Ip"/>
                         <outlet property="webView" destination="Xko-2Z-3u6" id="sSP-Cm-eHD"/>
                     </connections>
                 </viewController>
@@ -515,6 +550,7 @@
     </scenes>
     <resources>
         <image name="button_action" width="77" height="23"/>
+        <image name="download_detail" width="16" height="15"/>
         <image name="icon_back" width="15" height="25"/>
         <image name="tabbar_doc" width="30" height="30"/>
         <image name="tabbar_expert" width="30" height="30"/>
@@ -523,6 +559,6 @@
         <image name="welcome_bg" width="250" height="444"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ipL-RG-fhz"/>
+        <segue reference="Kak-a5-cYT"/>
     </inferredMetricsTieBreakers>
 </document>

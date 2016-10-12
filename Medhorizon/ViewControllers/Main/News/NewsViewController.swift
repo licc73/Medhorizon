@@ -140,7 +140,7 @@ class NewsViewController: UIViewController {
                 if let data = sender as? NewsViewModel {
                     detail.newsData = data
                 }
-                else if let data = sender as? Branner {
+                else if let data = sender as? BrannerViewModel {
                     detail.brannerData = data
                 }
             }
