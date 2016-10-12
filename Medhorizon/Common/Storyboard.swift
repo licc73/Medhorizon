@@ -13,5 +13,7 @@ struct StoryboardSegue {
         case Main = "Main"
         case ShowNewsDetail = "ShowNewsDetail"
         case ShowMeetingDetail = "ShowMeetingDetail"
+        
+        case ShowDocumentInfo = "ShowDocumentInfo"
     }
 }

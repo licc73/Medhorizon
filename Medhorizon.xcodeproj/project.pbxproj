@@ -94,6 +94,10 @@
 		EA33BCF21DAB549E00C0BE04 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCF11DAB549E00C0BE04 /* NewsListViewModel.swift */; };
 		EA33BCF41DAC750700C0BE04 /* WebDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */; };
 		EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BCF51DAC782600C0BE04 /* LoginManager.swift */; };
+		EA33BD4A1DADC8FE00C0BE04 /* DocumentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BD491DADC8FE00C0BE04 /* DocumentListTableViewCell.swift */; };
+		EA33BD4C1DADCFC900C0BE04 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BD4B1DADCFC900C0BE04 /* DownloadManager.swift */; };
+		EA33BD4E1DADF2D400C0BE04 /* DocumentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BD4D1DADF2D400C0BE04 /* DocumentListViewModel.swift */; };
+		EA33BD541DADFA4300C0BE04 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BD531DADFA4300C0BE04 /* ActionView.swift */; };
 		EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */; };
 		EA67D0D21D9E4D0B00468A92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0D11D9E4D0B00468A92 /* ViewController.swift */; };
 		EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D31D9E4D0B00468A92 /* Main.storyboard */; };
@@ -226,6 +230,10 @@
 		EA33BCF11DAB549E00C0BE04 /* NewsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebDetailViewController.swift; sourceTree = "<group>"; };
 		EA33BCF51DAC782600C0BE04 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		EA33BD491DADC8FE00C0BE04 /* DocumentListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentListTableViewCell.swift; sourceTree = "<group>"; };
+		EA33BD4B1DADCFC900C0BE04 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		EA33BD4D1DADF2D400C0BE04 /* DocumentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentListViewModel.swift; sourceTree = "<group>"; };
+		EA33BD531DADFA4300C0BE04 /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		EA67D0CC1D9E4D0B00468A92 /* Medhorizon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medhorizon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA67D0D11D9E4D0B00468A92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				43714A8B1DAD3D8400BD68C5 /* DocumentListViewController.swift */,
+				EA33BD491DADC8FE00C0BE04 /* DocumentListTableViewCell.swift */,
+				EA33BD4D1DADF2D400C0BE04 /* DocumentListViewModel.swift */,
 			);
 			path = Doc;
 			sourceTree = "<group>";
@@ -462,6 +472,7 @@
 			children = (
 				EA33BBBD1DA8B07400C0BE04 /* Storyboard.swift */,
 				43714A761DAA7FD100BD68C5 /* AppInfo.swift */,
+				EA33BD4B1DADCFC900C0BE04 /* DownloadManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -616,6 +627,7 @@
 				EA33BCEA1DAB2A1E00C0BE04 /* CoverFlowCell.swift */,
 				EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */,
 				EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */,
+				EA33BD531DADFA4300C0BE04 /* ActionView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -787,6 +799,7 @@
 				EA33BCCA1DA9E7D200C0BE04 /* DepartmentView.swift in Sources */,
 				43B2C9811DA7C2AB004FA849 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */,
+				EA33BD541DADFA4300C0BE04 /* ActionView.swift in Sources */,
 				EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */,
 				43B2C9831DA7C2AB004FA849 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */,
@@ -800,10 +813,13 @@
 				43B2C9861DA7C2AB004FA849 /* IQPreviousNextView.swift in Sources */,
 				43B2C97F1DA7C2AB004FA849 /* IQUIWindow+Hierarchy.swift in Sources */,
 				43B2C9891DA7C2AB004FA849 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				EA33BD4C1DADCFC900C0BE04 /* DownloadManager.swift in Sources */,
 				43B2C97B1DA7C2AB004FA849 /* IQUIScrollView+Additions.swift in Sources */,
 				EA33BB9A1DA880F300C0BE04 /* RACHelpFunctions.swift in Sources */,
 				43B2C9511DA7C124004FA849 /* MJRefreshAutoStateFooter.m in Sources */,
+				EA33BD4A1DADC8FE00C0BE04 /* DocumentListTableViewCell.swift in Sources */,
 				EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */,
+				EA33BD4E1DADF2D400C0BE04 /* DocumentListViewModel.swift in Sources */,
 				43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */,
 				43B2C95D1DA7C124004FA849 /* UIView+MJExtension.m in Sources */,
 				43B2C94E1DA7C124004FA849 /* MJRefreshHeader.m in Sources */,

@@ -201,6 +201,7 @@ final class CoursewareInfoViewModel {
     let sourceUrl: String
     let isNeedLogin: Bool?
     let needScore: Int?
+    let keyWordInfo: String?
 
     init(id: String,
          title: String,
@@ -211,7 +212,8 @@ final class CoursewareInfoViewModel {
          linkUrl: String,
          sourceUrl: String,
          isNeedLogin: Bool?,
-         needScore: Int?) {
+         needScore: Int?,
+         keyWordInfo: String?) {
         self.id = id
         self.title = title
         self.author = author
@@ -222,6 +224,7 @@ final class CoursewareInfoViewModel {
         self.sourceUrl = sourceUrl
         self.isNeedLogin = isNeedLogin
         self.needScore = needScore
+        self.keyWordInfo = keyWordInfo
     }
 }
 
@@ -243,7 +246,8 @@ extension CoursewareInfoViewModel: ViewModel {
                                            linkUrl: linkUrl,
                                            sourceUrl: sourceUrl,
                                            isNeedLogin: mapToBool(dictionary)("IsNeedLogin"),
-                                           needScore: intMap("NeedScore"))
+                                           needScore: intMap("NeedScore"),
+                                           keyWordInfo: stringMap("KeyWordInfo"))
         }
         return nil
     }
@@ -254,7 +258,7 @@ extension CoursewareInfoViewModel: ViewModel {
         if let id = stringMap("KID"),
             title = stringMap("Title"),
             linkUrl = stringMap("LinkUrl"),
-            sourceUrl = stringMap("SoureUrl") {
+            sourceUrl = stringMap("SourceUrl") {
             return CoursewareInfoViewModel(id: id,
                                            title: title,
                                            author: nil,
@@ -264,7 +268,8 @@ extension CoursewareInfoViewModel: ViewModel {
                                            linkUrl: linkUrl,
                                            sourceUrl: sourceUrl,
                                            isNeedLogin: mapToBool(dictionary)("IsNeedLogin"),
-                                           needScore: intMap("NeedScore"))
+                                           needScore: intMap("NeedScore"),
+                                           keyWordInfo: stringMap("KeyWordInfo"))
         }
         return nil
     }
@@ -275,7 +280,7 @@ extension CoursewareInfoViewModel: ViewModel {
         if let id = stringMap("ID"),
             title = stringMap("Title"),
             linkUrl = stringMap("LinkUrl"),
-            sourceUrl = stringMap("SoureUrl") {
+            sourceUrl = stringMap("SourceUrl") {
             return CoursewareInfoViewModel(id: id,
                                            title: title,
                                            author: nil,
@@ -285,7 +290,8 @@ extension CoursewareInfoViewModel: ViewModel {
                                            linkUrl: linkUrl,
                                            sourceUrl: sourceUrl,
                                            isNeedLogin: mapToBool(dictionary)("IsNeedLogin"),
-                                           needScore: intMap("NeedScore"))
+                                           needScore: intMap("NeedScore"),
+                                           keyWordInfo: stringMap("KeyWordInfo"))
         }
         return nil
     }
