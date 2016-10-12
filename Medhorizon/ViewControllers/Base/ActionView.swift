@@ -9,6 +9,7 @@
 import UIKit
 
 enum ActionType {
+    case None
     case Share
     case Fav
     case Comment
@@ -18,7 +19,7 @@ enum ActionType {
 protocol ActionViewDelegate: class {
     func actionViewShouldBeginAddComment(view view: ActionView) -> Bool
     func actionView(view view: ActionView, willSendComment: String) -> Bool
-    func actionView(view view: ActionView, actionType: ActionType)
+    func actionView(view view: ActionView, didSelectAction type: ActionType)
 }
 
 class ActionView: UIView {
@@ -96,13 +97,29 @@ class ActionView: UIView {
             case .Download:
                 self.btnDownload.hidden = false
                 self.btnDownload.frame = CGRectMake(offset + CGRectGetWidth(self.txtComment.frame) + actionGapSpace + (actionGapSpace + actionWidth) * iCurType, 7, actionWidth, actionWidth)
+            default:
+                break
             }
             iCurType += 1
         }
     }
     
     func actionOnClicked(button: UIButton) {
+        var type: ActionType = .None
+        if button == self.btnFav {
+            type = .Fav
+        }
+        else if button == self.btnShare {
+            type = .Share
+        }
+        else if button == self.btnComment {
+            type = .Comment
+        }
+        else if button == self.btnDownload {
+            type = .Download
+        }
         
+        self.delegate?.actionView(view: self, didSelectAction: type)
     }
 
     /*
