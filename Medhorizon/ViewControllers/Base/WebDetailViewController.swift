@@ -17,7 +17,7 @@ class WebDetailViewController: UIViewController {
     @IBOutlet weak var toolHeight: NSLayoutConstraint!
 
     var showDownloadToolBar: Bool = false
-    var showActionToolBar: Bool = true
+    var showActionToolBar: Bool = false
     var actions: [ActionType] = [.Comment, .Fav, .Share, .Download]
     var vAction: ActionView?
     

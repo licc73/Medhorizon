@@ -13,6 +13,8 @@
 		43714A871DAD379500BD68C5 /* MeetingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A861DAD379500BD68C5 /* MeetingListViewController.swift */; };
 		43714A891DAD382D00BD68C5 /* MeetingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A881DAD382D00BD68C5 /* MeetingListViewModel.swift */; };
 		43714A8C1DAD3D8400BD68C5 /* DocumentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A8B1DAD3D8400BD68C5 /* DocumentListViewController.swift */; };
+		43714A8F1DAE8E6200BD68C5 /* WorldListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A8E1DAE8E6200BD68C5 /* WorldListViewController.swift */; };
+		43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */; };
 		43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */; };
 		43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9201DA7C124004FA849 /* MJRefreshBackFooter.m */; };
 		43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9221DA7C124004FA849 /* MJRefreshComponent.m */; };
@@ -141,6 +143,8 @@
 		43714A861DAD379500BD68C5 /* MeetingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListViewController.swift; sourceTree = "<group>"; };
 		43714A881DAD382D00BD68C5 /* MeetingListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListViewModel.swift; sourceTree = "<group>"; };
 		43714A8B1DAD3D8400BD68C5 /* DocumentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentListViewController.swift; sourceTree = "<group>"; };
+		43714A8E1DAE8E6200BD68C5 /* WorldListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListViewController.swift; sourceTree = "<group>"; };
+		43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursewareChooseView.swift; sourceTree = "<group>"; };
 		43B2C8F11DA7BF6E004FA849 /* Medhorizon-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Medhorizon-Bridging.h"; sourceTree = "<group>"; };
 		43B2C91D1DA7C124004FA849 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
@@ -296,6 +300,15 @@
 				EA33BD4D1DADF2D400C0BE04 /* DocumentListViewModel.swift */,
 			);
 			path = Doc;
+			sourceTree = "<group>";
+		};
+		43714A8D1DAE8E4D00BD68C5 /* World */ = {
+			isa = PBXGroup;
+			children = (
+				43714A8E1DAE8E6200BD68C5 /* WorldListViewController.swift */,
+				43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */,
+			);
+			path = World;
 			sourceTree = "<group>";
 		};
 		43B2C91B1DA7C124004FA849 /* MJRefresh */ = {
@@ -580,6 +593,7 @@
 				EA33BBC41DA8B88200C0BE04 /* MainTabbarViewController.swift */,
 				EA33BCC91DA9E7D200C0BE04 /* DepartmentView.swift */,
 				EA33BCEE1DAB3BCA00C0BE04 /* News */,
+				43714A8D1DAE8E4D00BD68C5 /* World */,
 				43714A831DAD375E00BD68C5 /* Meeting */,
 				43714A8A1DAD3D5900BD68C5 /* Doc */,
 			);
@@ -824,6 +838,7 @@
 				43B2C95D1DA7C124004FA849 /* UIView+MJExtension.m in Sources */,
 				43B2C94E1DA7C124004FA849 /* MJRefreshHeader.m in Sources */,
 				EA33BBBE1DA8B07400C0BE04 /* Storyboard.swift in Sources */,
+				43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */,
 				43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */,
 				43B2C9571DA7C124004FA849 /* MJRefreshStateHeader.m in Sources */,
 				EA33BBA61DA8890900C0BE04 /* DefaultServiceAPI.swift in Sources */,
@@ -831,6 +846,7 @@
 				43B2C9541DA7C124004FA849 /* MJRefreshBackStateFooter.m in Sources */,
 				43B2C9841DA7C2AB004FA849 /* IQTextView.swift in Sources */,
 				EA33BB971DA880F300C0BE04 /* AlamofireRACRequestJSON.swift in Sources */,
+				43714A8F1DAE8E6200BD68C5 /* WorldListViewController.swift in Sources */,
 				43B2C9821DA7C2AB004FA849 /* IQKeyboardManager.swift in Sources */,
 				EA33BB9B1DA880F300C0BE04 /* API.swift in Sources */,
 				43B2C9591DA7C124004FA849 /* MJRefreshConst.m in Sources */,

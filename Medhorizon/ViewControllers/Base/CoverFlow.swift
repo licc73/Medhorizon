@@ -38,7 +38,7 @@ class CoverFlowView: UIView {
         self.pageCtrl = UIPageControl(frame: CGRectMake(0, frame.size.height - 40, frame.size.width, 25))
 
         super.init(frame: frame)
-
+        self.pageCtrl.userInteractionEnabled = false
         self.collectionView.backgroundColor = UIColor.whiteColor()
         self.collectionView.pagingEnabled = true
         self.addSubview(self.collectionView)
