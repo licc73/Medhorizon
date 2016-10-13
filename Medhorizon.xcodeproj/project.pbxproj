@@ -72,6 +72,7 @@
 		43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390721DA7A45400039C35 /* ReactiveCocoaBindings.swift */; };
 		43D390751DA7A45400039C35 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390731DA7A45400039C35 /* String+Base64.swift */; };
 		43D390791DA7A46500039C35 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D390781DA7A46500039C35 /* Reachability.m */; };
+		EA22F00A1DAF4A2E00FFBEE6 /* WorldListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */; };
 		EA33BB961DA880F300C0BE04 /* AlamofireRACDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8B1DA880F300C0BE04 /* AlamofireRACDownload.swift */; };
 		EA33BB971DA880F300C0BE04 /* AlamofireRACRequestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8C1DA880F300C0BE04 /* AlamofireRACRequestJSON.swift */; };
 		EA33BB981DA880F300C0BE04 /* AlamofireRACUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8D1DA880F300C0BE04 /* AlamofireRACUpload.swift */; };
@@ -100,6 +101,7 @@
 		EA33BD4C1DADCFC900C0BE04 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BD4B1DADCFC900C0BE04 /* DownloadManager.swift */; };
 		EA33BD4E1DADF2D400C0BE04 /* DocumentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BD4D1DADF2D400C0BE04 /* DocumentListViewModel.swift */; };
 		EA33BD541DADFA4300C0BE04 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BD531DADFA4300C0BE04 /* ActionView.swift */; };
+		EA33BE221DAF1B1A00C0BE04 /* WorldListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BE211DAF1B1A00C0BE04 /* WorldListTableViewCell.swift */; };
 		EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */; };
 		EA67D0D21D9E4D0B00468A92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67D0D11D9E4D0B00468A92 /* ViewController.swift */; };
 		EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D31D9E4D0B00468A92 /* Main.storyboard */; };
@@ -210,6 +212,7 @@
 		43D390731DA7A45400039C35 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		43D390771DA7A46500039C35 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		43D390781DA7A46500039C35 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListViewModel.swift; sourceTree = "<group>"; };
 		EA33BB8B1DA880F300C0BE04 /* AlamofireRACDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRACDownload.swift; sourceTree = "<group>"; };
 		EA33BB8C1DA880F300C0BE04 /* AlamofireRACRequestJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRACRequestJSON.swift; sourceTree = "<group>"; };
 		EA33BB8D1DA880F300C0BE04 /* AlamofireRACUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRACUpload.swift; sourceTree = "<group>"; };
@@ -238,6 +241,7 @@
 		EA33BD4B1DADCFC900C0BE04 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		EA33BD4D1DADF2D400C0BE04 /* DocumentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentListViewModel.swift; sourceTree = "<group>"; };
 		EA33BD531DADFA4300C0BE04 /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		EA33BE211DAF1B1A00C0BE04 /* WorldListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListTableViewCell.swift; sourceTree = "<group>"; };
 		EA67D0CC1D9E4D0B00468A92 /* Medhorizon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medhorizon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67D0CF1D9E4D0B00468A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA67D0D11D9E4D0B00468A92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -306,7 +310,9 @@
 			isa = PBXGroup;
 			children = (
 				43714A8E1DAE8E6200BD68C5 /* WorldListViewController.swift */,
+				EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */,
 				43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */,
+				EA33BE211DAF1B1A00C0BE04 /* WorldListTableViewCell.swift */,
 			);
 			path = World;
 			sourceTree = "<group>";
@@ -801,6 +807,7 @@
 				EA33BCE91DAB282900C0BE04 /* CoverFlow.swift in Sources */,
 				43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */,
 				EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */,
+				EA33BE221DAF1B1A00C0BE04 /* WorldListTableViewCell.swift in Sources */,
 				43B2C9611DA7C139004FA849 /* UIView+Toast.m in Sources */,
 				EA33BBC51DA8B88200C0BE04 /* MainTabbarViewController.swift in Sources */,
 				43B2C9561DA7C124004FA849 /* MJRefreshNormalHeader.m in Sources */,
@@ -823,6 +830,7 @@
 				EA33BBA81DA8892600C0BE04 /* ServiceRequest.swift in Sources */,
 				43B2C9551DA7C124004FA849 /* MJRefreshGifHeader.m in Sources */,
 				43714A891DAD382D00BD68C5 /* MeetingListViewModel.swift in Sources */,
+				EA22F00A1DAF4A2E00FFBEE6 /* WorldListViewModel.swift in Sources */,
 				43B2C9881DA7C2AB004FA849 /* IQToolbar.swift in Sources */,
 				43B2C9861DA7C2AB004FA849 /* IQPreviousNextView.swift in Sources */,
 				43B2C97F1DA7C2AB004FA849 /* IQUIWindow+Hierarchy.swift in Sources */,

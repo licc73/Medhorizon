@@ -2,7 +2,7 @@
 //  ActionView.swift
 //  Medhorizon
 //
-//  Created by ZongBo Zhou on 10/12/16.
+//  Created by lich on 10/12/16.
 //  Copyright © 2016 changchun. All rights reserved.
 //
 
