@@ -40,8 +40,9 @@ class ChooseCoursewareView: UIView {
         self.btnExcelentCase.frame = CGRectMake(offset + (gap + buttonWidth) * 2, 5, buttonWidth, buttonWidth)
         self.setButton(self.btnVideo, normalImage: "button_course_type_video", selectedImage: "button_course_type_video_sel")
         self.setButton(self.btnDocument, normalImage: "button_course_type_document", selectedImage: "button_course_type_document_sel")
-        self.setButton(self.btnVideo, normalImage: "button_course_type_excelent", selectedImage: "button_course_type_excelent_sel")
+        self.setButton(self.btnExcelentCase, normalImage: "button_course_type_excelent", selectedImage: "button_course_type_excelent_sel")
         self.type = .Video
+        self.btnVideo.selected = true
     }
     
     required init?(coder aDecoder: NSCoder) {

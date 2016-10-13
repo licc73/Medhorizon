@@ -12,6 +12,7 @@ struct StoryboardSegue {
     enum Main: String {
         case Main = "Main"
         case ShowNewsDetail = "ShowNewsDetail"
+        case ShowWorldDetail = "ShowWorldDetail"
         case ShowMeetingDetail = "ShowMeetingDetail"
         
         case ShowDocumentInfo = "ShowDocumentInfo"

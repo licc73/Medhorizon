@@ -13,7 +13,7 @@ class WorldListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var newsList: NewsListViewModel?
+    var worldList: WorldListViewModel?
     
     var coverFlow: CoverFlowView?
     var vChoose: ChooseCoursewareView?
@@ -28,8 +28,11 @@ class WorldListViewController: UIViewController {
         self.coverFlow?.delegate = self
         
         //self.tableView.tableHeaderView = self.coverFlow
+
+        self.vChoose = ChooseCoursewareView(frame: CGRectZero)
+        self.vChoose?.delegate = self
         
-        self.newsList = NewsListViewModel()
+        self.worldList = WorldListViewModel()
         
         self.setupBind()
         
@@ -43,7 +46,7 @@ class WorldListViewController: UIViewController {
     
     func initMJRefresh() {
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[unowned self]_ in
-            self.newsList?.performRefreshServerFetch()
+            self.worldList?.performRefreshServerFetch()
                 .takeUntil(self.rac_WillDeallocSignalProducer())
                 .observeOn(UIScheduler())
                 .on(failed: {[unowned self] (error) in
@@ -64,7 +67,7 @@ class WorldListViewController: UIViewController {
             })
         
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {[unowned self]_ in
-            self.newsList?.performLoadMoreServerFetch()
+            self.worldList?.performLoadMoreServerFetch()
                 .takeUntil(self.rac_WillDeallocSignalProducer())
                 .observeOn(UIScheduler())
                 .on(failed: {[unowned self](error) in
@@ -92,8 +95,8 @@ class WorldListViewController: UIViewController {
             .producer
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .on { [unowned self](department) in
-                self.newsList?.departmentId = department
-                self.newsList?.performSwitchDepartmentFetch()
+                self.worldList?.departmentId = department
+                self.worldList?.performSwitchDepartmentFetch()
                     .takeUntil(self.rac_WillDeallocSignalProducer())
                     .observeOn(UIScheduler())
                     .on(failed: { (error) in
@@ -116,7 +119,7 @@ class WorldListViewController: UIViewController {
     }
     
     func reloadData() {
-        let curData = self.newsList?.getCurData()
+        let curData = self.worldList?.getCurData()
         
         self.tableView.tableHeaderView = nil
         var tableHeaderHeight: CGFloat = 0
@@ -136,11 +139,10 @@ class WorldListViewController: UIViewController {
         }
         
         if let chooseView = self.vChoose {
-            tableHeaderHeight += CGRectGetHeight(chooseView.frame)
             let chooseViewFrame = chooseView.frame
             self.vChoose?.frame = CGRectMake(0, tableHeaderHeight, chooseViewFrame.size.width, chooseViewFrame.size.height)
-            
             vTabelHeader.addSubview(chooseView)
+            tableHeaderHeight += CGRectGetHeight(chooseView.frame)
         }
         
         let labHeader = UILabel(frame: CGRectMake(20, tableHeaderHeight, AppInfo.screenWidth, 30))
@@ -154,11 +156,12 @@ class WorldListViewController: UIViewController {
         tableHeaderHeight += 30
         
         vTabelHeader.frame = CGRectMake(0, 0, AppInfo.screenWidth, tableHeaderHeight)
-        
+
+        let imgvHLine = UIImageView(frame: CGRectMake(0, tableHeaderHeight - 2, AppInfo.screenWidth, 2))
+        imgvHLine.backgroundColor = UIColor.grayColor()
+        vTabelHeader.addSubview(imgvHLine)
+
         self.tableView.tableHeaderView = vTabelHeader
-        
-        
-        
         
         self.tableView.reloadData()
         self.tableView.endRefresh(curData?.isHaveMoreData)
@@ -171,14 +174,11 @@ class WorldListViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let id = segue.identifier where id == StoryboardSegue.Main.ShowNewsDetail.rawValue {
-            if let detail = segue.destinationViewController as? WebDetailViewController {
-                detail.title = "资讯站"
-                if let data = sender as? NewsViewModel {
-                    detail.newsData = data
-                }
-                else if let data = sender as? BrannerViewModel {
-                    detail.brannerData = data
+        if let id = segue.identifier where id == StoryboardSegue.Main.ShowWorldDetail.rawValue {
+            if let detail = segue.destinationViewController as? WorldDetailViewController {
+                if let data = sender as? ExpertListViewModel, type = self.worldList?.coursewareType {
+                    detail.expertBrief = data
+                    detail.type = type
                 }
             }
         }
@@ -194,19 +194,19 @@ extension WorldListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let curData = self.newsList?.getCurData()
-        return curData?.newsList.count ?? 0
+        let curData = self.worldList?.getCurData()
+        return curData?.expertList.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NewsListTableViewCell", forIndexPath: indexPath) as! NewsListTableViewCell
-        let curData = self.newsList?.getCurData()
-        cell.news = curData?.newsList[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("WorldListTableViewCell", forIndexPath: indexPath) as! WorldListTableViewCell
+        let curData = self.worldList?.getCurData()
+        cell.expert = curData?.expertList[indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 90
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -214,23 +214,23 @@ extension WorldListViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
         
-        if let curData = self.newsList?.getCurData() {
-            guard indexPath.row < curData.newsList.count else {
+        if let curData = self.worldList?.getCurData() {
+            guard indexPath.row < curData.expertList.count else {
                 return
             }
             
-            let news = curData.newsList[indexPath.row]
+            let expert = curData.expertList[indexPath.row]
             
             if LoginManager.shareInstance.isLogin {
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: news)
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowWorldDetail.rawValue, sender: expert)
             }
             else {
-                guard let isNeedLogin = news.isNeedLogin where !isNeedLogin else {
+                guard let isNeedLogin = expert.isNeedLogin where !isNeedLogin else {
                     LoginManager.loginOrEnterUserInfo()
                     return
                 }
                 
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: news)
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowWorldDetail.rawValue, sender: expert)
             }
         }
     }
@@ -239,7 +239,7 @@ extension WorldListViewController: UITableViewDelegate, UITableViewDataSource {
 extension WorldListViewController: CoverFlowViewDelegate {
     
     func coverFlowView(view: CoverFlowView, didSelect index: Int) {
-        if let curData = self.newsList?.getCurData() {
+        if let curData = self.worldList?.getCurData() {
             guard index >= 0 && index < curData.brannerList.count else {
                 return
             }
@@ -250,13 +250,39 @@ extension WorldListViewController: CoverFlowViewDelegate {
     }
     
     func numberOfCoversInCoverFlowView(view: CoverFlowView) -> Int {
-        let curData = self.newsList?.getCurData()
+        let curData = self.worldList?.getCurData()
         return curData?.brannerList.count ?? 0
     }
     
     func coverImage(view: CoverFlowView, atIndex index: Int) -> String? {
-        let curData = self.newsList?.getCurData()
+        let curData = self.worldList?.getCurData()
         return curData?.brannerList[index].picUrl
     }
     
+}
+
+extension WorldListViewController: ChooseCoursewareViewDelegate {
+
+    func chooseCoursewareView(view: ChooseCoursewareView, chooseType type: CoursewareType) {
+        self.worldList?.coursewareType = type
+        self.worldList?.performSwitchDepartmentFetch()
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on(failed: { (error) in
+                AppInfo.showDefaultNetworkErrorToast()
+                self.reloadData()
+                },
+                next: {[unowned self] (returnMsg) in
+                    if let msg = returnMsg {
+                        if msg.isSuccess {
+                            self.reloadData()
+                        }
+                        else {
+                            AppInfo.showToast(msg.errorMsg)
+                        }
+                    }
+                })
+            .start()
+    }
+
 }

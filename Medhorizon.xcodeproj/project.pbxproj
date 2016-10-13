@@ -15,6 +15,8 @@
 		43714A8C1DAD3D8400BD68C5 /* DocumentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A8B1DAD3D8400BD68C5 /* DocumentListViewController.swift */; };
 		43714A8F1DAE8E6200BD68C5 /* WorldListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A8E1DAE8E6200BD68C5 /* WorldListViewController.swift */; };
 		43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */; };
+		43714A931DAFDC6800BD68C5 /* WorldDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A921DAFDC6800BD68C5 /* WorldDetailViewController.swift */; };
+		43714A951DAFE93900BD68C5 /* WorldDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A941DAFE93900BD68C5 /* WorldDetailTableViewCell.swift */; };
 		43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */; };
 		43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9201DA7C124004FA849 /* MJRefreshBackFooter.m */; };
 		43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9221DA7C124004FA849 /* MJRefreshComponent.m */; };
@@ -147,6 +149,8 @@
 		43714A8B1DAD3D8400BD68C5 /* DocumentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentListViewController.swift; sourceTree = "<group>"; };
 		43714A8E1DAE8E6200BD68C5 /* WorldListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListViewController.swift; sourceTree = "<group>"; };
 		43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursewareChooseView.swift; sourceTree = "<group>"; };
+		43714A921DAFDC6800BD68C5 /* WorldDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldDetailViewController.swift; sourceTree = "<group>"; };
+		43714A941DAFE93900BD68C5 /* WorldDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldDetailTableViewCell.swift; sourceTree = "<group>"; };
 		43B2C8F11DA7BF6E004FA849 /* Medhorizon-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Medhorizon-Bridging.h"; sourceTree = "<group>"; };
 		43B2C91D1DA7C124004FA849 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 				EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */,
 				43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */,
 				EA33BE211DAF1B1A00C0BE04 /* WorldListTableViewCell.swift */,
+				43714A921DAFDC6800BD68C5 /* WorldDetailViewController.swift */,
+				43714A941DAFE93900BD68C5 /* WorldDetailTableViewCell.swift */,
 			);
 			path = World;
 			sourceTree = "<group>";
@@ -821,12 +827,14 @@
 				43B2C9811DA7C2AB004FA849 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */,
 				EA33BD541DADFA4300C0BE04 /* ActionView.swift in Sources */,
+				43714A931DAFDC6800BD68C5 /* WorldDetailViewController.swift in Sources */,
 				EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */,
 				43B2C9831DA7C2AB004FA849 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */,
 				43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */,
 				EA33BBC31DA8B1ED00C0BE04 /* TourViewController.swift in Sources */,
 				43B2C97D1DA7C2AB004FA849 /* IQUIView+Hierarchy.swift in Sources */,
+				43714A951DAFE93900BD68C5 /* WorldDetailTableViewCell.swift in Sources */,
 				EA33BBA81DA8892600C0BE04 /* ServiceRequest.swift in Sources */,
 				43B2C9551DA7C124004FA849 /* MJRefreshGifHeader.m in Sources */,
 				43714A891DAD382D00BD68C5 /* MeetingListViewModel.swift in Sources */,

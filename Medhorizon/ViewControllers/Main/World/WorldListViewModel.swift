@@ -51,9 +51,10 @@ class WorldListViewModel {
 
 extension WorldListViewModel {
     func performSendRequest(pageNum: Int) -> SignalProducer<ReturnMsg?, ServiceError> {
-        return DefaultServiceRequests.rac_requesForNewsList(departmentId.rawValue, pageNum: pageNum, pageSize: pageSize)
-            .flatMap(.Latest, transform: { [unowned self] (departmentId, page, serviceData) -> SignalProducer<ReturnMsg?, ServiceError> in
-                if let department = DepartmentType(rawValue: departmentId) where department == self.departmentId {
+        return DefaultServiceRequests.rac_requesForWorldInfoList(departmentId.rawValue, tid: self.coursewareType.rawValue, pageNum: pageNum, pageSize: pageSize)
+            .flatMap(.Latest, transform: { [unowned self] (departmentId, tid, page, serviceData) -> SignalProducer<ReturnMsg?, ServiceError> in
+                if let department = DepartmentType(rawValue: departmentId) where department == self.departmentId,
+                    let type = CoursewareType(rawValue: tid) where type == self.coursewareType {
                     let curData = self.getCurData()
                     let returnMsg = ReturnMsg.mapToModel(serviceData)
                     
@@ -64,16 +65,16 @@ extension WorldListViewModel {
                             curData.brannerList = branner.flatMap {BrannerViewModel.mapToModel($0)}
                         }
                         
-                        if let newsList = serviceData["newsList"] as? [[String: AnyObject]] {
-                            let newsListViewModel = newsList.flatMap {NewsViewModel.mapToModel($0)}
+                        if let expertList = serviceData["ExpertsList"] as? [[String: AnyObject]] {
+                            let expertListViewModel = expertList.flatMap {ExpertListViewModel.mapToModel($0)}
                             if initOffset == page {
-                                curData.newsList = newsListViewModel
+                                curData.expertList = expertListViewModel
                             }
                             else {
-                                curData.newsList.appendContentsOf(newsListViewModel)
+                                curData.expertList.appendContentsOf(expertListViewModel)
                             }
                             
-                            if newsList.count == pageSize {
+                            if expertList.count == pageSize {
                                 curData.isHaveMoreData = true
                             }
                             else {
@@ -96,7 +97,7 @@ extension WorldListViewModel {
     
     func performSwitchDepartmentFetch() -> SignalProducer<ReturnMsg?, ServiceError> {
         let curData = self.getCurData()
-        if curData.newsList.count > 0 {
+        if curData.expertList.count > 0 {
             return SignalProducer(value: ReturnMsg.defaultSuccessReturnMsg)
         }
         else {

@@ -39,9 +39,9 @@ enum DefaultServiceAPI: API {
             return "/newsInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
             
         case let .WorldInfoList(appKey, departmentId, tid, pageNum, pageSize):
-            return "/worldInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&Tid\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+            return "/worldInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&Tid=\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
         case let .ExpertDetailInfo(appKey, departmentId, expertId, tid, pageNum, pageSize):
-            return "/getInfoByExpertId?AppSecret=\(appKey)&Nid=\(departmentId)&Id=\(expertId)&Tid\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+            return "/getInfoByExpertId?AppSecret=\(appKey)&Nid=\(departmentId)&Id=\(expertId)&Tid=\(tid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
         case let .VideoCoursewareInfo(appKey, videoId, userId):
             return "/getInfoByVideoId?AppSecret=\(appKey)&Id=\(videoId)&UserId=\(userId)"
 
