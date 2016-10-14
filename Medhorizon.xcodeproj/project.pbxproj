@@ -75,6 +75,7 @@
 		43D390751DA7A45400039C35 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390731DA7A45400039C35 /* String+Base64.swift */; };
 		43D390791DA7A46500039C35 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D390781DA7A46500039C35 /* Reachability.m */; };
 		EA22F00A1DAF4A2E00FFBEE6 /* WorldListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */; };
+		EA295F601DB07123007D6380 /* WorldDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA295F5F1DB07123007D6380 /* WorldDetailViewModel.swift */; };
 		EA33BB961DA880F300C0BE04 /* AlamofireRACDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8B1DA880F300C0BE04 /* AlamofireRACDownload.swift */; };
 		EA33BB971DA880F300C0BE04 /* AlamofireRACRequestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8C1DA880F300C0BE04 /* AlamofireRACRequestJSON.swift */; };
 		EA33BB981DA880F300C0BE04 /* AlamofireRACUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8D1DA880F300C0BE04 /* AlamofireRACUpload.swift */; };
@@ -217,6 +218,7 @@
 		43D390771DA7A46500039C35 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		43D390781DA7A46500039C35 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListViewModel.swift; sourceTree = "<group>"; };
+		EA295F5F1DB07123007D6380 /* WorldDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldDetailViewModel.swift; sourceTree = "<group>"; };
 		EA33BB8B1DA880F300C0BE04 /* AlamofireRACDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRACDownload.swift; sourceTree = "<group>"; };
 		EA33BB8C1DA880F300C0BE04 /* AlamofireRACRequestJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRACRequestJSON.swift; sourceTree = "<group>"; };
 		EA33BB8D1DA880F300C0BE04 /* AlamofireRACUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRACUpload.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */,
 				EA33BE211DAF1B1A00C0BE04 /* WorldListTableViewCell.swift */,
 				43714A921DAFDC6800BD68C5 /* WorldDetailViewController.swift */,
+				EA295F5F1DB07123007D6380 /* WorldDetailViewModel.swift */,
 				43714A941DAFE93900BD68C5 /* WorldDetailTableViewCell.swift */,
 			);
 			path = World;
@@ -820,6 +823,7 @@
 				EA33BBA21DA8819800C0BE04 /* Error.swift in Sources */,
 				43B2C97E1DA7C2AB004FA849 /* IQUIViewController+Additions.swift in Sources */,
 				EA33BCEC1DAB2A1E00C0BE04 /* CoverFlowCell.swift in Sources */,
+				EA295F601DB07123007D6380 /* WorldDetailViewModel.swift in Sources */,
 				EA33BCE61DAB20CC00C0BE04 /* GlobalData.swift in Sources */,
 				43B2C9521DA7C124004FA849 /* MJRefreshBackGifFooter.m in Sources */,
 				43B2C9871DA7C2AB004FA849 /* IQTitleBarButtonItem.swift in Sources */,
