@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 
 final class DocumentData {
-    var curPage = initOffset
+    var curPage = serverFirstPageNum
 
     var docList: [CoursewareInfoViewModel] = []
     var isHaveMoreData = true
@@ -46,7 +46,7 @@ extension DocumentListViewModel {
                         
                         if let infoList = serviceData["InfoList"] as? [[String: AnyObject]] {
                             let docListViewModel = infoList.flatMap { CoursewareInfoViewModel.mapToDocumentModel($0) }
-                            if initOffset == page {
+                            if serverFirstPageNum == page {
                                 curData.docList = docListViewModel
                             }
                             else {
@@ -71,7 +71,7 @@ extension DocumentListViewModel {
     }
     
     func performRefreshServerFetch() -> SignalProducer<ReturnMsg?, ServiceError> {
-        return self.performSendRequest(initOffset)
+        return self.performSendRequest(serverFirstPageNum)
     }
     
     func performSwitchDepartmentFetch() -> SignalProducer<ReturnMsg?, ServiceError> {

@@ -55,13 +55,13 @@ enum DefaultServiceAPI: API {
             return "/fileList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
 
         case let .CommentList(appKey, infoId, userId, pageNum, pageSize):
-            return "/getCommentByVideoId?AppSecret=\(appKey)&Id=\(infoId)&UserId\(userId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+            return "/getCommentByVideoId?AppSecret=\(appKey)&Id=\(infoId)&UserId=\(userId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
         case let .PubComment(appKey, infoId, userId, commentContent):
-            return "/pubComment?AppSecret=\(appKey)&Id=\(infoId)&UserId\(userId)&CommentContent=\(commentContent)"
+            return "/pubComment?AppSecret=\(appKey)&Id=\(infoId)&UserId=\(userId)&CommentContent=\(commentContent)"
         case let .ToComment(appKey, pID, userId, commentContent):
-            return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId\(userId)&CommentContent=\(commentContent)"
+            return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId=\(userId)&CommentContent=\(commentContent)"
         case let .PriseComment(appKey, pID, userId):
-            return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId\(userId)"
+            return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId=\(userId)"
         }
     }
 }

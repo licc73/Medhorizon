@@ -30,6 +30,7 @@ class WebDetailViewController: UIViewController {
     var sContent: String?
     var sLink: String?
     var sPic: String?
+    var id: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,18 +65,21 @@ class WebDetailViewController: UIViewController {
             sContent = newsData.keyWordInfo
             sLink = newsData.linkUrl
             sPic = newsData.picUrl
+            self.id = newsData.id
         }
         else if let brannerData = brannerData {
             sTitle = brannerData.title
             sContent = sTitle
             sLink = brannerData.linkUrl
             sPic = brannerData.picUrl
+            self.id = brannerData.id
         }
         else if let doc = document {
             sTitle = doc.title
             sContent = doc.keyWordInfo
             sLink = doc.linkUrl
             sPic = doc.picUrl
+            self.id = doc.id
         }
         
         self.loadWebRequest()
@@ -100,15 +104,22 @@ class WebDetailViewController: UIViewController {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let id = segue.identifier where id == StoryboardSegue.Main.ShowCommentList.rawValue {
+            if let destination = segue.destinationViewController as? CommentViewController {
+                destination.title = "专家问答"
+                destination.id = self.id
+            }
+        }
+
     }
-    */
+
     
     func notifyWebViewUserLogin(userId: String) {
         self.webView.stringByEvaluatingJavaScriptFromString(String("setUserId(\(userId));"))
@@ -153,6 +164,12 @@ extension WebDetailViewController: ActionViewDelegate {
     }
 
     func actionView(view view: ActionView, didSelectAction type: ActionType) {
-
+        switch type {
+        case .Comment:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowCommentList.rawValue, sender: nil)
+        default:
+            break
+        }
     }
+
 }

@@ -47,7 +47,7 @@ class ActionView: UIView {
         self.txtComment.delegate = self
         self.txtComment.returnKeyType = UIReturnKeyType.Send
         self.txtComment.enablesReturnKeyAutomatically = true
-        self.txtComment.placeholder = "写评论"
+        self.txtComment.placeholder = "向专家提问"
         self.txtComment.font = UIFont.systemFontOfSize(16)
         
         self.addSubview(self.txtComment)

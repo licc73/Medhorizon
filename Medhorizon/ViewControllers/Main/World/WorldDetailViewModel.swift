@@ -2,7 +2,7 @@
 //  WorldDetailViewModel.swift
 //  Medhorizon
 //
-//  Created by ZongBo Zhou on 10/14/16.
+//  Created by lich on 10/14/16.
 //  Copyright © 2016 changchun. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 
 final class WorldDetailData {
-    var curPage = initOffset
+    var curPage = serverFirstPageNum
     
     var courseList: [CoursewareInfoViewModel] = []
     var isHaveMoreData = true
@@ -54,7 +54,7 @@ extension WorldDetailViewModel {
                         
                         if let infoList = serviceData["InfoList"] as? [[String: AnyObject]] {
                             let infoViewModel = infoList.flatMap {CoursewareInfoViewModel.mapToModel($0)}
-                            if initOffset == page {
+                            if serverFirstPageNum == page {
                                 curData.courseList = infoViewModel
                             }
                             else {
@@ -79,7 +79,7 @@ extension WorldDetailViewModel {
     }
     
     func performRefreshServerFetch() -> SignalProducer<ReturnMsg?, ServiceError> {
-        return self.performSendRequest(initOffset)
+        return self.performSendRequest(serverFirstPageNum)
     }
     
     func performSwitchDepartmentFetch() -> SignalProducer<ReturnMsg?, ServiceError> {

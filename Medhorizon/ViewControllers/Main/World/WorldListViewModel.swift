@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 
 final class WorldData {
-    var curPage = initOffset
+    var curPage = serverFirstPageNum
     
     var brannerList: [BrannerViewModel] = []
     var expertList: [ExpertListViewModel] = []
@@ -67,7 +67,7 @@ extension WorldListViewModel {
                         
                         if let expertList = serviceData["ExpertsList"] as? [[String: AnyObject]] {
                             let expertListViewModel = expertList.flatMap {ExpertListViewModel.mapToModel($0)}
-                            if initOffset == page {
+                            if serverFirstPageNum == page {
                                 curData.expertList = expertListViewModel
                             }
                             else {
@@ -92,7 +92,7 @@ extension WorldListViewModel {
     }
     
     func performRefreshServerFetch() -> SignalProducer<ReturnMsg?, ServiceError> {
-        return self.performSendRequest(initOffset)
+        return self.performSendRequest(serverFirstPageNum)
     }
     
     func performSwitchDepartmentFetch() -> SignalProducer<ReturnMsg?, ServiceError> {

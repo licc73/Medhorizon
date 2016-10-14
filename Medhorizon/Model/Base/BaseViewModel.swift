@@ -447,6 +447,23 @@ final class CommentViewModel {
         self.mainComment = main
         self.childComeentList = child
     }
+
+    var commentCount: Int {
+        return childComeentList.count + 1
+    }
+
+    subscript(index: Int) -> (CommentBaseViewModel?, Bool) {
+        guard index < commentCount else {
+            return (nil, true)
+        }
+
+        if index == 0 {
+            return (mainComment, true)
+        }
+        else {
+            return (childComeentList[index - 1], false)
+        }
+    }
 }
 
 extension CommentViewModel: ViewModel {

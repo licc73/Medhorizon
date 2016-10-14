@@ -17,6 +17,7 @@
 		43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */; };
 		43714A931DAFDC6800BD68C5 /* WorldDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A921DAFDC6800BD68C5 /* WorldDetailViewController.swift */; };
 		43714A951DAFE93900BD68C5 /* WorldDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A941DAFE93900BD68C5 /* WorldDetailTableViewCell.swift */; };
+		43714A981DB10F9A00BD68C5 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A971DB10F9A00BD68C5 /* CommentViewController.swift */; };
 		43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */; };
 		43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9201DA7C124004FA849 /* MJRefreshBackFooter.m */; };
 		43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9221DA7C124004FA849 /* MJRefreshComponent.m */; };
@@ -74,6 +75,9 @@
 		43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390721DA7A45400039C35 /* ReactiveCocoaBindings.swift */; };
 		43D390751DA7A45400039C35 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390731DA7A45400039C35 /* String+Base64.swift */; };
 		43D390791DA7A46500039C35 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D390781DA7A46500039C35 /* Reachability.m */; };
+		43DA65481DB1186E000F859E /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA65471DB1186E000F859E /* CommentTableViewCell.swift */; };
+		43DA654A1DB11885000F859E /* ReplyCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA65491DB11885000F859E /* ReplyCommentTableViewCell.swift */; };
+		43DA654C1DB11E62000F859E /* CommentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA654B1DB11E62000F859E /* CommentListViewModel.swift */; };
 		EA22F00A1DAF4A2E00FFBEE6 /* WorldListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */; };
 		EA295F601DB07123007D6380 /* WorldDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA295F5F1DB07123007D6380 /* WorldDetailViewModel.swift */; };
 		EA33BB961DA880F300C0BE04 /* AlamofireRACDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33BB8B1DA880F300C0BE04 /* AlamofireRACDownload.swift */; };
@@ -152,6 +156,7 @@
 		43714A901DAE900400BD68C5 /* CoursewareChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursewareChooseView.swift; sourceTree = "<group>"; };
 		43714A921DAFDC6800BD68C5 /* WorldDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldDetailViewController.swift; sourceTree = "<group>"; };
 		43714A941DAFE93900BD68C5 /* WorldDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldDetailTableViewCell.swift; sourceTree = "<group>"; };
+		43714A971DB10F9A00BD68C5 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		43B2C8F11DA7BF6E004FA849 /* Medhorizon-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Medhorizon-Bridging.h"; sourceTree = "<group>"; };
 		43B2C91D1DA7C124004FA849 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		43B2C91E1DA7C124004FA849 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
@@ -217,6 +222,9 @@
 		43D390731DA7A45400039C35 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		43D390771DA7A46500039C35 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		43D390781DA7A46500039C35 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		43DA65471DB1186E000F859E /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		43DA65491DB11885000F859E /* ReplyCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyCommentTableViewCell.swift; sourceTree = "<group>"; };
+		43DA654B1DB11E62000F859E /* CommentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListViewModel.swift; sourceTree = "<group>"; };
 		EA22F0091DAF4A2E00FFBEE6 /* WorldListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListViewModel.swift; sourceTree = "<group>"; };
 		EA295F5F1DB07123007D6380 /* WorldDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldDetailViewModel.swift; sourceTree = "<group>"; };
 		EA33BB8B1DA880F300C0BE04 /* AlamofireRACDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRACDownload.swift; sourceTree = "<group>"; };
@@ -324,6 +332,18 @@
 				43714A941DAFE93900BD68C5 /* WorldDetailTableViewCell.swift */,
 			);
 			path = World;
+			sourceTree = "<group>";
+		};
+		43714A961DB10F7F00BD68C5 /* PublicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */,
+				43714A971DB10F9A00BD68C5 /* CommentViewController.swift */,
+				43DA654B1DB11E62000F859E /* CommentListViewModel.swift */,
+				43DA65471DB1186E000F859E /* CommentTableViewCell.swift */,
+				43DA65491DB11885000F859E /* ReplyCommentTableViewCell.swift */,
+			);
+			name = PublicViewController;
 			sourceTree = "<group>";
 		};
 		43B2C91B1DA7C124004FA849 /* MJRefresh */ = {
@@ -652,10 +672,10 @@
 		EA33BCE71DAB24E300C0BE04 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				43714A961DB10F7F00BD68C5 /* PublicViewController */,
 				EA33BCE81DAB282900C0BE04 /* CoverFlow.swift */,
 				EA33BCEA1DAB2A1E00C0BE04 /* CoverFlowCell.swift */,
 				EA33BCEB1DAB2A1E00C0BE04 /* CoverFlowCell.xib */,
-				EA33BCF31DAC750700C0BE04 /* WebDetailViewController.swift */,
 				EA33BD531DADFA4300C0BE04 /* ActionView.swift */,
 			);
 			path = Base;
@@ -815,6 +835,7 @@
 				43714A871DAD379500BD68C5 /* MeetingListViewController.swift in Sources */,
 				EA33BCE91DAB282900C0BE04 /* CoverFlow.swift in Sources */,
 				43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */,
+				43DA654C1DB11E62000F859E /* CommentListViewModel.swift in Sources */,
 				EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */,
 				EA33BE221DAF1B1A00C0BE04 /* WorldListTableViewCell.swift in Sources */,
 				43B2C9611DA7C139004FA849 /* UIView+Toast.m in Sources */,
@@ -848,6 +869,7 @@
 				43B2C97F1DA7C2AB004FA849 /* IQUIWindow+Hierarchy.swift in Sources */,
 				43B2C9891DA7C2AB004FA849 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				EA33BD4C1DADCFC900C0BE04 /* DownloadManager.swift in Sources */,
+				43DA65481DB1186E000F859E /* CommentTableViewCell.swift in Sources */,
 				43B2C97B1DA7C2AB004FA849 /* IQUIScrollView+Additions.swift in Sources */,
 				EA33BB9A1DA880F300C0BE04 /* RACHelpFunctions.swift in Sources */,
 				43B2C9511DA7C124004FA849 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -856,6 +878,7 @@
 				EA33BD4E1DADF2D400C0BE04 /* DocumentListViewModel.swift in Sources */,
 				43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */,
 				43B2C95D1DA7C124004FA849 /* UIView+MJExtension.m in Sources */,
+				43714A981DB10F9A00BD68C5 /* CommentViewController.swift in Sources */,
 				43B2C94E1DA7C124004FA849 /* MJRefreshHeader.m in Sources */,
 				EA33BBBE1DA8B07400C0BE04 /* Storyboard.swift in Sources */,
 				43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */,
@@ -868,6 +891,7 @@
 				EA33BB971DA880F300C0BE04 /* AlamofireRACRequestJSON.swift in Sources */,
 				43714A8F1DAE8E6200BD68C5 /* WorldListViewController.swift in Sources */,
 				43B2C9821DA7C2AB004FA849 /* IQKeyboardManager.swift in Sources */,
+				43DA654A1DB11885000F859E /* ReplyCommentTableViewCell.swift in Sources */,
 				EA33BB9B1DA880F300C0BE04 /* API.swift in Sources */,
 				43B2C9591DA7C124004FA849 /* MJRefreshConst.m in Sources */,
 				EA33BB981DA880F300C0BE04 /* AlamofireRACUpload.swift in Sources */,

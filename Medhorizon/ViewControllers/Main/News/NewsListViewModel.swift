@@ -9,11 +9,11 @@
 import Foundation
 import ReactiveCocoa
 
-let initOffset = 1
+let serverFirstPageNum = 1
 let pageSize = 20
 
 final class NewsData {
-    var curPage = initOffset
+    var curPage = serverFirstPageNum
     
     var brannerList: [BrannerViewModel] = []
     var newsList: [NewsViewModel] = []
@@ -54,7 +54,7 @@ extension NewsListViewModel {
 
                         if let newsList = serviceData["newsList"] as? [[String: AnyObject]] {
                             let newsListViewModel = newsList.flatMap {NewsViewModel.mapToModel($0)}
-                            if initOffset == page {
+                            if serverFirstPageNum == page {
                                 curData.newsList = newsListViewModel
                             }
                             else {
@@ -79,7 +79,7 @@ extension NewsListViewModel {
     }
 
     func performRefreshServerFetch() -> SignalProducer<ReturnMsg?, ServiceError> {
-        return self.performSendRequest(initOffset)
+        return self.performSendRequest(serverFirstPageNum)
     }
 
     func performSwitchDepartmentFetch() -> SignalProducer<ReturnMsg?, ServiceError> {
