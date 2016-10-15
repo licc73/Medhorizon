@@ -20,8 +20,17 @@ class DocumentListViewModel {
     var data: [Int: DocumentData] = [:]
     
     var departmentId: DepartmentType = GlobalData.shareInstance.departmentId.value
+
+    var forMeeting = false
+    var mid = ""
+    var meetingData = DocumentData()
     
     func getCurData() -> DocumentData {
+
+        if forMeeting {
+            return self.meetingData
+        }
+
         if let result = data[departmentId.rawValue] {
             return result
         }
@@ -35,24 +44,24 @@ class DocumentListViewModel {
 
 extension DocumentListViewModel {
     func performSendRequest(pageNum: Int) -> SignalProducer<ReturnMsg?, ServiceError> {
-        return DefaultServiceRequests.rac_requesForDocumentList(departmentId.rawValue, pageNum: pageNum, pageSize: pageSize)
-            .flatMap(.Latest, transform: { [unowned self] (departmentId, page, serviceData) -> SignalProducer<ReturnMsg?, ServiceError> in
-                if let department = DepartmentType(rawValue: departmentId) where department == self.departmentId {
+        if forMeeting {
+            return DefaultServiceRequests.rac_requesForMeetingDetailInfo(mid, pageNum: pageNum, pageSize: pageSize)
+                .flatMap(.Latest, transform: { [unowned self] (mid, page, serviceData) -> SignalProducer<ReturnMsg?, ServiceError> in
                     let curData = self.getCurData()
                     let returnMsg = ReturnMsg.mapToModel(serviceData)
-                    
+
                     if let msg = returnMsg where msg.isSuccess {
                         curData.curPage = page
-                        
+
                         if let infoList = serviceData["InfoList"] as? [[String: AnyObject]] {
-                            let docListViewModel = infoList.flatMap { CoursewareInfoViewModel.mapToDocumentModel($0) }
+                            let docListViewModel = infoList.flatMap { CoursewareInfoViewModel.mapToMeetingModel($0) }
                             if serverFirstPageNum == page {
                                 curData.docList = docListViewModel
                             }
                             else {
                                 curData.docList.appendContentsOf(docListViewModel)
                             }
-                            
+
                             if infoList.count == pageSize {
                                 curData.isHaveMoreData = true
                             }
@@ -63,11 +72,44 @@ extension DocumentListViewModel {
                         return SignalProducer(value: msg)
                     }
                     return SignalProducer(value: nil)
-                }
-                else {
-                    return SignalProducer(error: .UnknowError)
-                }
-                })
+                    })
+        }
+        else {
+            return DefaultServiceRequests.rac_requesForDocumentList(departmentId.rawValue, pageNum: pageNum, pageSize: pageSize)
+                .flatMap(.Latest, transform: { [unowned self] (departmentId, page, serviceData) -> SignalProducer<ReturnMsg?, ServiceError> in
+                    if let department = DepartmentType(rawValue: departmentId) where department == self.departmentId {
+                        let curData = self.getCurData()
+                        let returnMsg = ReturnMsg.mapToModel(serviceData)
+
+                        if let msg = returnMsg where msg.isSuccess {
+                            curData.curPage = page
+
+                            if let infoList = serviceData["InfoList"] as? [[String: AnyObject]] {
+                                let docListViewModel = infoList.flatMap { CoursewareInfoViewModel.mapToDocumentModel($0) }
+                                if serverFirstPageNum == page {
+                                    curData.docList = docListViewModel
+                                }
+                                else {
+                                    curData.docList.appendContentsOf(docListViewModel)
+                                }
+
+                                if infoList.count == pageSize {
+                                    curData.isHaveMoreData = true
+                                }
+                                else {
+                                    curData.isHaveMoreData = false
+                                }
+                            }
+                            return SignalProducer(value: msg)
+                        }
+                        return SignalProducer(value: nil)
+                    }
+                    else {
+                        return SignalProducer(error: .UnknowError)
+                    }
+                    })
+        }
+
     }
     
     func performRefreshServerFetch() -> SignalProducer<ReturnMsg?, ServiceError> {

@@ -19,7 +19,11 @@ struct StoryboardSegue {
         case ShowWorldDetailDetail = "ShowWorldDetailDetail"
 
         case ShowMeetingDetail = "ShowMeetingDetail"
+        case ShowMeetingBranner = "ShowMeetingBranner"
         
         case ShowDocumentInfo = "ShowDocumentInfo"
+        case ShowMeetingDoc = "ShowMeetingDoc"
+
+        case ShowNormalLink = "ShowNormalLink"
     }
 }

@@ -29,6 +29,9 @@
 		4344F64E1DB1C33800D5ED54 /* moviePlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 4344F63A1DB1C33800D5ED54 /* moviePlay.png */; };
 		4344F64F1DB1C33800D5ED54 /* moviePlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4344F63B1DB1C33800D5ED54 /* moviePlay@2x.png */; };
 		4344F6511DB1C9B300D5ED54 /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6501DB1C9B300D5ED54 /* VideoDetailViewController.swift */; };
+		4344F6531DB1F7EC00D5ED54 /* MeetingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6521DB1F7EC00D5ED54 /* MeetingDetailViewController.swift */; };
+		4344F6551DB2057100D5ED54 /* NormalLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6541DB2057100D5ED54 /* NormalLinkViewController.swift */; };
+		4344F6571DB219AE00D5ED54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6561DB219AE00D5ED54 /* LoginViewController.swift */; };
 		43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A761DAA7FD100BD68C5 /* AppInfo.swift */; };
 		43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */; };
 		43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */; };
@@ -200,6 +203,9 @@
 		4344F63A1DB1C33800D5ED54 /* moviePlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moviePlay.png; sourceTree = "<group>"; };
 		4344F63B1DB1C33800D5ED54 /* moviePlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moviePlay@2x.png"; sourceTree = "<group>"; };
 		4344F6501DB1C9B300D5ED54 /* VideoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
+		4344F6521DB1F7EC00D5ED54 /* MeetingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingDetailViewController.swift; sourceTree = "<group>"; };
+		4344F6541DB2057100D5ED54 /* NormalLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalLinkViewController.swift; sourceTree = "<group>"; };
+		4344F6561DB219AE00D5ED54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		43714A761DAA7FD100BD68C5 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -431,6 +437,7 @@
 				43714A861DAD379500BD68C5 /* MeetingListViewController.swift */,
 				43714A881DAD382D00BD68C5 /* MeetingListViewModel.swift */,
 				43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */,
+				4344F6521DB1F7EC00D5ED54 /* MeetingDetailViewController.swift */,
 			);
 			path = Meeting;
 			sourceTree = "<group>";
@@ -468,6 +475,7 @@
 				43DA654B1DB11E62000F859E /* CommentListViewModel.swift */,
 				43DA65471DB1186E000F859E /* CommentTableViewCell.swift */,
 				43DA65491DB11885000F859E /* ReplyCommentTableViewCell.swift */,
+				4344F6541DB2057100D5ED54 /* NormalLinkViewController.swift */,
 			);
 			name = PublicViewController;
 			sourceTree = "<group>";
@@ -766,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				EA33BCF51DAC782600C0BE04 /* LoginManager.swift */,
+				4344F6561DB219AE00D5ED54 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -984,6 +993,7 @@
 				EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */,
 				EA33BE221DAF1B1A00C0BE04 /* WorldListTableViewCell.swift in Sources */,
 				43B2C9611DA7C139004FA849 /* UIView+Toast.m in Sources */,
+				4344F6551DB2057100D5ED54 /* NormalLinkViewController.swift in Sources */,
 				EA33BBC51DA8B88200C0BE04 /* MainTabbarViewController.swift in Sources */,
 				43B2C9561DA7C124004FA849 /* MJRefreshNormalHeader.m in Sources */,
 				EA33BBA21DA8819800C0BE04 /* Error.swift in Sources */,
@@ -1002,6 +1012,7 @@
 				EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */,
 				43B2C9831DA7C2AB004FA849 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */,
+				4344F6531DB1F7EC00D5ED54 /* MeetingDetailViewController.swift in Sources */,
 				43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */,
 				EA33BBC31DA8B1ED00C0BE04 /* TourViewController.swift in Sources */,
 				4344F63E1DB1C33800D5ED54 /* ALMoviePlayerController.m in Sources */,
@@ -1034,6 +1045,7 @@
 				43B2C9571DA7C124004FA849 /* MJRefreshStateHeader.m in Sources */,
 				EA33BBA61DA8890900C0BE04 /* DefaultServiceAPI.swift in Sources */,
 				43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */,
+				4344F6571DB219AE00D5ED54 /* LoginViewController.swift in Sources */,
 				43B2C9541DA7C124004FA849 /* MJRefreshBackStateFooter.m in Sources */,
 				43B2C9841DA7C2AB004FA849 /* IQTextView.swift in Sources */,
 				EA33BB971DA880F300C0BE04 /* AlamofireRACRequestJSON.swift in Sources */,

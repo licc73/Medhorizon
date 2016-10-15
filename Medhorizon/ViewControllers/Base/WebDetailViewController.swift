@@ -133,9 +133,14 @@ class WebDetailViewController: UIViewController {
             return false
         }
         else if let js = requestString where js == "http://app.medhorizon.com.cn/NewsDetail/call-medicine_app-method://share" {
+            self.showShareView()
             return false
         }
         return true
+    }
+
+    func showShareView() {
+
     }
 }
 

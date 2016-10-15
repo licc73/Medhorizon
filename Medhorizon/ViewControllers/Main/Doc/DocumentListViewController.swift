@@ -13,6 +13,8 @@ class DocumentListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var docList: DocumentListViewModel?
+    var forMeeting = false
+    var mid: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +23,16 @@ class DocumentListViewController: UIViewController {
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
         //self.tableView.tableHeaderView = self.coverFlow
-        
-        self.docList = DocumentListViewModel()
+
+        if forMeeting && mid != "" {
+            self.docList = DocumentListViewModel()
+            self.docList?.forMeeting = true
+            self.docList?.mid = self.mid
+        }
+        else {
+            self.docList = DocumentListViewModel()
+        }
+
         
         self.setupBind()
         
@@ -163,6 +173,14 @@ extension DocumentListViewController: UITableViewDelegate, UITableViewDataSource
         }
         
     }
+}
+
+extension DocumentListViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
 }
 
 extension DocumentListViewController: DocumentListTableViewCellDelegate {

@@ -26,6 +26,7 @@ class CoverFlowView: UIView {
     weak var delegate: CoverFlowViewDelegate?
 
     var autoScrollTimer: NSTimer?
+    var enableAutoScrollTimer: Bool = true
     
     override init(frame: CGRect) {
         self.flowLayout = UICollectionViewFlowLayout()
@@ -63,6 +64,14 @@ class CoverFlowView: UIView {
     }
 
     func setAutoscrollTimer() {
+        guard enableAutoScrollTimer else {
+            if let _ = self.autoScrollTimer {
+                self.autoScrollTimer?.invalidate()
+                self.autoScrollTimer = nil
+            }
+            return
+        }
+
         if let _ = self.autoScrollTimer {
             self.autoScrollTimer?.invalidate()
             self.autoScrollTimer = nil
@@ -74,6 +83,15 @@ class CoverFlowView: UIView {
         self.iCurrentPage = (self.iCurrentPage + 1) % self.iTotalCount
         self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.iCurrentPage, inSection: 0), atScrollPosition: .Left, animated: true)
         self.setAutoscrollTimer()
+    }
+
+    func scrollToPage(page: Int) {
+        guard page >= 0 && page < iTotalCount else {
+            return
+        }
+
+        self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: page, inSection: 0), atScrollPosition: .Left, animated: true)
+
     }
 }
 

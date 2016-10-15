@@ -132,14 +132,18 @@ class MeetingListViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let id = segue.identifier where id == StoryboardSegue.Main.ShowMeetingDetail.rawValue {
+        if let id = segue.identifier where id == StoryboardSegue.Main.ShowMeetingBranner.rawValue {
             if let detail = segue.destinationViewController as? WebDetailViewController {
-                if let data = sender as? NewsViewModel {
-                    detail.newsData = data
-                }
-                else if let data = sender as? BrannerViewModel {
+                if let data = sender as? BrannerViewModel {
                     detail.brannerData = data
                     detail.title = data.title
+                }
+            }
+        }
+        else if let id = segue.identifier where id == StoryboardSegue.Main.ShowMeetingDetail.rawValue {
+            if let detail = segue.destinationViewController as? MeetingDetailViewController {
+                if let data = sender as? MeetingViewModel {
+                    detail.meeting = data
                 }
             }
         }
@@ -180,18 +184,18 @@ extension MeetingListViewController: UITableViewDelegate, UITableViewDataSource 
                 return
             }
 
-            let news = curData.meetingList[indexPath.row]
+            let meeting = curData.meetingList[indexPath.row]
 
             if LoginManager.shareInstance.isLogin {
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: news)
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingDetail.rawValue, sender: meeting)
             }
             else {
-                guard let isNeedLogin = news.isNeedLogin where !isNeedLogin else {
+                guard let isNeedLogin = meeting.isNeedLogin where !isNeedLogin else {
                     LoginManager.loginOrEnterUserInfo()
                     return
                 }
 
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: news)
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingDetail.rawValue, sender: meeting)
             }
         }
     }
@@ -205,7 +209,7 @@ extension MeetingListViewController: CoverFlowViewDelegate {
                 return
             }
 
-            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingDetail.rawValue, sender: curData.brannerList[index])
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingBranner.rawValue, sender: curData.brannerList[index])
         }
 
     }

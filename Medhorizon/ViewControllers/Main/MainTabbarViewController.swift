@@ -16,6 +16,7 @@ class MainTabbarViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        LoginManager.shareInstance.mainCtrl = self
         
         self.setDisplay()
         
@@ -103,7 +104,7 @@ extension MainTabbarViewController {
 extension MainTabbarViewController {
 
     func enterUserInfo(sender: AnyObject) {
-        
+        LoginManager.loginOrEnterUserInfo()
     }
     
     func setup(sender: AnyObject) {

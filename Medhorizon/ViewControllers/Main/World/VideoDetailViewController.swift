@@ -24,12 +24,18 @@ class VideoDetailViewController: UIViewController {
     var videoId: String?
     var playUrls: [String: AnyObject] = [:]
 
+    var coverFlow: CoverFlowView?
+
+    var vAction: ActionView?
+    var isFav: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
         self.setPlayer()
+        self.setCoverFlowAndToolBar()
         self.requestVideoInfo()
     }
 
@@ -70,6 +76,23 @@ class VideoDetailViewController: UIViewController {
 
     }
 
+    func setCoverFlowAndToolBar() {
+        self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenHeight - defaultFrame.size.height - 64 - 44))
+        self.coverFlow?.delegate = self
+        self.coverFlow?.enableAutoScrollTimer = false
+        self.coverFlow?.pageCtrl.hidden = true
+        if let cover = self.coverFlow {
+            self.vCover.addSubview(cover)
+            self.vCover.sendSubviewToBack(cover)
+        }
+
+        self.vTool.backgroundColor = UIColor.colorWithHex(0xf5f6f7)
+        self.vAction = ActionView(frame: CGRectZero)
+        self.vAction?.config([.Comment, .Fav, .Download])
+        self.vAction?.delegate = self
+        self.vTool.addSubview(self.vAction!)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,6 +116,7 @@ class VideoDetailViewController: UIViewController {
                         if msg.isSuccess {
                             self.videoDetail = VideoDetailInfoViewModel.mapToModel(data)
                             self.videoId = self.videoDetail?.videoId
+
                             self.reloadData()
                         }
                         else {
@@ -117,6 +141,9 @@ class VideoDetailViewController: UIViewController {
         else {
             self.playNetworkUrl()
         }
+        self.vAction?.setFav(self.isFav)
+        self.coverFlow?.reloadData()
+
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -131,21 +158,86 @@ class VideoDetailViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let id = segue.identifier where id == StoryboardSegue.Main.ShowCommentList.rawValue {
+            if let destination = segue.destinationViewController as? CommentViewController {
+                destination.title = "专家问答"
+                destination.id = self.videoDocument?.id
+            }
+        }
     }
-    */
+
 
     deinit {
         self.playerCtrl?.delegate = nil
         self.playerCtrl?.view.removeFromSuperview()
         self.playerCtrl = nil
     }
+}
+
+extension VideoDetailViewController: ActionViewDelegate {
+
+    func actionViewShouldBeginAddComment(view view: ActionView) -> Bool {
+        if LoginManager.shareInstance.isLogin {
+            return true
+        }
+        else {
+            LoginManager.loginOrEnterUserInfo()
+            return false
+        }
+    }
+
+    func actionView(view view: ActionView, willSend comment: String) -> Bool {
+        if LoginManager.shareInstance.isLogin {
+            guard let infoId = self.videoDocument?.id,
+                userId = LoginManager.shareInstance.userId else {
+                    LoginManager.loginOrEnterUserInfo()
+                    return false
+            }
+
+            performAddComment(userId, infoId: infoId, comment: comment)
+                .takeUntil(self.rac_WillDeallocSignalProducer())
+                .observeOn(UIScheduler())
+                .on(failed: {(error) in
+                    AppInfo.showDefaultNetworkErrorToast()
+                    },
+                    next: { (returnMsg) in
+                        if let msg = returnMsg {
+                            if msg.isSuccess {
+                                AppInfo.showToast("你已成功提问")
+                            }
+                            else {
+                                AppInfo.showToast(msg.errorMsg)
+                            }
+                        }
+                        else {
+                            AppInfo.showToast("未知错误")
+                        }
+                })
+                .start()
+            return true
+        }
+        else {
+            LoginManager.loginOrEnterUserInfo()
+            return false
+        }
+    }
+
+    func actionView(view view: ActionView, didSelectAction type: ActionType) {
+        switch type {
+        case .Comment:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowCommentList.rawValue, sender: nil)
+        default:
+            break
+        }
+    }
+    
 }
 
 extension VideoDetailViewController: ALMoviePlayerControllerDelegate {
@@ -210,6 +302,22 @@ extension VideoDetailViewController: ALMoviePlayerControllerDelegate {
 
 }
 
+extension VideoDetailViewController: CoverFlowViewDelegate {
+
+    func coverFlowView(view: CoverFlowView, didSelect index: Int) {
+
+    }
+
+    func numberOfCoversInCoverFlowView(view: CoverFlowView) -> Int {
+        return self.videoDetail?.picList.count ?? 0
+    }
+
+    func coverImage(view: CoverFlowView, atIndex index: Int) -> String? {
+        return self.videoDetail?.picList[index]
+    }
+    
+}
+
 extension VideoDetailViewController {
 
     @IBAction func back(sender: AnyObject) {
@@ -217,11 +325,29 @@ extension VideoDetailViewController {
     }
 
     @IBAction func preCover(sender: AnyObject) {
+        guard let cover = self.coverFlow else {
+            return
+        }
 
+        if cover.iCurrentPage == 0 {
+            AppInfo.showToast("当前已经是第一张")
+        }
+        else {
+            cover.scrollToPage(cover.iCurrentPage - 1)
+        }
     }
 
     @IBAction func nextCover(sender: AnyObject) {
+        guard let cover = self.coverFlow else {
+            return
+        }
 
+        if cover.iCurrentPage >= cover.iTotalCount - 1 {
+            AppInfo.showToast("当前已经是最后一张")
+        }
+        else {
+            cover.scrollToPage(cover.iCurrentPage + 1)
+        }
     }
 
 }
