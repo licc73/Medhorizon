@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class WebDetailViewController: UIViewController {
     
@@ -156,11 +157,49 @@ extension WebDetailViewController {
 extension WebDetailViewController: ActionViewDelegate {
 
     func actionViewShouldBeginAddComment(view view: ActionView) -> Bool {
-        return true
+        if LoginManager.shareInstance.isLogin {
+            return true
+        }
+        else {
+            LoginManager.loginOrEnterUserInfo()
+            return false
+        }
     }
 
-    func actionView(view view: ActionView, willSendComment: String) -> Bool {
-        return true
+    func actionView(view view: ActionView, willSend comment: String) -> Bool {
+        if LoginManager.shareInstance.isLogin {
+            guard let infoId = self.id,
+                userId = LoginManager.shareInstance.userId else {
+                    LoginManager.loginOrEnterUserInfo()
+                    return false
+            }
+
+            performAddComment(userId, infoId: infoId, comment: comment)
+                .takeUntil(self.rac_WillDeallocSignalProducer())
+                .observeOn(UIScheduler())
+                .on(failed: {(error) in
+                    AppInfo.showDefaultNetworkErrorToast()
+                    },
+                    next: { (returnMsg) in
+                        if let msg = returnMsg {
+                            if msg.isSuccess {
+
+                            }
+                            else {
+                                AppInfo.showToast(msg.errorMsg)
+                            }
+                        }
+                        else {
+                            AppInfo.showToast("未知错误")
+                        }
+                })
+                .start()
+            return true
+        }
+        else {
+            LoginManager.loginOrEnterUserInfo()
+            return false
+        }
     }
 
     func actionView(view view: ActionView, didSelectAction type: ActionType) {

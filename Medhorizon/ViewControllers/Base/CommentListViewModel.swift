@@ -90,5 +90,12 @@ extension CommentListViewModel {
     func performLoadMoreServerFetch() -> SignalProducer<ReturnMsg?, ServiceError> {
         return self.performSendRequest(self.curPage + 1)
     }
-    
+}
+
+func performAddComment(userId: String, infoId: String, comment: String) -> SignalProducer<ReturnMsg?, ServiceError> {
+    return DefaultServiceRequests.rac_requesForPubComment(infoId, userId: userId, commentContent: comment)
+    .flatMap(.Latest, transform: { (object) -> SignalProducer<ReturnMsg?, ServiceError> in
+        let returnMsg = ReturnMsg.mapToModel(object)
+        return SignalProducer(value: returnMsg)
+    })
 }

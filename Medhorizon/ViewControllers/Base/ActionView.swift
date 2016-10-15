@@ -18,7 +18,7 @@ enum ActionType {
 
 protocol ActionViewDelegate: class {
     func actionViewShouldBeginAddComment(view view: ActionView) -> Bool
-    func actionView(view view: ActionView, willSendComment: String) -> Bool
+    func actionView(view view: ActionView, willSend comment: String) -> Bool
     func actionView(view view: ActionView, didSelectAction type: ActionType)
 }
 
@@ -143,7 +143,7 @@ extension ActionView: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let commentText = textField.text {
             if !commentText.isEmpty {
-                if let result = self.delegate?.actionView(view: self, willSendComment: commentText) {
+                if let result = self.delegate?.actionView(view: self, willSend: commentText) {
                     if result {
                         textField.text = nil
                     }

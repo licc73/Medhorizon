@@ -11,5 +11,6 @@
 
 #import "UIView+Toast.h"
 #import "MJRefresh.h"
+#import "ALMoviePlayerController.h"
 
 #endif /* Medhorizon_Bridging_h */
