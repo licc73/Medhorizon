@@ -10,6 +10,9 @@ import Foundation
 
 enum DefaultServiceAPI: API {
     case Login(String, String, String)
+    case SMSCode(String, String, Int)
+    case Register(String, String, String, String)
+    case ForgotPwd(String, String, String, String)
 
 
 
@@ -44,7 +47,12 @@ enum DefaultServiceAPI: API {
         switch self{
         case let .Login(appKey, phone, pwd):
             return "/login?AppSecret=\(appKey)&Phone=\(phone)&Pwd=\(pwd)"
-
+        case let .SMSCode(appKey, phone, type):
+            return "/sendCode?AppSecret=\(appKey)&Phone=\(phone)&CodeType=\(type)"
+        case let .Register(appKey, phone, smsCode, pwd):
+            return "/registerInfo?AppSecret=\(appKey)&Phone=\(phone)&VCode=\(smsCode)&Pwd=\(pwd)"
+        case let .ForgotPwd(appKey, phone, smsCode, pwd):
+            return "/forgotPwd?AppSecret=\(appKey)&Phone=\(phone)&VCode=\(smsCode)&NewPwd=\(pwd)"
 
 
 

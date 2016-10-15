@@ -34,6 +34,8 @@
 		4344F6571DB219AE00D5ED54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6561DB219AE00D5ED54 /* LoginViewController.swift */; };
 		4344F6741DB2369D00D5ED54 /* SomeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6731DB2369D00D5ED54 /* SomeExtension.swift */; };
 		4344F6761DB26E1300D5ED54 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6751DB26E1300D5ED54 /* SignupViewController.swift */; };
+		4344F6781DB28C8000D5ED54 /* SMSCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6771DB28C8000D5ED54 /* SMSCodeManager.swift */; };
+		4344F67A1DB29D4100D5ED54 /* ForgotPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6791DB29D4100D5ED54 /* ForgotPwdViewController.swift */; };
 		43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A761DAA7FD100BD68C5 /* AppInfo.swift */; };
 		43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */; };
 		43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */; };
@@ -210,6 +212,8 @@
 		4344F6561DB219AE00D5ED54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4344F6731DB2369D00D5ED54 /* SomeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SomeExtension.swift; sourceTree = "<group>"; };
 		4344F6751DB26E1300D5ED54 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		4344F6771DB28C8000D5ED54 /* SMSCodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSCodeManager.swift; sourceTree = "<group>"; };
+		4344F6791DB29D4100D5ED54 /* ForgotPwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPwdViewController.swift; sourceTree = "<group>"; };
 		43714A761DAA7FD100BD68C5 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -659,6 +663,7 @@
 				EA33BBBD1DA8B07400C0BE04 /* Storyboard.swift */,
 				43714A761DAA7FD100BD68C5 /* AppInfo.swift */,
 				EA33BD4B1DADCFC900C0BE04 /* DownloadManager.swift */,
+				4344F6771DB28C8000D5ED54 /* SMSCodeManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				EA33BCF51DAC782600C0BE04 /* LoginManager.swift */,
 				4344F6561DB219AE00D5ED54 /* LoginViewController.swift */,
 				4344F6751DB26E1300D5ED54 /* SignupViewController.swift */,
+				4344F6791DB29D4100D5ED54 /* ForgotPwdViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1026,12 +1032,14 @@
 				4344F63E1DB1C33800D5ED54 /* ALMoviePlayerController.m in Sources */,
 				43B2C97D1DA7C2AB004FA849 /* IQUIView+Hierarchy.swift in Sources */,
 				43714A951DAFE93900BD68C5 /* WorldDetailTableViewCell.swift in Sources */,
+				4344F67A1DB29D4100D5ED54 /* ForgotPwdViewController.swift in Sources */,
 				EA33BBA81DA8892600C0BE04 /* ServiceRequest.swift in Sources */,
 				43B2C9551DA7C124004FA849 /* MJRefreshGifHeader.m in Sources */,
 				43714A891DAD382D00BD68C5 /* MeetingListViewModel.swift in Sources */,
 				EA22F00A1DAF4A2E00FFBEE6 /* WorldListViewModel.swift in Sources */,
 				43B2C9881DA7C2AB004FA849 /* IQToolbar.swift in Sources */,
 				4344F63F1DB1C33800D5ED54 /* ALMoviePlayerControls.m in Sources */,
+				4344F6781DB28C8000D5ED54 /* SMSCodeManager.swift in Sources */,
 				43B2C9861DA7C2AB004FA849 /* IQPreviousNextView.swift in Sources */,
 				43B2C97F1DA7C2AB004FA849 /* IQUIWindow+Hierarchy.swift in Sources */,
 				43B2C9891DA7C2AB004FA849 /* IQUIView+IQKeyboardToolbar.swift in Sources */,

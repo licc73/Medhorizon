@@ -106,4 +106,18 @@ extension DefaultServiceRequests {
             <~ justCast
     }
 
+    static func rac_requesForSendSMSCode(phone: String, type: Int) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.SMSCode(defaultAppKey, phone, type))
+            <~ justCast
+    }
+
+    static func rac_requesForRegister(phone: String, smsCode: String, pwd: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.Register(defaultAppKey, phone, smsCode, pwd))
+            <~ justCast
+    }
+
+    static func rac_requesForForgotPwd(phone: String, smsCode: String, pwd: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ForgotPwd(defaultAppKey, phone, smsCode, pwd))
+            <~ justCast
+    }
 }

@@ -9,6 +9,19 @@
 import Foundation
 import ReactiveCocoa
 
+//分享QQ好友，分享QQ空间
+//APP ID:1105664608
+//APP KEY:Nv1twVt5kWjqsvNc
+//
+//第三方微信登录   分享微信好友  微信朋友圈
+//AppID：wxd6cfa4b7e0104f54
+//AppSecret：a6289763642953ca832be61e0abfcf0f
+//
+//
+let privatePolicyUrl = "http://app.medhorizon.com.cn/Info/privacy.aspx" //隐私声明：
+//积分明细：http://app.medhorizon.com.cn/Info/scoreRule.aspx
+//意见反馈：http://app.medhorizon.com.cn/Info/subject.aspx
+
 let departmentKey = "GlobalData.DepartmentIdKey"
 
 class GlobalData {

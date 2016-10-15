@@ -101,5 +101,26 @@ class LoginManager {
                 return SignalProducer(value: returnMsg)
             })
     }
+
+    static func performSendSMSCode(phone: String, type: SMSCodeType) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForSendSMSCode(phone, type: type.rawValue)
+            .map({ (object) -> ReturnMsg? in
+                return ReturnMsg.mapToModel(object)
+            })
+    }
+
+    static func performRegister(phone: String, smsCode: String, pwd: String) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForRegister(phone, smsCode: smsCode, pwd: pwd)
+            .map({ (object) -> ReturnMsg? in
+                return ReturnMsg.mapToModel(object)
+            })
+    }
+
+    static func performForgotPwd(phone: String, smsCode: String, pwd: String) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForForgotPwd(phone, smsCode: smsCode, pwd: pwd)
+            .map({ (object) -> ReturnMsg? in
+                return ReturnMsg.mapToModel(object)
+            })
+    }
     
 }

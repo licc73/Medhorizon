@@ -85,5 +85,6 @@ extension UITextField {
         self.layer.borderWidth = 0.5
         self.backgroundColor = UIColor.colorWithHex(0xfbfbfb, alpha: 0.7)
         self.leftViewMode = .Always
+        self.clearButtonMode = .WhileEditing
     }
 }

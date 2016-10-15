@@ -66,7 +66,10 @@ class LoginViewController: UIViewController {
                 }
         }
 
-        combineLatest(phoneSP, pwdSP).on { (isValidPhone, isValidPwd) in
+        combineLatest(phoneSP, pwdSP)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { (isValidPhone, isValidPwd) in
             if isValidPhone && isValidPwd {
                 self.btnLogin.enabled = true
             }
@@ -152,6 +155,7 @@ extension LoginViewController {
 
     @IBAction func forgotPwd(sender: AnyObject) {
         self.view.endEditing(true)
+        self.performSegueWithIdentifier(StoryboardSegue.Main.ShowForgotPwd.rawValue, sender: nil)
     }
 
     @IBAction func loginWithWeixin(sender: AnyObject) {
