@@ -14,4 +14,8 @@ class DownloadManager {
     func isSuccessDownloaded(source: String) -> Bool {
         return false
     }
+
+    func isVideoDownloaded(videoId: String) -> Bool {
+        return false
+    }
 }

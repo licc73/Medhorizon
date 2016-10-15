@@ -158,7 +158,7 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
         [_fullscreenButton setTitle:@"Done" forState:UIControlStateNormal];
         [_fullscreenButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
         _fullscreenButton.titleLabel.shadowOffset = CGSizeMake(1.f, 1.f);
-        [_fullscreenButton.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
+        [_fullscreenButton.titleLabel setFont:[UIFont systemFontOfSize:13.f]];
         _fullscreenButton.delegate = self;
         [_fullscreenButton addTarget:self action:@selector(fullscreenPressed:) forControlEvents:UIControlEventTouchUpInside];
         [_topBar addSubview:_fullscreenButton];
@@ -649,7 +649,7 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     CGFloat airplayHeight = 22.f;
     CGFloat playWidth = 18.f;
     CGFloat playHeight = 22.f;
-    CGFloat labelWidth = 30.f;
+    CGFloat labelWidth = 44.f;
     
     if (self.style == ALMoviePlayerControlsStyleFullscreen || (self.style == ALMoviePlayerControlsStyleDefault && self.moviePlayer.isFullscreen)) {
         //top bar

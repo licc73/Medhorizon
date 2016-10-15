@@ -143,7 +143,7 @@ static const NSTimeInterval fullscreenAnimationDuration = 0.3;
         } completion:^(BOOL finished) {
             self.view.alpha = 0.f;
             [self.movieBackgroundView addSubview:self.view];
-            UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+            UIInterfaceOrientation currentOrientation = UIInterfaceOrientationLandscapeLeft;//hard code [[UIApplication sharedApplication] statusBarOrientation];
             [self rotateMoviePlayerForOrientation:currentOrientation animated:NO completion:^{
                 [UIView animateWithDuration:animated ? fullscreenAnimationDuration : 0.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
                     self.view.alpha = 1.f;

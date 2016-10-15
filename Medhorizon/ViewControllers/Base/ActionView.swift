@@ -54,7 +54,7 @@ class ActionView: UIView {
         
         self.setButton(self.btnComment, image: "comment")
         self.setButton(self.btnFav, image: "star")
-        self.setButton(self.btnDownload, image: "comment")
+        self.setButton(self.btnDownload, image: "icon_download")
         self.setButton(self.btnShare, image: "share")
         
         let imgvHLine = UIImageView(frame: CGRectMake(0, 0, AppInfo.screenWidth, 0.5))
@@ -75,7 +75,7 @@ class ActionView: UIView {
     
     func setFav(isFav: Bool) {
         if isFav {
-            self.btnFav.setImage(UIImage(named: ""), forState: .Normal)
+            self.btnFav.setImage(UIImage(named: "fav_sel"), forState: .Normal)
         }
         else {
             self.btnFav.setImage(UIImage(named: "star"), forState: .Normal)

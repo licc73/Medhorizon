@@ -163,10 +163,15 @@ class WorldDetailViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let id = segue.identifier where id == StoryboardSegue.Main.ShowWorldDetailDetail.rawValue {
-            if let detail = segue.destinationViewController as? WebDetailViewController, doc = sender as? CoursewareInfoViewModel {
-                detail.document = doc
-                detail.title = "专业课件"
-                detail.showActionToolBar = true
+            if let destination = segue.destinationViewController as? WebDetailViewController, doc = sender as? CoursewareInfoViewModel {
+                destination.document = doc
+                destination.title = "专业课件"
+                destination.showActionToolBar = true
+            }
+        }
+        else if let id = segue.identifier where id == StoryboardSegue.Main.ShowVideoDetail.rawValue {
+            if let destination = segue.destinationViewController as? VideoDetailViewController, doc = sender as? CoursewareInfoViewModel {
+                destination.videoDocument = doc
             }
         }
     }
@@ -209,7 +214,7 @@ extension WorldDetailViewController: UITableViewDelegate, UITableViewDataSource 
 
             if LoginManager.shareInstance.isLogin {
                 if self.type == .Video {
-
+                    self.performSegueWithIdentifier(StoryboardSegue.Main.ShowVideoDetail.rawValue, sender: document)
                 }
                 else {
                     self.performSegueWithIdentifier(StoryboardSegue.Main.ShowWorldDetailDetail.rawValue, sender: document)
@@ -223,7 +228,7 @@ extension WorldDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 }
 
                 if self.type == .Video {
-
+                    self.performSegueWithIdentifier(StoryboardSegue.Main.ShowVideoDetail.rawValue, sender: document)
                 }
                 else {
                     self.performSegueWithIdentifier(StoryboardSegue.Main.ShowWorldDetailDetail.rawValue, sender: document)

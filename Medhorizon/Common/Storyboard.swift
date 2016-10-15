@@ -13,8 +13,11 @@ struct StoryboardSegue {
         case Main = "Main"
         case ShowNewsDetail = "ShowNewsDetail"
         case ShowCommentList = "ShowCommentList"
+
         case ShowWorldDetail = "ShowWorldDetail"
+        case ShowVideoDetail = "ShowVideoDetail"
         case ShowWorldDetailDetail = "ShowWorldDetailDetail"
+
         case ShowMeetingDetail = "ShowMeetingDetail"
         
         case ShowDocumentInfo = "ShowDocumentInfo"
