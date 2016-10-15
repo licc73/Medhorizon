@@ -67,17 +67,23 @@ public protocol API: URLStringConvertible{
 }
 
 public extension API {
-    func url() -> String{
+    
+    func url() -> String {
         let sf: ServiceConfiguration
         if let f = Self.serviceConfigurationFetcher{
             sf = f()
         }else{
             sf = Self.defaultServiceConfiguration
         }
-        return sf.url() + APIPath()
+
+        let allowedCharacters = NSCharacterSet.URLQueryAllowedCharacterSet()
+        let apiPath = APIPath().stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters)
+
+        return sf.url() + (apiPath ?? APIPath())
     }
     
     var URLString: String {
         return url()
     }
+
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class MeetingDetailViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
@@ -23,6 +24,7 @@ class MeetingDetailViewController: UIViewController {
         self.btnDocment.makeImageAndTitleUpDown()
         
         self.loadWebRequest()
+        self.setupBind()
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +67,24 @@ class MeetingDetailViewController: UIViewController {
 
     }
     
+    func setupBind() {
+        NSNotificationCenter.defaultCenter()
+            .rac_notifications(loginStatusChangeNotification, object: nil)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (_) in
+                if LoginManager.shareInstance.isLogin {
+                    guard let userId = LoginManager.shareInstance.userId else {
+                        self.loadWebRequest()
+                        return
+                    }
+                    self.notifyWebViewUserLogin(userId)
+                }
+                else {
+                    self.loadWebRequest()
+                }
+            }.start()
+    }
 
     // MARK: - Navigation
 

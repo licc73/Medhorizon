@@ -10,7 +10,7 @@ import UIKit
 
 class WorldListTableViewCell: UITableViewCell {
 
-    let placeHolderImage = UIImage(named: "")
+    let placeHolderImage = UIImage(named: "default_image_small")
     
     @IBOutlet weak var imgvThumbnail: UIImageView!
     @IBOutlet weak var labTitle: UILabel!

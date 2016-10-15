@@ -10,7 +10,7 @@ import UIKit
 import ReactiveCocoa
 
 class WorldDetailViewController: UIViewController {
-    let placeHolderImage = UIImage(named: "")
+    let placeHolderImage = UIImage(named: "default_image_big")
     
     @IBOutlet weak var imgvThumbnail: UIImageView!
     @IBOutlet weak var labJob: UILabel!

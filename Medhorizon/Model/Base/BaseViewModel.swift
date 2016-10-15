@@ -480,22 +480,30 @@ extension CommentViewModel: ViewModel {
     }
 
 }
-//"ID":"240",
-//"Title":"儿童腹型过敏性紫癜研究进展",
-//"KeyWordInfo":"过敏性紫癜是儿童时期最常见的一种以小血管炎为主要病变的血管炎性疾病。",
-//"PicUrl":"http://app.medhorizon.com.cn/attached/image/20160929/20160929105517_8357.jpg",
-//"NeedScore":"0",
-//"CreateDate":"2016/9/29 10:55:19",
-//"IsNeedLogin":"0",
-//"SourceUrl":"http://app.medhorizon.com.cn/upload/儿童腹型过敏性紫癜研究进展.pdf",
-//"LinkUrl":"http://app.medhorizon.com.cn/NewsDetail/News_tophykj_Detail.aspx?id=240"
 
-//"KID":"9",
-//"Title":"儿童此类读物",
-//"KeyWordInfo":"李元芳",
-//"PicUrl":"http://app.medhorizon.com.cn/attached/image/20160504/20160504161813_0740.jpg",
-//"NeedScore":"40",
-//"CreateDate":"2016/5/5 18:15:15",
-//"LinkUrl":"http://app.medhorizon.com.cn/NewsDetail/News_tophykj_Detail.aspx?id=9",
-//"SourceUrl":"http://app.medhorizon.com.cn//upload/8.pdf",
-//"IsNeedLogin":"0"
+final class LoginBriefInfo {
+    let userId: String
+    var picUrl: String?
+    var nickName: String?
+    var phone: String
+
+    init(userId: String, phone: String, nickName: String?, picUrl: String?) {
+        self.userId = userId
+        self.picUrl = picUrl
+        self.nickName = nickName
+        self.phone = phone
+    }
+
+}
+
+extension LoginBriefInfo {
+
+    static func mapToModel(dictionary: [String: AnyObject], phone: String) -> LoginBriefInfo? {
+        let stringMap = mapToString(dictionary)
+        if let userId = stringMap("UserId") {
+            return LoginBriefInfo (userId: userId, phone: phone, nickName: stringMap("NickName"), picUrl: stringMap("HeadPic"))
+        }
+        return nil
+    }
+    
+}

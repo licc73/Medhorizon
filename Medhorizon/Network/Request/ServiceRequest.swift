@@ -98,3 +98,12 @@ struct DefaultServiceRequests {
     }
     
 }
+
+extension DefaultServiceRequests {
+
+    static func rac_requesForLogin(phone: String, pwd: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.Login(defaultAppKey, phone, pwd))
+            <~ justCast
+    }
+
+}

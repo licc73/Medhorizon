@@ -9,7 +9,7 @@
 import UIKit
 
 class CommentTableViewCell: UITableViewCell {
-    let placeHolderImage = UIImage(named: "")
+    let placeHolderImage = UIImage(named: "default_image_squar")
 
     @IBOutlet weak var imgvThumbnail: UIImageView!
     @IBOutlet weak var labName: UILabel!

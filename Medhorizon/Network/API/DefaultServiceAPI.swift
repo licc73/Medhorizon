@@ -9,7 +9,18 @@
 import Foundation
 
 enum DefaultServiceAPI: API {
-    case Login
+    case Login(String, String, String)
+
+
+
+
+
+
+
+
+
+
+
     case NewsList(String, Int, Int, Int)
     
     case WorldInfoList(String, Int, Int, Int, Int)
@@ -31,8 +42,14 @@ enum DefaultServiceAPI: API {
     
     func APIPath() -> String {
         switch self{
-        case .Login:
-            return "/v1/health"
+        case let .Login(appKey, phone, pwd):
+            return "/login?AppSecret=\(appKey)&Phone=\(phone)&Pwd=\(pwd)"
+
+
+
+
+
+            
         
         // server start with 1, page num & page size 意义定义反了
         case let .NewsList(appKey, departmentId, pageNum, pageSize):

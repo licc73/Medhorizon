@@ -76,3 +76,14 @@ extension UIColor {
     }
     
 }
+
+extension UITextField {
+    func setupDefaultDisplay() {
+        self.layer.cornerRadius = 12
+        self.layer.masksToBounds = true
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderWidth = 0.5
+        self.backgroundColor = UIColor.colorWithHex(0xfbfbfb, alpha: 0.7)
+        self.leftViewMode = .Always
+    }
+}

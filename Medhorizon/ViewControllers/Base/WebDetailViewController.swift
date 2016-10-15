@@ -37,9 +37,11 @@ class WebDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         self.extractData()
         self.setToolBar()
+
+        self.setupBind()
     }
 
     func setToolBar() {
@@ -97,6 +99,25 @@ class WebDetailViewController: UIViewController {
         if let link = self.sLink, linkUrl = NSURL(string: link) {
             self.webView.loadRequest(NSURLRequest(URL: linkUrl))
         }
+    }
+
+    func setupBind() {
+        NSNotificationCenter.defaultCenter()
+            .rac_notifications(loginStatusChangeNotification, object: nil)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (_) in
+                if LoginManager.shareInstance.isLogin {
+                    guard let userId = LoginManager.shareInstance.userId else {
+                        self.loadWebRequest()
+                        return
+                    }
+                    self.notifyWebViewUserLogin(userId)
+                }
+                else {
+                    self.loadWebRequest()
+                }
+        }.start()
     }
 
     override func didReceiveMemoryWarning() {

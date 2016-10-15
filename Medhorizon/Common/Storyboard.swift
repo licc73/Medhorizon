@@ -25,5 +25,7 @@ struct StoryboardSegue {
         case ShowMeetingDoc = "ShowMeetingDoc"
 
         case ShowNormalLink = "ShowNormalLink"
+
+        case ShowSignupView = "ShowSignupView"
     }
 }

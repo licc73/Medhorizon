@@ -12,7 +12,7 @@ import WebImage
 class CoverFlowCell: UICollectionViewCell {
     
     @IBOutlet weak var coverImage: UIImageView!
-    let placeHolderImage = UIImage(named: "")
+    let placeHolderImage = UIImage(named: "default_image_big")
     
     var image: String? {
         didSet {

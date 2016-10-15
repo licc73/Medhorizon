@@ -32,6 +32,8 @@
 		4344F6531DB1F7EC00D5ED54 /* MeetingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6521DB1F7EC00D5ED54 /* MeetingDetailViewController.swift */; };
 		4344F6551DB2057100D5ED54 /* NormalLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6541DB2057100D5ED54 /* NormalLinkViewController.swift */; };
 		4344F6571DB219AE00D5ED54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6561DB219AE00D5ED54 /* LoginViewController.swift */; };
+		4344F6741DB2369D00D5ED54 /* SomeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6731DB2369D00D5ED54 /* SomeExtension.swift */; };
+		4344F6761DB26E1300D5ED54 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6751DB26E1300D5ED54 /* SignupViewController.swift */; };
 		43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A761DAA7FD100BD68C5 /* AppInfo.swift */; };
 		43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */; };
 		43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */; };
@@ -206,6 +208,8 @@
 		4344F6521DB1F7EC00D5ED54 /* MeetingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingDetailViewController.swift; sourceTree = "<group>"; };
 		4344F6541DB2057100D5ED54 /* NormalLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalLinkViewController.swift; sourceTree = "<group>"; };
 		4344F6561DB219AE00D5ED54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4344F6731DB2369D00D5ED54 /* SomeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SomeExtension.swift; sourceTree = "<group>"; };
+		4344F6751DB26E1300D5ED54 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		43714A761DAA7FD100BD68C5 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -676,6 +680,7 @@
 				43D3907A1DA7A51000039C35 /* UIExtension */,
 				43D390721DA7A45400039C35 /* ReactiveCocoaBindings.swift */,
 				43D390731DA7A45400039C35 /* String+Base64.swift */,
+				4344F6731DB2369D00D5ED54 /* SomeExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -775,6 +780,7 @@
 			children = (
 				EA33BCF51DAC782600C0BE04 /* LoginManager.swift */,
 				4344F6561DB219AE00D5ED54 /* LoginViewController.swift */,
+				4344F6751DB26E1300D5ED54 /* SignupViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -971,6 +977,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43B2C94F1DA7C124004FA849 /* MJRefreshAutoGifFooter.m in Sources */,
+				4344F6741DB2369D00D5ED54 /* SomeExtension.swift in Sources */,
 				EA67D0D21D9E4D0B00468A92 /* ViewController.swift in Sources */,
 				4344F63C1DB1C33800D5ED54 /* ALAirplayView.m in Sources */,
 				43D390751DA7A45400039C35 /* String+Base64.swift in Sources */,
@@ -996,6 +1003,7 @@
 				4344F6551DB2057100D5ED54 /* NormalLinkViewController.swift in Sources */,
 				EA33BBC51DA8B88200C0BE04 /* MainTabbarViewController.swift in Sources */,
 				43B2C9561DA7C124004FA849 /* MJRefreshNormalHeader.m in Sources */,
+				4344F6761DB26E1300D5ED54 /* SignupViewController.swift in Sources */,
 				EA33BBA21DA8819800C0BE04 /* Error.swift in Sources */,
 				43B2C97E1DA7C2AB004FA849 /* IQUIViewController+Additions.swift in Sources */,
 				EA33BCEC1DAB2A1E00C0BE04 /* CoverFlowCell.swift in Sources */,
@@ -1188,7 +1196,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Medhorizon/Vendor/bokecc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.changchun.Medhorizon;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1210,7 +1218,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Medhorizon/Vendor/bokecc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.changchun.Medhorizon;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
