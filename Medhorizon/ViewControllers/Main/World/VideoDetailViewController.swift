@@ -63,6 +63,7 @@ class VideoDetailViewController: UIViewController {
         player.controls = movieControls
         self.vPlayer.addSubview(player.view)
 
+        player.shouldAutoplay = false
 
 
         //        //THEN set contentURL
@@ -156,10 +157,14 @@ class VideoDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         if let player = self.playerCtrl {
-            player.cancelRequestPlayInfo()
-            player.currentPlaybackTime = player.duration
-            player.contentURL = nil
-            player.stop()
+            if player.isPreparedToPlay {
+                player.pause()
+            }
+
+//            player.cancelRequestPlayInfo()
+//            player.currentPlaybackTime = player.duration
+//            player.contentURL = nil
+//            player.stop()
         }
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -171,6 +176,31 @@ class VideoDetailViewController: UIViewController {
             .observeOn(UIScheduler())
             .on { [unowned self] (_) in
                 self.getFavStatus()
+            }.start()
+
+        NSNotificationCenter.defaultCenter()
+            .rac_notifications(MPMoviePlayerLoadStateDidChangeNotification, object: nil)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (notification) in
+                if let status = self.playerCtrl?.loadState {
+                    if status.contains(MPMovieLoadState.Playable) || status.contains(MPMovieLoadState.PlaythroughOK) {
+                        if SetupValueManager.shareInstance.isPlayInWifiOnly {
+                            if let value = SetupValueManager.shareInstance.network?.isReachableOnEthernetOrWiFi where value {
+                                if !SetupValueManager.shareInstance.isPlayWhenOpen {
+                                    self.playerCtrl?.pause()
+                                }
+                            }
+                            else {
+                                self.playerCtrl?.pause()
+                            }
+                        }
+                        else if !SetupValueManager.shareInstance.isPlayWhenOpen {
+                            self.playerCtrl?.pause()
+                        }
+                    }
+                }
+
             }.start()
     }
 

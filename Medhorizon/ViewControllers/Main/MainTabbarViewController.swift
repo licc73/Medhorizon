@@ -108,7 +108,7 @@ extension MainTabbarViewController {
     }
     
     func setup(sender: AnyObject) {
-        
+        self.performSegueWithIdentifier(StoryboardSegue.Main.ShowSetupView.rawValue, sender: nil)
     }
     
     func medicalOnClicked(sender: AnyObject) {

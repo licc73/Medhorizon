@@ -970,7 +970,7 @@
         <!--设置-->
         <scene sceneID="CVM-f2-wTp">
             <objects>
-                <viewController title="设置" id="Nfl-pf-Y3C" customClass="SettingViewController" customModule="Medhorizon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="设置" automaticallyAdjustsScrollViewInsets="NO" id="Nfl-pf-Y3C" customClass="SettingViewController" customModule="Medhorizon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bk5-LV-InP"/>
                         <viewControllerLayoutGuide type="bottom" id="63X-sb-9Pb"/>
@@ -978,7 +978,57 @@
                     <view key="view" contentMode="scaleToFill" id="gZc-NR-cHh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="QbZ-6Z-zUs">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SetupWithSwichTableViewCell" id="0MM-oz-vED" customClass="SetupWithSwichTableViewCell" customModule="Medhorizon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0MM-oz-vED" id="tkt-pB-eeo">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="il8-QT-rf1">
+                                                    <rect key="frame" x="530" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchValueChange:" destination="0MM-oz-vED" eventType="valueChanged" id="qmh-Fo-Yoh"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="42" placeholderIntrinsicHeight="21" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3T-BA-1uT">
+                                                    <rect key="frame" x="15" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p3T-BA-1uT" firstAttribute="centerY" secondItem="tkt-pB-eeo" secondAttribute="centerY" id="5Pd-Ef-Lwo"/>
+                                                <constraint firstItem="il8-QT-rf1" firstAttribute="centerY" secondItem="tkt-pB-eeo" secondAttribute="centerY" id="Amh-jE-kH7"/>
+                                                <constraint firstItem="p3T-BA-1uT" firstAttribute="leading" secondItem="tkt-pB-eeo" secondAttribute="leadingMargin" constant="7" id="jUT-4s-BGG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="il8-QT-rf1" secondAttribute="trailing" constant="13" id="v2P-eH-eOW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labTitle" destination="p3T-BA-1uT" id="ezb-5h-I7M"/>
+                                            <outlet property="sw" destination="il8-QT-rf1" id="c81-EI-djP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nfl-pf-Y3C" id="DOB-in-6Sc"/>
+                                    <outlet property="delegate" destination="Nfl-pf-Y3C" id="W1A-D7-wUl"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="63X-sb-9Pb" firstAttribute="top" secondItem="QbZ-6Z-zUs" secondAttribute="bottom" id="35t-W0-9SU"/>
+                            <constraint firstItem="QbZ-6Z-zUs" firstAttribute="top" secondItem="bk5-LV-InP" secondAttribute="bottom" id="O0v-Ik-CvH"/>
+                            <constraint firstItem="QbZ-6Z-zUs" firstAttribute="leading" secondItem="gZc-NR-cHh" secondAttribute="leadingMargin" constant="-20" id="gpw-uN-SIX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QbZ-6Z-zUs" secondAttribute="trailing" constant="-20" id="x5H-fk-czM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="3Ku-tR-wze">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="3ea-Ad-qi5">
@@ -987,6 +1037,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="QbZ-6Z-zUs" id="gxJ-iv-Ew9"/>
+                        <segue destination="4k0-aE-0fJ" kind="show" identifier="ShowNormalLink" id="C51-tD-8R3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZ2-ie-bQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1989,7 +2043,6 @@
         <!--会议活动-->
         <scene sceneID="Xd9-7G-1oG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zdV-DE-qLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="会议活动" automaticallyAdjustsScrollViewInsets="NO" id="H4o-sJ-2BM" customClass="MeetingDetailViewController" customModule="Medhorizon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SX5-bp-d11"/>
@@ -2116,6 +2169,7 @@
                         <segue destination="tsm-6r-dZW" kind="show" identifier="ShowMeetingDoc" id="pfM-7p-FbR"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zdV-DE-qLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2062" y="1163"/>
         </scene>
@@ -2578,6 +2632,10 @@
         <scene sceneID="3Wr-nB-rHH">
             <objects>
                 <viewController id="ERx-9T-uqk" customClass="MyMessageViewController" customModule="Medhorizon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z4F-BR-pKu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tix-0f-1CE"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hHj-dx-Yav">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2611,6 +2669,10 @@
         <scene sceneID="ns4-Ej-DNr">
             <objects>
                 <viewController id="1Zn-t6-8LV" customClass="SysMessageViewController" customModule="Medhorizon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xh0-oR-Tmu"/>
+                        <viewControllerLayoutGuide type="bottom" id="eYO-aR-DqT"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tWX-Iv-Hh6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2773,8 +2835,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="ddb-vE-GlG"/>
         <segue reference="k1P-BH-YM9"/>
-        <segue reference="jKi-08-1Jr"/>
         <segue reference="7ty-pZ-JdW"/>
         <segue reference="yTT-mg-Vrj"/>
+        <segue reference="C51-tD-8R3"/>
     </inferredMetricsTieBreakers>
 </document>
