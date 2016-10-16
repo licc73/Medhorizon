@@ -33,3 +33,11 @@ class UserDetailInfoViewController: UIViewController {
     */
 
 }
+
+extension UserDetailInfoViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+}

@@ -9,23 +9,20 @@
 import Foundation
 
 enum DefaultServiceAPI: API {
+    /////login
     case Login(String, String, String)
     case SMSCode(String, String, Int)
     case Register(String, String, String, String)
     case ForgotPwd(String, String, String, String)
 
+    //userinfo
     case UserDetail(String, String)
 
 
 
 
 
-
-
-
-
-
-
+    //main page
     case NewsList(String, Int, Int, Int)
     
     case WorldInfoList(String, Int, Int, Int, Int)
@@ -41,6 +38,19 @@ enum DefaultServiceAPI: API {
     case PubComment(String, String, String, String)
     case ToComment(String, String, String, String)
     case PriseComment(String, String, String)
+
+
+    ////// message
+    case MyMessage(String, String, Int, Int)
+    case SysMessage(String, String, Int, Int)
+
+    case FavList(String, String, Int, Int, Int)
+    case FavOp(String, String, String, Int)
+    case GetFavStatus(String, String, String)
+
+    case PointList(String, String, Int, Int)
+
+
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
     static var defaultServiceConfiguration: ServiceConfiguration = ServiceConfiguration(httpProtocol: .HTTP, serviceType: .Default, serviceRegion: .Default, environment: .Default)
@@ -90,6 +100,24 @@ enum DefaultServiceAPI: API {
             return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId=\(userId)&CommentContent=\(commentContent)"
         case let .PriseComment(appKey, pID, userId):
             return "/toComment?AppSecret=\(appKey)&PID=\(pID)&UserId=\(userId)"
+
+
+
+        case let .MyMessage(appKey, userId, pageNum, pageSize):
+            return "/getPersonInfoList?AppSecret=\(appKey)&UserId=\(userId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+        case let .SysMessage(appKey, userId, pageNum, pageSize):
+            return "/getSysInfoList?AppSecret=\(appKey)&UserId=\(userId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+
+        case let .FavList(appKey, userId, fid, pageNum, pageSize):
+            return "/favoritesList?AppSecret=\(appKey)&UserId=\(userId)&FId=\(fid)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+        case let .FavOp(appKey, userId, infoId, op):
+            return "/opFavorites?AppSecret=\(appKey)&UserId=\(userId)&InfoId=\(infoId)&Otype=\(op)"
+        case let .GetFavStatus(appKey, userId, infoId):
+            return "/validateFavorites?AppSecret=\(appKey)&UserId=\(userId)&InfoId=\(infoId)"
+
+
+        case let .PointList(appKey, userId, pageNum, pageSize):
+            return "/scoreList?AppSecret=\(appKey)&UserId=\(userId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
         }
     }
 }

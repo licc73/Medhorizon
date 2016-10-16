@@ -33,3 +33,11 @@ class ChangeNickNameViewController: UIViewController {
     */
 
 }
+
+extension ChangeNickNameViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+}

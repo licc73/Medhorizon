@@ -33,3 +33,12 @@ class ChangePwdViewController: UIViewController {
     */
 
 }
+
+
+extension ChangePwdViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+}

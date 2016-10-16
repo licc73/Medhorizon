@@ -33,3 +33,11 @@ class TrueNameVerifyViewController: UIViewController {
     */
 
 }
+
+extension TrueNameVerifyViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+}

@@ -1,5 +1,5 @@
 //
-//  MyPointViewController.swift
+//  SysMessageViewController.swift
 //  Medhorizon
 //
 //  Created by lichangchun on 10/16/16.
@@ -9,13 +9,9 @@
 import UIKit
 import ReactiveCocoa
 
-class MyPointViewController: UIViewController {
+class SysMessageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var vTableHeader: UIView!
-    @IBOutlet weak var labPoint: UILabel!
-    @IBOutlet weak var vNoPoint: UIView!
-
-    var pointList: [PointViewModel] = []
+    var messageList: [SysMessageViewModel] = []
 
     var isHaveMoreData: Bool = true
 
@@ -25,9 +21,8 @@ class MyPointViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        //self.tableView.tableHeaderView = self.vTableHeader
+        self.tableView.registerNib(UINib(nibName: "MessageTableViewCell", bundle: nil), forCellReuseIdentifier: messageTableViewCellId)
         self.initMJRefresh()
     }
 
@@ -35,13 +30,12 @@ class MyPointViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    func getPointFromServer(page: Int) {
+    func getMessageFromServer(page: Int) {
         guard let userId = LoginManager.shareInstance.userId else {
             return
         }
-        DefaultServiceRequests.rac_requesForPointList(userId, pageNum: page, pageSize: pageSize)
+        DefaultServiceRequests.rac_requesForSysMessageList(userId, pageNum: page, pageSize: pageSize)
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
             .on(failed: {[unowned self] (error) in
@@ -52,19 +46,18 @@ class MyPointViewController: UIViewController {
                     let returnMsg = ReturnMsg.mapToModel(data)
 
                     if let msg = returnMsg where msg.isSuccess {
-                        self.labPoint.text = mapToString(data)("SumScore")
                         self.curPage = page
 
-                        if let pointList = data["InfoList"] as? [[String: AnyObject]] {
-                            let pointListModel = pointList.flatMap {PointViewModel.mapToModel($0)}
+                        if let messageList = data["InfoList"] as? [[String: AnyObject]] {
+                            let sysMessage = messageList.flatMap {SysMessageViewModel.mapToModel($0)}
                             if serverFirstPageNum == page {
-                                self.pointList = pointListModel
+                                self.messageList = sysMessage
                             }
                             else {
-                                self.pointList.appendContentsOf(pointListModel)
+                                self.messageList.appendContentsOf(sysMessage)
                             }
 
-                            if pointList.count == pageSize {
+                            if messageList.count == pageSize {
                                 self.isHaveMoreData = true
                             }
                             else {
@@ -82,11 +75,11 @@ class MyPointViewController: UIViewController {
 
     func initMJRefresh() {
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[unowned self]_ in
-            self.getPointFromServer(serverFirstPageNum)
+            self.getMessageFromServer(serverFirstPageNum)
             })
 
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {[unowned self]_ in
-            self.getPointFromServer(self.curPage + 1)
+            self.getMessageFromServer(self.curPage + 1)
             })
 
         self.tableView.mj_footer.automaticallyHidden = true
@@ -95,71 +88,50 @@ class MyPointViewController: UIViewController {
     }
 
     func reloadData() {
-        if self.pointList.count > 0 {
-            self.tableView.tableHeaderView = self.vTableHeader
-            self.tableView.backgroundView = nil
-        }
-        else {
-            self.tableView.tableHeaderView = nil
-            self.tableView.backgroundView = self.vNoPoint
-        }
-
         self.tableView.reloadData()
         self.tableView.endRefresh(self.isHaveMoreData)
     }
 
-    // MARK: - Navigation
+    /*
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if let id = segue.identifier where id == StoryboardSegue.Main.ShowNormalLink.rawValue {
-            if let destination = segue.destinationViewController as? NormalLinkViewController {
-                destination.linkUrl = pointPolicyUrl
-                destination.title = "积分规则"
-            }
-        }
-    }
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
 
-extension MyPointViewController: UITableViewDelegate, UITableViewDataSource {
+extension SysMessageViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.pointList.count
+        return self.messageList.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PointListTableViewCell", forIndexPath: indexPath) as! PointListTableViewCell
-        cell.point = self.pointList[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(messageTableViewCellId, forIndexPath: indexPath) as! MessageTableViewCell
+        cell.sysMessage = self.messageList[indexPath.row]
         return cell
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return UITableViewAutomaticDimension
+    }
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         defer {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
+        
     }
-}
-
-extension MyPointViewController {
-
-    @IBAction func back(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-
-    @IBAction func openPointPolicy(sender: AnyObject) {
-        self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNormalLink.rawValue, sender: nil)
-    }
-
 }

@@ -19,7 +19,7 @@ import ReactiveCocoa
 //
 //
 let privatePolicyUrl = "http://app.medhorizon.com.cn/Info/privacy.aspx" //隐私声明：
-//积分明细：http://app.medhorizon.com.cn/Info/scoreRule.aspx
+let pointPolicyUrl = "http://app.medhorizon.com.cn/Info/scoreRule.aspx" //积分明细：
 let feedbackUrl = "http://app.medhorizon.com.cn/Info/subject.aspx" //意见反馈：
 
 let departmentKey = "GlobalData.DepartmentIdKey"

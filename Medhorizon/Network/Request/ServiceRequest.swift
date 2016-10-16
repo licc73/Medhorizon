@@ -128,5 +128,48 @@ extension DefaultServiceRequests {//userInfo
         return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.UserDetail(defaultAppKey, userId))
             <~ justCast
     }
-    
+
+    static func rac_requesForMyMessageList(userId: String, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.MyMessage(defaultAppKey, userId, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, [String: AnyObject]) in
+                return (pageNum, value)
+            })
+    }
+
+    static func rac_requesForSysMessageList(userId: String, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.SysMessage(defaultAppKey, userId, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, [String: AnyObject]) in
+                return (pageNum, value)
+            })
+    }
+
+    static func rac_requesForFavList(userId: String, fid: Int, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.FavList(defaultAppKey, userId, fid, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, [String: AnyObject]) in
+                return (pageNum, value)
+            })
+    }
+
+    static func rac_requestForFavOrCancelFav(userId: String, infoId: String, favType: Int) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.FavOp(defaultAppKey, userId, infoId, favType))
+            <~ justCast
+    }
+
+    static func rac_requesForGetFavStatus(userId: String, infoId: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.GetFavStatus(defaultAppKey, userId, infoId))
+            <~ justCast)
+    }
+
+
+    static func rac_requesForPointList(userId: String, pageNum: Int, pageSize: Int) -> SignalProducer<(Int, [String: AnyObject]), ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.PointList(defaultAppKey, userId, pageNum, pageSize))
+            <~ justCast)
+            .map({ (value) -> (Int, [String: AnyObject]) in
+                return (pageNum, value)
+            })
+    }
+
 }

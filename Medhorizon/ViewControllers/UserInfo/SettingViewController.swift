@@ -33,3 +33,11 @@ class SettingViewController: UIViewController {
     */
 
 }
+
+extension SettingViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+}

@@ -27,7 +27,11 @@ class VideoDetailViewController: UIViewController {
     var coverFlow: CoverFlowView?
 
     var vAction: ActionView?
-    var isFav: Bool = false
+    var isFav: Bool = false {
+        didSet {
+            self.vAction?.setFav(isFav)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,8 @@ class VideoDetailViewController: UIViewController {
         self.setPlayer()
         self.setCoverFlowAndToolBar()
         self.requestVideoInfo()
+        self.getFavStatus()
+        self.setupBind()
     }
 
     func setPlayer() {
@@ -158,6 +164,27 @@ class VideoDetailViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+    func setupBind() {
+        NSNotificationCenter.defaultCenter()
+            .rac_notifications(loginStatusChangeNotification, object: nil)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (_) in
+                self.getFavStatus()
+            }.start()
+    }
+
+    func getFavStatus() {
+        guard let userId = LoginManager.shareInstance.userId, infoId = self.videoDocument?.id else {
+            return
+        }
+        performGetFavStatus(userId, InfoId: infoId)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (data) in
+                self.isFav = data.1
+            }.start()
+    }
 
     // MARK: - Navigation
 
@@ -233,6 +260,42 @@ extension VideoDetailViewController: ActionViewDelegate {
         switch type {
         case .Comment:
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowCommentList.rawValue, sender: nil)
+        case .Fav:
+            if LoginManager.shareInstance.isLogin {
+                guard let userId = LoginManager.shareInstance.userId, infoId = self.videoDocument?.id else {
+                    return
+                }
+                performFavOrCancel(userId, InfoId: infoId, type: isFav ? .CancelFav : .Fav)
+                    .takeUntil(self.rac_WillDeallocSignalProducer())
+                    .observeOn(UIScheduler())
+                    .on (failed: {(error) in
+                        AppInfo.showDefaultNetworkErrorToast()
+                        })
+                    { [unowned self] (msg) in
+                        if let msg = msg where msg.isSuccess {
+                            self.isFav = !self.isFav
+                            if self.isFav {
+                                AppInfo.showToast("收藏成功")
+                            }
+                            else {
+                                AppInfo.showToast("取消收藏成功")
+                            }
+                        }
+                        else {
+                            AppInfo.showToast("操作失败")
+                        }
+                    }.start()
+            }
+            else {
+                LoginManager.loginOrEnterUserInfo()
+            }
+        case .Download:
+            if LoginManager.shareInstance.isLogin {
+
+            }
+            else {
+                LoginManager.loginOrEnterUserInfo()
+            }
         default:
             break
         }

@@ -222,7 +222,18 @@ extension UserMainInfoViewController: UITableViewDelegate, UITableViewDataSource
 
         case .Feedback:
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowFeedback.rawValue, sender: nil)
-
+        case .Msg:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMessageView.rawValue, sender: nil)
+        case .Fav:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowFavView.rawValue, sender: nil)
+        case .PersonalInfo:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowUserDetailInfo.rawValue, sender: nil)
+        case .Point:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowPointView.rawValue, sender: nil)
+        case .Download:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDownloadView.rawValue, sender: nil)
+        case .Setting:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowSetupView.rawValue, sender: nil)
         default:
             break
         }

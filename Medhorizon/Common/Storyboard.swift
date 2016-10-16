@@ -31,5 +31,16 @@ struct StoryboardSegue {
 
         case ShowUserInfo = "ShowUserInfo"
         case ShowFeedback = "ShowFeedback"
+        case ShowMessageView = "ShowMessageView"
+        case ShowUserDetailInfo = "ShowUserDetailInfo"
+        case ShowFavView = "ShowFavView"
+        case ShowPointView = "ShowPointView"
+        case ShowDownloadView = "ShowDownloadView"
+        case ShowSetupView = "ShowSetupView"
+
+        case ShowChangeNickName = "ShowChangeNickName"
+        case ShowChangePhoneView = "ShowChangePhoneView"
+        case ShowChangePwdView = "ShowChangePwdView"
+        case ShowTrueNameVerifyView = "ShowTrueNameVerifyView"
     }
 }

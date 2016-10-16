@@ -572,3 +572,213 @@ extension UserDetailInfo: ViewModel {
     }
 
 }
+
+
+final class MyMessageViewModel {
+    let infoId: String
+    let sendName: String?
+    let content: String?
+    let createdDate: String?
+
+    init(infoId: String, sendName: String?, content: String?, createdDate: String?) {
+        self.createdDate = createdDate
+        self.infoId = infoId
+        self.content = content
+        self.sendName = sendName
+    }
+}
+
+extension MyMessageViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> MyMessageViewModel? {
+        let stringMap = mapToString(dictionary)
+        if let infoId = stringMap("InfoId") {
+            return MyMessageViewModel(infoId: infoId,
+                                      sendName: stringMap("SendName"),
+                                      content: stringMap("Content"),
+                                      createdDate: stringMap("CreateDate"))
+        }
+        return nil
+    }
+
+}
+
+final class SysMessageViewModel {
+    let id: String
+    let title: String?
+    let content: String?
+    let createdDate: String?
+
+    init(id: String, title: String?, content: String?, createdDate: String?) {
+        self.createdDate = createdDate
+        self.id = id
+        self.content = content
+        self.title = title
+    }
+}
+
+extension SysMessageViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> SysMessageViewModel? {
+        let stringMap = mapToString(dictionary)
+        if let id = stringMap("Id") {
+            return SysMessageViewModel(id: id,
+                                       title: stringMap("Title"),
+                                       content: stringMap("Content"),
+                                       createdDate: stringMap("CreateDate"))
+        }
+        return nil
+    }
+    
+}
+
+//"Id":"230",
+//"InfoId":"302",
+//"Title":"宝宝“抽”二手烟，危害远远超乎你的想象",
+//"LinkUrl":"http://app.medhorizon.com.cn/NewsDetail/News_Detail.aspx?id=302",
+//"PicUrl":"http://app.medhorizon.com.cn/attached/image/20160803/20160803120001_7249.jpg",
+//"FId":"5",
+//"ReadNum":"125",
+//"FNum":"1",
+//"SoureUrl":"http://app.medhorizon.com.cn/",
+//"TId":"0",
+//"VideoId":""
+
+final class FavViewModel {
+    let id: String
+    let infoId: String
+    let title: String
+    let linkUrl: String
+    let picUrl: String?
+    let fid: Int?
+    let readNum: Int?
+    let favNum: Int?
+    let sourceUrl: String?
+    let tid: Int?           //1:视频课件 2:专业课件3:电力病例
+    let videoId: String?
+    init(id: String,
+         infoId: String,
+         title: String,
+         linkUrl: String,
+         picUrl: String?,
+         fid: Int?,
+         readNum: Int?,
+         favNum: Int?,
+         sourceUrl: String?,
+         tid: Int?,
+         videoId: String?) {
+        self.id = id
+        self.infoId = infoId
+        self.title = title
+        self.linkUrl = linkUrl
+        self.picUrl = picUrl
+        self.fid = fid
+        self.readNum = readNum
+        self.favNum = favNum
+        self.sourceUrl = sourceUrl
+        self.tid = tid
+        self.videoId = videoId
+    }
+
+}
+
+extension FavViewModel: ViewModel {
+    static func mapToModel(dictionary: [String: AnyObject]) -> FavViewModel? {
+        let stringMap = mapToString(dictionary)
+        let intMap = mapToInt(dictionary)
+        if let id = stringMap("Id"),
+        infoId = stringMap("InfoId"),
+        title = stringMap("Title"),
+        linkUrl = stringMap("LinkUrl") {
+            return FavViewModel(id: id,
+                                infoId: infoId,
+                                title: title,
+                                linkUrl: linkUrl,
+                                picUrl: stringMap("PicUrl"),
+                                fid: intMap("FId"),
+                                readNum: intMap("ReadNum"),
+                                favNum: intMap("FNum"),
+                                sourceUrl: stringMap("SoureUrl"),
+                                tid: intMap("TId"),
+                                videoId: stringMap("VideoId"))
+        }
+        return nil
+    }
+}
+
+final class PointViewModel {
+    //得分（1:浏览2:评论3:收藏4:点赞5:转发6:意见反馈7:完成实名认证）。减分（8:下载）
+    enum PointType: Int {
+        case View = 1
+        case Comment = 2
+        case Fav = 3
+        case Prise = 4
+        case Share = 5
+        case Feedback = 6
+        case TrueName = 7
+        case Download = 8
+        case Other = 0
+
+        var commentString: String {
+            switch self {
+            case .View:
+                return "浏览"
+            case .Comment:
+                return "评论"
+            case .Fav:
+                return "收藏"
+            case .Prise:
+                return "点赞"
+            case .Share:
+                return "转发"
+            case .Feedback:
+                return "意见反馈"
+            case .TrueName:
+                return "完成实名认证"
+            case .Download:
+                return "下载"
+            case .Other:
+                return ""
+            }
+        }
+    }
+
+//    "Id":"19",
+//    "Title":"",
+//    "ScoreType":"1",
+//    "Date":"2016/7/9 12:50:28",
+//    "ScoreNum":"+2"
+
+    let id: String
+    let title: String?
+    let pointType: PointType
+    let date: String?
+    let scoreNum: String?
+
+    init(id: String, title: String?, pointType: PointType, date: String?, scoreNum: String?) {
+        self.id = id
+        self.title = title
+        self.pointType = pointType
+        self.date = date
+        self.scoreNum = scoreNum
+    }
+
+}
+
+extension PointViewModel: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> PointViewModel? {
+        let stringMap = mapToString(dictionary)
+        let type = mapToInt(dictionary)("ScoreType") ?? 0
+
+        if let id = stringMap("Id"), ptType = PointType(rawValue: type) {
+            return PointViewModel(id: id,
+                                  title: stringMap("Title"),
+                                  pointType: ptType,
+                                  date: stringMap("Date"),
+                                  scoreNum: stringMap("ScoreNum"))
+        }
+        return nil
+    }
+
+}

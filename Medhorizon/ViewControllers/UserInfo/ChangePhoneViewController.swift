@@ -33,3 +33,11 @@ class ChangePhoneViewController: UIViewController {
     */
 
 }
+
+extension ChangePhoneViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+}

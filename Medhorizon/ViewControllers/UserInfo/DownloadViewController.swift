@@ -33,3 +33,11 @@ class DownloadViewController: UIViewController {
     */
 
 }
+
+extension DownloadViewController {
+
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+}

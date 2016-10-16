@@ -25,13 +25,19 @@ class WebDetailViewController: UIViewController {
     var newsData: NewsViewModel?
     var brannerData: BrannerViewModel?
     var document: CoursewareInfoViewModel?
-    
+    var favData: FavViewModel?    
     
     var sTitle: String?
     var sContent: String?
     var sLink: String?
     var sPic: String?
     var id: String?
+
+    var isFav = false {
+        didSet {
+            self.vAction?.setFav(isFav)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +48,7 @@ class WebDetailViewController: UIViewController {
         self.setToolBar()
 
         self.setupBind()
+        self.getFavStatus()
     }
 
     func setToolBar() {
@@ -51,6 +58,7 @@ class WebDetailViewController: UIViewController {
             self.vAction = ActionView(frame: CGRectZero)
             self.vAction?.config(actions)
             self.vAction?.delegate = self
+            self.vAction?.setFav(self.isFav)
             self.vTool.addSubview(self.vAction!)
         }
         else if showDownloadToolBar {
@@ -84,6 +92,13 @@ class WebDetailViewController: UIViewController {
             sPic = doc.picUrl
             self.id = doc.id
         }
+        else if let fav = favData {
+            sTitle = fav.title
+            sContent = fav.title
+            sLink = fav.linkUrl
+            sPic = fav.picUrl
+            self.id = fav.infoId
+        }
         
         self.loadWebRequest()
     }
@@ -107,6 +122,7 @@ class WebDetailViewController: UIViewController {
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
             .on { [unowned self] (_) in
+                self.getFavStatus()
                 if LoginManager.shareInstance.isLogin {
                     guard let userId = LoginManager.shareInstance.userId else {
                         self.loadWebRequest()
@@ -118,6 +134,18 @@ class WebDetailViewController: UIViewController {
                     self.loadWebRequest()
                 }
         }.start()
+    }
+
+    func getFavStatus() {
+        guard let userId = LoginManager.shareInstance.userId, infoId = self.id else {
+            return
+        }
+        performGetFavStatus(userId, InfoId: infoId)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (data) in
+                self.isFav = data.1
+            }.start()
     }
 
     override func didReceiveMemoryWarning() {
@@ -232,6 +260,44 @@ extension WebDetailViewController: ActionViewDelegate {
         switch type {
         case .Comment:
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowCommentList.rawValue, sender: nil)
+        case .Fav:
+            if LoginManager.shareInstance.isLogin {
+                guard let userId = LoginManager.shareInstance.userId, infoId = self.id else {
+                    return
+                }
+                performFavOrCancel(userId, InfoId: infoId, type: isFav ? .CancelFav : .Fav)
+                    .takeUntil(self.rac_WillDeallocSignalProducer())
+                    .observeOn(UIScheduler())
+                    .on (failed: {(error) in
+                        AppInfo.showDefaultNetworkErrorToast()
+                    })
+                    { [unowned self] (msg) in
+                        if let msg = msg where msg.isSuccess {
+                            self.isFav = !self.isFav
+                            if self.isFav {
+                                AppInfo.showToast("收藏成功")
+                            }
+                            else {
+                                AppInfo.showToast("取消收藏成功")
+                            }
+                        }
+                        else {
+                            AppInfo.showToast("操作失败")
+                        }
+                    }.start()
+            }
+            else {
+                LoginManager.loginOrEnterUserInfo()
+            }
+        case .Download:
+            if LoginManager.shareInstance.isLogin {
+
+            }
+            else {
+                LoginManager.loginOrEnterUserInfo()
+            }
+        case .Share:
+            self.showShareView()
         default:
             break
         }
