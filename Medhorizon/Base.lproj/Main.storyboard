@@ -967,6 +967,51 @@
             </objects>
             <point key="canvasLocation" x="1194" y="3428"/>
         </scene>
+        <!--个人中心-->
+        <scene sceneID="F0v-oT-reW">
+            <objects>
+                <viewController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" id="D0C-oy-6tV" customClass="UserMainInfoViewController" customModule="Medhorizon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nGF-zI-fF5"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hxw-Hw-Y49"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wTI-JN-hz5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CDm-hw-Pdr">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="D0C-oy-6tV" id="nuQ-ow-W1B"/>
+                                    <outlet property="delegate" destination="D0C-oy-6tV" id="aZp-8R-fug"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CDm-hw-Pdr" firstAttribute="leading" secondItem="wTI-JN-hz5" secondAttribute="leadingMargin" constant="-20" id="5Dg-xm-4lP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CDm-hw-Pdr" secondAttribute="trailing" constant="-20" id="Kbh-yQ-5DH"/>
+                            <constraint firstItem="Hxw-Hw-Y49" firstAttribute="top" secondItem="CDm-hw-Pdr" secondAttribute="bottom" id="WzF-Fq-gs0"/>
+                            <constraint firstItem="CDm-hw-Pdr" firstAttribute="top" secondItem="nGF-zI-fF5" secondAttribute="bottom" id="Xfz-cR-RNp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="个人中心" id="qRq-co-tbF">
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="DiW-WN-3zj">
+                            <connections>
+                                <action selector="back:" destination="D0C-oy-6tV" id="57i-1t-45Y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="CDm-hw-Pdr" id="gTf-g2-tgh"/>
+                        <segue destination="4k0-aE-0fJ" kind="show" identifier="ShowFeedback" id="x3W-Vl-geA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n3i-Ns-Xbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="4468"/>
+        </scene>
         <!--News-->
         <scene sceneID="I43-SM-hZI">
             <objects>
@@ -1995,6 +2040,7 @@
                         <segue destination="nvS-XE-690" kind="relationship" relationship="viewControllers" id="slh-qw-6Tp"/>
                         <segue destination="PVX-JX-h5e" kind="relationship" relationship="viewControllers" id="oZo-08-Sqb"/>
                         <segue destination="tsm-6r-dZW" kind="relationship" relationship="viewControllers" id="ddb-vE-GlG"/>
+                        <segue destination="D0C-oy-6tV" kind="show" identifier="ShowUserInfo" id="vAL-5z-8ns"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNw-9e-n6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2029,6 +2075,6 @@
         <segue reference="ddb-vE-GlG"/>
         <segue reference="Kak-a5-cYT"/>
         <segue reference="yTT-mg-Vrj"/>
-        <segue reference="uLX-be-Tq3"/>
+        <segue reference="x3W-Vl-geA"/>
     </inferredMetricsTieBreakers>
 </document>

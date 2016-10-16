@@ -67,6 +67,10 @@ extension UIColor {
         
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
     }
+
+    static func colorWithIntValue(r: UInt32, _ g: UInt32, _ b: UInt32, _ a: CGFloat = 1) -> UIColor {
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: a)
+    }
     
     static func colorWithHexString(hexString: String, alpha: CGFloat = 1) -> UIColor {
         let scanner = NSScanner(string: hexString)

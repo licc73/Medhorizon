@@ -36,6 +36,27 @@
 		4344F6761DB26E1300D5ED54 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6751DB26E1300D5ED54 /* SignupViewController.swift */; };
 		4344F6781DB28C8000D5ED54 /* SMSCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6771DB28C8000D5ED54 /* SMSCodeManager.swift */; };
 		4344F67A1DB29D4100D5ED54 /* ForgotPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6791DB29D4100D5ED54 /* ForgotPwdViewController.swift */; };
+		4344F67D1DB30EF100D5ED54 /* UserMainInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F67C1DB30EF100D5ED54 /* UserMainInfoViewController.swift */; };
+		4344F67F1DB30F1A00D5ED54 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F67E1DB30F1A00D5ED54 /* MessageViewController.swift */; };
+		4344F6811DB30F3B00D5ED54 /* UserDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6801DB30F3B00D5ED54 /* UserDetailInfoViewController.swift */; };
+		4344F6841DB30FAC00D5ED54 /* ChangeNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6831DB30FAC00D5ED54 /* ChangeNickNameViewController.swift */; };
+		4344F6861DB30FB900D5ED54 /* ChangePhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6851DB30FB900D5ED54 /* ChangePhoneViewController.swift */; };
+		4344F6881DB30FC900D5ED54 /* ChangePwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6871DB30FC900D5ED54 /* ChangePwdViewController.swift */; };
+		4344F68A1DB30FE000D5ED54 /* TrueNameVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6891DB30FE000D5ED54 /* TrueNameVerifyViewController.swift */; };
+		4344F68C1DB30FF900D5ED54 /* MyFavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F68B1DB30FF900D5ED54 /* MyFavViewController.swift */; };
+		4344F68E1DB3100A00D5ED54 /* MyPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F68D1DB3100A00D5ED54 /* MyPointViewController.swift */; };
+		4344F6921DB3102A00D5ED54 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6911DB3102A00D5ED54 /* DownloadViewController.swift */; };
+		4344F6941DB3105F00D5ED54 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6931DB3105F00D5ED54 /* SettingViewController.swift */; };
+		4344F69A1DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6981DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.swift */; };
+		4344F69B1DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4344F6991DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.xib */; };
+		4344F69E1DB3148300D5ED54 /* SeparatorLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F69C1DB3148300D5ED54 /* SeparatorLineTableViewCell.swift */; };
+		4344F69F1DB3148300D5ED54 /* SeparatorLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4344F69D1DB3148300D5ED54 /* SeparatorLineTableViewCell.xib */; };
+		4344F6A41DB314B700D5ED54 /* BaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6A21DB314B700D5ED54 /* BaseInfoTableViewCell.swift */; };
+		4344F6A51DB314B700D5ED54 /* BaseInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4344F6A31DB314B700D5ED54 /* BaseInfoTableViewCell.xib */; };
+		4344F6B01DB3244700D5ED54 /* NSAttributedString+format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6AF1DB3244700D5ED54 /* NSAttributedString+format.swift */; };
+		4344F6B31DB3295000D5ED54 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6B11DB3295000D5ED54 /* MsgTableViewCell.swift */; };
+		4344F6B41DB3295000D5ED54 /* MsgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4344F6B21DB3295000D5ED54 /* MsgTableViewCell.xib */; };
+		4344F6B61DB32AC200D5ED54 /* UserInfoMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6B51DB32AC200D5ED54 /* UserInfoMainModel.swift */; };
 		43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A761DAA7FD100BD68C5 /* AppInfo.swift */; };
 		43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */; };
 		43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */; };
@@ -214,6 +235,27 @@
 		4344F6751DB26E1300D5ED54 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		4344F6771DB28C8000D5ED54 /* SMSCodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSCodeManager.swift; sourceTree = "<group>"; };
 		4344F6791DB29D4100D5ED54 /* ForgotPwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPwdViewController.swift; sourceTree = "<group>"; };
+		4344F67C1DB30EF100D5ED54 /* UserMainInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMainInfoViewController.swift; sourceTree = "<group>"; };
+		4344F67E1DB30F1A00D5ED54 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		4344F6801DB30F3B00D5ED54 /* UserDetailInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailInfoViewController.swift; sourceTree = "<group>"; };
+		4344F6831DB30FAC00D5ED54 /* ChangeNickNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNickNameViewController.swift; sourceTree = "<group>"; };
+		4344F6851DB30FB900D5ED54 /* ChangePhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePhoneViewController.swift; sourceTree = "<group>"; };
+		4344F6871DB30FC900D5ED54 /* ChangePwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePwdViewController.swift; sourceTree = "<group>"; };
+		4344F6891DB30FE000D5ED54 /* TrueNameVerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrueNameVerifyViewController.swift; sourceTree = "<group>"; };
+		4344F68B1DB30FF900D5ED54 /* MyFavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavViewController.swift; sourceTree = "<group>"; };
+		4344F68D1DB3100A00D5ED54 /* MyPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPointViewController.swift; sourceTree = "<group>"; };
+		4344F6911DB3102A00D5ED54 /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		4344F6931DB3105F00D5ED54 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		4344F6981DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderTableViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		4344F6991DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderTableViewCellTableViewCell.xib; sourceTree = "<group>"; };
+		4344F69C1DB3148300D5ED54 /* SeparatorLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLineTableViewCell.swift; sourceTree = "<group>"; };
+		4344F69D1DB3148300D5ED54 /* SeparatorLineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorLineTableViewCell.xib; sourceTree = "<group>"; };
+		4344F6A21DB314B700D5ED54 /* BaseInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoTableViewCell.swift; sourceTree = "<group>"; };
+		4344F6A31DB314B700D5ED54 /* BaseInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseInfoTableViewCell.xib; sourceTree = "<group>"; };
+		4344F6AF1DB3244700D5ED54 /* NSAttributedString+format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+format.swift"; sourceTree = "<group>"; };
+		4344F6B11DB3295000D5ED54 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
+		4344F6B21DB3295000D5ED54 /* MsgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgTableViewCell.xib; sourceTree = "<group>"; };
+		4344F6B51DB32AC200D5ED54 /* UserInfoMainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoMainModel.swift; sourceTree = "<group>"; };
 		43714A761DAA7FD100BD68C5 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -437,6 +479,49 @@
 				4344F63B1DB1C33800D5ED54 /* moviePlay@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		4344F67B1DB30ED500D5ED54 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4344F6951DB3137B00D5ED54 /* Main */,
+				4344F67E1DB30F1A00D5ED54 /* MessageViewController.swift */,
+				4344F6821DB30F4200D5ED54 /* UserPersonalInfo */,
+				4344F68B1DB30FF900D5ED54 /* MyFavViewController.swift */,
+				4344F68D1DB3100A00D5ED54 /* MyPointViewController.swift */,
+				4344F6911DB3102A00D5ED54 /* DownloadViewController.swift */,
+				4344F6931DB3105F00D5ED54 /* SettingViewController.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		4344F6821DB30F4200D5ED54 /* UserPersonalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4344F6801DB30F3B00D5ED54 /* UserDetailInfoViewController.swift */,
+				4344F6831DB30FAC00D5ED54 /* ChangeNickNameViewController.swift */,
+				4344F6851DB30FB900D5ED54 /* ChangePhoneViewController.swift */,
+				4344F6871DB30FC900D5ED54 /* ChangePwdViewController.swift */,
+				4344F6891DB30FE000D5ED54 /* TrueNameVerifyViewController.swift */,
+			);
+			name = UserPersonalInfo;
+			sourceTree = "<group>";
+		};
+		4344F6951DB3137B00D5ED54 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4344F67C1DB30EF100D5ED54 /* UserMainInfoViewController.swift */,
+				4344F6B51DB32AC200D5ED54 /* UserInfoMainModel.swift */,
+				4344F6981DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.swift */,
+				4344F6991DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.xib */,
+				4344F69C1DB3148300D5ED54 /* SeparatorLineTableViewCell.swift */,
+				4344F69D1DB3148300D5ED54 /* SeparatorLineTableViewCell.xib */,
+				4344F6A21DB314B700D5ED54 /* BaseInfoTableViewCell.swift */,
+				4344F6A31DB314B700D5ED54 /* BaseInfoTableViewCell.xib */,
+				4344F6B11DB3295000D5ED54 /* MsgTableViewCell.swift */,
+				4344F6B21DB3295000D5ED54 /* MsgTableViewCell.xib */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		43714A831DAD375E00BD68C5 /* Meeting */ = {
@@ -686,6 +771,7 @@
 				43D390721DA7A45400039C35 /* ReactiveCocoaBindings.swift */,
 				43D390731DA7A45400039C35 /* String+Base64.swift */,
 				4344F6731DB2369D00D5ED54 /* SomeExtension.swift */,
+				4344F6AF1DB3244700D5ED54 /* NSAttributedString+format.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -709,6 +795,7 @@
 				EA33BBC11DA8B0F700C0BE04 /* Tour */,
 				EA33BBBF1DA8B0F700C0BE04 /* Main */,
 				EA33BBC01DA8B0F700C0BE04 /* Login */,
+				4344F67B1DB30ED500D5ED54 /* UserInfo */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -953,9 +1040,13 @@
 				4344F6451DB1C33800D5ED54 /* movieEndFullscreen@2x.png in Resources */,
 				4344F6441DB1C33800D5ED54 /* movieEndFullscreen.png in Resources */,
 				4344F64B1DB1C33800D5ED54 /* movieFullscreen@2x.png in Resources */,
+				4344F69F1DB3148300D5ED54 /* SeparatorLineTableViewCell.xib in Resources */,
 				4344F6481DB1C33800D5ED54 /* movieForwardSelected.png in Resources */,
+				4344F6B41DB3295000D5ED54 /* MsgTableViewCell.xib in Resources */,
 				4344F6411DB1C33800D5ED54 /* movieBackward@2x.png in Resources */,
+				4344F69B1DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.xib in Resources */,
 				43B2C98A1DA7C2AB004FA849 /* IQKeyboardManager.bundle in Resources */,
+				4344F6A51DB314B700D5ED54 /* BaseInfoTableViewCell.xib in Resources */,
 				EA67D0DA1D9E4D0B00468A92 /* LaunchScreen.storyboard in Resources */,
 				4344F6491DB1C33800D5ED54 /* movieForwardSelected@2x.png in Resources */,
 				EA67D0D71D9E4D0B00468A92 /* Assets.xcassets in Resources */,
@@ -991,6 +1082,7 @@
 				43B2C97A1DA7C2AB004FA849 /* IQNSArray+Sort.swift in Sources */,
 				43B2C95A1DA7C124004FA849 /* NSBundle+MJRefresh.m in Sources */,
 				EA33BCD01DAA006200C0BE04 /* ViewModel.swift in Sources */,
+				4344F6B61DB32AC200D5ED54 /* UserInfoMainModel.swift in Sources */,
 				43B2C95C1DA7C124004FA849 /* UIScrollView+MJRefresh.m in Sources */,
 				43B2C95B1DA7C124004FA849 /* UIScrollView+MJExtension.m in Sources */,
 				43B2C9531DA7C124004FA849 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1001,9 +1093,11 @@
 				EA33BB961DA880F300C0BE04 /* AlamofireRACDownload.swift in Sources */,
 				43714A871DAD379500BD68C5 /* MeetingListViewController.swift in Sources */,
 				EA33BCE91DAB282900C0BE04 /* CoverFlow.swift in Sources */,
+				4344F68E1DB3100A00D5ED54 /* MyPointViewController.swift in Sources */,
 				43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */,
 				43DA654C1DB11E62000F859E /* CommentListViewModel.swift in Sources */,
 				EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */,
+				4344F6941DB3105F00D5ED54 /* SettingViewController.swift in Sources */,
 				EA33BE221DAF1B1A00C0BE04 /* WorldListTableViewCell.swift in Sources */,
 				43B2C9611DA7C139004FA849 /* UIView+Toast.m in Sources */,
 				4344F6551DB2057100D5ED54 /* NormalLinkViewController.swift in Sources */,
@@ -1024,7 +1118,10 @@
 				EA33BD541DADFA4300C0BE04 /* ActionView.swift in Sources */,
 				43714A931DAFDC6800BD68C5 /* WorldDetailViewController.swift in Sources */,
 				EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */,
+				4344F68A1DB30FE000D5ED54 /* TrueNameVerifyViewController.swift in Sources */,
 				43B2C9831DA7C2AB004FA849 /* IQKeyboardReturnKeyHandler.swift in Sources */,
+				4344F6B01DB3244700D5ED54 /* NSAttributedString+format.swift in Sources */,
+				4344F6841DB30FAC00D5ED54 /* ChangeNickNameViewController.swift in Sources */,
 				43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */,
 				4344F6531DB1F7EC00D5ED54 /* MeetingDetailViewController.swift in Sources */,
 				43B2C94B1DA7C124004FA849 /* MJRefreshBackFooter.m in Sources */,
@@ -1044,24 +1141,32 @@
 				43B2C97F1DA7C2AB004FA849 /* IQUIWindow+Hierarchy.swift in Sources */,
 				43B2C9891DA7C2AB004FA849 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				EA33BD4C1DADCFC900C0BE04 /* DownloadManager.swift in Sources */,
+				4344F6861DB30FB900D5ED54 /* ChangePhoneViewController.swift in Sources */,
+				4344F6881DB30FC900D5ED54 /* ChangePwdViewController.swift in Sources */,
 				43DA65481DB1186E000F859E /* CommentTableViewCell.swift in Sources */,
 				43B2C97B1DA7C2AB004FA849 /* IQUIScrollView+Additions.swift in Sources */,
 				EA33BB9A1DA880F300C0BE04 /* RACHelpFunctions.swift in Sources */,
 				43B2C9511DA7C124004FA849 /* MJRefreshAutoStateFooter.m in Sources */,
+				4344F67D1DB30EF100D5ED54 /* UserMainInfoViewController.swift in Sources */,
 				EA33BD4A1DADC8FE00C0BE04 /* DocumentListTableViewCell.swift in Sources */,
 				EA67D0D01D9E4D0B00468A92 /* AppDelegate.swift in Sources */,
 				EA33BD4E1DADF2D400C0BE04 /* DocumentListViewModel.swift in Sources */,
 				43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */,
 				43B2C95D1DA7C124004FA849 /* UIView+MJExtension.m in Sources */,
+				4344F6921DB3102A00D5ED54 /* DownloadViewController.swift in Sources */,
 				43714A981DB10F9A00BD68C5 /* CommentViewController.swift in Sources */,
+				4344F67F1DB30F1A00D5ED54 /* MessageViewController.swift in Sources */,
 				43B2C94E1DA7C124004FA849 /* MJRefreshHeader.m in Sources */,
+				4344F69A1DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.swift in Sources */,
 				EA33BBBE1DA8B07400C0BE04 /* Storyboard.swift in Sources */,
 				43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */,
 				43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */,
 				43B2C9571DA7C124004FA849 /* MJRefreshStateHeader.m in Sources */,
+				4344F6A41DB314B700D5ED54 /* BaseInfoTableViewCell.swift in Sources */,
 				EA33BBA61DA8890900C0BE04 /* DefaultServiceAPI.swift in Sources */,
 				43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */,
 				4344F6571DB219AE00D5ED54 /* LoginViewController.swift in Sources */,
+				4344F6811DB30F3B00D5ED54 /* UserDetailInfoViewController.swift in Sources */,
 				43B2C9541DA7C124004FA849 /* MJRefreshBackStateFooter.m in Sources */,
 				43B2C9841DA7C2AB004FA849 /* IQTextView.swift in Sources */,
 				EA33BB971DA880F300C0BE04 /* AlamofireRACRequestJSON.swift in Sources */,
@@ -1070,14 +1175,17 @@
 				43DA654A1DB11885000F859E /* ReplyCommentTableViewCell.swift in Sources */,
 				EA33BB9B1DA880F300C0BE04 /* API.swift in Sources */,
 				43B2C9591DA7C124004FA849 /* MJRefreshConst.m in Sources */,
+				4344F6B31DB3295000D5ED54 /* MsgTableViewCell.swift in Sources */,
 				EA33BB981DA880F300C0BE04 /* AlamofireRACUpload.swift in Sources */,
 				43714A8C1DAD3D8400BD68C5 /* DocumentListViewController.swift in Sources */,
 				43B2C9801DA7C2AB004FA849 /* IQKeyboardManagerConstants.swift in Sources */,
 				43D390791DA7A46500039C35 /* Reachability.m in Sources */,
 				43B2C97C1DA7C2AB004FA849 /* IQUITextFieldView+Additions.swift in Sources */,
+				4344F69E1DB3148300D5ED54 /* SeparatorLineTableViewCell.swift in Sources */,
 				EA33BCCC1DA9E93000C0BE04 /* UIExtension.swift in Sources */,
 				43B2C94D1DA7C124004FA849 /* MJRefreshFooter.m in Sources */,
 				EA33BCF41DAC750700C0BE04 /* WebDetailViewController.swift in Sources */,
+				4344F68C1DB30FF900D5ED54 /* MyFavViewController.swift in Sources */,
 				EA33BCF01DAB3BE200C0BE04 /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

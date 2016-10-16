@@ -17,18 +17,25 @@ let loginNickNameKey = "loginNickNameKey"
 let loginStatusChangeNotification = "loginStatusChangeNotification"
 
 class LoginManager {
-    
     static let shareInstance = LoginManager()
 
     var mainCtrl: MainTabbarViewController?
 
+    var loginInfo: LoginBriefInfo?
     var userId: String?
-    
     var isLogin: Bool {
         return userId != nil
     }
 
-    var loginInfo: LoginBriefInfo?
+    var userDetailInfo: UserDetailInfo? {
+        didSet {
+            if let user = userDetailInfo {
+                self.loginInfo?.picUrl = user.headpic
+                self.loginInfo?.nickName = user.nickName
+                self.saveLoginInfo()
+            }
+        }
+    }
 
     init() {
         let phone = NSUserDefaults.standardUserDefaults().stringForKey(loginPhoneKey)
@@ -52,13 +59,16 @@ class LoginManager {
             NSUserDefaults.standardUserDefaults().setValue(login.picUrl, forKey: loginHeadPicKey)
             NSUserDefaults.standardUserDefaults().setValue(login.nickName, forKey: loginNickNameKey)
             NSUserDefaults.standardUserDefaults().synchronize()
-
             NSNotificationCenter.defaultCenter().postNotificationName(loginStatusChangeNotification, object: nil)
         }
 
     }
 
     func clearLoginInfo() {
+        self.userId = nil
+        self.loginInfo = nil
+        self.userDetailInfo = nil
+
         NSUserDefaults.standardUserDefaults().setValue(nil, forKey: loginPhoneKey)
         NSUserDefaults.standardUserDefaults().setValue(nil, forKey: loginUserIdKey)
         NSUserDefaults.standardUserDefaults().setValue(nil, forKey: loginHeadPicKey)
@@ -71,7 +81,7 @@ class LoginManager {
         let loginCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController")
         if let baseCtrl = baseCtrl {
             if LoginManager.shareInstance.isLogin {
-
+                LoginManager.shareInstance.mainCtrl?.performSegueWithIdentifier(StoryboardSegue.Main.ShowUserInfo.rawValue, sender: nil)
             }
             else {
                 baseCtrl.presentViewController(loginCtrl, animated: true, completion: nil)
@@ -79,13 +89,17 @@ class LoginManager {
         }
         else {
             if LoginManager.shareInstance.isLogin {
-
+                LoginManager.shareInstance.mainCtrl?.performSegueWithIdentifier(StoryboardSegue.Main.ShowUserInfo.rawValue, sender: nil)
             }
             else {
                 LoginManager.shareInstance.mainCtrl?.presentViewController(loginCtrl, animated: true, completion: nil)
             }
         }
     }
+    
+}
+
+extension LoginManager { //login work flow
 
     static func performLogin(phone: String, pwd: String) -> SignalProducer<ReturnMsg?, ServiceError> {
         return DefaultServiceRequests.rac_requesForLogin(phone, pwd: pwd)
@@ -94,7 +108,7 @@ class LoginManager {
                 if let msg = returnMsg where msg.isSuccess {
                     LoginManager.shareInstance.loginInfo = LoginBriefInfo.mapToModel(object, phone: phone)
                     LoginManager.shareInstance.userId = LoginManager.shareInstance.loginInfo?.userId
-                    
+
                     LoginManager.shareInstance.saveLoginInfo()
                 }
 
@@ -120,6 +134,21 @@ class LoginManager {
         return DefaultServiceRequests.rac_requesForForgotPwd(phone, smsCode: smsCode, pwd: pwd)
             .map({ (object) -> ReturnMsg? in
                 return ReturnMsg.mapToModel(object)
+            })
+    }
+
+}
+
+extension LoginManager { // userInfo flow
+
+    static func performGetUserDetail(userId: String) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForGetUserDetail(userId)
+            .map({ (object) -> ReturnMsg? in
+                let returnMsg = ReturnMsg.mapToModel(object)
+                if let msg = returnMsg where msg.isSuccess {
+                    LoginManager.shareInstance.userDetailInfo = UserDetailInfo.mapToModel(object)
+                }
+                return returnMsg
             })
     }
     

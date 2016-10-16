@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KGk-i7-Jjw" customClass="BaseInfoTableViewCell" customModule="Medhorizon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tuh-Vf-sBC">
+                        <rect key="frame" x="15" y="9" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="bsw-X5-q1g"/>
+                            <constraint firstAttribute="width" constant="25" id="qZ3-MM-9Gi"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="42" placeholderIntrinsicHeight="infinite" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWV-Qn-I8N">
+                        <rect key="frame" x="48" y="0.0" width="42" height="43"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rWV-Qn-I8N" firstAttribute="centerY" secondItem="tuh-Vf-sBC" secondAttribute="centerY" id="8OJ-Pt-9xJ"/>
+                    <constraint firstItem="tuh-Vf-sBC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BRg-3A-pX2"/>
+                    <constraint firstItem="rWV-Qn-I8N" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="LaE-O9-Stt"/>
+                    <constraint firstItem="tuh-Vf-sBC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="OxT-xj-b9F"/>
+                    <constraint firstItem="rWV-Qn-I8N" firstAttribute="leading" secondItem="tuh-Vf-sBC" secondAttribute="trailing" constant="8" id="y8N-IV-D71"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgvIcon" destination="tuh-Vf-sBC" id="TK1-gE-pwA"/>
+                <outlet property="labTitle" destination="rWV-Qn-I8N" id="HSx-ga-I7S"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

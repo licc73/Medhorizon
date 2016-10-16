@@ -507,3 +507,68 @@ extension LoginBriefInfo {
     }
     
 }
+
+final class UserDetailInfo {
+    let headpic: String?
+    let nickName: String?
+    let phone: String?
+    let weixin: String?
+    let isTrueName: Bool?
+
+    let cartType: Int?
+    let WWID: String?
+    let hospital: String?
+    let department: String?
+    let job: String?
+    let signDays: Int?
+    let unReadNum: Int?
+
+    init(headpic: String?,
+         nickName: String?,
+         phone: String?,
+         weixin: String?,
+         isTrueName: Bool?,
+         cartType: Int?,
+         WWID: String?,
+         hospital: String?,
+         department: String?,
+         job: String?,
+         signDays: Int?,
+         unReadNum: Int?) {
+        self.headpic = headpic
+        self.nickName = nickName
+        self.phone = phone
+        self.weixin = weixin
+        self.isTrueName = isTrueName
+        self.cartType = cartType
+        self.WWID = WWID
+        self.hospital = hospital
+        self.department = department
+        self.job = job
+        self.signDays = signDays
+        self.unReadNum = unReadNum
+    }
+
+}
+
+extension UserDetailInfo: ViewModel {
+
+    static func mapToModel(dictionary: [String: AnyObject]) -> UserDetailInfo? {
+        let stringMap = mapToString(dictionary)
+        let intMap = mapToInt(dictionary)
+        let boolMap = mapToBool(dictionary)
+        return UserDetailInfo(headpic: stringMap("HeadPic"),
+                              nickName: stringMap("NickName"),
+                              phone: stringMap("Phone"),
+                              weixin: stringMap("WeiXin"),
+                              isTrueName: boolMap("IsTrueName"),
+                              cartType: intMap("CardType"),
+                              WWID: stringMap("WWID"),
+                              hospital: stringMap("Hopital"),
+                              department: stringMap("Department"),
+                              job: stringMap("Job"),
+                              signDays: intMap("SignDays"),
+                              unReadNum: intMap("UnReadNum"))
+    }
+
+}

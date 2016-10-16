@@ -28,5 +28,8 @@ struct StoryboardSegue {
 
         case ShowSignupView = "ShowSignupView"
         case ShowForgotPwd = "ShowForgotPwd"
+
+        case ShowUserInfo = "ShowUserInfo"
+        case ShowFeedback = "ShowFeedback"
     }
 }

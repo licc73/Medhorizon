@@ -14,6 +14,8 @@ enum DefaultServiceAPI: API {
     case Register(String, String, String, String)
     case ForgotPwd(String, String, String, String)
 
+    case UserDetail(String, String)
+
 
 
 
@@ -55,9 +57,10 @@ enum DefaultServiceAPI: API {
             return "/forgotPwd?AppSecret=\(appKey)&Phone=\(phone)&VCode=\(smsCode)&NewPwd=\(pwd)"
 
 
+        case let .UserDetail(appKey, userId):
+            return "/getUserInfo?AppSecret=\(appKey)&UserId=\(userId)"
 
 
-            
         
         // server start with 1, page num & page size 意义定义反了
         case let .NewsList(appKey, departmentId, pageNum, pageSize):
