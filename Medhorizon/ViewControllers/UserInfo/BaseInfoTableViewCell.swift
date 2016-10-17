@@ -30,7 +30,7 @@ class BaseInfoTableViewCell: UITableViewCell {
         super.prepareForReuse()
         self.imgvIcon.image = nil
         self.labTitle.text = nil
-        self.labTitle.textColor = UIColor.darkGrayColor()
+        self.labTitle.textColor = UIColor.colorWithHex(0x666666)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

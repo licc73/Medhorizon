@@ -22,9 +22,9 @@ class UserHeaderTableViewCellTableViewCell: UITableViewCell {
         let realDay: Int = day ?? 0
 
         let formatString = "连续登录%1$@天"
-        let dayAttr = NSAttributedString(string: "\(realDay)", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x2e94cb)])
+        let dayAttr = NSAttributedString(string: "\(realDay)", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x2892cb)])
 
-        labLogInDay.attributedText = NSAttributedString(attributes: [NSForegroundColorAttributeName : UIColor.grayColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)], format: formatString, dayAttr)
+        labLogInDay.attributedText = NSAttributedString(attributes: [NSForegroundColorAttributeName : UIColor.colorWithHex(0x666666), NSFontAttributeName: UIFont.systemFontOfSize(18)], format: formatString, dayAttr)
     }
 
     override func awakeFromNib() {

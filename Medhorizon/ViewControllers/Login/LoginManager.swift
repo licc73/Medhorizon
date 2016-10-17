@@ -144,6 +144,17 @@ extension LoginManager { //login work flow
 
 }
 
+extension LoginManager {
+
+    func performModifyNickName(userId: String, nickName: String) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForModifyUserNickName(userId, nickName: nickName)
+            .map({ (object) -> ReturnMsg? in
+                return ReturnMsg.mapToModel(object)
+            })
+    }
+    
+}
+
 extension LoginManager { // userInfo flow
 
     static func performGetUserDetail(userId: String) -> SignalProducer<ReturnMsg?, ServiceError> {

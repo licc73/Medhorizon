@@ -23,7 +23,7 @@ class NewsViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
 
-        self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenWidth * 25.0 / 64.0))
+        self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenWidth * 1.0  / 2.0))
         self.coverFlow?.delegate = self
 
         //self.tableView.tableHeaderView = self.coverFlow

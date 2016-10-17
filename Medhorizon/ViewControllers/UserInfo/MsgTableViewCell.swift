@@ -30,7 +30,6 @@ class MsgTableViewCell: UITableViewCell {
         super.prepareForReuse()
         self.imgvIcon.image = nil
         self.labTitle.text = nil
-        self.labTitle.textColor = UIColor.darkGrayColor()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

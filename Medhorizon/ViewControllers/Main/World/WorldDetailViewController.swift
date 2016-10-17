@@ -165,7 +165,12 @@ class WorldDetailViewController: UIViewController {
         if let id = segue.identifier where id == StoryboardSegue.Main.ShowWorldDetailDetail.rawValue {
             if let destination = segue.destinationViewController as? WebDetailViewController, doc = sender as? CoursewareInfoViewModel {
                 destination.document = doc
-                destination.title = "专业课件"
+                if self.type == .Document {
+                    destination.title = "专业课件"
+                }
+                else {
+                    destination.title = "优秀病例"
+                }
                 destination.showActionToolBar = true
             }
         }

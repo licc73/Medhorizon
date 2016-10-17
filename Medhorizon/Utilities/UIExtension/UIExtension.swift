@@ -49,6 +49,7 @@ extension UITableView {
             }
             else {
                 self.mj_footer.endRefreshingWithNoMoreData()
+                self.mj_footer.hidden = true
             }
         }
         else {
@@ -61,8 +62,8 @@ extension UITableView {
 extension UIColor {
     
     static func colorWithHex(hex: UInt32, alpha: CGFloat = 1) -> UIColor {
-        let r = (hex & 0xFF0000) >> 16;
-        let g = (hex & 0x00FF00) >> 8;
+        let r = (hex & 0xFF0000) >> 16
+        let g = (hex & 0x00FF00) >> 8
         let b = (hex & 0x0000FF);
         
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
@@ -83,9 +84,10 @@ extension UIColor {
 
 extension UITextField {
     func setupDefaultDisplay() {
+        self.font = UIFont.systemFontOfSize(16)
         self.layer.cornerRadius = 12
         self.layer.masksToBounds = true
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderColor = UIColor.colorWithIntValue(200, 200, 200).CGColor
         self.layer.borderWidth = 0.5
         self.backgroundColor = UIColor.colorWithHex(0xfbfbfb, alpha: 0.7)
         self.leftViewMode = .Always

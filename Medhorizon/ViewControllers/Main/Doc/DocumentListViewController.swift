@@ -201,7 +201,26 @@ extension DocumentListViewController: UITableViewDelegate, UITableViewDataSource
         defer {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
-        
+
+        if let curData = self.docList?.getCurData() {
+            guard indexPath.row < curData.docList.count else {
+                return
+            }
+
+            let document = curData.docList[indexPath.row]
+
+            if LoginManager.shareInstance.isLogin {
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDocumentInfo.rawValue, sender: document)
+            }
+            else {
+                guard let isNeedLogin = document.isNeedLogin where !isNeedLogin else {
+                    LoginManager.loginOrEnterUserInfo()
+                    return
+                }
+
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDocumentInfo.rawValue, sender: document)
+            }
+        }
     }
 }
 

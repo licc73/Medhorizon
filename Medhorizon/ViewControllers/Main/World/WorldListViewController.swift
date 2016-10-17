@@ -24,7 +24,7 @@ class WorldListViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenWidth * 25.0 / 64.0))
+        self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenWidth * 25.0  / 64.0))
         self.coverFlow?.delegate = self
         
         //self.tableView.tableHeaderView = self.coverFlow
@@ -130,9 +130,9 @@ class WorldListViewController: UIViewController {
                 vTabelHeader.addSubview(cover)
                 tableHeaderHeight += CGRectGetHeight(cover.frame)
                 
-                let imgvHLine = UIImageView(frame: CGRectMake(0, tableHeaderHeight, AppInfo.screenWidth, 0.5))
-                imgvHLine.backgroundColor = UIColor.lightGrayColor()
-                vTabelHeader.addSubview(imgvHLine)
+//                let imgvHLine = UIImageView(frame: CGRectMake(0, tableHeaderHeight, AppInfo.screenWidth, 0.5))
+//                imgvHLine.backgroundColor = UIColor.lightGrayColor()
+//                vTabelHeader.addSubview(imgvHLine)
             }
             
             self.coverFlow?.reloadData()
@@ -157,8 +157,8 @@ class WorldListViewController: UIViewController {
         
         vTabelHeader.frame = CGRectMake(0, 0, AppInfo.screenWidth, tableHeaderHeight)
 
-        let imgvHLine = UIImageView(frame: CGRectMake(0, tableHeaderHeight - 2, AppInfo.screenWidth, 2))
-        imgvHLine.backgroundColor = UIColor.grayColor()
+        let imgvHLine = UIImageView(frame: CGRectMake(0, tableHeaderHeight - 2, AppInfo.screenWidth, 1))
+        imgvHLine.backgroundColor = UIColor.lightGrayColor()
         vTabelHeader.addSubview(imgvHLine)
 
         self.tableView.tableHeaderView = vTabelHeader
@@ -243,8 +243,6 @@ extension WorldListViewController: CoverFlowViewDelegate {
             guard index >= 0 && index < curData.brannerList.count else {
                 return
             }
-            
-            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNewsDetail.rawValue, sender: curData.brannerList[index])
         }
         
     }

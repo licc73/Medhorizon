@@ -34,7 +34,7 @@ class DepartmentDisplayView: UIView {
     let imgvArrow: UIImageView
 
     override init(frame: CGRect) {
-        self.imgvIcon = UIImageView(frame: CGRectMake(0, 14, 16, 16))
+        self.imgvIcon = UIImageView(frame: CGRectMake(0, 14, 17, 17))
         self.labTitle = UILabel(frame: CGRectMake(20, 0, 50, 44))
         self.imgvArrow = UIImageView(frame: CGRectMake(80, 20, 9, 4.5))
         super.init(frame: CGRectMake(0, 0, 85, 44))
@@ -45,7 +45,7 @@ class DepartmentDisplayView: UIView {
         self.imgvIcon.image = UIImage(named: "icon_pediatrics_sel")
         self.labTitle.textAlignment = .Center
         self.labTitle.text = "儿科"
-        self.labTitle.font = UIFont.systemFontOfSize(16)
+        self.labTitle.font = UIFont.systemFontOfSize(17)
         self.labTitle.textColor = UIColor.whiteColor()
     }
     

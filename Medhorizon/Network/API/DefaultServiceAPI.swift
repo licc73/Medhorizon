@@ -18,6 +18,8 @@ enum DefaultServiceAPI: API {
     //userinfo
     case UserDetail(String, String)
 
+    case ModifyNickName(String, String, String)
+
 
 
 
@@ -55,6 +57,8 @@ enum DefaultServiceAPI: API {
     case CheckCanBeDownloaded(String, String, String, Int)
 
 
+
+
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
     static var defaultServiceConfiguration: ServiceConfiguration = ServiceConfiguration(httpProtocol: .HTTP, serviceType: .Default, serviceRegion: .Default, environment: .Default)
@@ -73,7 +77,8 @@ enum DefaultServiceAPI: API {
 
         case let .UserDetail(appKey, userId):
             return "/getUserInfo?AppSecret=\(appKey)&UserId=\(userId)"
-
+        case let .ModifyNickName(appKey, userId, nickName):
+            return "/modifyNickName?AppSecret=\(appKey)&UserId=\(userId)&NewName=\(nickName)"
 
         
         // server start with 1, page num & page size 意义定义反了

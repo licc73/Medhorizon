@@ -43,17 +43,17 @@ class UserDetailInfoViewController: UIViewController {
         self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: nil, insets: UIEdgeInsetsMake(0, 15, 0, 15), lineHeight: 0.5)))
 
         self.funcList.append(UserEditType.NickName(UserEditInfoBaseInfoType(title: "昵称", value: loginInfo?.nickName, titleColor: nil, valueColor: nil, cellHeight: 50)))
-        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0x2e94cb), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.funcList.append(UserEditType.SectionHeader(UserEditSectionHeaderInfoType(title: "账号绑定", icon: "icon_account", titleColor: nil, cellHeight: 50)))
         self.funcList.append(UserEditType.Phone(UserEditInfoBaseInfoType(title: "手机", value: loginInfo?.phone, titleColor: nil, valueColor: nil, cellHeight: 50)))
         self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: nil, insets: UIEdgeInsetsMake(0, 15, 0, 15), lineHeight: 0.5)))
         self.funcList.append(UserEditType.Weixin(UserEditInfoBaseInfoType(title: "微信", value: detail?.weixin, titleColor: nil, valueColor: nil, cellHeight: 50)))
-        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0x2e94cb), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.funcList.append(UserEditType.SectionHeader(UserEditSectionHeaderInfoType(title: "安全设置", icon: "icon_safe", titleColor: nil, cellHeight: 50)))
         self.funcList.append(UserEditType.Pwd(UserEditInfoBaseInfoType(title: "登录密码", value: loginInfo?.phone, titleColor: nil, valueColor: nil, cellHeight: 50)))
-        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0x2e94cb), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         var strueTitle = ""
         if let detail = detail {
@@ -69,7 +69,7 @@ class UserDetailInfoViewController: UIViewController {
         }
 
         self.funcList.append(UserEditType.TrueName(UserEditInfoBaseInfoType(title: "实名认证", value: strueTitle, titleColor: nil, valueColor: nil, cellHeight: 40)))
-        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0x2e94cb), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0x2892cb), insets: UIEdgeInsetsZero, lineHeight: 1)))
 
         self.tableView.reloadData()
     }

@@ -18,7 +18,7 @@ class SeparatorLineTableViewCell: UITableViewCell {
             self.imgvLine.backgroundColor = color
         }
         else {
-            self.imgvLine.backgroundColor = UIColor.lightGrayColor()
+            self.imgvLine.backgroundColor = UIColor.colorWithHex(0xdddddd)
         }
 
         if let insets = insets {

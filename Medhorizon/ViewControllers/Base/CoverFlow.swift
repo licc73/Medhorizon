@@ -39,6 +39,8 @@ class CoverFlowView: UIView {
         self.pageCtrl = UIPageControl(frame: CGRectMake(0, frame.size.height - 40, frame.size.width, 25))
 
         super.init(frame: frame)
+   
+        self.pageCtrl.hidesForSinglePage = true
         self.pageCtrl.userInteractionEnabled = false
         self.collectionView.backgroundColor = UIColor.whiteColor()
         self.collectionView.pagingEnabled = true
@@ -49,8 +51,24 @@ class CoverFlowView: UIView {
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.bounces = false
-        
+        self.collectionView.contentInset = UIEdgeInsetsZero
+
+//        self.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let left = NSLayoutConstraint(item: self.collectionView, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1, constant: 0)
+//        let right = NSLayoutConstraint(item: self.collectionView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
+//        let top = NSLayoutConstraint(item: self.collectionView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
+//        let bottom = NSLayoutConstraint(item: self.collectionView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+//        self.addConstraints([left, right, top, bottom])
+
+
         self.collectionView.registerNib(UINib(nibName: "CoverFlowCell", bundle: nil), forCellWithReuseIdentifier: coverFlowCellIdentifier)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.flowLayout.itemSize = frame.size
+        self.collectionView.frame = self.bounds
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -142,12 +142,13 @@ class VideoDetailViewController: UIViewController {
             return
         }
 
-        if DownloadManager.shareInstance.isSuccessDownloaded(curVidoeId) {
-
-        }
-        else {
-            self.playNetworkUrl()
-        }
+//        if DownloadManager.shareInstance.isSuccessDownloaded(curVidoeId) {
+//
+//        }
+//        else {
+//
+//        }
+        self.playNetworkUrl()
         self.vAction?.setFav(self.isFav)
         self.coverFlow?.reloadData()
 
