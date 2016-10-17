@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432824E61DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432824E41DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift */; };
+		432824E71DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432824E51DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib */; };
+		432824EA1DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432824E81DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift */; };
+		432824EB1DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432824E91DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.xib */; };
+		432824EE1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432824EC1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.swift */; };
+		432824EF1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432824ED1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.xib */; };
 		4344F6211DB1C31B00D5ED54 /* libCCSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4344F61F1DB1C31B00D5ED54 /* libCCSDK.a */; };
 		4344F63C1DB1C33800D5ED54 /* ALAirplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6241DB1C33800D5ED54 /* ALAirplayView.m */; };
 		4344F63D1DB1C33800D5ED54 /* ALButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6261DB1C33800D5ED54 /* ALButton.m */; };
@@ -206,6 +212,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		432824E41DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderEditTableViewCell.swift; sourceTree = "<group>"; };
+		432824E51DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderEditTableViewCell.xib; sourceTree = "<group>"; };
+		432824E81DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserBaseInfoEditTableViewCell.swift; sourceTree = "<group>"; };
+		432824E91DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserBaseInfoEditTableViewCell.xib; sourceTree = "<group>"; };
+		432824EC1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		432824ED1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		4344F6191DB1C31B00D5ED54 /* DWDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDownloader.h; sourceTree = "<group>"; };
 		4344F61A1DB1C31B00D5ED54 /* DWLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLog.h; sourceTree = "<group>"; };
 		4344F61B1DB1C31B00D5ED54 /* DWMoviePlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMoviePlayerController.h; sourceTree = "<group>"; };
@@ -521,6 +533,12 @@
 			isa = PBXGroup;
 			children = (
 				4344F6801DB30F3B00D5ED54 /* UserDetailInfoViewController.swift */,
+				432824E41DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift */,
+				432824E51DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib */,
+				432824E81DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift */,
+				432824E91DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.xib */,
+				432824EC1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.swift */,
+				432824ED1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.xib */,
 				4344F6831DB30FAC00D5ED54 /* ChangeNickNameViewController.swift */,
 				4344F6851DB30FB900D5ED54 /* ChangePhoneViewController.swift */,
 				4344F6871DB30FC900D5ED54 /* ChangePwdViewController.swift */,
@@ -1104,6 +1122,7 @@
 				4344F64B1DB1C33800D5ED54 /* movieFullscreen@2x.png in Resources */,
 				4344F69F1DB3148300D5ED54 /* SeparatorLineTableViewCell.xib in Resources */,
 				4344F6481DB1C33800D5ED54 /* movieForwardSelected.png in Resources */,
+				432824E71DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib in Resources */,
 				4344F6B41DB3295000D5ED54 /* MsgTableViewCell.xib in Resources */,
 				4344F6411DB1C33800D5ED54 /* movieBackward@2x.png in Resources */,
 				4344F69B1DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.xib in Resources */,
@@ -1117,8 +1136,10 @@
 				EA33BCED1DAB2A1E00C0BE04 /* CoverFlowCell.xib in Resources */,
 				4344F64D1DB1C33800D5ED54 /* moviePause@2x.png in Resources */,
 				4344F64E1DB1C33800D5ED54 /* moviePlay.png in Resources */,
+				432824EB1DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.xib in Resources */,
 				4344F6431DB1C33800D5ED54 /* movieBackwardSelected@2x.png in Resources */,
 				4344F6471DB1C33800D5ED54 /* movieForward@2x.png in Resources */,
+				432824EF1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.xib in Resources */,
 				43B2C9581DA7C124004FA849 /* MJRefresh.bundle in Resources */,
 				4344F6401DB1C33800D5ED54 /* movieBackward.png in Resources */,
 				4344F6C81DB3656E00D5ED54 /* MessageTableViewCell.xib in Resources */,
@@ -1159,6 +1180,7 @@
 				4344F6C71DB3656E00D5ED54 /* MessageTableViewCell.swift in Sources */,
 				4344F68E1DB3100A00D5ED54 /* MyPointViewController.swift in Sources */,
 				43B2C94C1DA7C124004FA849 /* MJRefreshComponent.m in Sources */,
+				432824E61DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift in Sources */,
 				43DA654C1DB11E62000F859E /* CommentListViewModel.swift in Sources */,
 				EA33BCD21DAA008600C0BE04 /* BaseViewModel.swift in Sources */,
 				4344F6941DB3105F00D5ED54 /* SettingViewController.swift in Sources */,
@@ -1231,6 +1253,7 @@
 				4344F6A41DB314B700D5ED54 /* BaseInfoTableViewCell.swift in Sources */,
 				EA33BBA61DA8890900C0BE04 /* DefaultServiceAPI.swift in Sources */,
 				43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */,
+				432824EE1DB4C33000A80DD3 /* UserTableHeaderTableViewCell.swift in Sources */,
 				4344F6C41DB3606400D5ED54 /* SysMessageViewController.swift in Sources */,
 				4344F6571DB219AE00D5ED54 /* LoginViewController.swift in Sources */,
 				4344F6811DB30F3B00D5ED54 /* UserDetailInfoViewController.swift in Sources */,
@@ -1245,6 +1268,7 @@
 				4344F6B31DB3295000D5ED54 /* MsgTableViewCell.swift in Sources */,
 				4344F6C21DB3605900D5ED54 /* MyMessageViewController.swift in Sources */,
 				EA33BB981DA880F300C0BE04 /* AlamofireRACUpload.swift in Sources */,
+				432824EA1DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift in Sources */,
 				43714A8C1DAD3D8400BD68C5 /* DocumentListViewController.swift in Sources */,
 				43B2C9801DA7C2AB004FA849 /* IQKeyboardManagerConstants.swift in Sources */,
 				4344F6D51DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift in Sources */,

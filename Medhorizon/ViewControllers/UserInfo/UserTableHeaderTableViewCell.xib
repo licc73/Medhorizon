@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="UserTableHeaderTableViewCell" customModule="Medhorizon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_safe" translatesAutoresizingMaskIntoConstraints="NO" id="cWo-lR-xMy">
+                        <rect key="frame" x="15" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="97K-b4-qkt"/>
+                            <constraint firstAttribute="height" constant="20" id="NR0-A0-yQJ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="42" placeholderIntrinsicHeight="39" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9I-m5-7xk">
+                        <rect key="frame" x="43" y="0.0" width="42" height="39"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.18039215689999999" green="0.58039215690000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cWo-lR-xMy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="082-j2-Yse"/>
+                    <constraint firstItem="f9I-m5-7xk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5Yw-8y-ZCX"/>
+                    <constraint firstItem="f9I-m5-7xk" firstAttribute="leading" secondItem="cWo-lR-xMy" secondAttribute="trailing" constant="8" id="RdG-gn-OAb"/>
+                    <constraint firstItem="cWo-lR-xMy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Y10-Js-85P"/>
+                    <constraint firstItem="f9I-m5-7xk" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="Zb7-0m-SRa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgvIcon" destination="cWo-lR-xMy" id="HO0-kU-VTY"/>
+                <outlet property="labTitle" destination="f9I-m5-7xk" id="LZH-uk-yZW"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_safe" width="17" height="20"/>
+    </resources>
+</document>

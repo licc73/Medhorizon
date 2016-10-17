@@ -14,6 +14,7 @@ class WorldListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgvThumbnail: UIImageView!
     @IBOutlet weak var labTitle: UILabel!
+    @IBOutlet weak var labExpertName: UILabel!
     @IBOutlet weak var labContent: UILabel!
     
     var expert: ExpertListViewModel? {
@@ -21,6 +22,7 @@ class WorldListTableViewCell: UITableViewCell {
             if let expert = expert {
                 self.labTitle.text = expert.jobName
                 self.labContent.text = expert.keyWordInfo
+                self.labExpertName.text = expert.zName
                                 
                 if let pic = expert.picUrl, picUrl = NSURL(string: pic) {
                     self.imgvThumbnail.sd_setImageWithURL(picUrl, placeholderImage: placeHolderImage)
@@ -39,6 +41,7 @@ class WorldListTableViewCell: UITableViewCell {
         self.labTitle.text = nil
         self.labContent.text = nil
         self.imgvThumbnail.image = placeHolderImage
+        self.labExpertName.text = nil
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

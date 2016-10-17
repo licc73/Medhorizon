@@ -11,6 +11,7 @@ import UIKit
 class DownloadViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var vNoData: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,13 @@ class DownloadViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         self.tableView.reloadData()
+
+        if DownloadManager.shareInstance.countOfDownloadList > 0 {
+            self.tableView.backgroundView = nil
+        }
+        else {
+            self.tableView.backgroundView = self.vNoData
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,6 +92,9 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
                 DownloadManager.shareInstance.removeItem(item)
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                 self.tableView.endUpdates()
+                if DownloadManager.shareInstance.countOfDownloadList == 0 {
+                    self.tableView.backgroundView = self.vNoData
+                }
             }
 
         }
@@ -97,7 +108,27 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
 
         if let download = DownloadManager.shareInstance[indexPath.row] {
             if download.fileType == .Document {
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNormalLink.rawValue, sender: DownloadItemWrapper(download: download))
+                if download.status == .Finish {
+                    self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNormalLink.rawValue, sender: DownloadItemWrapper(download: download))
+                }
+                else if download.status == .Fail {
+                    let actionController = UIAlertController(title: "温馨提示",
+                                                             message:"文件下载失败，是否重新下载？",
+                                                             preferredStyle: UIAlertControllerStyle.Alert)
+
+                    actionController.addAction(UIAlertAction(title: "确定",
+                        style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                            var d = download
+                            d.status = .Wait
+                            DownloadManager.shareInstance.addDownloadItem(d)
+                        }))
+
+                    actionController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) -> Void in
+                        
+                    }))
+                    
+                    self.presentViewController(actionController, animated: true, completion: nil)
+                }
             }
             else {
                 let path = download.getResourcePath()

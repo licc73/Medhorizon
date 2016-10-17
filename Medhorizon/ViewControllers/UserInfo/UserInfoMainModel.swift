@@ -89,5 +89,74 @@ enum UserMainInfoType {
         }
     }
 }
+/**
+ *  Color has no effect
+ */
+struct UserEditInfoHeaderPicType: TableViewCellHeight {
+    let title: String
+    let picUrl: String?
+    let cellHeight: CGFloat
+}
+
+struct UserEditInfoBaseInfoType: TableViewCellHeight {
+    let title: String
+    let value: String?
+    let titleColor: UIColor?
+    let valueColor: UIColor?
+    let cellHeight: CGFloat
+}
+
+struct UserEditSectionHeaderInfoType: TableViewCellHeight {
+    let title: String
+    let icon: String
+    let titleColor: UIColor?
+    let cellHeight: CGFloat
+}
+
+
+enum UserEditType {
+    case Header(UserEditInfoHeaderPicType)
+    case SeparatorLine(UserInfoSeparatorLineType)
+    case NickName(UserEditInfoBaseInfoType)
+    case SectionHeader(UserEditSectionHeaderInfoType)
+    case Phone(UserEditInfoBaseInfoType)
+    case Weixin(UserEditInfoBaseInfoType)
+    case Pwd(UserEditInfoBaseInfoType)
+    case TrueName(UserEditInfoBaseInfoType)
+
+    var cellHeight: CGFloat {
+        switch self {
+        case let .Header(header):
+            return header.cellHeight
+        case let .SeparatorLine(cellInfo):
+            return cellInfo.cellHeight
+        case let .NickName(cellInfo):
+            return cellInfo.cellHeight
+        case let .SectionHeader(cellInfo):
+            return cellInfo.cellHeight
+        case let .Phone(cellInfo):
+            return cellInfo.cellHeight
+        case let .Weixin(cellInfo):
+            return cellInfo.cellHeight
+        case let .Pwd(cellInfo):
+            return cellInfo.cellHeight
+        case let .TrueName(cellInfo):
+            return cellInfo.cellHeight
+        }
+    }
+
+    var cellId: String {
+        switch self {
+        case .Header:
+            return userHeaderEditTableViewCellId
+        case .SectionHeader:
+            return userTableHeaderTableViewCellId
+        case .SeparatorLine:
+            return separatorLineTableViewCellId
+        default:
+            return userBaseInfoEditTableViewCellId
+        }
+    }
+}
 
 

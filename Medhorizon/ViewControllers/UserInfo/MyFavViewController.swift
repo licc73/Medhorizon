@@ -175,6 +175,9 @@ extension MyFavViewController: UITableViewDelegate, UITableViewDataSource {
                     self.favList.removeAtIndex(indexPath.row)
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                     self.tableView.endUpdates()
+                    if self.favList.count == 0 {
+                        self.reloadData()
+                    }
                 }
             }).start()
 

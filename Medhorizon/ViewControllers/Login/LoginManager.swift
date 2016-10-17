@@ -109,11 +109,12 @@ extension LoginManager { //login work flow
             .flatMap(.Latest, transform: { (object) -> SignalProducer<ReturnMsg?, ServiceError> in
                 let returnMsg = ReturnMsg.mapToModel(object)
                 if let msg = returnMsg where msg.isSuccess {
-                    LoginManager.shareInstance.loginOrLogoutNotification.value = true
+
                     LoginManager.shareInstance.loginInfo = LoginBriefInfo.mapToModel(object, phone: phone)
                     LoginManager.shareInstance.userId = LoginManager.shareInstance.loginInfo?.userId
 
                     LoginManager.shareInstance.saveLoginInfo()
+                    LoginManager.shareInstance.loginOrLogoutNotification.value = true
                 }
 
                 return SignalProducer(value: returnMsg)
