@@ -12,6 +12,7 @@ class NormalLinkViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
 
     var linkUrl: String?
+    var filePath: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,9 @@ class NormalLinkViewController: UIViewController {
         // Do any additional setup after loading the view.
         if let link = self.linkUrl, linkUrl = NSURL(string: link) {
             self.webView.loadRequest(NSURLRequest(URL: linkUrl))
+        }
+        else if let file = self.filePath {
+            self.webView.loadRequest(NSURLRequest(URL: NSURL(fileURLWithPath: file)))
         }
         
     }

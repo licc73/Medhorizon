@@ -24,7 +24,7 @@ class FavTableViewCell: UITableViewCell {
                 self.labReadCount.text = "浏览量 \(readNum)"
 
                 if let pic = fav.picUrl, picUrl = NSURL(string: pic) {
-                    self.imgvThumbnail.sd_setImageWithURL(picUrl, placeholderImage: UIImage(named: "default_image"))
+                    self.imgvThumbnail.sd_setImageWithURL(picUrl, placeholderImage: UIImage(named: "default_image_small"))
                 }
             }
         }

@@ -66,6 +66,7 @@
 		4344F6D31DB3AECB00D5ED54 /* PointListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6D21DB3AECB00D5ED54 /* PointListTableViewCell.swift */; };
 		4344F6D51DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6D41DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift */; };
 		4344F6D71DB3C66000D5ED54 /* SetupValueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6D61DB3C66000D5ED54 /* SetupValueManager.swift */; };
+		436E33561DB49B1500B67CB0 /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E33551DB49B1500B67CB0 /* DownloadTableViewCell.swift */; };
 		43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A761DAA7FD100BD68C5 /* AppInfo.swift */; };
 		43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */; };
 		43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */; };
@@ -274,6 +275,7 @@
 		4344F6D21DB3AECB00D5ED54 /* PointListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointListTableViewCell.swift; sourceTree = "<group>"; };
 		4344F6D41DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWithSwichTableViewCell.swift; sourceTree = "<group>"; };
 		4344F6D61DB3C66000D5ED54 /* SetupValueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupValueManager.swift; sourceTree = "<group>"; };
+		436E33551DB49B1500B67CB0 /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
 		43714A761DAA7FD100BD68C5 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				4344F6911DB3102A00D5ED54 /* DownloadViewController.swift */,
+				436E33551DB49B1500B67CB0 /* DownloadTableViewCell.swift */,
 			);
 			name = Download;
 			sourceTree = "<group>";
@@ -1255,6 +1258,7 @@
 				4344F6D71DB3C66000D5ED54 /* SetupValueManager.swift in Sources */,
 				4344F68C1DB30FF900D5ED54 /* MyFavViewController.swift in Sources */,
 				EA33BCF01DAB3BE200C0BE04 /* NewsViewController.swift in Sources */,
+				436E33561DB49B1500B67CB0 /* DownloadTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,6 +50,10 @@ enum DefaultServiceAPI: API {
 
     case PointList(String, String, Int, Int)
 
+    /// ///
+
+    case CheckCanBeDownloaded(String, String, String, Int)
+
 
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
@@ -118,6 +122,10 @@ enum DefaultServiceAPI: API {
 
         case let .PointList(appKey, userId, pageNum, pageSize):
             return "/scoreList?AppSecret=\(appKey)&UserId=\(userId)&PageSize=\(pageNum)&PageNum=\(pageSize)"
+
+        case let .CheckCanBeDownloaded(appKey, userId, infoId, score):
+            return "/firstDown?AppSecret=\(appKey)&UserId=\(userId)&InfoId=\(infoId)&ScoreNum=\(score)"
+
         }
     }
 }

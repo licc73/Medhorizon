@@ -204,7 +204,46 @@ extension WebDetailViewController {
     }
 
     @IBAction func downloadSource(sender: AnyObject) {
+        self.checkCanDownload()
+    }
 
+    func checkCanDownload() {
+        if let doc = self.document {
+            if LoginManager.shareInstance.isLogin {
+                if let userId = LoginManager.shareInstance.userId {
+                    if let score = doc.needScore {
+                        if score != 0 {
+                            performForCheckDownLoad(userId, InfoId: doc.id, scoreNum: score)
+                                .takeUntil(self.rac_WillDeallocSignalProducer())
+                                .observeOn(UIScheduler())
+                                .on(failed: { (error) in
+                                    AppInfo.showDefaultNetworkErrorToast()
+                                    }, next: {[unowned self] (msg, b) in
+                                        if b {
+                                            self.addDocumentToQueue(doc, toUser: userId)
+                                        }
+                                        else if let msg = msg {
+                                            AppInfo.showToast(msg.errorMsg)
+                                        }
+                                        else {
+                                            AppInfo.showToast("请稍候重试")
+                                        }
+                                    })
+                                .start()
+                        }
+                        else {
+                            self.addDocumentToQueue(doc, toUser: userId)
+                        }
+                    }
+                    else {
+                        self.addDocumentToQueue(doc, toUser: userId)
+                    }
+                }
+            }
+            else {
+                LoginManager.loginOrEnterUserInfo()
+            }
+        }
     }
 }
 
@@ -290,12 +329,8 @@ extension WebDetailViewController: ActionViewDelegate {
                 LoginManager.loginOrEnterUserInfo()
             }
         case .Download:
-            if LoginManager.shareInstance.isLogin {
+            self.checkCanDownload()
 
-            }
-            else {
-                LoginManager.loginOrEnterUserInfo()
-            }
         case .Share:
             self.showShareView()
         default:
@@ -303,4 +338,7 @@ extension WebDetailViewController: ActionViewDelegate {
         }
     }
 
+    func addDocumentToQueue(doc: CoursewareInfoViewModel, toUser userId: String) {
+        DownloadManager.shareInstance.addDownloadItem(DownloadItem(sourceUrl: doc.sourceUrl, fileType: .Document, picUrl: doc.picUrl ?? "", status: .Wait, title: doc.title, progress: 0, userId: userId, downloadItem: nil))
+    }
 }

@@ -12,5 +12,7 @@
 #import "UIView+Toast.h"
 #import "MJRefresh.h"
 #import "ALMoviePlayerController.h"
+#import <CommonCrypto/CommonCrypto.h>
+#import "DWDownloader.h"
 
 #endif /* Medhorizon_Bridging_h */

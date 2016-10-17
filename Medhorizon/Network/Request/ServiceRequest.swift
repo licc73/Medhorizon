@@ -172,4 +172,9 @@ extension DefaultServiceRequests {//userInfo
             })
     }
 
+    static func rac_requesForCheckDownloadStatus(userId: String, infoId: String, scoreNum: Int) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.CheckCanBeDownloaded(defaultAppKey, userId, infoId, scoreNum))
+            <~ justCast)
+    }
+
 }

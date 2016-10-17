@@ -320,17 +320,24 @@ extension VideoDetailViewController: ActionViewDelegate {
                 LoginManager.loginOrEnterUserInfo()
             }
         case .Download:
-            if LoginManager.shareInstance.isLogin {
-
-            }
-            else {
-                LoginManager.loginOrEnterUserInfo()
-            }
+            self.checkDownload()
         default:
             break
         }
     }
-    
+
+    func checkDownload() {
+        if LoginManager.shareInstance.isLogin {
+            if let userId = LoginManager.shareInstance.userId, videoId = self.videoId {
+                let item = DownloadItem(sourceUrl: videoId, fileType: .Video, picUrl: self.videoDocument?.picUrl ?? "", status: .Wait, title: self.videoDocument?.title ?? "", progress: 0, userId: userId, downloadItem: nil)
+                DownloadManager.shareInstance.addDownloadItem(item)
+            }
+        }
+        else {
+            LoginManager.loginOrEnterUserInfo()
+        }
+    }
+
 }
 
 extension VideoDetailViewController: ALMoviePlayerControllerDelegate {

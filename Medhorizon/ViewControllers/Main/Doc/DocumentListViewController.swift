@@ -116,6 +116,30 @@ class DocumentListViewController: UIViewController {
                     .start()
             }
             .start()
+
+        DownloadManager.shareInstance.downloadHotSignal.producer
+            .throttle(2, onScheduler: RACScheduler.mainThreadScheduler())
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .startWithNext { [unowned self](item) in
+                if let sItem = item where sItem.status == .Finish {
+                    self.updateCell(sItem)
+                }
+        }
+    }
+
+    func updateCell(item: DownloadItem) {
+        if let curData = self.docList?.getCurData() {
+            var index = 0
+            for doc in curData.docList {
+                if doc.sourceUrl == item.sourceUrl {
+                    self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Automatic)
+                    break
+                }
+                index += 1
+            }
+
+
+        }
     }
     
     func reloadData() {
@@ -137,6 +161,12 @@ class DocumentListViewController: UIViewController {
                 detail.document = doc
                 detail.title = "文献指南"
                 detail.showDownloadToolBar = true
+            }
+        }
+        else if let id = segue.identifier where id == StoryboardSegue.Main.ShowNormalLink.rawValue {
+            if let destination = segue.destinationViewController as? NormalLinkViewController, doc = sender as? CoursewareInfoViewModel {
+                destination.title = doc.title
+                destination.filePath = DownloadItem.filePathWithSource(doc.sourceUrl, type: .Document)
             }
         }
     }
@@ -214,19 +244,52 @@ extension DocumentListViewController: DocumentListTableViewCellDelegate {
             }
             
             let document = curData.docList[indexPath.row]
+
+            if DownloadManager.shareInstance.isSuccessDownloaded(document.sourceUrl) && NSFileManager.defaultManager().fileExistsAtPath(DownloadItem.filePathWithSource(document.sourceUrl, type: .Document)) {
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNormalLink.rawValue, sender: document)
+                return
+            }
             
             if LoginManager.shareInstance.isLogin {
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDocumentInfo.rawValue, sender: document)
+                if let userId = LoginManager.shareInstance.userId {
+                    if let score = document.needScore {
+                        if score != 0 {
+                            performForCheckDownLoad(userId, InfoId: document.id, scoreNum: score)
+                                .takeUntil(self.rac_WillDeallocSignalProducer())
+                                .observeOn(UIScheduler())
+                                .on(failed: { (error) in
+                                    AppInfo.showDefaultNetworkErrorToast()
+                                    }, next: {[unowned self] (msg, b) in
+                                        if b {
+                                            self.addDocumentToQueue(document, toUser: userId)
+                                        }
+                                        else if let msg = msg {
+                                            AppInfo.showToast(msg.errorMsg)
+                                        }
+                                        else {
+                                            AppInfo.showToast("请稍候重试")
+                                        }
+                                })
+                            .start()
+                        }
+                        else {
+                            self.addDocumentToQueue(document, toUser: userId)
+                        }
+                    }
+                    else {
+                        self.addDocumentToQueue(document, toUser: userId)
+                    }
+                }
             }
             else {
-                guard let isNeedLogin = document.isNeedLogin where !isNeedLogin else {
-                    LoginManager.loginOrEnterUserInfo()
-                    return
-                }
-                
+                LoginManager.loginOrEnterUserInfo()
                 
             }
         }
+    }
+
+    func addDocumentToQueue(doc: CoursewareInfoViewModel, toUser userId: String) {
+        DownloadManager.shareInstance.addDownloadItem(DownloadItem(sourceUrl: doc.sourceUrl, fileType: .Document, picUrl: doc.picUrl ?? "", status: .Wait, title: doc.title, progress: 0, userId: userId, downloadItem: nil))
     }
     
 }

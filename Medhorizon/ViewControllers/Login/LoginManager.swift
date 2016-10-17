@@ -27,6 +27,8 @@ class LoginManager {
         return userId != nil
     }
 
+    let loginOrLogoutNotification: MutableProperty<Bool?> = MutableProperty(nil)
+
     var userDetailInfo: UserDetailInfo? {
         didSet {
             if let user = userDetailInfo {
@@ -65,6 +67,7 @@ class LoginManager {
     }
 
     func clearLoginInfo() {
+        LoginManager.shareInstance.loginOrLogoutNotification.value = false
         self.userId = nil
         self.loginInfo = nil
         self.userDetailInfo = nil
@@ -106,6 +109,7 @@ extension LoginManager { //login work flow
             .flatMap(.Latest, transform: { (object) -> SignalProducer<ReturnMsg?, ServiceError> in
                 let returnMsg = ReturnMsg.mapToModel(object)
                 if let msg = returnMsg where msg.isSuccess {
+                    LoginManager.shareInstance.loginOrLogoutNotification.value = true
                     LoginManager.shareInstance.loginInfo = LoginBriefInfo.mapToModel(object, phone: phone)
                     LoginManager.shareInstance.userId = LoginManager.shareInstance.loginInfo?.userId
 
