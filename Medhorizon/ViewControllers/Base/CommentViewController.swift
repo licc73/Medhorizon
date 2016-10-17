@@ -43,7 +43,7 @@ class CommentViewController: UIViewController {
     }
     
     func initMJRefresh() {
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[unowned self]_ in
+        self.tableView.mj_header = NMIssueRefreshHeader(refreshingBlock: {[unowned self]_ in
             self.commentListData?.performRefreshServerFetch()
                 .takeUntil(self.rac_WillDeallocSignalProducer())
                 .observeOn(UIScheduler())

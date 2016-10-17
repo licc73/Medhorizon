@@ -128,6 +128,11 @@ extension DefaultServiceRequests {
         return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ModifyNickName(defaultAppKey, userId, nickName))
             <~ justCast
     }
+
+    static func rac_requesForModifyPhone(userId: String, phone: String, vCode: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ModifyPhone(defaultAppKey, userId, phone, vCode))
+            <~ justCast
+    }
     
 }
 

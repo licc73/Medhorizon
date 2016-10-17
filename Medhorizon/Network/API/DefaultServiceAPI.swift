@@ -19,7 +19,7 @@ enum DefaultServiceAPI: API {
     case UserDetail(String, String)
 
     case ModifyNickName(String, String, String)
-
+    case ModifyPhone(String, String, String, String)
 
 
 
@@ -79,8 +79,10 @@ enum DefaultServiceAPI: API {
             return "/getUserInfo?AppSecret=\(appKey)&UserId=\(userId)"
         case let .ModifyNickName(appKey, userId, nickName):
             return "/modifyNickName?AppSecret=\(appKey)&UserId=\(userId)&NewName=\(nickName)"
+        case let .ModifyPhone(appKey, userId, newPhone, vCode):
+            return "/modifyPhone?AppSecret=\(appKey)&UserId=\(userId)&NewPhone=\(newPhone)&VCode=\(vCode)"
 
-        
+
         // server start with 1, page num & page size 意义定义反了
         case let .NewsList(appKey, departmentId, pageNum, pageSize):
             return "/newsInfoList?AppSecret=\(appKey)&DepartmentID=\(departmentId)&PageSize=\(pageNum)&PageNum=\(pageSize)"

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 /// Hard Code current page for saving time.
 
 class SettingViewController: UIViewController {
@@ -46,7 +47,7 @@ class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,12 +67,33 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
             return cell
         case 2:
+            let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+            cell.textLabel?.text = "清除缓存"
+            self.checkCacheSize(cell)
+            return cell
+        case 3:
             let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
             cell.textLabel?.text = "隐私声明"
             return cell
 
         default:
             return UITableViewCell()
+        }
+    }
+
+    func checkCacheSize(cell: UITableViewCell) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+            let size = SDImageCache.sharedImageCache().getSize()
+            dispatch_async(dispatch_get_main_queue(), {
+                let f = Double(size) / 1000.0 / 1000
+                if f < 0.01 {
+                    cell.detailTextLabel?.text = "0M"
+                }
+                else {
+                    cell.detailTextLabel?.text = String(format: "%.2fM", f)
+                }
+
+            })
         }
     }
 
@@ -94,8 +116,20 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         defer {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
-        if indexPath.section == 2 && indexPath.row == 0 {
+        if indexPath.section == 3 && indexPath.row == 0 {
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNormalLink.rawValue, sender: nil)
+        }
+        else if indexPath.section == 2 && indexPath.row == 0 {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                SDImageCache.sharedImageCache().clearDisk()
+                SDImageCache.sharedImageCache().clearMemory()
+                SDImageCache.sharedImageCache().cleanDisk()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                })
+            }
+
+            
         }
 
     }

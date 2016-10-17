@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4311BC641DB5231D00F00713 /* NMIssueRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4311BC631DB5231D00F00713 /* NMIssueRefreshHeader.swift */; };
 		432824E61DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432824E41DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift */; };
 		432824E71DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432824E51DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib */; };
 		432824EA1DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432824E81DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift */; };
@@ -212,6 +213,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4311BC631DB5231D00F00713 /* NMIssueRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMIssueRefreshHeader.swift; sourceTree = "<group>"; };
 		432824E41DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderEditTableViewCell.swift; sourceTree = "<group>"; };
 		432824E51DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderEditTableViewCell.xib; sourceTree = "<group>"; };
 		432824E81DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserBaseInfoEditTableViewCell.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				43B2C9471DA7C124004FA849 /* UIScrollView+MJRefresh.m */,
 				43B2C9481DA7C124004FA849 /* UIView+MJExtension.h */,
 				43B2C9491DA7C124004FA849 /* UIView+MJExtension.m */,
+				4311BC631DB5231D00F00713 /* NMIssueRefreshHeader.swift */,
 			);
 			path = MJRefresh;
 			sourceTree = "<group>";
@@ -1217,6 +1220,7 @@
 				43714A951DAFE93900BD68C5 /* WorldDetailTableViewCell.swift in Sources */,
 				4344F67A1DB29D4100D5ED54 /* ForgotPwdViewController.swift in Sources */,
 				EA33BBA81DA8892600C0BE04 /* ServiceRequest.swift in Sources */,
+				4311BC641DB5231D00F00713 /* NMIssueRefreshHeader.swift in Sources */,
 				4344F6CF1DB37A1300D5ED54 /* FavTableViewCell.swift in Sources */,
 				43B2C9551DA7C124004FA849 /* MJRefreshGifHeader.m in Sources */,
 				43714A891DAD382D00BD68C5 /* MeetingListViewModel.swift in Sources */,

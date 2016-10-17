@@ -52,7 +52,7 @@ class UserDetailInfoViewController: UIViewController {
         self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.funcList.append(UserEditType.SectionHeader(UserEditSectionHeaderInfoType(title: "安全设置", icon: "icon_safe", titleColor: nil, cellHeight: 50)))
-        self.funcList.append(UserEditType.Pwd(UserEditInfoBaseInfoType(title: "登录密码", value: loginInfo?.phone, titleColor: nil, valueColor: nil, cellHeight: 50)))
+        self.funcList.append(UserEditType.Pwd(UserEditInfoBaseInfoType(title: "登录密码", value: "修改", titleColor: nil, valueColor: nil, cellHeight: 50)))
         self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         var strueTitle = ""
@@ -61,15 +61,15 @@ class UserDetailInfoViewController: UIViewController {
                 strueTitle = "强生员工"
             }
             else if let b = detail.isTrueName where b {
-                strueTitle = "实名"
+                strueTitle = "医生"
             }
             else {
                 strueTitle = "未认证"
             }
         }
 
-        self.funcList.append(UserEditType.TrueName(UserEditInfoBaseInfoType(title: "实名认证", value: strueTitle, titleColor: nil, valueColor: nil, cellHeight: 40)))
-        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0x2892cb), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        self.funcList.append(UserEditType.TrueName(UserEditInfoBaseInfoType(title: "用户身份", value: strueTitle, titleColor: nil, valueColor: nil, cellHeight: 40)))
+        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.tableView.reloadData()
     }
@@ -214,7 +214,14 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
             }))
 
             self.presentViewController(actionController, animated: true, completion: nil)
-
+        case .NickName:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowChangeNickName.rawValue, sender: nil)
+        case .Phone:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowChangePhoneView.rawValue, sender: nil)
+        case .Pwd:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowChangePwdView.rawValue, sender: nil)
+        case .TrueName:
+            self.performSegueWithIdentifier(StoryboardSegue.Main.ShowTrueNameVerifyView.rawValue, sender: nil)
         default:
             break
         }
