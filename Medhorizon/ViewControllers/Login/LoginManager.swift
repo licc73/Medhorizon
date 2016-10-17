@@ -159,6 +159,13 @@ extension LoginManager {
                 return ReturnMsg.mapToModel(object)
             })
     }
+
+    static func performModifyPwd(userId: String, oldPwd: String, newPwd: String) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForModifyPwd(userId, oldPwd: oldPwd, newPwd: newPwd)
+            .map({ (object) -> ReturnMsg? in
+                return ReturnMsg.mapToModel(object)
+            })
+    }
     
 }
 

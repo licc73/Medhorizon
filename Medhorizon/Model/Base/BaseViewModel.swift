@@ -509,7 +509,7 @@ extension LoginBriefInfo {
 }
 
 final class UserDetailInfo {
-    let headpic: String?
+    var headpic: String?
     var nickName: String?
     let phone: String?
     let weixin: String?

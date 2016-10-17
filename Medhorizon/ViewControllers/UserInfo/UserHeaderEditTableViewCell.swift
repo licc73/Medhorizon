@@ -14,8 +14,12 @@ class UserHeaderEditTableViewCell: UITableViewCell {
     @IBOutlet weak var labTitle: UILabel!
     @IBOutlet weak var imgvHeadPic: UIImageView!
 
-    func setTitle(title: String?, imgUrl: String?) {
+    func setTitle(title: String?, imgUrl: String?, localImg: UIImage?) {
         self.labTitle.text = title
+        if let image = localImg {
+            self.imgvHeadPic.image = image
+            return
+        }
         if let pic = imgUrl, picUrl = NSURL(string: pic) {
             self.imgvHeadPic.sd_setImageWithURL(picUrl, placeholderImage: UIImage(named: "default_header"))
         }

@@ -133,6 +133,11 @@ extension DefaultServiceRequests {
         return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ModifyPhone(defaultAppKey, userId, phone, vCode))
             <~ justCast
     }
+
+    static func rac_requesForModifyPwd(userId: String, oldPwd: String, newPwd: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ModifyPwd(defaultAppKey, userId, oldPwd, newPwd))
+            <~ justCast
+    }
     
 }
 

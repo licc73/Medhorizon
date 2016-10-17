@@ -8,11 +8,14 @@
 
 import UIKit
 import ReactiveCocoa
+import SVProgressHUD
 
 class UserDetailInfoViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var funcList: [UserEditType] = []
+
+    var headerImg: UIImage? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +149,7 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
         switch function {
         case let .Header(cellInfo):
             if let cell = cell as? UserHeaderEditTableViewCell {
-                cell.setTitle(cellInfo.title, imgUrl: cellInfo.picUrl)
+                cell.setTitle(cellInfo.title, imgUrl: cellInfo.picUrl, localImg: headerImg)
             }
         case let .NickName(cellInfo):
             if let cell = cell as? UserBaseInfoEditTableViewCell {
@@ -199,15 +202,27 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
                                                      message:"请选择",
                                                      preferredStyle: UIAlertControllerStyle.ActionSheet)
 
-            actionController.addAction(UIAlertAction(title: "从相机",
-                style: UIAlertActionStyle.Default, handler: {(action) -> Void in
 
-            }))
 
             actionController.addAction(UIAlertAction(title: "从相册",
                 style: UIAlertActionStyle.Default, handler: {(action) -> Void in
-
+                    let picker = UIImagePickerController()
+                    picker.delegate = self
+                    picker.allowsEditing = true//设置可编辑
+                    picker.sourceType = .PhotoLibrary
+                    self.presentViewController(picker, animated: true, completion: nil)
             }))
+
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
+                actionController.addAction(UIAlertAction(title: "从相机",
+                    style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                        let picker = UIImagePickerController()
+                        picker.delegate = self
+                        picker.allowsEditing = true//设置可编辑
+                        picker.sourceType = .Camera
+                        self.presentViewController(picker, animated: true, completion: nil)
+                }))
+            }
 
             actionController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) -> Void in
 
@@ -235,4 +250,88 @@ extension UserDetailInfoViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
 
+}
+
+extension UserDetailInfoViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+
+        if let img = info[UIImagePickerControllerEditedImage] as? UIImage, pressImgData = UIImageJPEGRepresentation(img, 0.7) {
+
+            self.headerImg = UIImage(data: pressImgData)
+            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow:0, inSection: 0)], withRowAnimation: .Automatic)
+
+            self.uploadPic(pressImgData)
+        }
+
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController){
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func uploadPic(imgData: NSData) {
+        guard let userId = LoginManager.shareInstance.userId else {
+            return
+        }
+        SVProgressHUD.show()
+        //1.创建会话对象
+        let session: NSURLSession = NSURLSession.sharedSession()
+
+        //2.根据会话对象创建task
+        let url: NSURL = NSURL(string: "http://app.medhorizon.com.cn/upHeadPicUrl")!
+
+        //3.创建可变的请求对象
+        let request: NSMutableURLRequest = NSMutableURLRequest(URL: url)
+
+        //4.修改请求方法为POST
+        request.HTTPMethod = "POST"
+
+        let sPost = String(format: "UserId=\(userId)&HeadUrl=data:image/jpg;base64,%@", imgData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.init(rawValue: 0)))
+
+        //5.设置请求体
+        request.HTTPBody = sPost.dataUsingEncoding(NSUTF8StringEncoding)
+
+        //6.根据会话对象创建一个Task(发送请求）
+        /*
+         第一个参数：请求对象
+         第二个参数：completionHandler回调（请求完成【成功|失败】的回调）
+         data：响应体信息（期望的数据）
+         response：响应头信息，主要是对服务器端的描述
+         error：错误信息，如果请求失败，则error有值
+         */
+        let dataTask: NSURLSessionDataTask = session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
+            SVProgressHUD.dismiss()
+            if error != nil {
+                AppInfo.showToast("上传图片失败，请稍候重试")
+                return
+            }
+            //if(error == nil){
+            //8.解析数据
+            //说明：（此处返回的数据是JSON格式的，因此使用NSJSONSerialization进行反序列化处理）
+            var dict: NSDictionary? = nil
+            do {
+                dict  = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.init(rawValue: 0)) as? NSDictionary
+            } catch {
+
+            }
+            if let dic = dict as? [String: AnyObject], msg = ReturnMsg.mapToModel(dic) {
+                if msg.isSuccess {
+                    let headUrl = mapToString(dic)("HeadPic")
+                    LoginManager.shareInstance.userDetailInfo?.headpic = headUrl
+                    self.refreshUserDetail()
+                }
+                else {
+                    AppInfo.showToast(msg.errorMsg)
+                }
+            }
+            else {
+                AppInfo.showToast("上传图片失败，请稍候重试")
+            }
+            //}
+        }
+        //5.执行任务
+        dataTask.resume()
+    }
 }

@@ -133,6 +133,7 @@ extension ChangePhoneViewController {
                 }, next: {[unowned self] (returnMsg) in
                     if let msg = returnMsg {
                         if msg.isSuccess {
+                            AppInfo.showToast("您已成功修改绑定手机")
                             self.navigationController?.popViewControllerAnimated(true)
                         }
                         else {

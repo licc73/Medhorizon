@@ -20,6 +20,7 @@ enum DefaultServiceAPI: API {
 
     case ModifyNickName(String, String, String)
     case ModifyPhone(String, String, String, String)
+    case ModifyPwd(String, String, String, String)
 
 
 
@@ -81,6 +82,8 @@ enum DefaultServiceAPI: API {
             return "/modifyNickName?AppSecret=\(appKey)&UserId=\(userId)&NewName=\(nickName)"
         case let .ModifyPhone(appKey, userId, newPhone, vCode):
             return "/modifyPhone?AppSecret=\(appKey)&UserId=\(userId)&NewPhone=\(newPhone)&VCode=\(vCode)"
+        case let .ModifyPwd(appKey, userId, oldPwd, newPwd):
+            return "/modifyPwd?AppSecret=\(appKey)&UserId=\(userId)&OldPwd=\(oldPwd)&NewPwd=\(newPwd)"
 
 
         // server start with 1, page num & page size 意义定义反了
