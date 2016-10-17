@@ -35,6 +35,20 @@ func mapToInt(dictionary: [String: AnyObject]) -> String -> Int? {
     }
 }
 
+func mapToDouble(dictionary: [String: AnyObject]) -> String -> Double? {
+    return { key in
+        let value = dictionary[key]
+        if let value = value as? Double {
+            return value
+        }
+        else if let value = value as? String, doubleValue = Double(value) {
+            return doubleValue
+        }
+
+        return nil
+    }
+}
+
 func mapToBool(dictionary: [String: AnyObject]) -> String -> Bool? {
     return { key in
         let value = dictionary[key]

@@ -142,7 +142,7 @@ class VideoDetailViewController: UIViewController {
             return
         }
 
-        if DownloadManager.shareInstance.isVideoDownloaded(curVidoeId) {
+        if DownloadManager.shareInstance.isSuccessDownloaded(curVidoeId) {
 
         }
         else {
