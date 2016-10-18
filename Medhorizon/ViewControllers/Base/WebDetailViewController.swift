@@ -189,7 +189,8 @@ class WebDetailViewController: UIViewController {
     }
 
     func showShareView() {
-
+        let v = ShareToThirdPartyView()
+        v.showInView(self.view)
     }
 }
 

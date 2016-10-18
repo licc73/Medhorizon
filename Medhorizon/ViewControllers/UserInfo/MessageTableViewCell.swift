@@ -45,7 +45,7 @@ class MessageTableViewCell: UITableViewCell {
         super.prepareForReuse()
         self.labTitle.text = nil
         self.labContent.text = nil
-        self.labCreatedDate = nil
+        self.labCreatedDate.text = nil
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

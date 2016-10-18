@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
         combineLatest(phoneSP, pwdSP)
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
-            .on { (isValidPhone, isValidPwd) in
+            .on { [unowned self] (isValidPhone, isValidPwd) in
             if isValidPhone && isValidPwd {
                 self.btnLogin.enabled = true
             }
@@ -130,7 +130,7 @@ extension LoginViewController {
             .on(failed: {(error) in
                 AppInfo.showDefaultNetworkErrorToast()
                 },
-                next: { (returnMsg) in
+                next: { [unowned self](returnMsg) in
                     if let msg = returnMsg {
                         if msg.isSuccess {
                             AppInfo.showToast("登录成功")

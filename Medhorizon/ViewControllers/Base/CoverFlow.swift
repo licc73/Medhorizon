@@ -12,6 +12,7 @@ protocol CoverFlowViewDelegate: class {
     func coverFlowView(view: CoverFlowView, didSelect index:Int)
     func numberOfCoversInCoverFlowView(view: CoverFlowView) -> Int
     func coverImage(view: CoverFlowView, atIndex index: Int) -> String?
+    func titleOfCurrentCover(view: CoverFlowView, atIndex index: Int) -> String?
 }
 
 let coverFlowCellIdentifier = "coverFlowCellIdentifier"
@@ -27,7 +28,23 @@ class CoverFlowView: UIView {
 
     var autoScrollTimer: NSTimer?
     var enableAutoScrollTimer: Bool = true
-    
+
+    var showPrompt = true {
+        didSet {
+            self.configPromptView()
+        }
+    }
+    let vPrompt: UIView
+    let labPrompt: UILabel
+
+    func configPromptView() {
+        if self.showPrompt {
+            self.vPrompt.hidden = false
+        }
+        else {
+            self.vPrompt.hidden = true
+        }
+    }
     override init(frame: CGRect) {
         self.flowLayout = UICollectionViewFlowLayout()
         self.flowLayout.itemSize = frame.size
@@ -36,8 +53,9 @@ class CoverFlowView: UIView {
         self.flowLayout.scrollDirection = .Horizontal
         
         self.collectionView = UICollectionView(frame: CGRectMake(0, 0, frame.size.width, frame.size.height), collectionViewLayout: self.flowLayout)
-        self.pageCtrl = UIPageControl(frame: CGRectMake(0, frame.size.height - 40, frame.size.width, 25))
-
+        self.pageCtrl = UIPageControl(frame: CGRectMake(frame.size.width - 60, 0, 60, 25))
+        self.vPrompt = UIView(frame: CGRectMake(0, frame.size.height - 30, frame.size.width, 30))
+        self.labPrompt = UILabel(frame: CGRectMake(10, 0, frame.size.width - 80, 30))
         super.init(frame: frame)
    
         self.pageCtrl.hidesForSinglePage = true
@@ -45,7 +63,7 @@ class CoverFlowView: UIView {
         self.collectionView.backgroundColor = UIColor.whiteColor()
         self.collectionView.pagingEnabled = true
         self.addSubview(self.collectionView)
-        self.addSubview(pageCtrl)
+        //self.addSubview(pageCtrl)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.showsVerticalScrollIndicator = false
@@ -60,6 +78,13 @@ class CoverFlowView: UIView {
 //        let top = NSLayoutConstraint(item: self.collectionView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
 //        let bottom = NSLayoutConstraint(item: self.collectionView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
 //        self.addConstraints([left, right, top, bottom])
+        self.addSubview(self.vPrompt)
+        self.vPrompt.backgroundColor = UIColor.colorWithHex(0x000000, alpha: 0.4)
+        self.vPrompt.addSubview(self.labPrompt)
+        self.vPrompt.addSubview(self.pageCtrl)
+        self.pageCtrl.contentMode = .Right
+        self.labPrompt.font = UIFont.systemFontOfSize(15)
+        self.labPrompt.textColor = UIColor.whiteColor()
 
 
         self.collectionView.registerNib(UINib(nibName: "CoverFlowCell", bundle: nil), forCellWithReuseIdentifier: coverFlowCellIdentifier)
@@ -78,6 +103,9 @@ class CoverFlowView: UIView {
     func reloadData() {
         self.collectionView.reloadData()
         self.collectionView.contentOffset = CGPoint(x: 0, y: 0)
+        if self.showPrompt {
+            self.labPrompt.text = self.delegate?.titleOfCurrentCover(self, atIndex: self.pageCtrl.currentPage)
+        }
         self.setAutoscrollTimer()
     }
 
@@ -137,10 +165,18 @@ extension CoverFlowView: UICollectionViewDelegate, UICollectionViewDataSource {
         self.delegate?.coverFlowView(self, didSelect: indexPath.item)
     }
 
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+
+    }
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let ptOffset = scrollView.contentOffset
         self.iCurrentPage = Int((ptOffset.x + CGRectGetWidth(scrollView.bounds) / 2) / CGRectGetWidth(scrollView.bounds))
         self.pageCtrl.currentPage = self.iCurrentPage
+        if self.showPrompt {
+            self.labPrompt.text = self.delegate?.titleOfCurrentCover(self, atIndex: self.pageCtrl.currentPage)
+        }
+
     }
 
 }

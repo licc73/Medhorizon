@@ -99,7 +99,7 @@ class DocumentListViewController: UIViewController {
                 self.docList?.performSwitchDepartmentFetch()
                     .takeUntil(self.rac_WillDeallocSignalProducer())
                     .observeOn(UIScheduler())
-                    .on(failed: { (error) in
+                    .on(failed: { [unowned self] (error) in
                         AppInfo.showDefaultNetworkErrorToast()
                         self.reloadData()
                         },
@@ -235,25 +235,25 @@ extension DocumentListViewController {
 extension DocumentListViewController: DocumentListTableViewCellDelegate {
 
     func documentListTableViewCellViewDocument(cell: UITableViewCell) {
-        if let indexPath = self.tableView.indexPathForCell(cell), curData = self.docList?.getCurData() {
-            guard indexPath.row < curData.docList.count else {
-                return
-            }
-            
-            let document = curData.docList[indexPath.row]
-            
-            if LoginManager.shareInstance.isLogin {
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDocumentInfo.rawValue, sender: document)
-            }
-            else {
-                guard let isNeedLogin = document.isNeedLogin where !isNeedLogin else {
-                    LoginManager.loginOrEnterUserInfo()
-                    return
-                }
-                
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDocumentInfo.rawValue, sender: document)
-            }
-        }
+//        if let indexPath = self.tableView.indexPathForCell(cell), curData = self.docList?.getCurData() {
+//            guard indexPath.row < curData.docList.count else {
+//                return
+//            }
+//            
+//            let document = curData.docList[indexPath.row]
+//            
+//            if LoginManager.shareInstance.isLogin {
+//                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDocumentInfo.rawValue, sender: document)
+//            }
+//            else {
+//                guard let isNeedLogin = document.isNeedLogin where !isNeedLogin else {
+//                    LoginManager.loginOrEnterUserInfo()
+//                    return
+//                }
+//                
+//                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowDocumentInfo.rawValue, sender: document)
+//            }
+//        }
     }
     
     func documentListTableViewCellDownloadDocument(cell: UITableViewCell) {

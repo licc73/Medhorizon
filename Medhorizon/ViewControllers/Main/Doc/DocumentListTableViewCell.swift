@@ -34,10 +34,12 @@ class DocumentListTableViewCell: UITableViewCell {
                 }
                 
                 if DownloadManager.shareInstance.isSuccessDownloaded(doc.sourceUrl) {
-                    self.btnDownload.setTitle("已下载", forState: .Normal)
+                    self.btnView.setTitle("全文", forState: .Normal)
+                    self.btnDownload.hidden = false
                 }
                 else {
-                    self.btnDownload.setTitle("下载全文", forState: .Normal)
+                    self.btnView.setTitle("摘要", forState: .Normal)
+                    self.btnDownload.hidden = true
                 }
                 
             }

@@ -20,14 +20,14 @@ class UserHeaderTableViewCellTableViewCell: UITableViewCell {
         self.labNickName.text = nickName
         
         let realDay: Int = day ?? 0
-        var formatString = "太棒了已连续登录%1$@天"
+        var formatString = "太棒了您已连续登录%1$@天"
         if realDay == 0 {
-            formatString = "已连续登录%1$@天"
+            formatString = "您已连续登录%1$@天"
         }
         
         let dayAttr = NSAttributedString(string: "\(realDay)", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x2892cb)])
 
-        labLogInDay.attributedText = NSAttributedString(attributes: [NSForegroundColorAttributeName : UIColor.colorWithHex(0x666666), NSFontAttributeName: UIFont.systemFontOfSize(18)], format: formatString, dayAttr)
+        labLogInDay.attributedText = NSAttributedString(attributes: [NSForegroundColorAttributeName : UIColor.colorWithHex(0x666666), NSFontAttributeName: UIFont.systemFontOfSize(15)], format: formatString, dayAttr)
     }
 
     override func awakeFromNib() {

@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4311BC641DB5231D00F00713 /* NMIssueRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4311BC631DB5231D00F00713 /* NMIssueRefreshHeader.swift */; };
+		4311BC691DB6470000F00713 /* ShareToThirdPartyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4311BC681DB6470000F00713 /* ShareToThirdPartyView.m */; };
+		4311BC6F1DB6490400F00713 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4311BC6E1DB6490400F00713 /* libz.1.1.3.tbd */; };
+		4311BC751DB6492C00F00713 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4311BC741DB6492C00F00713 /* libsqlite3.0.tbd */; };
+		4311BC761DB6493E00F00713 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4311BC701DB6491200F00713 /* CoreTelephony.framework */; };
+		4311BC781DB6495E00F00713 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4311BC771DB6495E00F00713 /* libc++.1.tbd */; };
+		4311BC7B1DB6532600F00713 /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4311BC791DB6532600F00713 /* LogoutTableViewCell.swift */; };
+		4311BC7C1DB6532600F00713 /* LogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4311BC7A1DB6532600F00713 /* LogoutTableViewCell.xib */; };
 		432824E61DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432824E41DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift */; };
 		432824E71DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432824E51DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib */; };
 		432824EA1DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432824E81DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift */; };
@@ -137,7 +144,6 @@
 		43D3905E1DA35DD000039C35 /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E61D9E53CB00468A92 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		43D3905F1DA35DD000039C35 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E71D9E53CB00468A92 /* SVProgressHUD.framework */; };
 		43D390601DA35DD000039C35 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E71D9E53CB00468A92 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		43D390611DA35DD000039C35 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E81D9E53CB00468A92 /* WebImage.framework */; };
 		43D390621DA35DD000039C35 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E81D9E53CB00468A92 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		43D390741DA7A45400039C35 /* ReactiveCocoaBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390721DA7A45400039C35 /* ReactiveCocoaBindings.swift */; };
 		43D390751DA7A45400039C35 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D390731DA7A45400039C35 /* String+Base64.swift */; };
@@ -218,6 +224,18 @@
 
 /* Begin PBXFileReference section */
 		4311BC631DB5231D00F00713 /* NMIssueRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMIssueRefreshHeader.swift; sourceTree = "<group>"; };
+		4311BC671DB6470000F00713 /* ShareToThirdPartyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToThirdPartyView.h; sourceTree = "<group>"; };
+		4311BC681DB6470000F00713 /* ShareToThirdPartyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToThirdPartyView.m; sourceTree = "<group>"; };
+		4311BC6A1DB648EE00F00713 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4311BC6C1DB648F800F00713 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		4311BC6E1DB6490400F00713 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		4311BC701DB6491200F00713 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		4311BC721DB6491A00F00713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4311BC741DB6492C00F00713 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		4311BC771DB6495E00F00713 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		4311BC791DB6532600F00713 /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
+		4311BC7A1DB6532600F00713 /* LogoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoutTableViewCell.xib; sourceTree = "<group>"; };
+		4311BC861DB67FEF00F00713 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		432824E41DB4C30000A80DD3 /* UserHeaderEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderEditTableViewCell.swift; sourceTree = "<group>"; };
 		432824E51DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderEditTableViewCell.xib; sourceTree = "<group>"; };
 		432824E81DB4C31B00A80DD3 /* UserBaseInfoEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserBaseInfoEditTableViewCell.swift; sourceTree = "<group>"; };
@@ -434,6 +452,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4311BC781DB6495E00F00713 /* libc++.1.tbd in Frameworks */,
+				4311BC761DB6493E00F00713 /* CoreTelephony.framework in Frameworks */,
+				4311BC751DB6492C00F00713 /* libsqlite3.0.tbd in Frameworks */,
+				4311BC6F1DB6490400F00713 /* libz.1.1.3.tbd in Frameworks */,
 				EA67D0E91D9E53CB00468A92 /* Alamofire.framework in Frameworks */,
 				EA728E361DB5CB350024CE22 /* TencentOpenAPI.framework in Frameworks */,
 				43D390531DA35DD000039C35 /* Alamofire.framework in Frameworks */,
@@ -452,7 +474,6 @@
 				EA67D0EE1D9E53CB00468A92 /* Runes.framework in Frameworks */,
 				EA67D0EF1D9E53CB00468A92 /* SVProgressHUD.framework in Frameworks */,
 				EA67D0F01D9E53CB00468A92 /* WebImage.framework in Frameworks */,
-				43D390611DA35DD000039C35 /* WebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +597,8 @@
 				4344F6A31DB314B700D5ED54 /* BaseInfoTableViewCell.xib */,
 				4344F6B11DB3295000D5ED54 /* MsgTableViewCell.swift */,
 				4344F6B21DB3295000D5ED54 /* MsgTableViewCell.xib */,
+				4311BC791DB6532600F00713 /* LogoutTableViewCell.swift */,
+				4311BC7A1DB6532600F00713 /* LogoutTableViewCell.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -878,6 +901,8 @@
 			children = (
 				EA728E3B1DB5CBCE0024CE22 /* ThirdPartyManager.h */,
 				EA728E3C1DB5CBCE0024CE22 /* ThirdPartyManager.m */,
+				4311BC671DB6470000F00713 /* ShareToThirdPartyView.h */,
+				4311BC681DB6470000F00713 /* ShareToThirdPartyView.m */,
 				EA728E2B1DB5CB350024CE22 /* QQ */,
 				EA728E2E1DB5CB350024CE22 /* Weixin */,
 				4344F6171DB1C31B00D5ED54 /* bokecc */,
@@ -1067,6 +1092,14 @@
 		EA67D0F11D9E53E000468A92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4311BC861DB67FEF00F00713 /* AVFoundation.framework */,
+				4311BC771DB6495E00F00713 /* libc++.1.tbd */,
+				4311BC741DB6492C00F00713 /* libsqlite3.0.tbd */,
+				4311BC721DB6491A00F00713 /* Security.framework */,
+				4311BC701DB6491200F00713 /* CoreTelephony.framework */,
+				4311BC6E1DB6490400F00713 /* libz.1.1.3.tbd */,
+				4311BC6C1DB648F800F00713 /* Social.framework */,
+				4311BC6A1DB648EE00F00713 /* SystemConfiguration.framework */,
 				EA67D0E11D9E53CB00468A92 /* Alamofire.framework */,
 				EA67D0E21D9E53CB00468A92 /* Dollar.framework */,
 				EA67D0E31D9E53CB00468A92 /* Prelude.framework */,
@@ -1171,6 +1204,7 @@
 				4344F64B1DB1C33800D5ED54 /* movieFullscreen@2x.png in Resources */,
 				4344F69F1DB3148300D5ED54 /* SeparatorLineTableViewCell.xib in Resources */,
 				4344F6481DB1C33800D5ED54 /* movieForwardSelected.png in Resources */,
+				4311BC7C1DB6532600F00713 /* LogoutTableViewCell.xib in Resources */,
 				432824E71DB4C30000A80DD3 /* UserHeaderEditTableViewCell.xib in Resources */,
 				4344F6B41DB3295000D5ED54 /* MsgTableViewCell.xib in Resources */,
 				4344F6411DB1C33800D5ED54 /* movieBackward@2x.png in Resources */,
@@ -1222,6 +1256,7 @@
 				43B2C9531DA7C124004FA849 /* MJRefreshBackNormalFooter.m in Sources */,
 				EA33BCF21DAB549E00C0BE04 /* NewsListViewModel.swift in Sources */,
 				43B2C9851DA7C2AB004FA849 /* IQBarButtonItem.swift in Sources */,
+				4311BC691DB6470000F00713 /* ShareToThirdPartyView.m in Sources */,
 				4344F6511DB1C9B300D5ED54 /* VideoDetailViewController.swift in Sources */,
 				EA33BB991DA880F300C0BE04 /* HttpHeaders.swift in Sources */,
 				EA33BB961DA880F300C0BE04 /* AlamofireRACDownload.swift in Sources */,
@@ -1297,6 +1332,7 @@
 				4344F67F1DB30F1A00D5ED54 /* MessageViewController.swift in Sources */,
 				43B2C94E1DA7C124004FA849 /* MJRefreshHeader.m in Sources */,
 				4344F69A1DB313B200D5ED54 /* UserHeaderTableViewCellTableViewCell.swift in Sources */,
+				4311BC7B1DB6532600F00713 /* LogoutTableViewCell.swift in Sources */,
 				EA33BBBE1DA8B07400C0BE04 /* Storyboard.swift in Sources */,
 				43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */,
 				43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */,
@@ -1450,6 +1486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: changzhong Li (6SY5GKVDE2)";
+				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1464,6 +1501,7 @@
 					"$(PROJECT_DIR)/Medhorizon/Vendor/Weixin/SDKExport",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
+				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
@@ -1476,6 +1514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: changzhong Li (6SY5GKVDE2)";
+				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1490,6 +1529,7 @@
 					"$(PROJECT_DIR)/Medhorizon/Vendor/Weixin/SDKExport",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
+				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";

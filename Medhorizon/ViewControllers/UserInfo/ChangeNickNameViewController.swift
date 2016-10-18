@@ -53,7 +53,7 @@ class ChangeNickNameViewController: UIViewController {
         nickSP
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
-            .on { (b) in
+            .on {[unowned self] (b) in
                 self.btnConfirm.enabled = b
             }
             .start()

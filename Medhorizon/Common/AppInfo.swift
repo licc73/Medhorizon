@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppInfo {
+class AppInfo: NSObject {
     static var screenWidth: CGFloat {
         return UIScreen.mainScreen().bounds.size.width
     }

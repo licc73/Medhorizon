@@ -28,8 +28,15 @@ class SMSCodeManager {
     @objc func tick(timer: NSTimer) {
         self.releaseSecond.value = self.releaseSecond.value - 1
         if self.releaseSecond.value <= 0 {
-            self.isCanSendSMSCode.value = true
-            self.timer?.invalidate()
+            self.releasePermision()
+        }
+    }
+
+    func releasePermision() {
+        self.isCanSendSMSCode.value = true
+        self.releaseSecond.value = 0
+        if let timer = self.timer {
+            timer.invalidate()
             self.timer = nil
         }
     }

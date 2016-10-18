@@ -178,7 +178,7 @@ extension SignupViewController {
             .observeOn(UIScheduler())
             .on( failed: { (_) in
                 AppInfo.showDefaultNetworkErrorToast()
-                }, next: { (returnMsg) in
+                }, next: { [unowned self](returnMsg) in
                     if let msg = returnMsg {
                         if msg.isSuccess {
                             LoginManager.performLogin(phone, pwd: pwd)
@@ -187,7 +187,7 @@ extension SignupViewController {
                                 .on(failed: {(error) in
                                     AppInfo.showDefaultNetworkErrorToast()
                                     },
-                                    next: { (returnMsg) in
+                                    next: { [unowned self](returnMsg) in
                                         if let msg = returnMsg {
                                             if msg.isSuccess {
                                                 AppInfo.showToast("注册成功")
@@ -234,6 +234,7 @@ extension SignupViewController {
             .observeOn(UIScheduler())
             .on(failed: {(error) in
                 AppInfo.showDefaultNetworkErrorToast()
+                SMSCodeManager.shareInstance.releasePermision()
                 },
                 next: { (returnMsg) in
                     if let msg = returnMsg {
@@ -241,10 +242,12 @@ extension SignupViewController {
                             AppInfo.showToast("验证码发送成功，请注意查收")
                         }
                         else {
+                            SMSCodeManager.shareInstance.releasePermision()
                             AppInfo.showToast(msg.errorMsg)
                         }
                     }
                     else {
+                        SMSCodeManager.shareInstance.releasePermision()
                         AppInfo.showToast("未知错误")
                     }
             })

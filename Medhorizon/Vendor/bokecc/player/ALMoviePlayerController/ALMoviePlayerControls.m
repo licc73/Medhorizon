@@ -211,10 +211,10 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     _playPauseButton.delegate = self;
     [_bottomBar addSubview:_playPauseButton];
     
-    _airplayView = [[ALAirplayView alloc] init];
-    _airplayView.delegate = self;
-    [_bottomBar addSubview:_airplayView];
-    
+//    _airplayView = [[ALAirplayView alloc] init];
+//    _airplayView.delegate = self;
+//    [_bottomBar addSubview:_airplayView];
+
     _activityBackgroundView = [[UIView alloc] init];
     [_activityBackgroundView setBackgroundColor:[UIColor blackColor]];
     _activityBackgroundView.alpha = 0.f;
@@ -579,6 +579,8 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
 }
 
 - (void)showLoadingIndicators {
+    [_activityBackgroundView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [_activityIndicator setFrame:CGRectMake((self.frame.size.width / 2) - (activityIndicatorSize / 2), (self.frame.size.height / 2) - (activityIndicatorSize / 2), activityIndicatorSize, activityIndicatorSize)];
     [self addSubview:_activityBackgroundView];
     [self addSubview:_activityIndicator];
     [_activityIndicator startAnimating];
@@ -691,8 +693,8 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
         CGFloat fullscreenWidth = 28.f;
         CGFloat fullscreenHeight = fullscreenWidth;
         self.fullscreenButton.frame = CGRectMake(self.bottomBar.frame.size.width - paddingFromBezel - fullscreenWidth, self.barHeight/2 - fullscreenHeight/2, fullscreenWidth, fullscreenHeight);
-        self.airplayView.frame = CGRectMake(self.fullscreenButton.frame.origin.x - paddingBetweenButtons - airplayWidth, self.barHeight/2 - airplayHeight/2, airplayWidth, airplayHeight);
-        self.timeRemainingLabel.frame = CGRectMake(self.airplayView.frame.origin.x - paddingBetweenButtons - labelWidth, 0, labelWidth, self.barHeight);
+        //self.airplayView.frame = CGRectMake(self.fullscreenButton.frame.origin.x - paddingBetweenButtons - airplayWidth, self.barHeight/2 - airplayHeight/2, airplayWidth, airplayHeight);
+        self.timeRemainingLabel.frame = CGRectMake(self.fullscreenButton.frame.origin.x - paddingBetweenButtons - labelWidth, 0, labelWidth, self.barHeight);
     }
     
     //duration slider

@@ -385,19 +385,35 @@ class DownloadManager {
     }
 
     func addDownloadItem(item: DownloadItem) {
+        
         if self.isSuccessDownloaded(item.sourceUrl) {
-            AppInfo.showToast("此文件已经下载")
+            //AppInfo.showToast("此文件已经下载")
+            self.showAlertWithTitle("该文件已下载完成，请前往个人中心查看")
             return
         }
         else if self.isInToBeDownload(item.sourceUrl) {
-            AppInfo.showToast("文件正在队列中")
+            //AppInfo.showToast("文件正在队列中")
+            self.showAlertWithTitle("该文件已在下载队列中，请耐心等待")
             return
         }
         self.checkAndAddToQueue(item)
-        AppInfo.showToast("成功加入下载队列中")
+        //AppInfo.showToast("成功加入下载队列中")
+        self.showAlertWithTitle("成功加入下载队列，请前往个人中心查看")
 
         self.downloadNext()
         self.saveInfo()
+    }
+
+    func showAlertWithTitle(title: String) {
+        let actionController = UIAlertController(title: "温馨提示",
+                                                 message:title,
+                                                 preferredStyle: UIAlertControllerStyle.Alert)
+
+        actionController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) -> Void in
+
+        }))
+
+        LoginManager.shareInstance.mainCtrl?.presentViewController(actionController, animated: true, completion: nil)
     }
 
     func removeItem(item: DownloadItem) {

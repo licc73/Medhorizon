@@ -26,6 +26,7 @@ class WorldListViewController: UIViewController {
         
         self.coverFlow = CoverFlowView(frame: CGRectMake(0, 0, AppInfo.screenWidth, AppInfo.screenWidth * 25.0  / 64.0))
         self.coverFlow?.delegate = self
+        self.coverFlow?.showPrompt = false
         
         //self.tableView.tableHeaderView = self.coverFlow
 
@@ -99,7 +100,7 @@ class WorldListViewController: UIViewController {
                 self.worldList?.performSwitchDepartmentFetch()
                     .takeUntil(self.rac_WillDeallocSignalProducer())
                     .observeOn(UIScheduler())
-                    .on(failed: { (error) in
+                    .on(failed: {[unowned self] (error) in
                         AppInfo.showDefaultNetworkErrorToast()
                         self.reloadData()
                         },
@@ -256,6 +257,10 @@ extension WorldListViewController: CoverFlowViewDelegate {
         let curData = self.worldList?.getCurData()
         return curData?.brannerList[index].picUrl
     }
+
+    func titleOfCurrentCover(view: CoverFlowView, atIndex index: Int) -> String? {
+        return nil
+    }
     
 }
 
@@ -266,7 +271,7 @@ extension WorldListViewController: ChooseCoursewareViewDelegate {
         self.worldList?.performSwitchDepartmentFetch()
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
-            .on(failed: { (error) in
+            .on(failed: { [unowned self] (error) in
                 AppInfo.showDefaultNetworkErrorToast()
                 self.reloadData()
                 },

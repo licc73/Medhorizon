@@ -199,12 +199,12 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
         switch function {
         case .Header:
             let actionController = UIAlertController(title: nil,
-                                                     message:"请选择",
+                                                     message:"个人头像",
                                                      preferredStyle: UIAlertControllerStyle.ActionSheet)
 
 
 
-            actionController.addAction(UIAlertAction(title: "从相册",
+            actionController.addAction(UIAlertAction(title: "从手机相册选择",
                 style: UIAlertActionStyle.Default, handler: {(action) -> Void in
                     let picker = UIImagePickerController()
                     picker.delegate = self
@@ -214,7 +214,7 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
             }))
 
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
-                actionController.addAction(UIAlertAction(title: "从相机",
+                actionController.addAction(UIAlertAction(title: "拍照",
                     style: UIAlertActionStyle.Default, handler: {(action) -> Void in
                         let picker = UIImagePickerController()
                         picker.delegate = self

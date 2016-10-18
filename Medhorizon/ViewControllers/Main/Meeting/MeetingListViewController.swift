@@ -93,7 +93,7 @@ class MeetingListViewController: UIViewController {
                 self.meetingList?.performSwitchDepartmentFetch()
                     .takeUntil(self.rac_WillDeallocSignalProducer())
                     .observeOn(UIScheduler())
-                    .on(failed: { (error) in
+                    .on(failed: { [unowned self](error) in
                         AppInfo.showDefaultNetworkErrorToast()
                         self.reloadData()
                         },
@@ -223,5 +223,9 @@ extension MeetingListViewController: CoverFlowViewDelegate {
         let curData = self.meetingList?.getCurData()
         return curData?.brannerList[index].picUrl
     }
-    
+
+    func titleOfCurrentCover(view: CoverFlowView, atIndex index: Int) -> String? {
+        let curData = self.meetingList?.getCurData()
+        return curData?.brannerList[index].title
+    }
 }

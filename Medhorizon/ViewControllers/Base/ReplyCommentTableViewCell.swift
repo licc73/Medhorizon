@@ -35,6 +35,7 @@ class ReplyCommentTableViewCell: UITableViewCell {
         // Initialization code
         self.imgvThumbnail.layer.cornerRadius = 10
         self.imgvThumbnail.layer.masksToBounds = true
+        self.labContent.textAlignment = .Right
     }
 
     override func prepareForReuse() {

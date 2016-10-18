@@ -25,10 +25,15 @@ class UserMainInfoViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         self.setupDefaultDisplay()
-        self.generateData()
+        //self.generateData()
         self.setupBind()
 
         self.refreshUserDetail()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.generateData()
     }
 
     func setupDefaultDisplay() {
@@ -38,6 +43,7 @@ class UserMainInfoViewController: UIViewController {
         self.tableView.registerNib(UINib(nibName: "SeparatorLineTableViewCell", bundle: nil), forCellReuseIdentifier: separatorLineTableViewCellId)
         self.tableView.registerNib(UINib(nibName: "BaseInfoTableViewCell", bundle: nil), forCellReuseIdentifier: baseInfoTableViewCellId)
         self.tableView.registerNib(UINib(nibName: "MsgTableViewCell", bundle: nil), forCellReuseIdentifier: msgTableViewCellId)
+        self.tableView.registerNib(UINib(nibName: "LogoutTableViewCell", bundle: nil), forCellReuseIdentifier: logoutTableViewCellId)
     }
 
     func generateData() {
@@ -48,28 +54,28 @@ class UserMainInfoViewController: UIViewController {
 
         self.funcList.append(UserMainInfoType.Header(UserInfoHeaderPicType(picUrl: loginInfo?.picUrl, nickName: loginInfo?.nickName, onlineDay: detail?.signDays, cellHeight: 130)))
         self.funcList.append(UserMainInfoType.Msg(UserInfoBaseInfoType(title: "消息", icon: "icon_userinfo_msg", titleColor: nil, cellHeight: 50)))
-        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xdddddd), insets: UIEdgeInsetsZero, lineHeight: 1)))
 
         self.funcList.append(UserMainInfoType.PersonalInfo(UserInfoBaseInfoType(title: "个人资料", icon: "icon_userinfo_detailinfo", titleColor: nil, cellHeight: 50)))
-        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: nil, insets: UIEdgeInsetsMake(0, 15, 0, 15), lineHeight: 0.5)))
+        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xdddddd), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.funcList.append(UserMainInfoType.Fav(UserInfoBaseInfoType(title: "我的收藏", icon: "icon_userinfo_fav", titleColor: nil, cellHeight: 50)))
-        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: nil, insets: UIEdgeInsetsMake(0, 15, 0, 15), lineHeight: 0.5)))
+        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xdddddd), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.funcList.append(UserMainInfoType.Point(UserInfoBaseInfoType(title: "我的积分", icon: "icon_userinfo_point", titleColor: nil, cellHeight: 50)))
-        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: nil, insets: UIEdgeInsetsMake(0, 15, 0, 15), lineHeight: 0.5)))
+        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xdddddd), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.funcList.append(UserMainInfoType.Download(UserInfoBaseInfoType(title: "离线下载", icon: "icon_userinfo_download", titleColor: nil, cellHeight: 50)))
         self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 1)))
 
         self.funcList.append(UserMainInfoType.Setting(UserInfoBaseInfoType(title: "设置", icon: "icon_userinfo_setup", titleColor: nil, cellHeight: 50)))
-        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: nil, insets: UIEdgeInsetsMake(0, 15, 0, 15), lineHeight: 0.5)))
+        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xdddddd), insets: UIEdgeInsetsMake(0, 15, 0, 15), lineHeight: 0.5)))
 
         self.funcList.append(UserMainInfoType.Feedback(UserInfoBaseInfoType(title: "意见反馈", icon: "icon_userinfo_feedback", titleColor: nil, cellHeight: 50)))
-        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        //self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 1)))
 
         self.funcList.append(UserMainInfoType.Logout)
-        self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 1)))
+        //self.funcList.append(UserMainInfoType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 1)))
 
         self.tableView.reloadData()
     }
@@ -136,13 +142,13 @@ extension UserMainInfoViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let function = self.funcList[indexPath.row]
 
-        if case UserMainInfoType.Logout = function {
-            let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-            cell.textLabel?.textAlignment = .Center
-            cell.textLabel?.textColor = UIColor.colorWithHex(0x2892cb)
-            cell.textLabel?.text = "退出登录"
-            return cell
-        }
+//        if case UserMainInfoType.Logout = function {
+//            let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+//            cell.textLabel?.textAlignment = .Center
+//            cell.textLabel?.textColor = UIColor.colorWithHex(0x2892cb)
+//            cell.textLabel?.text = "退出登录"
+//            return cell
+//        }
 
         let cell = tableView.dequeueReusableCellWithIdentifier(function.cellId, forIndexPath: indexPath)
 
@@ -152,7 +158,7 @@ extension UserMainInfoViewController: UITableViewDelegate, UITableViewDataSource
                 cell.setHeadPic(header.picUrl, nickName: header.nickName, day: header.onlineDay)
             }
         case let .Msg(cellInfo):
-            if let cell = cell as? MsgTableViewCell {
+            if let cell = cell as? BaseInfoTableViewCell {
                 cell.setIcon(cellInfo.icon, title: cellInfo.title, textColor: cellInfo.titleColor)
             }
         case let .SeparatorLine(cellInfo):
@@ -183,6 +189,10 @@ extension UserMainInfoViewController: UITableViewDelegate, UITableViewDataSource
             if let cell = cell as? BaseInfoTableViewCell {
                 cell.setIcon(cellInfo.icon, title: cellInfo.title, textColor: cellInfo.titleColor)
             }
+        case .Logout:
+            if let cell = cell as? LogoutTableViewCell {
+                cell.bntButton.addTarget(self, action: #selector(logout(_:)), forControlEvents: .TouchUpInside)
+            }
 
         default:
             return UITableViewCell()
@@ -204,21 +214,7 @@ extension UserMainInfoViewController: UITableViewDelegate, UITableViewDataSource
         let function = self.funcList[indexPath.row]
         switch function {
         case .Logout:
-            let actionController = UIAlertController(title: "温馨提示",
-                                                     message:"你确定要退出登录吗？",
-                                                     preferredStyle: UIAlertControllerStyle.Alert)
-
-            actionController.addAction(UIAlertAction(title: "确定",
-                style: UIAlertActionStyle.Default, handler: {[unowned self] (action) -> Void in
-                    LoginManager.shareInstance.clearLoginInfo()
-                    self.navigationController?.popViewControllerAnimated(true)
-            }))
-
-            actionController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) -> Void in
-
-            }))
-
-            self.presentViewController(actionController, animated: true, completion: nil)            
+            break
 
         case .Feedback:
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowFeedback.rawValue, sender: nil)
@@ -246,6 +242,24 @@ extension UserMainInfoViewController {
 
     @IBAction func back(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+
+    func logout(sender: UIButton) {
+        let actionController = UIAlertController(title: "温馨提示",
+                                                 message:"你确定要退出登录吗？",
+                                                 preferredStyle: UIAlertControllerStyle.Alert)
+
+        actionController.addAction(UIAlertAction(title: "确定",
+            style: UIAlertActionStyle.Default, handler: {[unowned self] (action) -> Void in
+                LoginManager.shareInstance.clearLoginInfo()
+                self.navigationController?.popViewControllerAnimated(true)
+            }))
+
+        actionController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) -> Void in
+
+        }))
+
+        self.presentViewController(actionController, animated: true, completion: nil)
     }
     
 }

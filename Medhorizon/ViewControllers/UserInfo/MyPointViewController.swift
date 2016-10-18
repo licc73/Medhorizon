@@ -52,7 +52,15 @@ class MyPointViewController: UIViewController {
                     let returnMsg = ReturnMsg.mapToModel(data)
 
                     if let msg = returnMsg where msg.isSuccess {
-                        self.labPoint.text = mapToString(data)("SumScore")
+                        let point = mapToString(data)("SumScore") ?? "0"
+                        let pointDesc = "当前积分：%1$@%2$@"
+                        //let formatAttr = NSAttributedString(string: "\(pointDesc)", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x999999), NSFontAttributeName: UIFont.systemFontOfSize(12)])
+                        let pointAttr = NSAttributedString(string: "\(point)", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x2892cb), NSFontAttributeName: UIFont.systemFontOfSize(30)])
+                        let pointUnit = NSAttributedString(string: "分", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x2892cb), NSFontAttributeName: UIFont.systemFontOfSize(12)])
+
+                        self.labPoint.attributedText = NSAttributedString(attributes: [NSForegroundColorAttributeName : UIColor.colorWithHex(0x999999),  NSFontAttributeName: UIFont.systemFontOfSize(12)], format: pointDesc, pointAttr, pointUnit)
+                        
+                        //self.labPoint.text = mapToString(data)("SumScore")
                         self.curPage = page
 
                         if let pointList = data["InfoList"] as? [[String: AnyObject]] {

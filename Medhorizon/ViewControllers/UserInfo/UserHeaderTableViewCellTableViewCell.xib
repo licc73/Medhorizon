@@ -27,8 +27,8 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="Js5-Zw-mu8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
-                        <color key="textColor" red="0.18039215689999999" green="0.58039215690000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                        <color key="textColor" red="0.15686274509803921" green="0.5725490196078431" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zle-Fr-kg5">

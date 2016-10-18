@@ -180,10 +180,19 @@ extension CommentViewController: ActionViewDelegate {
                 .on(failed: {(error) in
                     AppInfo.showDefaultNetworkErrorToast()
                     },
-                    next: { (returnMsg) in
+                    next: {[unowned self] (returnMsg) in
                         if let msg = returnMsg {
                             if msg.isSuccess {
+                                AppInfo.showToast("您的提问已成功，等待专家回复！")
 
+                                let date = NSDate()
+                                let formatter = NSDateFormatter()
+                                formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+                                let sDate = formatter.stringFromDate(date)
+                                let base = CommentBaseViewModel(pid: NSUUID().UUIDString, commentName: LoginManager.shareInstance.loginInfo?.nickName, commentPic: LoginManager.shareInstance.loginInfo?.picUrl, commentDate: sDate, commentContent: comment, dNum: 0, cNum: 0)
+                                let comment = CommentViewModel(main: base, child: [])
+                                self.commentListData?.commentList.insert(comment, atIndex: 0)
+                                self.tableView.reloadData()
                             }
                             else {
                                 AppInfo.showToast(msg.errorMsg)

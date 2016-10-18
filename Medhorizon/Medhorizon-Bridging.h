@@ -14,5 +14,7 @@
 #import "ALMoviePlayerController.h"
 #import <CommonCrypto/CommonCrypto.h>
 #import "DWDownloader.h"
+#import "ThirdPartyManager.h"
+#import "ShareToThirdPartyView.h"
 
 #endif /* Medhorizon_Bridging_h */

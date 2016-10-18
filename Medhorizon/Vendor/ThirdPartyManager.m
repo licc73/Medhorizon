@@ -7,6 +7,7 @@
 //
 
 #import "ThirdPartyManager.h"
+#import "Medhorizon-swift.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import <TencentOpenAPI/QQApiInterfaceObject.h>
@@ -20,6 +21,7 @@
 
 #define qqAppKey @"1102445934"
 
+#define tips(t, m) [AppInfo showToast:m duration:2]
 
 @interface ThirdPartyManager() <WXApiDelegate,TencentSessionDelegate, TencentApiInterfaceDelegate,  TCAPIRequestDelegate, QQApiInterfaceDelegate>
 
@@ -114,7 +116,7 @@
     self.WXSence = sence;
     if ([WXApi isWXAppInstalled]) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            UIImage *shareImg = [self getShareImageData:[[[AppGlobalData shareInstance] dicShareToThirdPlatData] objectForKey:ShareToThirdPartyPicUrl]];
+            UIImage *shareImg = [UIImage imageNamed:@"IconShare"];
             
             UIImage *lastShareImg = nil;
             if (nil == shareImg) {
@@ -139,7 +141,7 @@
                 [mediaMsg setThumbImage:lastShareImg];
                 
                 SendMessageToWXReq* resp = [[SendMessageToWXReq alloc] init];
-                resp.text = [[[AppGlobalData shareInstance] dicShareToThirdPlatData] objectForKey:ShareToThirdPartyContent];
+                resp.text = sShareContent;
                 resp.bText = NO;
                 resp.scene = sence;
                 resp.message = mediaMsg;
@@ -178,13 +180,7 @@
         switch (wxResp.errCode) {
             case WXSuccess:
             {
-                if (self.WXSence == WXSceneTimeline) {
-                    [self uploadShareOperation:ShareToThirdPartyPlatformWeixin];
-                }
-                else if (self.WXSence == WXSceneSession)
-                {
-                    [self uploadShareOperation:ShareToThirdPartyPlatformWeixinFriend];
-                }
+                tips("", @"分享成功");
             }
                 break;
             case WXErrCodeAuthDeny:
@@ -230,7 +226,7 @@
             case 0:
             {
             
-                [self uploadShareOperation:ShareToThirdPartyPlatformQQFriend];
+                tips("", @"分享成功");
             }
                 break;
                 
@@ -240,7 +236,7 @@
     }
     else if([resp isKindOfClass:[PayResp class]]){
         //支付返回结果，实际支付结果需要去微信服务器端查询
-        BaseResp *wxPayResp = (PayResp *)resp;
+        //BaseResp *wxPayResp = (PayResp *)resp;
         
     }
 }

@@ -164,6 +164,7 @@ extension ChangePhoneViewController {
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
             .on(failed: {(error) in
+                SMSCodeManager.shareInstance.releasePermision()
                 AppInfo.showDefaultNetworkErrorToast()
                 },
                 next: { (returnMsg) in
@@ -172,11 +173,13 @@ extension ChangePhoneViewController {
                             AppInfo.showToast("验证码发送成功，请注意查收")
                         }
                         else {
+                            SMSCodeManager.shareInstance.releasePermision()
                             AppInfo.showToast(msg.errorMsg)
                         }
                     }
                     else {
                         AppInfo.showToast("未知错误")
+                        SMSCodeManager.shareInstance.releasePermision()
                     }
             })
             .start()

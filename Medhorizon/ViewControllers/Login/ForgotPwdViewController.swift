@@ -147,7 +147,7 @@ extension ForgotPwdViewController {
             .observeOn(UIScheduler())
             .on( failed: { (_) in
                 AppInfo.showDefaultNetworkErrorToast()
-                }, next: { (returnMsg) in
+                }, next: { [unowned self](returnMsg) in
                     if let msg = returnMsg {
                         if msg.isSuccess {
                             LoginManager.performLogin(phone, pwd: pwd)
@@ -156,7 +156,7 @@ extension ForgotPwdViewController {
                                 .on(failed: {(error) in
                                     AppInfo.showDefaultNetworkErrorToast()
                                     },
-                                    next: { (returnMsg) in
+                                    next: { [unowned self] (returnMsg) in
                                         if let msg = returnMsg {
                                             if msg.isSuccess {
                                                 AppInfo.showToast("您已成功找回密码")
@@ -203,6 +203,7 @@ extension ForgotPwdViewController {
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
             .on(failed: {(error) in
+                SMSCodeManager.shareInstance.releasePermision()
                 AppInfo.showDefaultNetworkErrorToast()
                 },
                 next: { (returnMsg) in
@@ -211,10 +212,12 @@ extension ForgotPwdViewController {
                             AppInfo.showToast("验证码发送成功，请注意查收")
                         }
                         else {
+                            SMSCodeManager.shareInstance.releasePermision()
                             AppInfo.showToast(msg.errorMsg)
                         }
                     }
                     else {
+                        SMSCodeManager.shareInstance.releasePermision()
                         AppInfo.showToast("未知错误")
                     }
             })

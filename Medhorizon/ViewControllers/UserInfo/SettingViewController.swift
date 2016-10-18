@@ -73,7 +73,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 3:
             let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-            cell.textLabel?.text = "隐私声明"
+            cell.textLabel?.text = "隐私声明（内测版本1.0）"
             return cell
 
         default:

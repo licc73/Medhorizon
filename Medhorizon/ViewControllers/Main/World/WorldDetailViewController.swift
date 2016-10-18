@@ -29,6 +29,8 @@ class WorldDetailViewController: UIViewController {
 
     var type: CoursewareType = .Video
 
+    @IBOutlet weak var vNoData: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -132,7 +134,7 @@ class WorldDetailViewController: UIViewController {
                 self.worldDetail?.performSwitchDepartmentFetch()
                     .takeUntil(self.rac_WillDeallocSignalProducer())
                     .observeOn(UIScheduler())
-                    .on(failed: { (error) in
+                    .on(failed: { [unowned self](error) in
                         AppInfo.showDefaultNetworkErrorToast()
                         self.reloadData()
                         },
@@ -153,6 +155,12 @@ class WorldDetailViewController: UIViewController {
 
     func reloadData() {
         let curData = self.worldDetail?.getCurData()
+        if curData?.courseList.count == 0 {
+            self.tableView.backgroundView = self.vNoData
+        }
+        else {
+            self.tableView.backgroundView = nil
+        }
         self.tableView.reloadData()
         self.tableView.endRefresh(curData?.isHaveMoreData)
     }
@@ -172,6 +180,7 @@ class WorldDetailViewController: UIViewController {
                     destination.title = "优秀病例"
                 }
                 destination.showActionToolBar = true
+                destination.actions = [.Comment, .Fav, .Download]
             }
         }
         else if let id = segue.identifier where id == StoryboardSegue.Main.ShowVideoDetail.rawValue {
@@ -266,7 +275,7 @@ extension WorldDetailViewController {
         self.worldDetail?.performSwitchDepartmentFetch()
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
-            .on(failed: { (error) in
+            .on(failed: {[unowned self] (error) in
                 AppInfo.showDefaultNetworkErrorToast()
                 self.reloadData()
                 },

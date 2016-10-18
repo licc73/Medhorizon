@@ -95,7 +95,7 @@ class NewsViewController: UIViewController {
                 self.newsList?.performSwitchDepartmentFetch()
                     .takeUntil(self.rac_WillDeallocSignalProducer())
                     .observeOn(UIScheduler())
-                    .on(failed: { (error) in
+                    .on(failed: { [unowned self](error) in
                         AppInfo.showDefaultNetworkErrorToast()
                         self.reloadData()
                         },
@@ -220,6 +220,11 @@ extension NewsViewController: CoverFlowViewDelegate {
     func coverImage(view: CoverFlowView, atIndex index: Int) -> String? {
         let curData = self.newsList?.getCurData()
         return curData?.brannerList[index].picUrl
+    }
+
+    func titleOfCurrentCover(view: CoverFlowView, atIndex index: Int) -> String? {
+        let curData = self.newsList?.getCurData()
+        return curData?.brannerList[index].title
     }
 
 }

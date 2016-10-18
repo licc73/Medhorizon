@@ -72,7 +72,7 @@ enum UserMainInfoType {
         case let .Feedback(cellInfo):
             return cellInfo.cellHeight
         case .Logout:
-            return 50
+            return 80
         }
     }
 
@@ -81,9 +81,11 @@ enum UserMainInfoType {
         case .Header:
             return userHeaderTableViewCellId
         case .Msg:
-            return msgTableViewCellId
+            return baseInfoTableViewCellId
         case .SeparatorLine:
             return separatorLineTableViewCellId
+        case .Logout:
+            return logoutTableViewCellId
         default:
             return baseInfoTableViewCellId
         }

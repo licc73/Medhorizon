@@ -15,6 +15,8 @@ class VideoDetailViewController: UIViewController {
     @IBOutlet weak var vTool: UIView!
     @IBOutlet weak var btnPre: UIButton!
     @IBOutlet weak var bntNext: UIButton!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var vPlayButtonBackground: UIView!
 
     var videoDocument: CoursewareInfoViewModel?
     var videoDetail: VideoDetailInfoViewModel?
@@ -32,6 +34,10 @@ class VideoDetailViewController: UIViewController {
             self.vAction?.setFav(isFav)
         }
     }
+
+    var isVideoLoaded: Bool = false
+    var isPrepareForMetaData: Bool = false
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +68,7 @@ class VideoDetailViewController: UIViewController {
         //assign controls
         player.controls = movieControls
         self.vPlayer.addSubview(player.view)
+        self.vPlayer.bringSubviewToFront(self.vPlayButtonBackground)
 
         player.shouldAutoplay = false
 
@@ -88,6 +95,7 @@ class VideoDetailViewController: UIViewController {
         self.coverFlow?.delegate = self
         self.coverFlow?.enableAutoScrollTimer = false
         self.coverFlow?.pageCtrl.hidden = true
+        self.coverFlow?.showPrompt = false
         if let cover = self.coverFlow {
             self.vCover.addSubview(cover)
             self.vCover.sendSubviewToBack(cover)
@@ -138,10 +146,27 @@ class VideoDetailViewController: UIViewController {
     }
 
     func reloadData() {
-        self.playNetworkUrl()
+        self.isPrepareForMetaData = true
         self.vAction?.setFav(self.isFav)
         self.coverFlow?.reloadData()
 
+        if SetupValueManager.shareInstance.isPlayInWifiOnly {
+            if let network = SetupValueManager.shareInstance.network?.isReachableOnEthernetOrWiFi where network {
+                if SetupValueManager.shareInstance.isPlayWhenOpen {
+                    self.playNetworkUrl()
+                    self.vPlayButtonBackground.hidden = true
+                }
+            }
+            else {
+
+            }
+        }
+        else {
+            if SetupValueManager.shareInstance.isPlayWhenOpen {
+                self.playNetworkUrl()
+                self.vPlayButtonBackground.hidden = true
+            }
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -169,30 +194,30 @@ class VideoDetailViewController: UIViewController {
                 self.getFavStatus()
             }.start()
 
-        NSNotificationCenter.defaultCenter()
-            .rac_notifications(MPMoviePlayerLoadStateDidChangeNotification, object: nil)
-            .takeUntil(self.rac_WillDeallocSignalProducer())
-            .observeOn(UIScheduler())
-            .on { [unowned self] (notification) in
-                if let status = self.playerCtrl?.loadState {
-                    if status.contains(MPMovieLoadState.Playable) || status.contains(MPMovieLoadState.PlaythroughOK) {
-                        if SetupValueManager.shareInstance.isPlayInWifiOnly {
-                            if let value = SetupValueManager.shareInstance.network?.isReachableOnEthernetOrWiFi where value {
-                                if !SetupValueManager.shareInstance.isPlayWhenOpen {
-                                    self.playerCtrl?.pause()
-                                }
-                            }
-                            else {
-                                self.playerCtrl?.pause()
-                            }
-                        }
-                        else if !SetupValueManager.shareInstance.isPlayWhenOpen {
-                            self.playerCtrl?.pause()
-                        }
-                    }
-                }
-
-            }.start()
+//        NSNotificationCenter.defaultCenter()
+//            .rac_notifications(MPMoviePlayerLoadStateDidChangeNotification, object: nil)
+//            .takeUntil(self.rac_WillDeallocSignalProducer())
+//            .observeOn(UIScheduler())
+//            .on { [unowned self] (notification) in
+//                if let status = self.playerCtrl?.loadState {
+//                    if status.contains(MPMovieLoadState.Playable) || status.contains(MPMovieLoadState.PlaythroughOK) {
+//                        if SetupValueManager.shareInstance.isPlayInWifiOnly {
+//                            if let value = SetupValueManager.shareInstance.network?.isReachableOnEthernetOrWiFi where value {
+//                                if !SetupValueManager.shareInstance.isPlayWhenOpen {
+//                                    self.playerCtrl?.pause()
+//                                }
+//                            }
+//                            else {
+//                                self.playerCtrl?.pause()
+//                            }
+//                        }
+//                        else if !SetupValueManager.shareInstance.isPlayWhenOpen {
+//                            self.playerCtrl?.pause()
+//                        }
+//                    }
+//                }
+//
+//            }.start()
     }
 
     func getFavStatus() {
@@ -345,6 +370,7 @@ extension VideoDetailViewController: ALMoviePlayerControllerDelegate {
 
         if !self.view.subviews.contains(player.view) {
             self.vPlayer.addSubview(player.view)
+            self.vPlayer.bringSubviewToFront(self.vPlayButtonBackground)
         }
 
         //you MUST use [ALMoviePlayerController setFrame:] to adjust frame, NOT [ALMoviePlayerController.view setFrame:]
@@ -367,14 +393,15 @@ extension VideoDetailViewController: ALMoviePlayerControllerDelegate {
         player.videoId = videoId
         player.timeoutSeconds = 30
 
-        player.failBlock = { _ in
+        player.failBlock = {[unowned self] _ in
+            self.isVideoLoaded = false
             AppInfo.showToast("视频无法播放")
         }
 
-        player.getPlayUrlsBlock = { [unowned self]url in
+        player.getPlayUrlsBlock = { [unowned self] url in
             if let status = url["status"] as? NSNumber {
                 if status.intValue == 0 {
-
+                    self.isVideoLoaded = true
                 }
                 else {
                     AppInfo.showToast("视频无法播放, 可能正处于转码、审核等状态")
@@ -389,6 +416,7 @@ extension VideoDetailViewController: ALMoviePlayerControllerDelegate {
         }
 
         player.startRequestPlayInfo()
+
     }
 
 }
@@ -405,6 +433,10 @@ extension VideoDetailViewController: CoverFlowViewDelegate {
 
     func coverImage(view: CoverFlowView, atIndex index: Int) -> String? {
         return self.videoDetail?.picList[index]
+    }
+
+    func titleOfCurrentCover(view: CoverFlowView, atIndex index: Int) -> String? {
+        return nil
     }
     
 }
@@ -439,6 +471,15 @@ extension VideoDetailViewController {
         else {
             cover.scrollToPage(cover.iCurrentPage + 1)
         }
+    }
+
+    @IBAction func play(sender: AnyObject) {
+        guard isPrepareForMetaData else {
+            return
+        }
+
+        self.vPlayButtonBackground.hidden = true
+        self.playNetworkUrl()
     }
 
 }
