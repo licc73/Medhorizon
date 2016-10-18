@@ -17,7 +17,12 @@ class MessageTableViewCell: UITableViewCell {
     var myMessage: MyMessageViewModel? {
         didSet {
             if let message = myMessage {
-                self.labTitle.text = message.sendName
+                let name = message.sendName ?? ""
+                let format = "\(name)：%1$@"
+                //let formatAttr = NSAttributedString(string: "\(pointDesc)", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x999999), NSFontAttributeName: UIFont.systemFontOfSize(12)])
+                let attr = NSAttributedString(string: "回复你：", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x666666), NSFontAttributeName: UIFont.systemFontOfSize(15)])
+
+                self.labTitle.attributedText = NSAttributedString(attributes: [NSForegroundColorAttributeName : UIColor.colorWithHex(0x2892cb),  NSFontAttributeName: UIFont.systemFontOfSize(15)], format: format, attr)
                 self.labCreatedDate.text = message.createdDate
                 self.labContent.text = message.content
             }
@@ -46,6 +51,7 @@ class MessageTableViewCell: UITableViewCell {
         self.labTitle.text = nil
         self.labContent.text = nil
         self.labCreatedDate.text = nil
+        self.labTitle.attributedText = nil
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
