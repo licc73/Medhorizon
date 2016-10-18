@@ -18,10 +18,13 @@ class UserHeaderTableViewCellTableViewCell: UITableViewCell {
             self.imgvHeader.sd_setImageWithURL(picUrl, placeholderImage: UIImage(named: "default_header"))
         }
         self.labNickName.text = nickName
-
+        
         let realDay: Int = day ?? 0
-
-        let formatString = "太棒了已连续登录%1$@天"
+        var formatString = "太棒了已连续登录%1$@天"
+        if realDay == 0 {
+            formatString = "已连续登录%1$@天"
+        }
+        
         let dayAttr = NSAttributedString(string: "\(realDay)", attributes: [NSForegroundColorAttributeName: UIColor.colorWithHex(0x2892cb)])
 
         labLogInDay.attributedText = NSAttributedString(attributes: [NSForegroundColorAttributeName : UIColor.colorWithHex(0x666666), NSFontAttributeName: UIFont.systemFontOfSize(18)], format: formatString, dayAttr)

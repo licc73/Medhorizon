@@ -189,6 +189,10 @@
 		EA67D0EE1D9E53CB00468A92 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E61D9E53CB00468A92 /* Runes.framework */; };
 		EA67D0EF1D9E53CB00468A92 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E71D9E53CB00468A92 /* SVProgressHUD.framework */; };
 		EA67D0F01D9E53CB00468A92 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E81D9E53CB00468A92 /* WebImage.framework */; };
+		EA728E361DB5CB350024CE22 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA728E2C1DB5CB350024CE22 /* TencentOpenAPI.framework */; };
+		EA728E371DB5CB350024CE22 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA728E2D1DB5CB350024CE22 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		EA728E381DB5CB350024CE22 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA728E301DB5CB350024CE22 /* libWeChatSDK.a */; };
+		EA728E3D1DB5CBCE0024CE22 /* ThirdPartyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA728E3C1DB5CBCE0024CE22 /* ThirdPartyManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -415,6 +419,14 @@
 		EA67D0E61D9E53CB00468A92 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		EA67D0E71D9E53CB00468A92 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		EA67D0E81D9E53CB00468A92 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
+		EA728E2C1DB5CB350024CE22 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		EA728E2D1DB5CB350024CE22 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		EA728E301DB5CB350024CE22 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		EA728E331DB5CB350024CE22 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		EA728E341DB5CB350024CE22 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		EA728E351DB5CB350024CE22 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		EA728E3B1DB5CBCE0024CE22 /* ThirdPartyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPartyManager.h; sourceTree = "<group>"; };
+		EA728E3C1DB5CBCE0024CE22 /* ThirdPartyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA67D0E91D9E53CB00468A92 /* Alamofire.framework in Frameworks */,
+				EA728E361DB5CB350024CE22 /* TencentOpenAPI.framework in Frameworks */,
 				43D390531DA35DD000039C35 /* Alamofire.framework in Frameworks */,
 				43D390551DA35DD000039C35 /* Dollar.framework in Frameworks */,
 				EA67D0EA1D9E53CB00468A92 /* Dollar.framework in Frameworks */,
@@ -433,6 +446,7 @@
 				43D390571DA35DD000039C35 /* Prelude.framework in Frameworks */,
 				43D3905B1DA35DD000039C35 /* Result.framework in Frameworks */,
 				43D390591DA35DD000039C35 /* ReactiveCocoa.framework in Frameworks */,
+				EA728E381DB5CB350024CE22 /* libWeChatSDK.a in Frameworks */,
 				EA67D0ED1D9E53CB00468A92 /* Result.framework in Frameworks */,
 				4344F6211DB1C31B00D5ED54 /* libCCSDK.a in Frameworks */,
 				EA67D0EE1D9E53CB00468A92 /* Runes.framework in Frameworks */,
@@ -862,6 +876,10 @@
 		43D390701DA7A40200039C35 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				EA728E3B1DB5CBCE0024CE22 /* ThirdPartyManager.h */,
+				EA728E3C1DB5CBCE0024CE22 /* ThirdPartyManager.m */,
+				EA728E2B1DB5CB350024CE22 /* QQ */,
+				EA728E2E1DB5CB350024CE22 /* Weixin */,
 				4344F6171DB1C31B00D5ED54 /* bokecc */,
 				43B2C9621DA7C2AB004FA849 /* IQKeyboardManagerSwift */,
 				43B2C95E1DA7C139004FA849 /* Toast */,
@@ -1061,6 +1079,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EA728E2B1DB5CB350024CE22 /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+				EA728E2C1DB5CB350024CE22 /* TencentOpenAPI.framework */,
+				EA728E2D1DB5CB350024CE22 /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			path = QQ;
+			sourceTree = "<group>";
+		};
+		EA728E2E1DB5CB350024CE22 /* Weixin */ = {
+			isa = PBXGroup;
+			children = (
+				EA728E2F1DB5CB350024CE22 /* SDKExport */,
+			);
+			path = Weixin;
+			sourceTree = "<group>";
+		};
+		EA728E2F1DB5CB350024CE22 /* SDKExport */ = {
+			isa = PBXGroup;
+			children = (
+				EA728E301DB5CB350024CE22 /* libWeChatSDK.a */,
+				EA728E331DB5CB350024CE22 /* WechatAuthSDK.h */,
+				EA728E341DB5CB350024CE22 /* WXApi.h */,
+				EA728E351DB5CB350024CE22 /* WXApiObject.h */,
+			);
+			path = SDKExport;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1148,6 +1194,7 @@
 				4344F6C81DB3656E00D5ED54 /* MessageTableViewCell.xib in Resources */,
 				4344F64C1DB1C33800D5ED54 /* moviePause.png in Resources */,
 				4344F6421DB1C33800D5ED54 /* movieBackwardSelected.png in Resources */,
+				EA728E371DB5CB350024CE22 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				EA67D0D51D9E4D0B00468A92 /* Main.storyboard in Resources */,
 				4344F64F1DB1C33800D5ED54 /* moviePlay@2x.png in Resources */,
 			);
@@ -1276,6 +1323,7 @@
 				43714A8C1DAD3D8400BD68C5 /* DocumentListViewController.swift in Sources */,
 				43B2C9801DA7C2AB004FA849 /* IQKeyboardManagerConstants.swift in Sources */,
 				4344F6D51DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift in Sources */,
+				EA728E3D1DB5CBCE0024CE22 /* ThirdPartyManager.m in Sources */,
 				43D390791DA7A46500039C35 /* Reachability.m in Sources */,
 				4344F6D31DB3AECB00D5ED54 /* PointListTableViewCell.swift in Sources */,
 				43B2C97C1DA7C2AB004FA849 /* IQUITextFieldView+Additions.swift in Sources */,
@@ -1405,6 +1453,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Medhorizon/Vendor/QQ",
 				);
 				INFOPLIST_FILE = Medhorizon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1412,10 +1461,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Medhorizon/Vendor/bokecc",
+					"$(PROJECT_DIR)/Medhorizon/Vendor/Weixin/SDKExport",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "34d4491d-5405-46ed-849f-f0fa8ffe72c3";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1429,6 +1479,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Medhorizon/Vendor/QQ",
 				);
 				INFOPLIST_FILE = Medhorizon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1436,10 +1487,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Medhorizon/Vendor/bokecc",
+					"$(PROJECT_DIR)/Medhorizon/Vendor/Weixin/SDKExport",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "34d4491d-5405-46ed-849f-f0fa8ffe72c3";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
