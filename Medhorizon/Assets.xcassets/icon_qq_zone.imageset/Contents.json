@@ -6,11 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "icon_qq_zone@2x.png"
     },
     {
       "idiom" : "universal",
-      "filename" : "fxicon-2.png",
+      "filename" : "icon_qq_zone@3x.png",
       "scale" : "3x"
     }
   ],
