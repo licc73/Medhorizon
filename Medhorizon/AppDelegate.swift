@@ -45,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DownloadManager.shareInstance.saveInfo()
     }
 
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        return ThirdPartyManager.shareInstance().application(app, handleOpenURL: url)
+    }
 
 }
 

@@ -19,9 +19,14 @@
 #define tcAppSecret @"33401d179803a303a0f323f3e2720d32"
 #define tcRedirectURL @"http://www.passcard.com.cn"
 
-#define qqAppKey @"1102445934"
+#define qqAppKey @"1105664608"
 
 #define tips(t, m) [AppInfo showToast:m duration:2]
+
+@implementation ShareData
+
+
+@end
 
 @interface ThirdPartyManager() <WXApiDelegate,TencentSessionDelegate, TencentApiInterfaceDelegate,  TCAPIRequestDelegate, QQApiInterfaceDelegate>
 
@@ -78,7 +83,7 @@
 
 - (void)WXWeiboAuthor
 {
-    if ([WXApi registerApp:@"wxa1df41aa912b2be9"]) {
+    if ([WXApi registerApp:@"wxd6cfa4b7e0104f54"]) {
         
     }
     
@@ -90,11 +95,11 @@
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([url.scheme isEqualToString:@"wxa1df41aa912b2be9"])
+    if ([url.scheme isEqualToString:@"wxd6cfa4b7e0104f54"])
     {
         return  [WXApi handleOpenURL:url delegate:self];
     }
-    else if ([url.scheme isEqualToString:@"tencent1102445934"])
+    else if ([url.scheme isEqualToString:@"tencent1105664608"])
     {
         return [QQApiInterface handleOpenURL:url delegate:self];
     }
@@ -118,14 +123,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImage *shareImg = [UIImage imageNamed:@"IconShare"];
             
-            UIImage *lastShareImg = nil;
-            if (nil == shareImg) {
-                lastShareImg = [UIImage imageNamed:@"icon114x114"];
-            }
-            else
-            {
-                lastShareImg = [self scaleToSize:shareImg size:CGSizeMake(120, 120)];
-            }
+            UIImage *lastShareImg = [self scaleToSize:shareImg size:CGSizeMake(120, 120)];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *sShareContent = [NSString stringWithFormat:@"%@", self.data.sContent];

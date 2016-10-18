@@ -190,7 +190,30 @@ class WebDetailViewController: UIViewController {
 
     func showShareView() {
         let v = ShareToThirdPartyView()
+        v.delegate = self
         v.showInView(self.view)
+    }
+}
+
+extension WebDetailViewController: shareToThirdPartyViewDelegate {
+    func shareToThirdPartyView(view: ShareToThirdPartyView!, shareWith type: ShareToThirdPartyPlatform) {
+        let data = ShareData()
+        data.sContent = self.sContent
+        data.sTitle = self.sTitle
+        data.sLinkUrl = self.sLink
+        data.sPicUrl = self.sPic
+        ThirdPartyManager.shareInstance().data = data
+        switch type {
+        case ShareToThirdPartyPlatform.Weixin:
+            ThirdPartyManager.shareInstance().shareToWXFriend()
+        case .WeixinFriend:
+            ThirdPartyManager.shareInstance().shareWithWX()
+        case .QQFriend:
+            ThirdPartyManager.shareInstance().shareWithQQFriend()
+        case .QQZone:
+            ThirdPartyManager.shareInstance().shareWithQQZone()
+        }
+        view.dismiss()
     }
 }
 

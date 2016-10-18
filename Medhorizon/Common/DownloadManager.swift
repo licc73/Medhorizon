@@ -388,7 +388,7 @@ class DownloadManager {
         
         if self.isSuccessDownloaded(item.sourceUrl) {
             //AppInfo.showToast("此文件已经下载")
-            self.showAlertWithTitle("该文件已下载完成，请前往个人中心查看")
+            self.showAlertWithTitle("已下载完成，请前往个人中心查看")
             return
         }
         else if self.isInToBeDownload(item.sourceUrl) {
@@ -398,7 +398,7 @@ class DownloadManager {
         }
         self.checkAndAddToQueue(item)
         //AppInfo.showToast("成功加入下载队列中")
-        self.showAlertWithTitle("成功加入下载队列，请前往个人中心查看")
+        self.showAlertWithTitle("已加入下载队列,请前往个人中心查看")
 
         self.downloadNext()
         self.saveInfo()
@@ -409,7 +409,7 @@ class DownloadManager {
                                                  message:title,
                                                  preferredStyle: UIAlertControllerStyle.Alert)
 
-        actionController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) -> Void in
+        actionController.addAction(UIAlertAction(title: "好的", style: .Cancel, handler: { (action) -> Void in
 
         }))
 

@@ -9,13 +9,15 @@
 #import "ShareToThirdPartyView.h"
 #import "Medhorizon-swift.h"
 #define COLOR(R,G,B) [UIColor colorWithIntValue:R :G :B :1];
-#define BUTTON_WIDTH    43
-#define BUTTON_HEIGHT   36
-//#define X_OFFSET        16
-#define BUTTON_GAP      22
+//#define self.buttonWidth    43
+//#define buttonHeight   36
+#define X_OFFSET        16
+#define BUTTON_GAP      5
 @interface ShareToThirdPartyView ()
 @property (nonatomic, strong) UIView *vTransparentView;
 @property (nonatomic, strong) UIView *vContent;
+@property (nonatomic, assign) CGFloat buttonWidth;
+@property (nonatomic, assign) CGFloat buttonHeight;
 @end
 
 @implementation ShareToThirdPartyView
@@ -32,6 +34,8 @@
 
 - (void) configSubViews
 {
+    self.buttonWidth = ([AppInfo screenWidth] - BUTTON_GAP * 3 - X_OFFSET) / 4.0;
+    self.buttonHeight = self.buttonWidth * 109.0 / 131.0;
     self.vTransparentView = [[UIView alloc] initWithFrame:self.bounds];
     [self addSubview:self.vTransparentView];
     self.vTransparentView.backgroundColor = [UIColor colorWithIntValue:37 :37 :37 :1];
@@ -40,12 +44,12 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideSelf:)];
     [self.vTransparentView addGestureRecognizer:tap];
     
-    self.vContent = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [AppInfo screenWidth], 320)];
+    self.vContent = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [AppInfo screenWidth], 220)];
     self.vContent.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.vContent];
 
     UIImageView *imgvTopSep = [[UIImageView alloc] initWithFrame:CGRectMake(17, 20, [AppInfo screenWidth] - 17 * 2, .5)];
-    imgvTopSep.backgroundColor = [UIColor lightGrayColor];
+    imgvTopSep.backgroundColor = [UIColor colorWithHex:0xdddddd alpha:.8];
     [self.vContent addSubview:imgvTopSep];
     
     UILabel *labTitle = [[UILabel alloc] initWithFrame:CGRectMake([AppInfo screenWidth] / 2 - 35, 10, 70, 24)];
@@ -58,16 +62,16 @@
     
 
     
-    CGFloat fXOffset = ([AppInfo screenWidth] - (BUTTON_GAP + BUTTON_WIDTH) * 3 - BUTTON_WIDTH) / 2;
+    CGFloat fXOffset = ([AppInfo screenWidth] - (BUTTON_GAP + self.buttonWidth) * 3 - self.buttonWidth) / 2;
     
     UIButton *btnWeixin = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnWeixin.frame = CGRectMake(fXOffset, 82, BUTTON_WIDTH, BUTTON_HEIGHT);
+    btnWeixin.frame = CGRectMake(fXOffset, 50, self.buttonWidth, self.buttonHeight);
     [btnWeixin setBackgroundImage:[UIImage imageNamed:@"icon_weixin_friend"] forState:UIControlStateNormal];
     btnWeixin.tag = ShareToThirdPartyPlatformWeixin;
     [btnWeixin addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
     [self.vContent addSubview:btnWeixin];
     
-    UILabel *labWexin = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset - 15, 150, BUTTON_WIDTH + 30, 15)];
+    UILabel *labWexin = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset - 15, self.buttonHeight + 60, self.buttonWidth + 30, 15)];
     labWexin.font = [UIFont systemFontOfSize:13];
     labWexin.backgroundColor = [UIColor clearColor];
     labWexin.textColor = COLOR(33, 33, 33);
@@ -76,13 +80,13 @@
     [self.vContent addSubview:labWexin];
     
     UIButton *btnWeixinFriend = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnWeixinFriend.frame = CGRectMake(fXOffset + BUTTON_GAP + BUTTON_WIDTH, 82, BUTTON_WIDTH, BUTTON_HEIGHT);
+    btnWeixinFriend.frame = CGRectMake(fXOffset + BUTTON_GAP + self.buttonWidth, 50, self.buttonWidth, self.buttonHeight);
     [btnWeixinFriend setBackgroundImage:[UIImage imageNamed:@"icon_weixin"] forState:UIControlStateNormal];
     btnWeixinFriend.tag = ShareToThirdPartyPlatformWeixinFriend;
     [btnWeixinFriend addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
     [self.vContent addSubview:btnWeixinFriend];
     
-    UILabel *labWeixinFriend = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset + BUTTON_GAP + BUTTON_WIDTH - 15, 150, BUTTON_WIDTH + 30, 15)];
+    UILabel *labWeixinFriend = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset + BUTTON_GAP + self.buttonWidth - 15, self.buttonHeight + 60, self.buttonWidth + 30, 15)];
     labWeixinFriend.font = [UIFont systemFontOfSize:13];
     labWeixinFriend.backgroundColor = [UIColor clearColor];
     labWeixinFriend.textColor = COLOR(33, 33, 33);
@@ -91,13 +95,13 @@
     [self.vContent addSubview:labWeixinFriend];
     
     UIButton *btnQQ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnQQ.frame = CGRectMake(fXOffset + BUTTON_GAP * 2 + BUTTON_WIDTH * 2, 82, BUTTON_WIDTH, BUTTON_WIDTH);
-    [btnQQ setBackgroundImage:[UIImage imageNamed:@"icon_share_with_weixin.png"] forState:UIControlStateNormal];
-    btnQQ.tag = ShareToThirdPartyPlatformWeixin;
+    btnQQ.frame = CGRectMake(fXOffset + BUTTON_GAP * 2 + self.buttonWidth * 2, 50, self.buttonWidth, self.buttonHeight);
+    [btnQQ setBackgroundImage:[UIImage imageNamed:@"icon_qq"] forState:UIControlStateNormal];
+    btnQQ.tag = ShareToThirdPartyPlatformQQFriend;
     [btnQQ addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
-    [self.vContent addSubview:btnWeixinFriend];
+    [self.vContent addSubview:btnQQ];
     
-    UILabel *labQQ = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset + BUTTON_GAP * 2 + BUTTON_WIDTH * 2 - 15, 150, BUTTON_WIDTH + 30, 15)];
+    UILabel *labQQ = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset + BUTTON_GAP * 2 + self.buttonWidth * 2 - 15, self.buttonHeight + 60, self.buttonWidth + 30, 15)];
     labQQ.font = [UIFont systemFontOfSize:13];
     labQQ.backgroundColor = [UIColor clearColor];
     labQQ.textColor = COLOR(33, 33, 33);
@@ -106,13 +110,13 @@
     [self.vContent addSubview:labQQ];
     
     UIButton *btnQQZone = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnQQZone.frame = CGRectMake(fXOffset + BUTTON_GAP * 3 + BUTTON_WIDTH * 3, 85, BUTTON_WIDTH, BUTTON_WIDTH);
-    [btnQQZone setBackgroundImage:[UIImage imageNamed:@"icon_share_with_qq.png"] forState:UIControlStateNormal];
-    btnQQZone.tag = ShareToThirdPartyPlatformQQFriend;
+    btnQQZone.frame = CGRectMake(fXOffset + BUTTON_GAP * 3 + self.buttonWidth * 3, 50, self.buttonWidth, self.buttonHeight);
+    [btnQQZone setBackgroundImage:[UIImage imageNamed:@"icon_qq_zone"] forState:UIControlStateNormal];
+    btnQQZone.tag = ShareToThirdPartyPlatformQQZone;
     [btnQQZone addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
     [self.vContent addSubview:btnQQZone];
     
-    UILabel *labQQZone = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset + BUTTON_GAP * 3 + BUTTON_WIDTH * 3 - 15, 150, BUTTON_WIDTH + 30, 15)];
+    UILabel *labQQZone = [[UILabel alloc] initWithFrame:CGRectMake(fXOffset + BUTTON_GAP * 3 + self.buttonWidth * 3 - 15, self.buttonHeight + 60, self.buttonWidth + 30, 15)];
     labQQZone.font = [UIFont systemFontOfSize:13];
     labQQZone.backgroundColor = [UIColor clearColor];
     labQQZone.textColor = COLOR(33, 33, 33);
@@ -120,15 +124,15 @@
     labQQZone.text = @"QQ空间";
     [self.vContent addSubview:labQQZone];
     
-    UIImageView *imgvBottomSep = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.vContent.bounds) - 40 - 1, [AppInfo screenWidth], .5)];
-    imgvBottomSep.backgroundColor = [UIColor lightGrayColor];
+    UIImageView *imgvBottomSep = [[UIImageView alloc] initWithFrame:CGRectMake(17, CGRectGetHeight(self.vContent.bounds) - 40 - 1, [AppInfo screenWidth] - 34, .5)];
+    imgvBottomSep.backgroundColor = [UIColor colorWithHex:0xdddddd alpha:.8];
     [self.vContent addSubview:imgvBottomSep];
     
     UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeCustom];
     btnCancel.backgroundColor = [UIColor whiteColor];
     btnCancel.frame = CGRectMake(0, CGRectGetHeight(self.vContent.bounds) - 40, [AppInfo screenWidth], 40);
-    btnCancel.titleLabel.font = [UIFont systemFontOfSize:19];
-    btnCancel.titleLabel.textColor = [UIColor blackColor];
+    btnCancel.titleLabel.font = [UIFont systemFontOfSize:16];
+    btnCancel.titleLabel.textColor = [UIColor grayColor];
     [btnCancel setTitle:@"取消" forState:UIControlStateNormal];
     [btnCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btnCancel addTarget:self action:@selector(cancelOperator:) forControlEvents:UIControlEventTouchUpInside];

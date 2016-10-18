@@ -111,12 +111,16 @@ class MyFavViewController: UIViewController {
         if let id = segue.identifier where id == StoryboardSegue.Main.ShowNewsDetail.rawValue {
             if let destination = segue.destinationViewController as? WebDetailViewController {
                 if let data = sender as? FavViewModel, fid = data.fid, fType = FavType(rawValue: fid) {
-                    if case FavType.News = fType {
-
-                    }
-                    else {
+                    switch fType {
+                    case .News, .Meeting:
+                        break
+                    case .World, .Document:
                         destination.showActionToolBar = true
+                        destination.actions = [.Comment, .Fav, .Download]
+                    default:
+                        break
                     }
+
                     destination.title = data.title
                     destination.favData = data
                 }

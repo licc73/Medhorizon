@@ -56,7 +56,7 @@ class DocumentListTableViewCell: UITableViewCell {
         self.labTitle.text = nil
         self.labContent.text = nil
         self.imgvThumbnail.image = placeHolderImage
-        self.btnDownload.setTitle("下载全文", forState: .Normal)
+        //self.btnDownload.setTitle("下载全文", forState: .Normal)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
