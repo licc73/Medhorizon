@@ -147,6 +147,14 @@ class MeetingListViewController: UIViewController {
                 }
             }
         }
+        else if let id = segue.identifier where id == StoryboardSegue.Main.ShowMeetingDetailWithWeb.rawValue {
+            if let detail = segue.destinationViewController as? WebDetailViewController {
+                if let data = sender as? MeetingViewModel {
+                    detail.meeting = data
+                    detail.title = "会议活动"
+                }
+            }
+        }
     }
 
 
@@ -187,7 +195,7 @@ extension MeetingListViewController: UITableViewDelegate, UITableViewDataSource 
             let meeting = curData.meetingList[indexPath.row]
 
             if LoginManager.shareInstance.isLogin {
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingDetail.rawValue, sender: meeting)
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingDetailWithWeb.rawValue, sender: meeting)
             }
             else {
                 guard let isNeedLogin = meeting.isNeedLogin where !isNeedLogin else {
@@ -195,7 +203,7 @@ extension MeetingListViewController: UITableViewDelegate, UITableViewDataSource 
                     return
                 }
 
-                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingDetail.rawValue, sender: meeting)
+                self.performSegueWithIdentifier(StoryboardSegue.Main.ShowMeetingDetailWithWeb.rawValue, sender: meeting)
             }
         }
     }

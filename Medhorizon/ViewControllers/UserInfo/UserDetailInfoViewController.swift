@@ -58,21 +58,21 @@ class UserDetailInfoViewController: UIViewController {
         self.funcList.append(UserEditType.Pwd(UserEditInfoBaseInfoType(title: "登录密码", value: "修改", titleColor: nil, valueColor: nil, cellHeight: 50)))
         self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
-        var strueTitle = ""
-        if let detail = detail {
-            if let w = detail.WWID where w != "" {
-                strueTitle = "强生员工"
-            }
-            else if let b = detail.isTrueName where b {
-                strueTitle = "医生"
-            }
-            else {
-                strueTitle = "未认证"
-            }
-        }
-
-        self.funcList.append(UserEditType.TrueName(UserEditInfoBaseInfoType(title: "用户身份", value: strueTitle, titleColor: nil, valueColor: nil, cellHeight: 40)))
-        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
+//        var strueTitle = ""
+//        if let detail = detail {
+//            if let w = detail.WWID where w != "" {
+//                strueTitle = "强生员工"
+//            }
+//            else if let b = detail.isTrueName where b {
+//                strueTitle = "医生"
+//            }
+//            else {
+//                strueTitle = "未认证"
+//            }
+//        }
+//
+//        self.funcList.append(UserEditType.TrueName(UserEditInfoBaseInfoType(title: "用户身份", value: strueTitle, titleColor: nil, valueColor: nil, cellHeight: 40)))
+//        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.tableView.reloadData()
     }

@@ -20,6 +20,7 @@ struct StoryboardSegue {
 
         case ShowMeetingDetail = "ShowMeetingDetail"
         case ShowMeetingBranner = "ShowMeetingBranner"
+        case ShowMeetingDetailWithWeb = "ShowMeetingDetailWithWeb"
         
         case ShowDocumentInfo = "ShowDocumentInfo"
         case ShowMeetingDoc = "ShowMeetingDoc"

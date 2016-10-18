@@ -26,7 +26,8 @@ class WebDetailViewController: UIViewController {
     var brannerData: BrannerViewModel?
     var document: CoursewareInfoViewModel?
     var favData: FavViewModel?    
-    
+    var meeting: MeetingViewModel?
+
     var sTitle: String?
     var sContent: String?
     var sLink: String?
@@ -98,6 +99,13 @@ class WebDetailViewController: UIViewController {
             sLink = fav.linkUrl
             sPic = fav.picUrl
             self.id = fav.infoId
+        }
+        else if let meeting = meeting {
+            self.sTitle = meeting.title
+            self.sContent = meeting.keyWordInfo
+            self.sLink = meeting.linkUrl
+            self.sPic = meeting.picUrl
+            self.id = meeting.id
         }
         
         self.loadWebRequest()
