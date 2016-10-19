@@ -130,17 +130,13 @@
 		43B2C9881DA7C2AB004FA849 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9761DA7C2AB004FA849 /* IQToolbar.swift */; };
 		43B2C9891DA7C2AB004FA849 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2C9771DA7C2AB004FA849 /* IQUIView+IQKeyboardToolbar.swift */; };
 		43B2C98A1DA7C2AB004FA849 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 43B2C9791DA7C2AB004FA849 /* IQKeyboardManager.bundle */; };
-		43D390531DA35DD000039C35 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E11D9E53CB00468A92 /* Alamofire.framework */; };
 		43D390541DA35DD000039C35 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E11D9E53CB00468A92 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		43D390551DA35DD000039C35 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E21D9E53CB00468A92 /* Dollar.framework */; };
 		43D390561DA35DD000039C35 /* Dollar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E21D9E53CB00468A92 /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		43D390571DA35DD000039C35 /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E31D9E53CB00468A92 /* Prelude.framework */; };
 		43D390581DA35DD000039C35 /* Prelude.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E31D9E53CB00468A92 /* Prelude.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		43D390591DA35DD000039C35 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E41D9E53CB00468A92 /* ReactiveCocoa.framework */; };
 		43D3905A1DA35DD000039C35 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E41D9E53CB00468A92 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		43D3905B1DA35DD000039C35 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E51D9E53CB00468A92 /* Result.framework */; };
 		43D3905C1DA35DD000039C35 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E51D9E53CB00468A92 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		43D3905D1DA35DD000039C35 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E61D9E53CB00468A92 /* Runes.framework */; };
 		43D3905E1DA35DD000039C35 /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E61D9E53CB00468A92 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		43D3905F1DA35DD000039C35 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E71D9E53CB00468A92 /* SVProgressHUD.framework */; };
 		43D390601DA35DD000039C35 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E71D9E53CB00468A92 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -188,12 +184,9 @@
 		EA67D0D71D9E4D0B00468A92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D61D9E4D0B00468A92 /* Assets.xcassets */; };
 		EA67D0DA1D9E4D0B00468A92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA67D0D81D9E4D0B00468A92 /* LaunchScreen.storyboard */; };
 		EA67D0E91D9E53CB00468A92 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E11D9E53CB00468A92 /* Alamofire.framework */; };
-		EA67D0EA1D9E53CB00468A92 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E21D9E53CB00468A92 /* Dollar.framework */; };
 		EA67D0EB1D9E53CB00468A92 /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E31D9E53CB00468A92 /* Prelude.framework */; };
 		EA67D0EC1D9E53CB00468A92 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E41D9E53CB00468A92 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		EA67D0ED1D9E53CB00468A92 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E51D9E53CB00468A92 /* Result.framework */; };
 		EA67D0EE1D9E53CB00468A92 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E61D9E53CB00468A92 /* Runes.framework */; };
-		EA67D0EF1D9E53CB00468A92 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E71D9E53CB00468A92 /* SVProgressHUD.framework */; };
 		EA67D0F01D9E53CB00468A92 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA67D0E81D9E53CB00468A92 /* WebImage.framework */; };
 		EA728E361DB5CB350024CE22 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA728E2C1DB5CB350024CE22 /* TencentOpenAPI.framework */; };
 		EA728E371DB5CB350024CE22 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA728E2D1DB5CB350024CE22 /* TencentOpenApi_IOS_Bundle.bundle */; };
@@ -458,21 +451,14 @@
 				4311BC6F1DB6490400F00713 /* libz.1.1.3.tbd in Frameworks */,
 				EA67D0E91D9E53CB00468A92 /* Alamofire.framework in Frameworks */,
 				EA728E361DB5CB350024CE22 /* TencentOpenAPI.framework in Frameworks */,
-				43D390531DA35DD000039C35 /* Alamofire.framework in Frameworks */,
 				43D390551DA35DD000039C35 /* Dollar.framework in Frameworks */,
-				EA67D0EA1D9E53CB00468A92 /* Dollar.framework in Frameworks */,
 				EA67D0EB1D9E53CB00468A92 /* Prelude.framework in Frameworks */,
 				EA67D0EC1D9E53CB00468A92 /* ReactiveCocoa.framework in Frameworks */,
 				43D3905F1DA35DD000039C35 /* SVProgressHUD.framework in Frameworks */,
-				43D3905D1DA35DD000039C35 /* Runes.framework in Frameworks */,
-				43D390571DA35DD000039C35 /* Prelude.framework in Frameworks */,
 				43D3905B1DA35DD000039C35 /* Result.framework in Frameworks */,
-				43D390591DA35DD000039C35 /* ReactiveCocoa.framework in Frameworks */,
 				EA728E381DB5CB350024CE22 /* libWeChatSDK.a in Frameworks */,
-				EA67D0ED1D9E53CB00468A92 /* Result.framework in Frameworks */,
 				4344F6211DB1C31B00D5ED54 /* libCCSDK.a in Frameworks */,
 				EA67D0EE1D9E53CB00468A92 /* Runes.framework in Frameworks */,
-				EA67D0EF1D9E53CB00468A92 /* SVProgressHUD.framework in Frameworks */,
 				EA67D0F01D9E53CB00468A92 /* WebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

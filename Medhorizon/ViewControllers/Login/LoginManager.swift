@@ -222,7 +222,8 @@ extension LoginManager {
             NSUserDefaults.standardUserDefaults().setValue(device, forKey: "DeviceAppUUIDKey")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
-        DefaultServiceRequests.rac_requesForUpload(ThirdPartyManager.getCurrentDeviceModel(), address: "0,0", uid: LoginManager.shareInstance.userId ?? device, version: "1.0")
+//        ThirdPartyManager.getCurrentDeviceModel()
+        DefaultServiceRequests.rac_requesForUpload("iPhone", address: "0,0", uid: LoginManager.shareInstance.userId ?? device, version: "1.0")
             .start()
     }
 

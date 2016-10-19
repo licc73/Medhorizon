@@ -23,7 +23,7 @@
 
 @interface ThirdPartyManager : NSObject
 + (ThirdPartyManager *)shareInstance;
-+ (NSString *)getCurrentDeviceModel;
+//+ (NSString *)getCurrentDeviceModel;
 
 @property (nonatomic, retain) ShareData *data;
 
