@@ -11,6 +11,7 @@ import ReactiveCocoa
 
 class CommentViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var vNoData: UIView!
 
     var commentListData: CommentListViewModel?
 
@@ -25,6 +26,7 @@ class CommentViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.separatorColor = UIColor.colorWithHex(0xe9e9e9)
         self.vTool.backgroundColor = UIColor.colorWithHex(0xf5f6f7)
         self.vAction = ActionView(frame: CGRectZero)
         self.vAction?.config(actions)
@@ -50,6 +52,12 @@ class CommentViewController: UIViewController {
                 .on(failed: {[unowned self] (error) in
                     AppInfo.showDefaultNetworkErrorToast()
                     self.tableView.endRefresh()
+                    if self.commentListData?.commentCount ?? 0 == 0 {
+                        self.tableView.backgroundView = self.vNoData
+                    }
+                    else {
+                        self.tableView.backgroundView = nil
+                    }
                     },
                     next: {[unowned self] (returnMsg) in
                         if let msg = returnMsg {
@@ -90,6 +98,12 @@ class CommentViewController: UIViewController {
 
     func reloadData() {
         self.tableView.reloadData()
+        if self.commentListData?.commentCount ?? 0 == 0 {
+            self.tableView.backgroundView = self.vNoData
+        }
+        else {
+            self.tableView.backgroundView = nil
+        }
         self.tableView.endRefresh(self.commentListData?.isHaveMoreData)
     }
     /*

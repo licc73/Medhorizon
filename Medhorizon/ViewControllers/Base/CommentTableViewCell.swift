@@ -20,8 +20,15 @@ class CommentTableViewCell: UITableViewCell {
         didSet {
             if let comment = comment {
                 self.labName.text = comment.commentName
-                self.labContent.text = comment.commentContent
+                //self.labContent.text = comment.commentContent
                 self.labCreatedDate.text = comment.commentDate
+
+                let attributedString:NSMutableAttributedString = NSMutableAttributedString(string: comment.commentContent ?? "")
+                let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.lineSpacing = 7 //大小调整
+                attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+                 self.labContent.attributedText = attributedString
 
                 if let pic = comment.commentPic, picUrl = NSURL(string: pic) {
                     self.imgvThumbnail.sd_setImageWithURL(picUrl, placeholderImage: placeHolderImage)

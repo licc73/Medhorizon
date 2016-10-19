@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+//NSString *WXAuthorSucNotification = @"WXAuthorSucNotification";
+
 @interface ShareData : NSObject
 
 @property (nonatomic, copy) NSString *sShareId;
@@ -21,6 +23,7 @@
 
 @interface ThirdPartyManager : NSObject
 + (ThirdPartyManager *)shareInstance;
++ (NSString *)getCurrentDeviceModel;
 
 @property (nonatomic, retain) ShareData *data;
 
@@ -28,6 +31,8 @@
 - (void) shareToWXFriend;//我的好友
 - (void) shareWithQQFriend;
 - (void) shareWithQQZone;
+
+- (void)sendAuthRequest:(UIViewController *)ctrl;
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url;
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;

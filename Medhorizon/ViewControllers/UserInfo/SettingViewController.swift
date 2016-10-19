@@ -47,34 +47,59 @@ class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SetupWithSwichTableViewCell", forIndexPath: indexPath) as! SetupWithSwichTableViewCell
-            cell.setTitle("仅WIFI下播放", isOn: SetupValueManager.shareInstance.isPlayInWifiOnly)
-            cell.delegate = self
-            return cell
+            if indexPath.row == 0 {
+                let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                cell.textLabel?.text = "流量设置"
+                cell.textLabel?.font = UIFont.systemFontOfSize(16)
+                cell.textLabel?.textColor = UIColor.colorWithHex(0x666666)
+                return cell
+            }
+            else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SetupWithSwichTableViewCell", forIndexPath: indexPath) as! SetupWithSwichTableViewCell
+                cell.setTitle("仅WIFI下播放", isOn: SetupValueManager.shareInstance.isPlayInWifiOnly)
+                cell.delegate = self
+                return cell
+            }
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SetupWithSwichTableViewCell", forIndexPath: indexPath) as! SetupWithSwichTableViewCell
-            cell.setTitle("进入播放页面自动播放", isOn: SetupValueManager.shareInstance.isPlayWhenOpen)
-            cell.delegate = self
-            return cell
+            if indexPath.row == 0 {
+                let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                cell.textLabel?.text = "播放设置"
+                cell.textLabel?.font = UIFont.systemFontOfSize(16)
+                cell.textLabel?.textColor = UIColor.colorWithHex(0x666666)
+                return cell
+            }
+            else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SetupWithSwichTableViewCell", forIndexPath: indexPath) as! SetupWithSwichTableViewCell
+                cell.setTitle("进入播放页面自动播放", isOn: SetupValueManager.shareInstance.isPlayWhenOpen)
+                cell.delegate = self
+                return cell
+            }
         case 2:
-            let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-            cell.textLabel?.text = "清除缓存"
-            self.checkCacheSize(cell)
-            return cell
-        case 3:
-            let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-            cell.textLabel?.text = "隐私声明（内测版本1.0）"
-            return cell
+            if indexPath.row == 0 {
+                let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+                cell.textLabel?.text = "清除缓存"
+                cell.textLabel?.font = UIFont.systemFontOfSize(16)
+                cell.textLabel?.textColor = UIColor.colorWithHex(0x666666)
+                self.checkCacheSize(cell)
+                return cell
+            }
+            else {
+                let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                cell.textLabel?.text = "隐私声明"
+                cell.textLabel?.font = UIFont.systemFontOfSize(16)
+                cell.textLabel?.textColor = UIColor.colorWithHex(0x666666)
+                return cell
+            }
 
         default:
             return UITableViewCell()
@@ -97,16 +122,20 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "流量设置"
-        case 1:
-            return "播放设置"
-        default:
-            return nil
-        }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
+
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        switch section {
+//        case 0:
+//            return "流量设置"
+//        case 1:
+//            return "播放设置"
+//        default:
+//            return nil
+//        }
+//    }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
@@ -116,7 +145,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         defer {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
-        if indexPath.section == 3 && indexPath.row == 0 {
+        if indexPath.section == 2 && indexPath.row == 1 {
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNormalLink.rawValue, sender: nil)
         }
         else if indexPath.section == 2 && indexPath.row == 0 {

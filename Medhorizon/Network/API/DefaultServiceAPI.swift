@@ -9,8 +9,10 @@
 import Foundation
 
 enum DefaultServiceAPI: API {
+    case APPStart(String, String, String, String, String)
     /////login
     case Login(String, String, String)
+    case LoginWithWeixin(String, String?, String, String)
     case SMSCode(String, String, Int)
     case Register(String, String, String, String)
     case ForgotPwd(String, String, String, String)
@@ -21,7 +23,7 @@ enum DefaultServiceAPI: API {
     case ModifyNickName(String, String, String)
     case ModifyPhone(String, String, String, String)
     case ModifyPwd(String, String, String, String)
-
+    case TrueNameCheck(String, String, Int, (String)?, (String, String, String)?)
 
 
 
@@ -57,17 +59,21 @@ enum DefaultServiceAPI: API {
 
     case CheckCanBeDownloaded(String, String, String, Int)
 
-
-
-
     
     static var serviceConfigurationFetcher: (Void -> ServiceConfiguration)? = nil
     static var defaultServiceConfiguration: ServiceConfiguration = ServiceConfiguration(httpProtocol: .HTTP, serviceType: .Default, serviceRegion: .Default, environment: .Default)
     
     func APIPath() -> String {
         switch self{
+        case let .APPStart(appKey, appcode, address, uid, version):
+            return "/appstart?AppSecret=\(appKey)&Appcode=\(appcode)&Adderss=\(address)&Version=\(version)&uid=\(uid)"
         case let .Login(appKey, phone, pwd):
             return "/login?AppSecret=\(appKey)&Phone=\(phone)&Pwd=\(pwd)"
+        case let .LoginWithWeixin(appKey, userId, token, openId):
+            if let userId = userId {
+                return "/wLogin?AppSecret=\(appKey)&UserId=\(userId)&Token=\(token)&OpenId=\(openId)"
+            }
+            return "/wLogin?AppSecret=\(appKey)&UserId=0&Token=\(token)&OpenId=\(openId)"
         case let .SMSCode(appKey, phone, type):
             return "/sendCode?AppSecret=\(appKey)&Phone=\(phone)&CodeType=\(type)"
         case let .Register(appKey, phone, smsCode, pwd):
@@ -84,6 +90,15 @@ enum DefaultServiceAPI: API {
             return "/modifyPhone?AppSecret=\(appKey)&UserId=\(userId)&NewPhone=\(newPhone)&VCode=\(vCode)"
         case let .ModifyPwd(appKey, userId, oldPwd, newPwd):
             return "/modifyPwd?AppSecret=\(appKey)&UserId=\(userId)&OldPwd=\(oldPwd)&NewPwd=\(newPwd)"
+
+        case let .TrueNameCheck(appKey, userId, cartType, wwid, doctor):
+            if let wwid = wwid where cartType == 1 {
+                return "/modifyUserInfo?AppSecret=\(appKey)&UserId=\(userId)&CardType=1&WWID=\(wwid)&Hopital=&Department=&Job="
+            }
+            else if let doctor = doctor where cartType == 2 {
+                return "/modifyUserInfo?AppSecret=\(appKey)&UserId=\(userId)&CardType=2&WWID=&Hopital=\(doctor.0)&Department=\(doctor.1)&Job=\(doctor.2)"
+            }
+            return ""
 
 
         // server start with 1, page num & page size 意义定义反了

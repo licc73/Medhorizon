@@ -12,7 +12,7 @@ import ReactiveCocoa
 class WorldListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var vNoData: UIView!
     var worldList: WorldListViewModel?
     
     var coverFlow: CoverFlowView?
@@ -161,10 +161,18 @@ class WorldListViewController: UIViewController {
         let imgvHLine = UIImageView(frame: CGRectMake(0, tableHeaderHeight - 2, AppInfo.screenWidth, 1))
         imgvHLine.backgroundColor = UIColor.lightGrayColor()
         vTabelHeader.addSubview(imgvHLine)
-
+        vTabelHeader.backgroundColor = UIColor.colorWithIntValue(245, 246, 247)
         self.tableView.tableHeaderView = vTabelHeader
         
         self.tableView.reloadData()
+        if curData?.expertList.count ?? 0 == 0 {
+            self.tableView.tableFooterView = self.vNoData
+            self.tableView.backgroundColor = UIColor.whiteColor()
+        }
+        else {
+            self.tableView.tableFooterView = nil
+            self.tableView.backgroundColor = UIColor.colorWithIntValue(245, 246, 247)
+        }
         self.tableView.endRefresh(curData?.isHaveMoreData)
     }
     

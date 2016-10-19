@@ -8,12 +8,15 @@
 
 import UIKit
 import ReactiveCocoa
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtPwd: UITextField!
 
     @IBOutlet weak var btnLogin: UIButton!
+
+    var isInLoginInWeiXinFlow = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +81,55 @@ class LoginViewController: UIViewController {
             }
         }
         .start()
+
+        NSNotificationCenter.defaultCenter().rac_addObserverForName("WXLOGINSUCNOTIFICATION", object: nil)
+            .toSignalProducer()
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on( failed: { [unowned self](_) in
+                self.isInLoginInWeiXinFlow = false
+            }) { [unowned self](object) in
+
+                if self.isInLoginInWeiXinFlow {
+                    self.isInLoginInWeiXinFlow = false
+                    guard let object = object as? NSNotification,
+                        dic = object.userInfo as? [String: AnyObject],
+                        openId = mapToString(dic)("openid"),
+                        token = mapToString(dic)("access_token")
+                        else {
+                            return
+                    }
+                    SVProgressHUD.show()
+                    LoginManager.performLoginWithWX(nil, token: token, openId: openId)
+                        .takeUntil(self.rac_WillDeallocSignalProducer())
+                        .observeOn(UIScheduler())
+                        .on(failed: {(error) in
+                            AppInfo.showDefaultNetworkErrorToast()
+                            SVProgressHUD.dismiss()
+                            },
+                            next: { [unowned self](returnMsg) in
+                                SVProgressHUD.dismiss()
+                                if let msg = returnMsg {
+                                    if msg.isSuccess {
+                                        AppInfo.showToast("登录成功")
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    }
+                                    else {
+                                        AppInfo.showToast(msg.errorMsg)
+                                    }
+                                }
+                                else {
+                                    AppInfo.showToast("未知错误")
+                                }
+                            })
+                        .start()
+                }
+            }.start()
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.isInLoginInWeiXinFlow = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,14 +175,16 @@ extension LoginViewController {
         guard let phone = self.txtPhone.text, pwd = self.txtPwd.text else {
             return
         }
-
+        SVProgressHUD.show()
         LoginManager.performLogin(phone, pwd: pwd)
             .takeUntil(self.rac_WillDeallocSignalProducer())
             .observeOn(UIScheduler())
             .on(failed: {(error) in
                 AppInfo.showDefaultNetworkErrorToast()
+                SVProgressHUD.dismiss()
                 },
                 next: { [unowned self](returnMsg) in
+                    SVProgressHUD.dismiss()
                     if let msg = returnMsg {
                         if msg.isSuccess {
                             AppInfo.showToast("登录成功")
@@ -160,6 +214,9 @@ extension LoginViewController {
 
     @IBAction func loginWithWeixin(sender: AnyObject) {
         self.view.endEditing(true)
+
+        ThirdPartyManager.shareInstance().sendAuthRequest(self)
+         self.isInLoginInWeiXinFlow = true
     }
 
     func dismissKeyboard(gesture: UITapGestureRecognizer) {

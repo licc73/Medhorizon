@@ -17,6 +17,7 @@ class UserDetailInfoViewController: UIViewController {
 
     var headerImg: UIImage? = nil
 
+    var isInLoginInWeiXinFlow = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,21 +59,21 @@ class UserDetailInfoViewController: UIViewController {
         self.funcList.append(UserEditType.Pwd(UserEditInfoBaseInfoType(title: "登录密码", value: "修改", titleColor: nil, valueColor: nil, cellHeight: 50)))
         self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
-//        var strueTitle = ""
-//        if let detail = detail {
-//            if let w = detail.WWID where w != "" {
-//                strueTitle = "强生员工"
-//            }
-//            else if let b = detail.isTrueName where b {
-//                strueTitle = "医生"
-//            }
-//            else {
-//                strueTitle = "未认证"
-//            }
-//        }
-//
-//        self.funcList.append(UserEditType.TrueName(UserEditInfoBaseInfoType(title: "用户身份", value: strueTitle, titleColor: nil, valueColor: nil, cellHeight: 40)))
-//        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
+        var strueTitle = ""
+        if let detail = detail {
+            if let w = detail.WWID where w != "" {
+                strueTitle = "强生员工"
+            }
+            else if let b = detail.isTrueName where b {
+                strueTitle = "医生"
+            }
+            else {
+                strueTitle = "未认证"
+            }
+        }
+
+        self.funcList.append(UserEditType.TrueName(UserEditInfoBaseInfoType(title: "用户身份", value: strueTitle, titleColor: nil, valueColor: nil, cellHeight: 40)))
+        self.funcList.append(UserEditType.SeparatorLine(UserInfoSeparatorLineType(color: UIColor.colorWithHex(0xb1d1e8), insets: UIEdgeInsetsZero, lineHeight: 0.5)))
 
         self.tableView.reloadData()
     }
@@ -82,8 +83,59 @@ class UserDetailInfoViewController: UIViewController {
         self.refreshUserDetail()
     }
 
-    func setupBind() {
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        isInLoginInWeiXinFlow = false
+    }
 
+    func setupBind() {
+        NSNotificationCenter.defaultCenter().rac_addObserverForName("WXLOGINSUCNOTIFICATION", object: nil)
+            .toSignalProducer()
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on( failed: { [unowned self](_) in
+                self.isInLoginInWeiXinFlow = false
+            }) { [unowned self](object) in
+                guard let userid = LoginManager.shareInstance.userId else {
+                    self.isInLoginInWeiXinFlow = false
+                    return
+                }
+                if self.isInLoginInWeiXinFlow {
+                    self.isInLoginInWeiXinFlow = false
+                    guard let object = object as? NSNotification,
+                        dic = object.userInfo as? [String: AnyObject],
+                        openId = mapToString(dic)("openid"),
+                        token = mapToString(dic)("access_token")
+                        else {
+                            return
+                    }
+                    
+                    SVProgressHUD.show()
+                    LoginManager.performLoginWithWX(userid, token: token, openId: openId)
+                        .takeUntil(self.rac_WillDeallocSignalProducer())
+                        .observeOn(UIScheduler())
+                        .on(failed: {(error) in
+                            AppInfo.showDefaultNetworkErrorToast()
+                            SVProgressHUD.dismiss()
+                            },
+                            next: { [unowned self](returnMsg) in
+                                SVProgressHUD.dismiss()
+                                if let msg = returnMsg {
+                                    if msg.isSuccess {
+                                        AppInfo.showToast("绑定成功")
+                                        self.refreshUserDetail()
+                                    }
+                                    else {
+                                        AppInfo.showToast(msg.errorMsg)
+                                    }
+                                }
+                                else {
+                                    AppInfo.showToast("未知错误")
+                                }
+                            })
+                        .start()
+                }
+            }.start()
     }
 
     func refreshUserDetail() {
@@ -205,7 +257,7 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
 
 
             actionController.addAction(UIAlertAction(title: "从手机相册选择",
-                style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                style: UIAlertActionStyle.Default, handler: {[unowned self](action) -> Void in
                     let picker = UIImagePickerController()
                     picker.delegate = self
                     picker.allowsEditing = true//设置可编辑
@@ -215,7 +267,7 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
 
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
                 actionController.addAction(UIAlertAction(title: "拍照",
-                    style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                    style: UIAlertActionStyle.Default, handler: {[unowned self](action) -> Void in
                         let picker = UIImagePickerController()
                         picker.delegate = self
                         picker.allowsEditing = true//设置可编辑
@@ -235,6 +287,8 @@ extension UserDetailInfoViewController: UITableViewDelegate, UITableViewDataSour
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowChangePhoneView.rawValue, sender: nil)
         case .Pwd:
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowChangePwdView.rawValue, sender: nil)
+        case .Weixin:
+            self.bindWithWeixin()
         case .TrueName:
             self.performSegueWithIdentifier(StoryboardSegue.Main.ShowTrueNameVerifyView.rawValue, sender: nil)
         default:
@@ -248,6 +302,11 @@ extension UserDetailInfoViewController {
 
     @IBAction func back(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+
+    func bindWithWeixin() {
+        self.isInLoginInWeiXinFlow = true
+        ThirdPartyManager.shareInstance().sendAuthRequest(self)
     }
 
 }

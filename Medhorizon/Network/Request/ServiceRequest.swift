@@ -106,6 +106,11 @@ extension DefaultServiceRequests { //login
             <~ justCast
     }
 
+    static func rac_requesForLoginWithWX(userId: String?, token: String, openId: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.LoginWithWeixin(defaultAppKey, userId, token, openId))
+            <~ justCast
+    }
+
     static func rac_requesForSendSMSCode(phone: String, type: Int) -> SignalProducer<[String: AnyObject], ServiceError> {
         return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.SMSCode(defaultAppKey, phone, type))
             <~ justCast
@@ -136,6 +141,11 @@ extension DefaultServiceRequests {
 
     static func rac_requesForModifyPwd(userId: String, oldPwd: String, newPwd: String) -> SignalProducer<[String: AnyObject], ServiceError> {
         return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.ModifyPwd(defaultAppKey, userId, oldPwd, newPwd))
+            <~ justCast
+    }
+
+    static func rac_requesForTrueName(userId: String, type: Int, wwid: String?, doctor: (String, String, String)?) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.TrueNameCheck(defaultAppKey, userId, type, wwid, doctor))
             <~ justCast
     }
     
@@ -196,4 +206,12 @@ extension DefaultServiceRequests {//userInfo
             <~ justCast)
     }
 
+}
+
+extension DefaultServiceRequests {
+//    appKey, appcode, address, uid, version
+    static func rac_requesForUpload(appcode: String, address: String, uid: String, version: String) -> SignalProducer<[String: AnyObject], ServiceError> {
+        return (alamofireManager.rac_requestResponseJSON(.GET, DefaultServiceAPI.APPStart(defaultAppKey, appcode, address, uid, version))
+            <~ justCast)
+    }
 }

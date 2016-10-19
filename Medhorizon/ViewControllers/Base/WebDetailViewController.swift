@@ -63,7 +63,16 @@ class WebDetailViewController: UIViewController {
             self.vTool.addSubview(self.vAction!)
         }
         else if showDownloadToolBar {
-
+            if let doc = self.document {
+                if DownloadManager.shareInstance.isSuccessDownloaded(doc.sourceUrl) && NSFileManager.defaultManager().fileExistsAtPath(DownloadItem.filePathWithSource(doc.sourceUrl, type: .Document)) {
+                    self.btnDownload.setTitle("查看全文", forState: .Normal)
+                    self.btnDownload.setImage(UIImage(named: "view_doc_detail"), forState: .Normal)
+                }
+                else {
+                    self.btnDownload.setTitle("离线下载", forState: .Normal)
+                    self.btnDownload.setImage(UIImage(named: "download_detail"), forState: .Normal)
+                }
+            }
         }
         else {
             self.vTool.hidden = true
@@ -142,6 +151,19 @@ class WebDetailViewController: UIViewController {
                     self.loadWebRequest()
                 }
         }.start()
+
+        if let doc = self.document {
+            DownloadManager.shareInstance.downloadHotSignal.producer
+                .skip(1)
+                .throttle(2, onScheduler: RACScheduler.mainThreadScheduler())
+                .takeUntil(self.rac_WillDeallocSignalProducer())
+                .startWithNext { [unowned self](item) in
+                    if let sItem = item where sItem.status == .Finish && doc.sourceUrl == sItem.sourceUrl {
+                        self.btnDownload.setTitle("查看全文", forState: .Normal)
+                        self.btnDownload.setImage(UIImage(named: "view_doc_detail"), forState: .Normal)
+                    }
+            }
+        }
     }
 
     func getFavStatus() {
@@ -175,6 +197,12 @@ class WebDetailViewController: UIViewController {
                 destination.id = self.id
             }
         }
+        else if let id = segue.identifier where id == StoryboardSegue.Main.ShowNormalLink.rawValue {
+            if let destination = segue.destinationViewController as? NormalLinkViewController, doc = sender as? CoursewareInfoViewModel {
+                destination.title = doc.title
+                destination.filePath = DownloadItem.filePathWithSource(doc.sourceUrl, type: .Document)
+            }
+        }
 
     }
 
@@ -205,10 +233,13 @@ class WebDetailViewController: UIViewController {
 
 extension WebDetailViewController: shareToThirdPartyViewDelegate {
     func shareToThirdPartyView(view: ShareToThirdPartyView!, shareWith type: ShareToThirdPartyPlatform) {
+        guard let link = self.sLink, userId = LoginManager.shareInstance.userId else {
+            return
+        }
         let data = ShareData()
         data.sContent = self.sContent
         data.sTitle = self.sTitle
-        data.sLinkUrl = self.sLink
+        data.sLinkUrl = link + "&UserId=\(userId)&share=true"
         data.sPicUrl = self.sPic
         ThirdPartyManager.shareInstance().data = data
         switch type {
@@ -243,6 +274,12 @@ extension WebDetailViewController {
         if let doc = self.document {
             if LoginManager.shareInstance.isLogin {
                 if let userId = LoginManager.shareInstance.userId {
+
+                    if DownloadManager.shareInstance.isSuccessDownloaded(doc.sourceUrl) && NSFileManager.defaultManager().fileExistsAtPath(DownloadItem.filePathWithSource(doc.sourceUrl, type: .Document)) {
+                        self.performSegueWithIdentifier(StoryboardSegue.Main.ShowNormalLink.rawValue, sender: document)
+                        return
+                    }
+
                     if let score = doc.needScore {
                         if score != 0 {
                             performForCheckDownLoad(userId, InfoId: doc.id, scoreNum: score)

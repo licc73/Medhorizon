@@ -38,6 +38,11 @@ class DocumentListViewController: UIViewController {
         
         self.initMJRefresh()
     }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reloadData()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

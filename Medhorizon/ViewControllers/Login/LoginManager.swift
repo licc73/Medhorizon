@@ -34,6 +34,9 @@ class LoginManager {
             if let user = userDetailInfo {
                 self.loginInfo?.picUrl = user.headpic
                 self.loginInfo?.nickName = user.nickName
+                if let phone = user.phone {
+                    self.loginInfo?.phone = phone
+                }
                 self.saveLoginInfo()
             }
         }
@@ -121,6 +124,23 @@ extension LoginManager { //login work flow
             })
     }
 
+    static func performLoginWithWX(userId: String?, token: String, openId: String) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForLoginWithWX(userId, token: token, openId: openId)
+            .flatMap(.Latest, transform: { (object) -> SignalProducer<ReturnMsg?, ServiceError> in
+                let returnMsg = ReturnMsg.mapToModel(object)
+                if let msg = returnMsg where msg.isSuccess {
+
+                    LoginManager.shareInstance.loginInfo = LoginBriefInfo.mapToModel(object, phone: "")
+                    LoginManager.shareInstance.userId = LoginManager.shareInstance.loginInfo?.userId
+
+                    LoginManager.shareInstance.saveLoginInfo()
+                    LoginManager.shareInstance.loginOrLogoutNotification.value = true
+                }
+
+                return SignalProducer(value: returnMsg)
+            })
+    }
+
     static func performSendSMSCode(phone: String, type: SMSCodeType) -> SignalProducer<ReturnMsg?, ServiceError> {
         return DefaultServiceRequests.rac_requesForSendSMSCode(phone, type: type.rawValue)
             .map({ (object) -> ReturnMsg? in
@@ -166,6 +186,13 @@ extension LoginManager {
                 return ReturnMsg.mapToModel(object)
             })
     }
+
+    static func performForTrueName(userId: String, type: TrueNameType, wwid: String?, doctor: (String, String, String)?) -> SignalProducer<ReturnMsg?, ServiceError> {
+        return DefaultServiceRequests.rac_requesForTrueName(userId, type: type.rawValue, wwid: wwid, doctor: doctor)
+            .map({ (object) -> ReturnMsg? in
+                return ReturnMsg.mapToModel(object)
+            })
+    }
     
 }
 
@@ -182,4 +209,21 @@ extension LoginManager { // userInfo flow
             })
     }
     
+}
+
+extension LoginManager {
+    static func performUploadData() {
+        var device: String = ""
+        if let deviceKey = NSUserDefaults.standardUserDefaults().stringForKey("DeviceAppUUIDKey") {
+            device = deviceKey
+        }
+        else {
+            device = NSUUID().UUIDString
+            NSUserDefaults.standardUserDefaults().setValue(device, forKey: "DeviceAppUUIDKey")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        DefaultServiceRequests.rac_requesForUpload(ThirdPartyManager.getCurrentDeviceModel(), address: "0,0", uid: LoginManager.shareInstance.userId ?? device, version: "1.0")
+            .start()
+    }
+
 }

@@ -22,6 +22,7 @@ class SetupValueManager {
     init() {
         self.isPlayInWifiOnly = NSUserDefaults.standardUserDefaults().boolForKey(isPlayInWifiOnlyKey)
         self.isPlayWhenOpen = NSUserDefaults.standardUserDefaults().boolForKey(isPlayWhenOpenKey)
+        self.network?.startListening()
     }
 
     func saveInfo() {
