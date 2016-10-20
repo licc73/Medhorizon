@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         IQKeyboardManager.sharedManager().enable = true
         DownloadManager.shareInstance.downloadNext()
+        LoginManager.performUploadData()
         return true
     }
 

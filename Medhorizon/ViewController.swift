@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        // change for git test 
         SignalProducer<Bool, NSError>{ observer, _ in
             observer.sendNext(true)
             observer.sendCompleted()

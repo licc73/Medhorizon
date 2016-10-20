@@ -11,6 +11,7 @@ import ReactiveCocoa
 
 class SysMessageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var vNoData: UIView!
     var messageList: [SysMessageViewModel] = []
 
     var isHaveMoreData: Bool = true
@@ -41,6 +42,12 @@ class SysMessageViewController: UIViewController {
             .on(failed: {[unowned self] (error) in
                 AppInfo.showDefaultNetworkErrorToast()
                 self.tableView.endRefresh()
+                if self.messageList.count == 0 {
+                    self.tableView.backgroundView = self.vNoData
+                }
+                else {
+                    self.tableView.backgroundView = nil
+                }
                 },
                 next: {[unowned self] (page, data) in
                     let returnMsg = ReturnMsg.mapToModel(data)
@@ -89,6 +96,12 @@ class SysMessageViewController: UIViewController {
 
     func reloadData() {
         self.tableView.reloadData()
+        if self.messageList.count == 0 {
+            self.tableView.backgroundView = self.vNoData
+        }
+        else {
+            self.tableView.backgroundView = nil
+        }
         self.tableView.endRefresh(self.isHaveMoreData)
     }
 

@@ -352,7 +352,17 @@ class DownloadManager {
         else {
             if self.needBeDownloadedList.count > 0 {
                 self.isDownloading = true
-                self.needBeDownloadedList[0].startDownload()
+                let item = self.needBeDownloadedList[0]
+                if item.status == .Downloading {
+                    
+                }
+                else if item.status == .Finish {
+                    self.downloadSuc(item)
+                }
+                else {
+                    self.needBeDownloadedList[0].startDownload()
+                }
+                
             }
             else {
                 self.isDownloading = false
@@ -421,6 +431,10 @@ class DownloadManager {
             tmp.sourceUrl == item.sourceUrl
         }
         if let index = index {
+            let newitem = self.needBeDownloadedList[index]
+            if newitem.status == .Downloading {
+                self.isDownloading = false
+            }
             self.needBeDownloadedList.removeAtIndex(index)
         }
         index = self.failedList.indexOf { (tmp) -> Bool in
@@ -437,6 +451,7 @@ class DownloadManager {
         }
         item.removeSource()
         self.saveInfo()
+        self.downloadNext()
     }
 
     subscript(index: Int) -> DownloadItem? {

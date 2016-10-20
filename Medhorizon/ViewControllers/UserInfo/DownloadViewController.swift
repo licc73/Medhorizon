@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import Result
 
 class DownloadViewController: UIViewController {
 
@@ -26,11 +28,24 @@ class DownloadViewController: UIViewController {
         else {
             self.tableView.backgroundView = self.vNoData
         }
+        self.setupBind()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupBind() {
+        DownloadManager.shareInstance.downloadHotSignal.producer
+            .throttle(2, onScheduler: RACScheduler.mainThreadScheduler())
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .startWithNext { [unowned self](item) in
+                if let sItem = item where sItem.status == .Finish ||  sItem.status == .Fail {
+                   self.tableView.endEditing(true)
+                    self.tableView.reloadData()
+                }
+        }
     }
     
 
@@ -131,11 +146,32 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             else {
-                let path = download.getResourcePath()
-
-                let player = MPMoviePlayerViewController(contentURL: NSURL(fileURLWithPath: path))
-
-                self.presentMoviePlayerViewControllerAnimated(player)
+                if download.status == .Finish {
+                    let path = download.getResourcePath()
+                    
+                    let player = MPMoviePlayerViewController(contentURL: NSURL(fileURLWithPath: path))
+                    
+                    self.presentMoviePlayerViewControllerAnimated(player)
+                }
+                else if download.status == .Fail {
+                    let actionController = UIAlertController(title: "温馨提示",
+                                                             message:"文件下载失败，是否重新下载？",
+                                                             preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    actionController.addAction(UIAlertAction(title: "确定",
+                        style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                            var d = download
+                            d.status = .Wait
+                            DownloadManager.shareInstance.addDownloadItem(d)
+                    }))
+                    
+                    actionController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) -> Void in
+                        
+                    }))
+                    
+                    self.presentViewController(actionController, animated: true, completion: nil)
+                }
+                
             }
         }
 

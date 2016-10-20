@@ -30,6 +30,8 @@ class SetupWithSwichTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.selectionStyle = .None
+        labTitle.font = UIFont.systemFontOfSize(16)
+        labTitle.textColor = UIColor.colorWithHex(0x666666)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

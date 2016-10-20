@@ -120,7 +120,12 @@ class UserMainInfoViewController: UIViewController {
 
         if let id = segue.identifier where id == StoryboardSegue.Main.ShowFeedback.rawValue {
             if let destination = segue.destinationViewController as? NormalLinkViewController {
-                destination.linkUrl = feedbackUrl
+                if let userId = LoginManager.shareInstance.userId {
+                    destination.linkUrl = feedbackUrl + "?UserId=\(userId)"
+                }
+                else {
+                    destination.linkUrl = feedbackUrl
+                }
                 destination.title = "意见反馈"
             }
         }
