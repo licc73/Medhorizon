@@ -1551,8 +1551,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: changzhong Li (6SY5GKVDE2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: changzhong Li (6SY5GKVDE2)";
 				DEFINES_MODULE = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1571,7 +1571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc152901-885b-475c-9678-1a6723e61128";
+				PROVISIONING_PROFILE = "e036b7c5-870e-4267-a055-9e501c68aa08";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1581,8 +1581,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: changzhong Li (6SY5GKVDE2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1602,7 +1602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc152901-885b-475c-9678-1a6723e61128";
+				PROVISIONING_PROFILE = "e036b7c5-870e-4267-a055-9e501c68aa08";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
