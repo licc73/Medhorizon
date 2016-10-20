@@ -106,7 +106,7 @@
     labQQ.backgroundColor = [UIColor clearColor];
     labQQ.textColor = COLOR(33, 33, 33);
     labQQ.textAlignment = NSTextAlignmentCenter;
-    labQQ.text = @"QQ";
+    labQQ.text = @"QQ好友";
     [self.vContent addSubview:labQQ];
     
     UIButton *btnQQZone = [UIButton buttonWithType:UIButtonTypeCustom];
