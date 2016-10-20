@@ -7,10 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Edge Navigation View Controller-->
         <scene sceneID="Obn-fg-QYt">
             <objects>
-                <navigationController id="230-zr-2Ha" sceneMemberID="viewController">
+                <navigationController id="230-zr-2Ha" customClass="EdgeNavigationViewController" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nga-bM-vUw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -508,10 +508,10 @@
             </objects>
             <point key="canvasLocation" x="597" y="1856"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Ge Navigation View Controller-->
         <scene sceneID="L5l-Eh-NPe">
             <objects>
-                <navigationController storyboardIdentifier="LoginViewController" id="4T9-Zu-d3H" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginViewController" id="4T9-Zu-d3H" customClass="geNavigationViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UIT-yp-GjF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

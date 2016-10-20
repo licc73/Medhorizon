@@ -97,4 +97,16 @@ class DownloadTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+     override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        otherGestureRecognizer.requireGestureRecognizerToFail(gestureRecognizer)
+        return true
+    }
+//    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+//        return true
+//    }
+//
+//    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+
 }

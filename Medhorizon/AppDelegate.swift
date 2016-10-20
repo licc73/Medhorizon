@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         DownloadManager.shareInstance.downloadNext()
         LoginManager.performUploadData()
+        SetupValueManager.shareInstance.startNetworkListhen()
         return true
     }
 

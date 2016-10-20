@@ -35,6 +35,8 @@ class VideoDetailViewController: UIViewController {
         }
     }
 
+    var isFullScreen = false
+
     var isVideoLoaded: Bool = false
     var isPrepareForMetaData: Bool = false
     
@@ -151,7 +153,7 @@ class VideoDetailViewController: UIViewController {
         self.coverFlow?.reloadData()
 
         if SetupValueManager.shareInstance.isPlayInWifiOnly {
-            if let network = SetupValueManager.shareInstance.network?.isReachableOnEthernetOrWiFi where network {
+            if SetupValueManager.isWIFINetork {
                 if SetupValueManager.shareInstance.isPlayWhenOpen {
                     self.playNetworkUrl()
                     self.vPlayButtonBackground.hidden = true
@@ -185,6 +187,10 @@ class VideoDetailViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+    override func prefersStatusBarHidden() -> Bool {
+        return self.isFullScreen
+    }
+
     func setupBind() {
         NSNotificationCenter.defaultCenter()
             .rac_notifications(loginStatusChangeNotification, object: nil)
@@ -192,6 +198,24 @@ class VideoDetailViewController: UIViewController {
             .observeOn(UIScheduler())
             .on { [unowned self] (_) in
                 self.getFavStatus()
+            }.start()
+
+        NSNotificationCenter.defaultCenter()
+            .rac_notifications(MPMoviePlayerDidEnterFullscreenNotification, object: nil)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (_) in
+                self.isFullScreen = true
+                self.setNeedsStatusBarAppearanceUpdate()
+            }.start()
+
+        NSNotificationCenter.defaultCenter()
+            .rac_notifications(MPMoviePlayerDidExitFullscreenNotification, object: nil)
+            .takeUntil(self.rac_WillDeallocSignalProducer())
+            .observeOn(UIScheduler())
+            .on { [unowned self] (_) in
+                self.isFullScreen = false
+                self.setNeedsStatusBarAppearanceUpdate()
             }.start()
 
 //        NSNotificationCenter.defaultCenter()
@@ -248,6 +272,9 @@ class VideoDetailViewController: UIViewController {
 
 
     deinit {
+        self.playerCtrl?.cancelRequestPlayInfo()
+        self.playerCtrl?.contentURL = nil
+        self.playerCtrl?.stop()
         self.playerCtrl?.delegate = nil
         self.playerCtrl?.view.removeFromSuperview()
         self.playerCtrl = nil

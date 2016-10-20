@@ -15,6 +15,8 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vNoData: UIView!
 
+    // var isPlayMovie = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +48,24 @@ class DownloadViewController: UIViewController {
                     self.tableView.reloadData()
                 }
         }
+
+//        NSNotificationCenter.defaultCenter()
+//            .rac_notifications(MPMoviePlayerDidEnterFullscreenNotification, object: nil)
+//            .takeUntil(self.rac_WillDeallocSignalProducer())
+//            .observeOn(UIScheduler())
+//            .on { [unowned self] (_) in
+//                self.isPlayMovie = true
+//                self.setNeedsStatusBarAppearanceUpdate()
+//            }.start()
+//
+//        NSNotificationCenter.defaultCenter()
+//            .rac_notifications(MPMoviePlayerDidExitFullscreenNotification, object: nil)
+//            .takeUntil(self.rac_WillDeallocSignalProducer())
+//            .observeOn(UIScheduler())
+//            .on { [unowned self] (_) in
+//                self.isPlayMovie = false
+//                self.setNeedsStatusBarAppearanceUpdate()
+//            }.start()
     }
     
 
@@ -64,8 +84,19 @@ class DownloadViewController: UIViewController {
         }
     }
 
+    
+
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+
+    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+        return .Portrait
+    }
+
 
 }
+
 class DownloadItemWrapper {
     let download: DownloadItem
     init(download: DownloadItem) {
@@ -149,8 +180,8 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
                 if download.status == .Finish {
                     let path = download.getResourcePath()
                     
-                    let player = MPMoviePlayerViewController(contentURL: NSURL(fileURLWithPath: path))
-                    
+                    let player = LocalPlayViewCtrl(contentURL: NSURL(fileURLWithPath: path))
+                    //UIApplication.sharedApplication().statusBarOrientation = .LandscapeRight
                     self.presentMoviePlayerViewControllerAnimated(player)
                 }
                 else if download.status == .Fail {
@@ -184,4 +215,15 @@ extension DownloadViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+}
+
+class LocalPlayViewCtrl: MPMoviePlayerViewController {
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
+    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+       return .LandscapeRight
+    }
 }
