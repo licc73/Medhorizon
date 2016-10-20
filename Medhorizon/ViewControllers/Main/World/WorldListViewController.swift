@@ -170,7 +170,7 @@ class WorldListViewController: UIViewController {
             self.tableView.backgroundColor = UIColor.whiteColor()
         }
         else {
-            self.tableView.tableFooterView = nil
+            self.tableView.tableFooterView = UIView(frame: CGRectZero)
             self.tableView.backgroundColor = UIColor.colorWithIntValue(245, 246, 247)
         }
         self.tableView.endRefresh(curData?.isHaveMoreData)
