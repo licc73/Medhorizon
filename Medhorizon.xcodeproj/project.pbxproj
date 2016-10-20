@@ -1515,7 +1515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7769eb2b-f588-41c6-856c-4201865d1755";
+				PROVISIONING_PROFILE = "56a86ba3-d52c-46b9-baba-cf866fc78cec";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1545,7 +1545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7769eb2b-f588-41c6-856c-4201865d1755";
+				PROVISIONING_PROFILE = "56a86ba3-d52c-46b9-baba-cf866fc78cec";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
