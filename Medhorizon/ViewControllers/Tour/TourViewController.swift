@@ -58,6 +58,13 @@ class TourViewController: UIViewController {
     }
     */
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let nav = self.navigationController as? EdgeNavigationViewController {
+            nav.removeSubViewController(self, isActionPush: true)
+        }
+    }
+
 }
 
 extension TourViewController {

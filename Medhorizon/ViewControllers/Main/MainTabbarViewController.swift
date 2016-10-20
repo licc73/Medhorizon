@@ -49,10 +49,20 @@ class MainTabbarViewController: UITabBarController {
         self.chooseView?.delegate = self
         self.showChooseView(true)
     }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
+//
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        if let nav = self.navigationController as? EdgeNavigationViewController {
+//            nav.canDragBack = false
+//        }
+//    }
+//
+//    override func viewDidDisappear(animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        if let nav = self.navigationController as? EdgeNavigationViewController {
+//            nav.canDragBack = true
+//        }
+//    }
 
     /*
     // MARK: - Navigation

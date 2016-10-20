@@ -81,6 +81,13 @@
 		4344F6D51DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6D41DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift */; };
 		4344F6D71DB3C66000D5ED54 /* SetupValueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344F6D61DB3C66000D5ED54 /* SetupValueManager.swift */; };
 		436E33561DB49B1500B67CB0 /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E33551DB49B1500B67CB0 /* DownloadTableViewCell.swift */; };
+		436E52AC1DB8EA68009CA20C /* EdgeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E52A01DB8EA68009CA20C /* EdgeNavigationViewController.m */; };
+		436E52AD1DB8EA68009CA20C /* APBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E52A31DB8EA68009CA20C /* APBaseNavigationController.m */; };
+		436E52AE1DB8EA68009CA20C /* UIViewController+APSafeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E52A51DB8EA68009CA20C /* UIViewController+APSafeTransition.m */; };
+		436E52AF1DB8EA68009CA20C /* UIImage+capture.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E52A71DB8EA68009CA20C /* UIImage+capture.m */; };
+		436E52B01DB8EA68009CA20C /* UINavigationController+GONavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E52A91DB8EA68009CA20C /* UINavigationController+GONavigationController.m */; };
+		436E52B11DB8EA68009CA20C /* UIViewController+edgeBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E52AB1DB8EA68009CA20C /* UIViewController+edgeBack.m */; };
+		436E52BB1DB8F9C5009CA20C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4311BC861DB67FEF00F00713 /* AVFoundation.framework */; };
 		43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A761DAA7FD100BD68C5 /* AppInfo.swift */; };
 		43714A791DABD5E200BD68C5 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */; };
 		43714A851DAD377D00BD68C5 /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */; };
@@ -305,6 +312,18 @@
 		4344F6D41DB3C49700D5ED54 /* SetupWithSwichTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWithSwichTableViewCell.swift; sourceTree = "<group>"; };
 		4344F6D61DB3C66000D5ED54 /* SetupValueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupValueManager.swift; sourceTree = "<group>"; };
 		436E33551DB49B1500B67CB0 /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
+		436E529F1DB8EA68009CA20C /* EdgeNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgeNavigationViewController.h; sourceTree = "<group>"; };
+		436E52A01DB8EA68009CA20C /* EdgeNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EdgeNavigationViewController.m; sourceTree = "<group>"; };
+		436E52A21DB8EA68009CA20C /* APBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APBaseNavigationController.h; sourceTree = "<group>"; };
+		436E52A31DB8EA68009CA20C /* APBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APBaseNavigationController.m; sourceTree = "<group>"; };
+		436E52A41DB8EA68009CA20C /* UIViewController+APSafeTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+APSafeTransition.h"; sourceTree = "<group>"; };
+		436E52A51DB8EA68009CA20C /* UIViewController+APSafeTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+APSafeTransition.m"; sourceTree = "<group>"; };
+		436E52A61DB8EA68009CA20C /* UIImage+capture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+capture.h"; sourceTree = "<group>"; };
+		436E52A71DB8EA68009CA20C /* UIImage+capture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+capture.m"; sourceTree = "<group>"; };
+		436E52A81DB8EA68009CA20C /* UINavigationController+GONavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+GONavigationController.h"; sourceTree = "<group>"; };
+		436E52A91DB8EA68009CA20C /* UINavigationController+GONavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+GONavigationController.m"; sourceTree = "<group>"; };
+		436E52AA1DB8EA68009CA20C /* UIViewController+edgeBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+edgeBack.h"; sourceTree = "<group>"; };
+		436E52AB1DB8EA68009CA20C /* UIViewController+edgeBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+edgeBack.m"; sourceTree = "<group>"; };
 		43714A761DAA7FD100BD68C5 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		43714A781DABD5E200BD68C5 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		43714A841DAD377D00BD68C5 /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -445,6 +464,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436E52BB1DB8F9C5009CA20C /* AVFoundation.framework in Frameworks */,
 				4311BC781DB6495E00F00713 /* libc++.1.tbd in Frameworks */,
 				4311BC761DB6493E00F00713 /* CoreTelephony.framework in Frameworks */,
 				4311BC751DB6492C00F00713 /* libsqlite3.0.tbd in Frameworks */,
@@ -627,6 +647,33 @@
 				436E33551DB49B1500B67CB0 /* DownloadTableViewCell.swift */,
 			);
 			name = Download;
+			sourceTree = "<group>";
+		};
+		436E529E1DB8E976009CA20C /* OC */ = {
+			isa = PBXGroup;
+			children = (
+				436E529F1DB8EA68009CA20C /* EdgeNavigationViewController.h */,
+				436E52A01DB8EA68009CA20C /* EdgeNavigationViewController.m */,
+				436E52A11DB8EA68009CA20C /* SafeTransition */,
+				436E52A61DB8EA68009CA20C /* UIImage+capture.h */,
+				436E52A71DB8EA68009CA20C /* UIImage+capture.m */,
+				436E52A81DB8EA68009CA20C /* UINavigationController+GONavigationController.h */,
+				436E52A91DB8EA68009CA20C /* UINavigationController+GONavigationController.m */,
+				436E52AA1DB8EA68009CA20C /* UIViewController+edgeBack.h */,
+				436E52AB1DB8EA68009CA20C /* UIViewController+edgeBack.m */,
+			);
+			name = OC;
+			sourceTree = "<group>";
+		};
+		436E52A11DB8EA68009CA20C /* SafeTransition */ = {
+			isa = PBXGroup;
+			children = (
+				436E52A21DB8EA68009CA20C /* APBaseNavigationController.h */,
+				436E52A31DB8EA68009CA20C /* APBaseNavigationController.m */,
+				436E52A41DB8EA68009CA20C /* UIViewController+APSafeTransition.h */,
+				436E52A51DB8EA68009CA20C /* UIViewController+APSafeTransition.m */,
+			);
+			path = SafeTransition;
 			sourceTree = "<group>";
 		};
 		43714A831DAD375E00BD68C5 /* Meeting */ = {
@@ -851,6 +898,7 @@
 		43D3906D1DA7A40200039C35 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				436E529E1DB8E976009CA20C /* OC */,
 				EA33BBBD1DA8B07400C0BE04 /* Storyboard.swift */,
 				43714A761DAA7FD100BD68C5 /* AppInfo.swift */,
 				EA33BD4B1DADCFC900C0BE04 /* DownloadManager.swift */,
@@ -1160,6 +1208,7 @@
 				TargetAttributes = {
 					EA67D0CB1D9E4D0B00468A92 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 56VLU98PSP;
 					};
 				};
 			};
@@ -1264,8 +1313,10 @@
 				4344F6B61DB32AC200D5ED54 /* UserInfoMainModel.swift in Sources */,
 				43B2C95C1DA7C124004FA849 /* UIScrollView+MJRefresh.m in Sources */,
 				43B2C95B1DA7C124004FA849 /* UIScrollView+MJExtension.m in Sources */,
+				436E52B11DB8EA68009CA20C /* UIViewController+edgeBack.m in Sources */,
 				43B2C9531DA7C124004FA849 /* MJRefreshBackNormalFooter.m in Sources */,
 				EA33BCF21DAB549E00C0BE04 /* NewsListViewModel.swift in Sources */,
+				436E52AF1DB8EA68009CA20C /* UIImage+capture.m in Sources */,
 				43B2C9851DA7C2AB004FA849 /* IQBarButtonItem.swift in Sources */,
 				4311BC691DB6470000F00713 /* ShareToThirdPartyView.m in Sources */,
 				4344F6511DB1C9B300D5ED54 /* VideoDetailViewController.swift in Sources */,
@@ -1298,6 +1349,7 @@
 				43B2C9811DA7C2AB004FA849 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				43B2C94A1DA7C124004FA849 /* MJRefreshAutoFooter.m in Sources */,
 				EA33BD541DADFA4300C0BE04 /* ActionView.swift in Sources */,
+				436E52AC1DB8EA68009CA20C /* EdgeNavigationViewController.m in Sources */,
 				43714A931DAFDC6800BD68C5 /* WorldDetailViewController.swift in Sources */,
 				EA33BCF61DAC782600C0BE04 /* LoginManager.swift in Sources */,
 				4344F68A1DB30FE000D5ED54 /* TrueNameVerifyViewController.swift in Sources */,
@@ -1314,9 +1366,11 @@
 				4344F67A1DB29D4100D5ED54 /* ForgotPwdViewController.swift in Sources */,
 				EA33BBA81DA8892600C0BE04 /* ServiceRequest.swift in Sources */,
 				4311BC641DB5231D00F00713 /* NMIssueRefreshHeader.swift in Sources */,
+				436E52AD1DB8EA68009CA20C /* APBaseNavigationController.m in Sources */,
 				4344F6CF1DB37A1300D5ED54 /* FavTableViewCell.swift in Sources */,
 				43B2C9551DA7C124004FA849 /* MJRefreshGifHeader.m in Sources */,
 				43714A891DAD382D00BD68C5 /* MeetingListViewModel.swift in Sources */,
+				436E52AE1DB8EA68009CA20C /* UIViewController+APSafeTransition.m in Sources */,
 				EA22F00A1DAF4A2E00FFBEE6 /* WorldListViewModel.swift in Sources */,
 				43B2C9881DA7C2AB004FA849 /* IQToolbar.swift in Sources */,
 				4344F63F1DB1C33800D5ED54 /* ALMoviePlayerControls.m in Sources */,
@@ -1346,6 +1400,7 @@
 				4311BC7B1DB6532600F00713 /* LogoutTableViewCell.swift in Sources */,
 				EA33BBBE1DA8B07400C0BE04 /* Storyboard.swift in Sources */,
 				43714A911DAE900400BD68C5 /* CoursewareChooseView.swift in Sources */,
+				436E52B01DB8EA68009CA20C /* UINavigationController+GONavigationController.m in Sources */,
 				43714A771DAA7FD100BD68C5 /* AppInfo.swift in Sources */,
 				43B2C9571DA7C124004FA849 /* MJRefreshStateHeader.m in Sources */,
 				4344F6A41DB314B700D5ED54 /* BaseInfoTableViewCell.swift in Sources */,
@@ -1497,6 +1552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
 				DEFINES_MODULE = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1515,7 +1571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "56a86ba3-d52c-46b9-baba-cf866fc78cec";
+				PROVISIONING_PROFILE = "bc152901-885b-475c-9678-1a6723e61128";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1526,6 +1582,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai in-media Co.,Ltd. (JFABG25PYQ)";
 				DEFINES_MODULE = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1545,7 +1602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cn.xian-janssen.medhorizon";
 				PRODUCT_MODULE_NAME = Medhorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "56a86ba3-d52c-46b9-baba-cf866fc78cec";
+				PROVISIONING_PROFILE = "bc152901-885b-475c-9678-1a6723e61128";
 				SWIFT_OBJC_BRIDGING_HEADER = "Medhorizon/Medhorizon-Bridging.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

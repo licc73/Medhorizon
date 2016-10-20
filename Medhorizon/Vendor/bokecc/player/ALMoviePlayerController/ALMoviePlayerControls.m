@@ -412,6 +412,7 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     if (self.moviePlayer.currentPlaybackRate != 1.f) {
         self.moviePlayer.currentPlaybackRate = 1.f;
     }
+
     [self.moviePlayer setFullscreen:!self.moviePlayer.isFullscreen animated:YES];
     [self performSelector:@selector(hideControls:) withObject:nil afterDelay:self.fadeDelay];
 }

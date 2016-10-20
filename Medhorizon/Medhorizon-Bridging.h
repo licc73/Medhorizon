@@ -16,5 +16,7 @@
 #import "DWDownloader.h"
 #import "ThirdPartyManager.h"
 #import "ShareToThirdPartyView.h"
+#import "EdgeNavigationViewController.h"
+#import "Reachability.h"
 
 #endif /* Medhorizon_Bridging_h */
