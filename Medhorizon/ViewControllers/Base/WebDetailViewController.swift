@@ -233,13 +233,13 @@ class WebDetailViewController: UIViewController {
 
 extension WebDetailViewController: shareToThirdPartyViewDelegate {
     func shareToThirdPartyView(view: ShareToThirdPartyView!, shareWith type: ShareToThirdPartyPlatform) {
-        guard let link = self.sLink, userId = LoginManager.shareInstance.userId else {
+        guard let link = self.sLink else {
             return
         }
         let data = ShareData()
         data.sContent = self.sContent
         data.sTitle = self.sTitle
-        data.sLinkUrl = link + "&UserId=\(userId)&share=true"
+        data.sLinkUrl = link + "&UserId=\(LoginManager.shareInstance.userId ?? "0")&share=true"
         data.sPicUrl = self.sPic
         ThirdPartyManager.shareInstance().data = data
         switch type {
