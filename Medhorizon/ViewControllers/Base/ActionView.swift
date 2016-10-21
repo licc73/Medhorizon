@@ -33,7 +33,7 @@ class ActionView: UIView {
     let btnDownload: UIButton
     let btnShare: UIButton
     
-    var delegate: ActionViewDelegate?
+    weak var delegate: ActionViewDelegate?
     
     override init(frame: CGRect) {
         self.txtComment = UITextField(frame: CGRectZero)
